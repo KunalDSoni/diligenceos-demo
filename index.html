@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DiligenceOS — Global Bookkeeping & Accounting Services</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --forest: #1b3a2d;
+  --forest-light: #264d3b;
+  --sage: #7a9e7e;
+  --sage-light: #a8c5ab;
+  --sand: #c2a97e;
+  --sand-light: #e8dcc8;
+  --cream: #faf6f0;
+  --warm-white: #fefcf9;
+  --terracotta: #c4654a;
+  --terracotta-dark: #a8523b;
+  --terracotta-light: rgba(196,101,74,0.1);
+  --charcoal: #2c2c2c;
+  --slate: #5a6872;
+  --slate-light: #8a969e;
+  --border: #e6dfd5;
+  --border-light: #f0ebe3;
+  --shadow-sm: 0 2px 8px rgba(27,58,45,0.04);
+  --shadow: 0 8px 30px rgba(27,58,45,0.06);
+  --shadow-lg: 0 20px 60px rgba(27,58,45,0.1);
+  --transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  --transition-slow: all 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  color: var(--charcoal); line-height: 1.75; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; background: var(--warm-white);
+}
+body[data-lang="hi"] { font-family: 'Noto Sans Devanagari', 'Plus Jakarta Sans', sans-serif; }
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; }
+body[data-lang="hi"] h1, body[data-lang="hi"] h2, body[data-lang="hi"] h3 {
+  font-family: 'Noto Sans Devanagari', sans-serif; font-weight: 700;
+}
+
+/* ═══════ SCROLL ANIMATIONS ═══════ */
+.reveal { opacity:0; transform:translateY(40px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-left { opacity:0; transform:translateX(-50px); transition:opacity .8s ease, transform .8s ease; }
+.reveal-left.visible { opacity:1; transform:translateX(0); }
+.reveal-right { opacity:0; transform:translateX(50px); transition:opacity .8s ease, transform .8s ease; }
+.reveal-right.visible { opacity:1; transform:translateX(0); }
+.reveal-scale { opacity:0; transform:scale(.92); transition:opacity .7s ease, transform .7s ease; }
+.reveal-scale.visible { opacity:1; transform:scale(1); }
+.stagger-1{transition-delay:.06s}.stagger-2{transition-delay:.12s}.stagger-3{transition-delay:.18s}
+.stagger-4{transition-delay:.24s}.stagger-5{transition-delay:.30s}.stagger-6{transition-delay:.36s}
+.stagger-7{transition-delay:.42s}.stagger-8{transition-delay:.48s}
+
+/* ═══════ ANNOUNCEMENT BAR ═══════ */
+.announcement-bar {
+  background: linear-gradient(90deg, var(--forest) 0%, var(--forest-light) 100%);
+  color: rgba(255,255,255,.8); text-align:center; padding:11px 24px;
+  font-size:.82rem; letter-spacing:.3px; position:relative; overflow:hidden;
+}
+.announcement-bar::before {
+  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.04), transparent);
+  animation: shimmer 4s ease-in-out infinite;
+}
+@keyframes shimmer { 0%{left:-100%} 100%{left:100%} }
+.announcement-bar a { color:var(--sand); text-decoration:none; font-weight:600; margin-left:6px; }
+.announcement-bar a:hover { text-decoration:underline; }
+
+/* ═══════ NAVIGATION ═══════ */
+nav {
+  position:sticky; top:0; z-index:1000;
+  background:rgba(254,252,249,.92); backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid var(--border-light); transition:var(--transition);
+}
+.nav-container {
+  max-width:1320px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 36px; height:74px;
+}
+
+/* ═══════ ANIMATED LOGO ═══════ */
+.logo { text-decoration:none; display:flex; align-items:center; gap:12px; }
+.logo-svg-wrap {
+  width:42px; height:42px; position:relative; cursor:pointer;
+}
+.logo-svg-wrap svg { width:42px; height:42px; }
+.logo-ring { fill:none; stroke:var(--forest); stroke-width:2; stroke-dasharray:120; stroke-dashoffset:120;
+  animation: drawRing 1.2s ease forwards .3s; }
+@keyframes drawRing { to { stroke-dashoffset:0; } }
+.logo-bar-1, .logo-bar-2, .logo-bar-3 { rx:1.5; }
+.logo-bar-1 { fill:var(--terracotta); animation: barGrow 0.6s ease forwards 0.8s; transform-origin:bottom; transform:scaleY(0); }
+.logo-bar-2 { fill:var(--sage); animation: barGrow 0.6s ease forwards 1.0s; transform-origin:bottom; transform:scaleY(0); }
+.logo-bar-3 { fill:var(--sand); animation: barGrow 0.6s ease forwards 1.2s; transform-origin:bottom; transform:scaleY(0); }
+@keyframes barGrow { to { transform:scaleY(1); } }
+.logo-arrow { fill:none; stroke:var(--terracotta); stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:30; stroke-dashoffset:30; animation: drawArrow .5s ease forwards 1.5s; }
+@keyframes drawArrow { to { stroke-dashoffset:0; } }
+.logo-svg-wrap:hover .logo-bar-1 { animation: barPulse .5s ease; }
+.logo-svg-wrap:hover .logo-bar-2 { animation: barPulse .5s ease .1s; }
+.logo-svg-wrap:hover .logo-bar-3 { animation: barPulse .5s ease .2s; }
+@keyframes barPulse { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.2)} }
+.logo-text {
+  font-family:'Plus Jakarta Sans',sans-serif; font-size:1.45rem; font-weight:800;
+  color:var(--forest); letter-spacing:-.5px;
+  animation: fadeIn .6s ease 1s both;
+}
+.logo-text em { font-style:normal; color:var(--terracotta); }
+@keyframes fadeIn { from{opacity:0;transform:translateX(-8px)} to{opacity:1;transform:translateX(0)} }
+
+.nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
+.nav-links a {
+  text-decoration:none; color:var(--slate); font-weight:500; font-size:.9rem;
+  padding:8px 16px; border-radius:8px; transition:var(--transition); position:relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:4px; left:50%; width:0; height:2px;
+  background:var(--terracotta); transition:var(--transition); transform:translateX(-50%); border-radius:1px;
+}
+.nav-links a:hover { color:var(--forest); }
+.nav-links a:hover::after { width:20px; }
+.nav-right { display:flex; align-items:center; gap:12px; }
+
+/* ═══════ LANGUAGE SWITCHER ═══════ */
+.lang-dropdown { position:relative; }
+.lang-btn {
+  display:flex; align-items:center; gap:8px;
+  font-size:.88rem; color:var(--slate); cursor:pointer;
+  padding:8px 14px; border-radius:10px; border:1px solid var(--border);
+  background:transparent; font-family:inherit; transition:var(--transition);
+}
+.lang-btn:hover { border-color:var(--sage); background:rgba(122,158,126,.06); }
+.lang-btn .flag-icon { font-size:1.1rem; }
+.lang-btn .chevron { font-size:.55rem; transition:var(--transition); }
+.lang-dropdown.open .chevron { transform:rotate(180deg); }
+.lang-menu {
+  position:absolute; top:calc(100% + 8px); right:0; min-width:200px;
+  background:var(--warm-white); border:1px solid var(--border);
+  border-radius:14px; box-shadow:var(--shadow-lg); padding:8px;
+  opacity:0; visibility:hidden; transform:translateY(-8px);
+  transition:var(--transition); z-index:100;
+}
+.lang-dropdown.open .lang-menu { opacity:1; visibility:visible; transform:translateY(0); }
+.lang-option {
+  display:flex; align-items:center; gap:12px; padding:10px 14px;
+  border-radius:10px; cursor:pointer; transition:var(--transition);
+  font-size:.9rem; color:var(--charcoal); border:none; background:none;
+  width:100%; text-align:left; font-family:inherit;
+}
+.lang-option:hover { background:var(--cream); }
+.lang-option.active { background:rgba(122,158,126,.1); color:var(--forest); font-weight:600; }
+.lang-option .flag-icon { font-size:1.2rem; }
+.lang-option .lang-name { flex:1; }
+.lang-option .check { color:var(--sage); font-size:.75rem; opacity:0; transition:var(--transition); }
+.lang-option.active .check { opacity:1; }
+
+.nav-cta {
+  background:var(--forest)!important; color:var(--cream)!important;
+  padding:10px 22px!important; border-radius:10px!important;
+  font-weight:600!important; font-size:.88rem!important;
+  transition:var(--transition)!important; text-decoration:none;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.nav-cta:hover { background:var(--terracotta)!important; transform:translateY(-1px); }
+.mobile-toggle { display:none; background:none; border:none; font-size:1.4rem; color:var(--forest); cursor:pointer; }
+
+/* ═══════ HERO ═══════ */
+.hero {
+  min-height:94vh; display:flex; align-items:center;
+  position:relative; overflow:hidden; background:var(--forest);
+}
+.hero-bg {
+  position:absolute; inset:0; z-index:1;
+  background:
+    radial-gradient(ellipse 80% 70% at 65% 35%, rgba(122,158,126,.2) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(194,169,126,.12) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 30% at 85% 85%, rgba(196,101,74,.08) 0%, transparent 50%),
+    linear-gradient(170deg, #1b3a2d 0%, #234a38 40%, #1f4030 100%);
+}
+.hero-organic { position:absolute; inset:0; z-index:2; overflow:hidden; pointer-events:none; }
+.hero-organic .orb { position:absolute; border-radius:50%; filter:blur(80px); opacity:.15; }
+.orb-1 { width:500px; height:500px; background:var(--sage); top:-10%; right:-5%; animation:orbFloat1 12s ease-in-out infinite; }
+.orb-2 { width:350px; height:350px; background:var(--sand); bottom:-8%; left:10%; animation:orbFloat2 15s ease-in-out infinite; }
+.orb-3 { width:250px; height:250px; background:var(--terracotta); top:40%; right:30%; animation:orbFloat3 18s ease-in-out infinite; }
+@keyframes orbFloat1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-30px,20px) scale(1.05)} }
+@keyframes orbFloat2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(20px,-25px) scale(1.08)} }
+@keyframes orbFloat3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-15px,-20px) scale(.95)} }
+
+/* Particle field */
+.particles { position:absolute; inset:0; z-index:2; pointer-events:none; }
+.particle {
+  position:absolute; width:3px; height:3px; background:rgba(255,255,255,.15);
+  border-radius:50%; animation: particleDrift linear infinite;
+}
+@keyframes particleDrift {
+  0% { transform:translateY(0) translateX(0); opacity:0; }
+  10% { opacity:1; }
+  90% { opacity:1; }
+  100% { transform:translateY(-100vh) translateX(40px); opacity:0; }
+}
+
+.hero-content {
+  max-width:1320px; margin:0 auto; padding:100px 36px 80px; width:100%;
+  display:grid; grid-template-columns:1.1fr .9fr; gap:80px; align-items:center;
+  position:relative; z-index:3;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(194,169,126,.15); border:1px solid rgba(194,169,126,.2);
+  padding:8px 18px; border-radius:100px; margin-bottom:28px;
+  font-size:.82rem; color:var(--sand); font-weight:600;
+  letter-spacing:.5px; text-transform:uppercase;
+  animation:fadeSlideDown .8s ease .2s both;
+}
+.hero-badge i { font-size:.75rem; }
+@keyframes fadeSlideDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:translateY(0)} }
+.hero-text h1 {
+  font-size:3.5rem; font-weight:600; color:var(--cream);
+  line-height:1.14; margin-bottom:24px; letter-spacing:-.3px;
+  animation:fadeSlideUp .9s ease .3s both;
+}
+.hero-text h1 .accent {
+  background:linear-gradient(135deg, var(--sand), var(--sand-light));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+@keyframes fadeSlideUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.hero-text p {
+  font-size:1.1rem; color:rgba(255,255,255,.55);
+  margin-bottom:40px; max-width:500px; line-height:1.85;
+  animation:fadeSlideUp .9s ease .45s both;
+}
+.hero-buttons { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:56px; animation:fadeSlideUp .9s ease .55s both; }
+.btn {
+  padding:14px 30px; border-radius:12px; font-weight:600; text-decoration:none;
+  font-size:.95rem; transition:var(--transition); display:inline-flex; align-items:center;
+  gap:10px; font-family:'Plus Jakarta Sans',sans-serif; border:none; cursor:pointer;
+}
+.btn-terracotta { background:var(--terracotta); color:white; box-shadow:0 4px 16px rgba(196,101,74,.3); }
+.btn-terracotta:hover { background:var(--terracotta-dark); transform:translateY(-3px); box-shadow:0 8px 28px rgba(196,101,74,.35); }
+.btn-ghost { border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.8); background:rgba(255,255,255,.04); }
+.btn-ghost:hover { border-color:rgba(255,255,255,.3); background:rgba(255,255,255,.08); transform:translateY(-2px); }
+
+.hero-trust {
+  display:flex; align-items:center; gap:28px;
+  padding-top:32px; border-top:1px solid rgba(255,255,255,.07);
+  animation:fadeSlideUp .9s ease .7s both;
+}
+.hero-trust-item { text-align:center; }
+.hero-trust-item .number { font-family:'Playfair Display',serif; font-size:2rem; color:var(--cream); display:block; line-height:1.1; }
+body[data-lang="hi"] .hero-trust-item .number { font-family:'Plus Jakarta Sans',sans-serif; }
+.hero-trust-item .label { font-size:.75rem; color:rgba(255,255,255,.38); text-transform:uppercase; letter-spacing:1.2px; font-weight:500; }
+.hero-trust-divider { width:1px; height:36px; background:rgba(255,255,255,.08); }
+
+/* Hero visual — floating cards */
+.hero-visual { position:relative; min-height:480px; animation:fadeSlideUp 1s ease .5s both; }
+.metric-card {
+  position:absolute; background:rgba(255,255,255,.07); backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:26px; color:white;
+  transition:var(--transition);
+}
+.metric-card:hover { transform:translateY(-6px)!important; background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.14); }
+.metric-card .mc-icon {
+  width:42px; height:42px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center; margin-bottom:14px; font-size:1rem;
+}
+.metric-card .mc-value { font-family:'Playfair Display',serif; font-size:1.9rem; margin-bottom:4px; }
+body[data-lang="hi"] .metric-card .mc-value { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
+.metric-card .mc-label { font-size:.8rem; color:rgba(255,255,255,.5); }
+.mc1 { top:0; left:8%; width:210px; } .mc1 .mc-icon { background:rgba(196,101,74,.2); color:#e8856e; }
+.mc2 { top:30px; right:0; width:230px; } .mc2 .mc-icon { background:rgba(194,169,126,.2); color:var(--sand); }
+.mc3 { bottom:80px; left:0; width:220px; } .mc3 .mc-icon { background:rgba(122,158,126,.2); color:var(--sage-light); }
+.mc4 { bottom:10px; right:8%; width:200px; } .mc4 .mc-icon { background:rgba(232,220,200,.15); color:var(--sand-light); }
+@keyframes cardFloat1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes cardFloat2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes cardFloat3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes cardFloat4 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.mc1{animation:cardFloat1 5s ease-in-out infinite}
+.mc2{animation:cardFloat2 6s ease-in-out infinite .8s}
+.mc3{animation:cardFloat3 7s ease-in-out infinite 1.6s}
+.mc4{animation:cardFloat4 5.5s ease-in-out infinite 2.4s}
+.hero-visual::before {
+  content:''; position:absolute; top:50%; left:50%; width:220px; height:220px;
+  border:1px dashed rgba(255,255,255,.04); border-radius:50%;
+  transform:translate(-50%,-50%); animation:spinSlow 40s linear infinite;
+}
+@keyframes spinSlow { from{transform:translate(-50%,-50%) rotate(0)} to{transform:translate(-50%,-50%) rotate(360deg)} }
+
+/* ═══════ LOGOS BAR ═══════ */
+.logos-bar { padding:44px 36px; background:var(--warm-white); border-bottom:1px solid var(--border-light); overflow:hidden; }
+.logos-bar-inner { max-width:1320px; margin:0 auto; display:flex; align-items:center; gap:48px; }
+.logos-bar-label { font-size:.72rem; text-transform:uppercase; letter-spacing:2.5px; color:var(--slate-light); font-weight:600; white-space:nowrap; min-width:130px; }
+.logos-row {
+  display:flex; align-items:center; gap:40px; flex:1;
+  animation:marquee 20s linear infinite;
+}
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.logo-item {
+  display:flex; align-items:center; gap:8px; white-space:nowrap;
+  font-size:1rem; font-weight:700; color:var(--slate-light); opacity:.4;
+  transition:var(--transition); letter-spacing:-.3px;
+}
+.logo-item:hover { opacity:.75; color:var(--forest); }
+.logo-item i { font-size:1.3rem; }
+
+/* ═══════ SECTION COMMON ═══════ */
+.section { padding:110px 36px; }
+.section-header { max-width:620px; margin-bottom:64px; }
+.section-header.center { margin-left:auto; margin-right:auto; text-align:center; }
+.section-eyebrow {
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:.76rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:2.5px; color:var(--terracotta); margin-bottom:16px;
+}
+.section-eyebrow::before { content:''; width:28px; height:2px; background:var(--terracotta); border-radius:1px; }
+.section-header h2 { font-size:2.7rem; color:var(--forest); line-height:1.18; margin-bottom:18px; }
+.section-header p { color:var(--slate); font-size:1.05rem; line-height:1.85; }
+
+/* ═══════ SERVICES ═══════ */
+.services-grid { max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.service-card {
+  background:var(--warm-white); border:1px solid var(--border);
+  border-radius:18px; padding:38px 32px; transition:var(--transition);
+  position:relative; overflow:hidden; cursor:default;
+}
+.service-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--terracotta), var(--sand));
+  transform:scaleX(0); transform-origin:left; transition:transform .5s ease;
+}
+.service-card:hover { border-color:transparent; box-shadow:var(--shadow-lg); transform:translateY(-6px); }
+.service-card:hover::before { transform:scaleX(1); }
+.service-card .s-number {
+  font-family:'Playfair Display',serif; font-size:3.2rem;
+  color:var(--border); line-height:1; margin-bottom:18px; transition:var(--transition);
+}
+.service-card:hover .s-number { color:var(--terracotta-light); }
+.service-card h3 { font-size:1.2rem; color:var(--forest); margin-bottom:12px; }
+.service-card p { color:var(--slate); font-size:.9rem; line-height:1.75; margin-bottom:18px; }
+.service-link {
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:.85rem; font-weight:600; color:var(--terracotta);
+  text-decoration:none; transition:var(--transition);
+}
+.service-link:hover { gap:12px; }
+
+/* ═══════ ABOUT ═══════ */
+.about-section { background:var(--cream); }
+.about-grid { max-width:1320px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.about-image-block { position:relative; border-radius:24px; overflow:hidden; min-height:540px; }
+.about-image-inner {
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at 30% 70%, rgba(196,101,74,.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(194,169,126,.1) 0%, transparent 50%),
+    linear-gradient(145deg, var(--forest) 0%, var(--forest-light) 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px;
+}
+.about-image-inner .globe-icon {
+  font-size:4.5rem; color:rgba(255,255,255,.06); margin-bottom:36px;
+  animation:pulseGlow 4s ease-in-out infinite;
+}
+@keyframes pulseGlow { 0%,100%{opacity:.06;transform:scale(1)} 50%{opacity:.12;transform:scale(1.05)} }
+.about-stat-row { display:flex; gap:24px; }
+.about-stat {
+  text-align:center; padding:22px 20px;
+  background:rgba(255,255,255,.05); border-radius:14px;
+  border:1px solid rgba(255,255,255,.06); transition:var(--transition);
+}
+.about-stat:hover { background:rgba(255,255,255,.1); transform:translateY(-4px); }
+.about-stat .val { font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--sand-light); display:block; }
+body[data-lang="hi"] .about-stat .val { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
+.about-stat .lbl { font-size:.72rem; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:1.5px; }
+.about-content .section-eyebrow { margin-bottom:12px; }
+.about-content h2 { font-size:2.4rem; margin-bottom:20px; color:var(--forest); line-height:1.2; }
+.about-content > p { color:var(--slate); font-size:1rem; margin-bottom:36px; line-height:1.85; }
+.features-list { display:flex; flex-direction:column; gap:22px; }
+.feature-item { display:flex; gap:16px; align-items:flex-start; transition:var(--transition); }
+.feature-item:hover { transform:translateX(6px); }
+.feature-icon {
+  width:42px; height:42px; border-radius:12px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:.95rem; transition:var(--transition);
+}
+.fi-terra { background:var(--terracotta-light); color:var(--terracotta); }
+.fi-sand { background:rgba(194,169,126,.15); color:var(--sand); }
+.fi-sage { background:rgba(122,158,126,.12); color:var(--sage); }
+.fi-forest { background:rgba(27,58,45,.08); color:var(--forest); }
+.feature-item:hover .feature-icon { transform:scale(1.1) rotate(-3deg); }
+.feature-item h4 { font-family:'Plus Jakarta Sans',sans-serif; font-size:.95rem; font-weight:700; color:var(--forest); margin-bottom:2px; }
+.feature-item p { color:var(--slate); font-size:.88rem; }
+
+/* ═══════ PROCESS ═══════ */
+.process-section { background:var(--warm-white); }
+.process-track {
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative;
+}
+.process-track::before {
+  content:''; position:absolute; top:40px; left:12%; right:12%; height:2px;
+  background:linear-gradient(90deg, var(--terracotta), var(--sand), var(--sage), var(--forest));
+  border-radius:1px;
+}
+.process-step { text-align:center; position:relative; z-index:2; padding:0 18px; }
+.step-circle {
+  width:80px; height:80px; border-radius:50%; margin:0 auto 24px;
+  background:var(--warm-white); border:2px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--slate-light);
+  transition:var(--transition); position:relative;
+}
+.step-circle::after {
+  content:''; position:absolute; inset:-4px; border-radius:50%;
+  border:2px solid transparent; transition:var(--transition);
+}
+.process-step:hover .step-circle {
+  border-color:var(--terracotta); color:var(--terracotta);
+  background:var(--terracotta-light); transform:scale(1.08);
+}
+.process-step:hover .step-circle::after { border-color:rgba(196,101,74,.15); }
+.process-step h3 { font-size:1.1rem; color:var(--forest); margin-bottom:8px; }
+.process-step p { color:var(--slate); font-size:.86rem; line-height:1.7; }
+
+/* ═══════ INDUSTRIES ═══════ */
+.industries-section { background:var(--forest); color:white; position:relative; overflow:hidden; }
+.industries-section .ind-orb { position:absolute; border-radius:50%; filter:blur(100px); opacity:.08; }
+.ind-orb-1 { width:400px; height:400px; background:var(--sage); top:-15%; right:-5%; }
+.ind-orb-2 { width:300px; height:300px; background:var(--sand); bottom:-10%; left:5%; }
+.industries-section .section-header { position:relative; z-index:2; }
+.industries-section .section-eyebrow { color:var(--sand); }
+.industries-section .section-eyebrow::before { background:var(--sand); }
+.industries-section .section-header h2 { color:var(--cream); }
+.industries-section .section-header p { color:rgba(255,255,255,.5); }
+.industries-grid {
+  max-width:1320px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:18px; position:relative; z-index:2;
+}
+.industry-card {
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06);
+  border-radius:16px; padding:34px 24px; text-align:center; transition:var(--transition); cursor:default;
+}
+.industry-card:hover {
+  background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.12);
+  transform:translateY(-6px); box-shadow:0 12px 36px rgba(0,0,0,.15);
+}
+.industry-card i {
+  font-size:1.7rem; margin-bottom:14px; display:block; transition:var(--transition);
+  background:linear-gradient(135deg, var(--sand), var(--sage-light));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.industry-card:hover i { transform:scale(1.15); }
+.industry-card h4 { font-family:'Plus Jakarta Sans',sans-serif; font-size:.9rem; font-weight:600; color:rgba(255,255,255,.8); }
+
+/* ═══════ TESTIMONIALS ═══════ */
+.testimonials-section { background:var(--cream); }
+.testimonials-grid { max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.testimonial-card {
+  background:var(--warm-white); border:1px solid var(--border);
+  border-radius:18px; padding:38px 32px; transition:var(--transition); display:flex; flex-direction:column;
+}
+.testimonial-card:hover { box-shadow:var(--shadow-lg); border-color:transparent; transform:translateY(-4px); }
+.t-stars { color:var(--sand); font-size:.85rem; margin-bottom:18px; display:flex; gap:3px; }
+.t-quote { flex:1; color:var(--slate); font-size:.95rem; line-height:1.8; margin-bottom:24px; font-style:italic; }
+.t-author { display:flex; align-items:center; gap:14px; padding-top:20px; border-top:1px solid var(--border-light); }
+.t-avatar {
+  width:44px; height:44px; border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-weight:700; font-size:.85rem; color:white; transition:var(--transition);
+}
+.testimonial-card:hover .t-avatar { transform:scale(1.08); }
+.t-av-1 { background:linear-gradient(135deg, var(--terracotta), #d88570); }
+.t-av-2 { background:linear-gradient(135deg, var(--forest), var(--forest-light)); }
+.t-av-3 { background:linear-gradient(135deg, var(--sand), #d4bd8c); }
+.t-name { font-weight:700; font-size:.9rem; color:var(--forest); }
+.t-role { font-size:.8rem; color:var(--slate-light); }
+
+/* ═══════ GLOBAL PRESENCE ═══════ */
+.global-section { background:var(--warm-white); }
+.global-grid { max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.global-card {
+  background:var(--warm-white); border:1px solid var(--border); border-radius:18px;
+  padding:38px 32px; transition:var(--transition);
+}
+.global-card:hover { box-shadow:var(--shadow); transform:translateY(-4px); border-color:var(--sage); }
+.global-card .flag { font-size:2.2rem; margin-bottom:16px; display:block; }
+.global-card h3 { font-size:1.15rem; color:var(--forest); margin-bottom:6px; }
+.global-card .city { color:var(--slate); font-size:.9rem; margin-bottom:16px; }
+.global-card .detail { color:var(--slate-light); font-size:.83rem; display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.global-card .detail i { color:var(--sage); width:14px; }
+
+/* ═══════ CTA ═══════ */
+.cta-section {
+  padding:110px 36px; position:relative; overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 60% at 30% 50%, rgba(122,158,126,.15) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 80% 50%, rgba(196,101,74,.08) 0%, transparent 50%),
+    linear-gradient(160deg, var(--forest) 0%, #234a38 50%, var(--forest) 100%);
+}
+.cta-inner { max-width:720px; margin:0 auto; text-align:center; position:relative; z-index:2; }
+.cta-inner h2 { font-size:2.6rem; color:var(--cream); margin-bottom:18px; line-height:1.2; }
+.cta-inner p { color:rgba(255,255,255,.5); font-size:1.08rem; margin-bottom:40px; line-height:1.85; }
+.cta-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+/* ═══════ CONTACT ═══════ */
+.contact-section { background:var(--cream); }
+.contact-grid { max-width:1320px; margin:0 auto; display:grid; grid-template-columns:1fr 1.2fr; gap:64px; align-items:start; }
+.contact-info h3 { font-size:1.5rem; color:var(--forest); margin-bottom:12px; }
+.contact-info > p { color:var(--slate); margin-bottom:36px; line-height:1.85; }
+.contact-item { display:flex; gap:16px; margin-bottom:26px; transition:var(--transition); }
+.contact-item:hover { transform:translateX(4px); }
+.ci-icon {
+  width:44px; height:44px; border-radius:12px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(27,58,45,.06); color:var(--forest); font-size:.95rem; transition:var(--transition);
+}
+.contact-item:hover .ci-icon { background:var(--terracotta-light); color:var(--terracotta); }
+.contact-item h4 { font-family:'Plus Jakarta Sans',sans-serif; font-size:.9rem; font-weight:700; color:var(--forest); margin-bottom:2px; }
+.contact-item p { color:var(--slate); font-size:.88rem; }
+.contact-form-box {
+  background:var(--warm-white); border:1px solid var(--border);
+  border-radius:22px; padding:44px; box-shadow:var(--shadow);
+}
+.contact-form-box h3 { font-size:1.3rem; color:var(--forest); margin-bottom:8px; }
+.contact-form-box > p { color:var(--slate); font-size:.9rem; margin-bottom:28px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-group { margin-bottom:18px; }
+.form-group label { display:block; font-weight:600; font-size:.8rem; color:var(--forest); margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px; }
+.form-group input, .form-group textarea, .form-group select {
+  width:100%; padding:13px 16px; border:1px solid var(--border); border-radius:12px;
+  font-family:inherit; font-size:.92rem; transition:var(--transition);
+  outline:none; background:var(--cream); color:var(--charcoal);
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color:var(--sage); background:var(--warm-white); box-shadow:0 0 0 3px rgba(122,158,126,.1);
+}
+.form-group textarea { resize:vertical; min-height:100px; }
+.btn-submit {
+  width:100%; padding:15px; background:var(--terracotta); color:white;
+  border:none; border-radius:12px; font-weight:700; font-size:.95rem;
+  cursor:pointer; transition:var(--transition); font-family:inherit;
+  box-shadow:0 4px 16px rgba(196,101,74,.25);
+}
+.btn-submit:hover { background:var(--terracotta-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(196,101,74,.3); }
+.form-note { text-align:center; margin-top:14px; font-size:.78rem; color:var(--slate-light); }
+
+/* ═══════ FOOTER ═══════ */
+footer { background:var(--forest); color:rgba(255,255,255,.55); }
+.footer-top { max-width:1320px; margin:0 auto; padding:72px 36px 48px; display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:48px; }
+.footer-brand p { font-size:.88rem; line-height:1.85; margin:16px 0 24px; }
+.social-links { display:flex; gap:10px; }
+.social-links a {
+  width:38px; height:38px; border-radius:10px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.06);
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(255,255,255,.45); transition:var(--transition); text-decoration:none; font-size:.88rem;
+}
+.social-links a:hover { background:var(--terracotta); border-color:var(--terracotta); color:white; transform:translateY(-2px); }
+.footer-col h4 { color:rgba(255,255,255,.85); font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.8rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:22px; }
+.footer-col ul { list-style:none; }
+.footer-col ul li { margin-bottom:12px; }
+.footer-col ul li a { color:rgba(255,255,255,.45); text-decoration:none; font-size:.88rem; transition:var(--transition); display:inline-block; }
+.footer-col ul li a:hover { color:var(--sand-light); transform:translateX(3px); }
+.footer-bottom {
+  max-width:1320px; margin:0 auto; padding:24px 36px;
+  border-top:1px solid rgba(255,255,255,.06);
+  display:flex; justify-content:space-between; align-items:center; font-size:.8rem; color:rgba(255,255,255,.3);
+}
+.footer-bottom-links { display:flex; gap:24px; }
+.footer-bottom-links a { color:rgba(255,255,255,.3); text-decoration:none; transition:var(--transition); }
+.footer-bottom-links a:hover { color:rgba(255,255,255,.6); }
+
+/* ═══════ RESPONSIVE ═══════ */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr;gap:48px}
+  .hero-visual{min-height:380px}
+  .hero-text h1{font-size:2.8rem}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr}
+  .about-image-block{min-height:360px}
+  .process-track{grid-template-columns:repeat(2,1fr);gap:40px}
+  .process-track::before{display:none}
+  .industries-grid{grid-template-columns:repeat(3,1fr)}
+  .testimonials-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none} .nav-right .lang-dropdown{display:flex} .mobile-toggle{display:block}
+  .hero{min-height:auto;padding:40px 0}
+  .hero-content{padding:80px 20px 60px}
+  .hero-text h1{font-size:2.1rem}
+  .hero-visual{min-height:320px}
+  .mc1,.mc2,.mc3,.mc4{width:155px!important;padding:16px}
+  .mc1{top:0;left:0}.mc2{top:0;right:0}.mc3{bottom:50px;left:0}.mc4{bottom:50px;right:0}
+  .metric-card .mc-value{font-size:1.4rem}
+  .section{padding:72px 20px}
+  .section-header h2{font-size:2rem}
+  .services-grid,.industries-grid,.global-grid,.testimonials-grid{grid-template-columns:1fr}
+  .process-track{grid-template-columns:1fr}
+  .hero-trust{flex-wrap:wrap;gap:16px}
+  .form-row{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  .logos-bar-inner{flex-direction:column;gap:16px}
+  .logos-row{justify-content:center}
+}
+</style>
+</head>
+<body data-lang="en">
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+  <i class="fas fa-leaf" style="margin-right:6px;font-size:.75rem;color:var(--sage-light)"></i>
+  <span data-i18n="announcement">Serving businesses across <strong>USA, Canada & globally</strong></span> —
+  <a href="#contact" data-i18n="announcement_cta">Schedule your free consultation <i class="fas fa-arrow-right" style="font-size:.6rem"></i></a>
+</div>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-container">
+    <a href="#" class="logo">
+      <!-- ANIMATED SVG LOGO -->
+      <div class="logo-svg-wrap">
+        <svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+          <rect class="logo-ring" x="2" y="2" width="38" height="38" rx="10" ry="10"/>
+          <rect class="logo-bar-1" x="11" y="20" width="5" height="12" rx="1.5"/>
+          <rect class="logo-bar-2" x="18.5" y="15" width="5" height="17" rx="1.5"/>
+          <rect class="logo-bar-3" x="26" y="10" width="5" height="22" rx="1.5"/>
+          <polyline class="logo-arrow" points="11,22 18.5,16 26,11 32,8"/>
+        </svg>
+      </div>
+      <span class="logo-text">Diligence<em>OS</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services" data-i18n="nav_services">Services</a></li>
+      <li><a href="#about" data-i18n="nav_about">About</a></li>
+      <li><a href="#process" data-i18n="nav_process">Process</a></li>
+      <li><a href="#industries" data-i18n="nav_industries">Industries</a></li>
+      <li><a href="#testimonials" data-i18n="nav_clients">Clients</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <!-- LANGUAGE DROPDOWN -->
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-btn" onclick="document.getElementById('langDropdown').classList.toggle('open')">
+          <span class="flag-icon" id="currentFlag">&#127468;&#127463;</span>
+          <span id="currentLangLabel">English</span>
+          <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <div class="lang-menu">
+          <button class="lang-option active" data-lang="en" onclick="switchLang('en')">
+            <span class="flag-icon">&#127468;&#127463;</span>
+            <span class="lang-name">English</span>
+            <i class="fas fa-check check"></i>
+          </button>
+          <button class="lang-option" data-lang="hi" onclick="switchLang('hi')">
+            <span class="flag-icon">&#127470;&#127475;</span>
+            <span class="lang-name">हिन्दी</span>
+            <i class="fas fa-check check"></i>
+          </button>
+        </div>
+      </div>
+      <a href="#contact" class="nav-cta" data-i18n="nav_cta">Get Started</a>
+    </div>
+    <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-organic"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge"><i class="fas fa-shield-alt"></i> <span data-i18n="hero_badge">Trusted by 500+ Global Businesses</span></div>
+      <h1 data-i18n="hero_title">Precision Accounting for <span class="accent">Ambitious Businesses</span></h1>
+      <p data-i18n="hero_desc">From bookkeeping to strategic advisory — we deliver world-class financial operations so you can focus on scaling your business across borders.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-terracotta"><i class="fas fa-calendar-check"></i> <span data-i18n="hero_cta1">Book Free Consultation</span></a>
+        <a href="#services" class="btn btn-ghost"><span data-i18n="hero_cta2">Explore Services</span> <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item"><span class="number" data-count="500">0</span><span class="label" data-i18n="trust_clients">Clients</span></div>
+        <div class="hero-trust-divider"></div>
+        <div class="hero-trust-item"><span class="number" data-count="12">0</span><span class="label" data-i18n="trust_years">Years</span></div>
+        <div class="hero-trust-divider"></div>
+        <div class="hero-trust-item"><span class="number" data-count="99">0</span><span class="label" data-i18n="trust_retention">Retention</span></div>
+        <div class="hero-trust-divider"></div>
+        <div class="hero-trust-item"><span class="number" data-count="3">0</span><span class="label" data-i18n="trust_countries">Countries</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="metric-card mc1">
+        <div class="mc-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="mc-value">50%</div>
+        <div class="mc-label" data-i18n="mc_savings">Average Cost Savings</div>
+      </div>
+      <div class="metric-card mc2">
+        <div class="mc-icon"><i class="fas fa-clock"></i></div>
+        <div class="mc-value">24h</div>
+        <div class="mc-label" data-i18n="mc_turnaround">Turnaround Time</div>
+      </div>
+      <div class="metric-card mc3">
+        <div class="mc-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="mc-value">99.8%</div>
+        <div class="mc-label" data-i18n="mc_accuracy">Accuracy Rate</div>
+      </div>
+      <div class="metric-card mc4">
+        <div class="mc-icon"><i class="fas fa-users"></i></div>
+        <div class="mc-value">80+</div>
+        <div class="mc-label" data-i18n="mc_experts">Accounting Experts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS BAR -->
+<div class="logos-bar reveal">
+  <div class="logos-bar-inner">
+    <span class="logos-bar-label" data-i18n="logos_label">Integrated with</span>
+    <div class="logos-row">
+      <div class="logo-item"><i class="fas fa-book-open"></i> QuickBooks</div>
+      <div class="logo-item"><i class="fas fa-cloud"></i> Xero</div>
+      <div class="logo-item"><i class="fas fa-database"></i> Sage</div>
+      <div class="logo-item"><i class="fas fa-calculator"></i> FreshBooks</div>
+      <div class="logo-item"><i class="fas fa-chart-pie"></i> NetSuite</div>
+      <div class="logo-item"><i class="fas fa-file-invoice"></i> Wave</div>
+      <!-- Duplicated for marquee -->
+      <div class="logo-item"><i class="fas fa-book-open"></i> QuickBooks</div>
+      <div class="logo-item"><i class="fas fa-cloud"></i> Xero</div>
+      <div class="logo-item"><i class="fas fa-database"></i> Sage</div>
+      <div class="logo-item"><i class="fas fa-calculator"></i> FreshBooks</div>
+      <div class="logo-item"><i class="fas fa-chart-pie"></i> NetSuite</div>
+      <div class="logo-item"><i class="fas fa-file-invoice"></i> Wave</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-header center reveal">
+    <div class="section-eyebrow" data-i18n="svc_eyebrow">Our Services</div>
+    <h2 data-i18n="svc_title">End-to-End Financial Operations</h2>
+    <p data-i18n="svc_desc">Comprehensive accounting solutions tailored for modern businesses operating at scale.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal stagger-1">
+      <div class="s-number">01</div>
+      <h3 data-i18n="svc1_title">Account Reconciliations</h3>
+      <p data-i18n="svc1_desc">Meticulous monthly reconciliations ensuring your ledger matches bank statements — catching discrepancies before they become problems.</p>
+      <a href="#contact" class="service-link" data-i18n="learn_more">Learn more <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="service-card reveal stagger-2">
+      <div class="s-number">02</div>
+      <h3 data-i18n="svc2_title">Sales Tax Filing</h3>
+      <p data-i18n="svc2_desc">Multi-state and multi-jurisdiction tax compliance handled by experts. Preparation, filing, and audit support across all 50 states.</p>
+      <a href="#contact" class="service-link" data-i18n="learn_more">Learn more <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="service-card reveal stagger-3">
+      <div class="s-number">03</div>
+      <h3 data-i18n="svc3_title">Annual Accounts</h3>
+      <p data-i18n="svc3_desc">Year-end financial statements, compliance filings, and tax-ready reports delivered accurately and on schedule — every single time.</p>
+      <a href="#contact" class="service-link" data-i18n="learn_more">Learn more <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="service-card reveal stagger-4">
+      <div class="s-number">04</div>
+      <h3 data-i18n="svc4_title">Project Accounting</h3>
+      <p data-i18n="svc4_desc">Granular cost tracking, revenue recognition, and real-time profitability dashboards for every project in your portfolio.</p>
+      <a href="#contact" class="service-link" data-i18n="learn_more">Learn more <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="service-card reveal stagger-5">
+      <div class="s-number">05</div>
+      <h3 data-i18n="svc5_title">Payroll Processing</h3>
+      <p data-i18n="svc5_desc">End-to-end payroll management with tax withholding, benefits administration, and regulatory compliance across jurisdictions.</p>
+      <a href="#contact" class="service-link" data-i18n="learn_more">Learn more <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="service-card reveal stagger-6">
+      <div class="s-number">06</div>
+      <h3 data-i18n="svc6_title">Forecasting & Advisory</h3>
+      <p data-i18n="svc6_desc">Data-driven financial models, cash flow projections, and strategic advisory to fuel informed decision-making and sustainable growth.</p>
+      <a href="#contact" class="service-link" data-i18n="learn_more">Learn more <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about-section" id="about">
+  <div class="about-grid">
+    <div class="about-image-block reveal-left">
+      <div class="about-image-inner">
+        <i class="fas fa-globe-americas globe-icon"></i>
+        <div class="about-stat-row">
+          <div class="about-stat"><span class="val">500+</span><span class="lbl" data-i18n="trust_clients">Clients</span></div>
+          <div class="about-stat"><span class="val">3</span><span class="lbl" data-i18n="trust_countries">Countries</span></div>
+          <div class="about-stat"><span class="val">12+</span><span class="lbl" data-i18n="trust_years">Years</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-content reveal-right">
+      <div class="section-eyebrow" data-i18n="about_eyebrow">Why DiligenceOS</div>
+      <h2 data-i18n="about_title">A Global Standard of Financial Excellence</h2>
+      <p data-i18n="about_desc">We combine deep accounting expertise with technology-driven processes to deliver reliable, scalable, and cost-effective financial operations for businesses worldwide.</p>
+      <div class="features-list">
+        <div class="feature-item"><div class="feature-icon fi-terra"><i class="fas fa-user-tie"></i></div><div><h4 data-i18n="feat1_title">Dedicated Account Manager</h4><p data-i18n="feat1_desc">A single expert who understands your business, industry, and goals.</p></div></div>
+        <div class="feature-item"><div class="feature-icon fi-sand"><i class="fas fa-dollar-sign"></i></div><div><h4 data-i18n="feat2_title">Up to 50% Cost Reduction</h4><p data-i18n="feat2_desc">Enterprise-grade services at a fraction of in-house costs.</p></div></div>
+        <div class="feature-item"><div class="feature-icon fi-sage"><i class="fas fa-lock"></i></div><div><h4 data-i18n="feat3_title">Bank-Level Data Security</h4><p data-i18n="feat3_desc">SOC 2 compliant infrastructure with 256-bit encryption.</p></div></div>
+        <div class="feature-item"><div class="feature-icon fi-forest"><i class="fas fa-headset"></i></div><div><h4 data-i18n="feat4_title">Cross-Timezone Support</h4><p data-i18n="feat4_desc">Responsive communication aligned to your business hours.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process-section" id="process">
+  <div class="section-header center reveal">
+    <div class="section-eyebrow" data-i18n="proc_eyebrow">How It Works</div>
+    <h2 data-i18n="proc_title">Simple. Transparent. Effective.</h2>
+    <p data-i18n="proc_desc">Four steps to transform your financial operations.</p>
+  </div>
+  <div class="process-track">
+    <div class="process-step reveal stagger-1"><div class="step-circle">01</div><h3 data-i18n="step1_title">Discovery Call</h3><p data-i18n="step1_desc">We learn about your business, challenges, and financial goals in a free consultation.</p></div>
+    <div class="process-step reveal stagger-2"><div class="step-circle">02</div><h3 data-i18n="step2_title">Custom Proposal</h3><p data-i18n="step2_desc">Receive a tailored service plan with transparent pricing. No surprises, no hidden fees.</p></div>
+    <div class="process-step reveal stagger-3"><div class="step-circle">03</div><h3 data-i18n="step3_title">Seamless Onboarding</h3><p data-i18n="step3_desc">We integrate with your existing tools and assign your dedicated accounting team.</p></div>
+    <div class="process-step reveal stagger-4"><div class="step-circle">04</div><h3 data-i18n="step4_title">Ongoing Excellence</h3><p data-i18n="step4_desc">Timely reports, proactive insights, and continuous optimization of your finances.</p></div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section industries-section" id="industries">
+  <div class="ind-orb ind-orb-1"></div><div class="ind-orb ind-orb-2"></div>
+  <div class="section-header center reveal">
+    <div class="section-eyebrow" data-i18n="ind_eyebrow">Industries</div>
+    <h2 data-i18n="ind_title">Sector-Specific Expertise</h2>
+    <p data-i18n="ind_desc">Specialized accounting knowledge tailored to the unique demands of your industry.</p>
+  </div>
+  <div class="industries-grid">
+    <div class="industry-card reveal stagger-1"><i class="fas fa-shopping-cart"></i><h4 data-i18n="ind_ecom">E-Commerce</h4></div>
+    <div class="industry-card reveal stagger-2"><i class="fas fa-laptop-code"></i><h4 data-i18n="ind_tech">Technology & SaaS</h4></div>
+    <div class="industry-card reveal stagger-3"><i class="fas fa-hard-hat"></i><h4 data-i18n="ind_const">Construction</h4></div>
+    <div class="industry-card reveal stagger-4"><i class="fas fa-heartbeat"></i><h4 data-i18n="ind_health">Healthcare</h4></div>
+    <div class="industry-card reveal stagger-5"><i class="fas fa-utensils"></i><h4 data-i18n="ind_hosp">Hospitality</h4></div>
+    <div class="industry-card reveal stagger-6"><i class="fas fa-home"></i><h4 data-i18n="ind_real">Real Estate</h4></div>
+    <div class="industry-card reveal stagger-7"><i class="fas fa-truck"></i><h4 data-i18n="ind_log">Logistics</h4></div>
+    <div class="industry-card reveal stagger-8"><i class="fas fa-gavel"></i><h4 data-i18n="ind_prof">Professional Services</h4></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section" id="testimonials">
+  <div class="section-header center reveal">
+    <div class="section-eyebrow" data-i18n="test_eyebrow">Client Stories</div>
+    <h2 data-i18n="test_title">Trusted Worldwide</h2>
+    <p data-i18n="test_desc">Hear from business leaders who've transformed their financial operations with DiligenceOS.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal stagger-1">
+      <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <div class="t-quote" data-i18n="test1_quote">"DiligenceOS transformed our bookkeeping process. We used to spend weekends on reconciliations — now everything is handled with precision and delivered on time."</div>
+      <div class="t-author"><div class="t-avatar t-av-1">JM</div><div><div class="t-name">James Mitchell</div><div class="t-role">CEO, TechVenture Inc. — San Francisco</div></div></div>
+    </div>
+    <div class="testimonial-card reveal stagger-2">
+      <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <div class="t-quote" data-i18n="test2_quote">"Switching saved us nearly 50% compared to our in-house team, with better accuracy and faster reporting. The ROI was immediate and substantial."</div>
+      <div class="t-author"><div class="t-avatar t-av-2">SP</div><div><div class="t-name">Sarah Patterson</div><div class="t-role">Founder, GreenLeaf Retail — Toronto</div></div></div>
+    </div>
+    <div class="testimonial-card reveal stagger-3">
+      <div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <div class="t-quote" data-i18n="test3_quote">"Their payroll processing is flawless across our three offices. Zero errors since onboarding, and their team truly feels like an extension of ours."</div>
+      <div class="t-author"><div class="t-avatar t-av-3">RK</div><div><div class="t-name">Robert Kim</div><div class="t-role">COO, BuildRight Construction — Chicago</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<section class="section global-section" id="global">
+  <div class="section-header center reveal">
+    <div class="section-eyebrow" data-i18n="global_eyebrow">Global Reach</div>
+    <h2 data-i18n="global_title">Offices & Operations</h2>
+    <p data-i18n="global_desc">Strategically located to serve clients across North America and beyond.</p>
+  </div>
+  <div class="global-grid">
+    <div class="global-card reveal stagger-1">
+      <span class="flag">&#127482;&#127480;</span><h3>United States</h3>
+      <div class="city">Wilmington, Delaware (HQ)</div>
+      <div class="detail"><i class="fas fa-map-marker-alt"></i> 919 N. Market St, Suite 950, DE 19801</div>
+      <div class="detail"><i class="fas fa-phone"></i> +1 302 231 1573</div>
+    </div>
+    <div class="global-card reveal stagger-2">
+      <span class="flag">&#127482;&#127480;</span><h3>United States</h3>
+      <div class="city">Schaumburg, Illinois</div>
+      <div class="detail"><i class="fas fa-map-marker-alt"></i> 221 Hawk CT, IL 60193</div>
+      <div class="detail"><i class="fas fa-phone"></i> +1 302 231 1438</div>
+    </div>
+    <div class="global-card reveal stagger-3">
+      <span class="flag">&#127464;&#127462;</span><h3>Canada</h3>
+      <div class="city" data-i18n="global_canada_city">Serving Canadian Businesses</div>
+      <div class="detail"><i class="fas fa-globe"></i> <span data-i18n="global_canada_ops">Remote operations & support</span></div>
+      <div class="detail"><i class="fas fa-envelope"></i> mrunal@diligenceoutsourcing.com</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner reveal-scale">
+    <h2 data-i18n="cta_title">Ready to Elevate Your Financial Operations?</h2>
+    <p data-i18n="cta_desc">Join 500+ businesses worldwide that trust DiligenceOS for precision, transparency, and growth.</p>
+    <div class="cta-buttons">
+      <a href="#contact" class="btn btn-terracotta" style="padding:16px 40px"><i class="fas fa-rocket"></i> <span data-i18n="cta_btn1">Start Free Consultation</span></a>
+      <a href="#services" class="btn btn-ghost" style="padding:16px 40px"><span data-i18n="cta_btn2">View All Services</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="section-header center reveal">
+    <div class="section-eyebrow" data-i18n="contact_eyebrow">Get in Touch</div>
+    <h2 data-i18n="contact_title">Let's Start a Conversation</h2>
+    <p data-i18n="contact_desc">No obligations, no pressure — just answers from our expert team.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal-left">
+      <h3 data-i18n="contact_reach">Reach Our Team</h3>
+      <p data-i18n="contact_reach_desc">Whether you're exploring outsourced accounting for the first time or looking to switch providers, we're here to help.</p>
+      <div class="contact-item"><div class="ci-icon"><i class="fas fa-building"></i></div><div><h4 data-i18n="contact_hq">Headquarters</h4><p>919 North Market St, Suite 950<br>Wilmington, New Castle, DE 19801</p></div></div>
+      <div class="contact-item"><div class="ci-icon"><i class="fas fa-envelope"></i></div><div><h4 data-i18n="contact_mail">Mailing Address</h4><p>221 Hawk CT, Schaumburg, IL 60193</p></div></div>
+      <div class="contact-item"><div class="ci-icon"><i class="fas fa-phone-alt"></i></div><div><h4 data-i18n="contact_sales">Sales Enquiries</h4><p>+1 302 231 1573</p></div></div>
+      <div class="contact-item"><div class="ci-icon"><i class="fas fa-headset"></i></div><div><h4 data-i18n="contact_ops">Operations Support</h4><p>+1 302 231 1438</p></div></div>
+      <div class="contact-item"><div class="ci-icon"><i class="fas fa-at"></i></div><div><h4 data-i18n="contact_email">Email</h4><p>mrunal@diligenceoutsourcing.com</p></div></div>
+    </div>
+    <div class="contact-form-box reveal-right">
+      <h3 data-i18n="form_title">Schedule a Free Consultation</h3>
+      <p data-i18n="form_desc">Fill in your details and our team will respond within 24 hours.</p>
+      <div class="form-row">
+        <div class="form-group"><label data-i18n="form_name">Full Name *</label><input type="text" data-i18n-placeholder="ph_name" placeholder="John Smith"></div>
+        <div class="form-group"><label data-i18n="form_company">Company</label><input type="text" data-i18n-placeholder="ph_company" placeholder="Your Company"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label data-i18n="form_email">Email *</label><input type="email" placeholder="john@company.com"></div>
+        <div class="form-group"><label data-i18n="form_phone">Phone</label><input type="tel" placeholder="+1 (555) 000-0000"></div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form_service">Service of Interest</label>
+        <select><option value="" data-i18n="form_select">Select a service...</option>
+          <option data-i18n="svc1_title">Bookkeeping & Reconciliations</option>
+          <option data-i18n="svc2_title">Sales Tax Filing</option>
+          <option data-i18n="svc5_title">Payroll Processing</option>
+          <option data-i18n="svc6_title">Forecasting & Advisory</option>
+          <option data-i18n="svc3_title">Annual Accounts</option>
+          <option>Full-Service Package</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label data-i18n="form_msg">How Can We Help?</label><textarea data-i18n-placeholder="ph_msg" placeholder="Tell us about your business and what you're looking for..."></textarea></div>
+      <button class="btn-submit"><i class="fas fa-paper-plane"></i>&nbsp; <span data-i18n="form_submit">Send Request</span></button>
+      <div class="form-note"><i class="fas fa-lock"></i>&nbsp; <span data-i18n="form_note">Your information is secure and will never be shared.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="text-decoration:none"><div class="logo-svg-wrap" style="animation:none"><svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="38" height="38" rx="10" ry="10" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"/><rect x="11" y="20" width="5" height="12" rx="1.5" fill="var(--terracotta)"/><rect x="18.5" y="15" width="5" height="17" rx="1.5" fill="var(--sage)"/><rect x="26" y="10" width="5" height="22" rx="1.5" fill="var(--sand)"/></svg></div><span class="logo-text" style="color:white">Diligence<em>OS</em></span></a>
+      <p data-i18n="footer_desc">World-class bookkeeping and accounting services for ambitious businesses across the USA, Canada, and beyond.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4 data-i18n="footer_services">Services</h4><ul><li><a href="#" data-i18n="svc1_title">Bookkeeping</a></li><li><a href="#" data-i18n="svc2_title">Tax Filing</a></li><li><a href="#" data-i18n="svc5_title">Payroll</a></li><li><a href="#" data-i18n="svc6_title">Forecasting</a></li><li><a href="#" data-i18n="svc3_title">Annual Accounts</a></li><li><a href="#">Advisory</a></li></ul></div>
+    <div class="footer-col"><h4 data-i18n="footer_company">Company</h4><ul><li><a href="#" data-i18n="nav_about">About Us</a></li><li><a href="#">Why DiligenceOS</a></li><li><a href="#" data-i18n="nav_industries">Industries</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog & Insights</a></li><li><a href="#">Press</a></li></ul></div>
+    <div class="footer-col"><h4 data-i18n="footer_resources">Resources</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Case Studies</a></li><li><a href="#">FAQ</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 DiligenceOS. All rights reserved.</span>
+    <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a><a href="#">Sitemap</a></div>
+  </div>
+</footer>
+
+<script>
+/* ═══════ TRANSLATIONS ═══════ */
+const translations = {
+  en: {
+    announcement: 'Serving businesses across <strong>USA, Canada & globally</strong>',
+    announcement_cta: 'Schedule your free consultation <i class="fas fa-arrow-right" style="font-size:.6rem"></i>',
+    nav_services: 'Services', nav_about: 'About', nav_process: 'Process',
+    nav_industries: 'Industries', nav_clients: 'Clients', nav_contact: 'Contact',
+    nav_cta: 'Get Started',
+    hero_badge: 'Trusted by 500+ Global Businesses',
+    hero_title: 'Precision Accounting for <span class="accent">Ambitious Businesses</span>',
+    hero_desc: 'From bookkeeping to strategic advisory — we deliver world-class financial operations so you can focus on scaling your business across borders.',
+    hero_cta1: 'Book Free Consultation', hero_cta2: 'Explore Services',
+    trust_clients: 'Clients', trust_years: 'Years', trust_retention: 'Retention', trust_countries: 'Countries',
+    mc_savings: 'Average Cost Savings', mc_turnaround: 'Turnaround Time',
+    mc_accuracy: 'Accuracy Rate', mc_experts: 'Accounting Experts',
+    logos_label: 'Integrated with',
+    svc_eyebrow: 'Our Services', svc_title: 'End-to-End Financial Operations',
+    svc_desc: 'Comprehensive accounting solutions tailored for modern businesses operating at scale.',
+    svc1_title: 'Account Reconciliations', svc1_desc: 'Meticulous monthly reconciliations ensuring your ledger matches bank statements — catching discrepancies before they become problems.',
+    svc2_title: 'Sales Tax Filing', svc2_desc: 'Multi-state and multi-jurisdiction tax compliance handled by experts. Preparation, filing, and audit support across all 50 states.',
+    svc3_title: 'Annual Accounts', svc3_desc: 'Year-end financial statements, compliance filings, and tax-ready reports delivered accurately and on schedule — every single time.',
+    svc4_title: 'Project Accounting', svc4_desc: 'Granular cost tracking, revenue recognition, and real-time profitability dashboards for every project in your portfolio.',
+    svc5_title: 'Payroll Processing', svc5_desc: 'End-to-end payroll management with tax withholding, benefits administration, and regulatory compliance across jurisdictions.',
+    svc6_title: 'Forecasting & Advisory', svc6_desc: 'Data-driven financial models, cash flow projections, and strategic advisory to fuel informed decision-making and sustainable growth.',
+    learn_more: 'Learn more <i class="fas fa-arrow-right"></i>',
+    about_eyebrow: 'Why DiligenceOS', about_title: 'A Global Standard of Financial Excellence',
+    about_desc: 'We combine deep accounting expertise with technology-driven processes to deliver reliable, scalable, and cost-effective financial operations for businesses worldwide.',
+    feat1_title: 'Dedicated Account Manager', feat1_desc: 'A single expert who understands your business, industry, and goals.',
+    feat2_title: 'Up to 50% Cost Reduction', feat2_desc: 'Enterprise-grade services at a fraction of in-house costs.',
+    feat3_title: 'Bank-Level Data Security', feat3_desc: 'SOC 2 compliant infrastructure with 256-bit encryption.',
+    feat4_title: 'Cross-Timezone Support', feat4_desc: 'Responsive communication aligned to your business hours.',
+    proc_eyebrow: 'How It Works', proc_title: 'Simple. Transparent. Effective.',
+    proc_desc: 'Four steps to transform your financial operations.',
+    step1_title: 'Discovery Call', step1_desc: 'We learn about your business, challenges, and financial goals in a free consultation.',
+    step2_title: 'Custom Proposal', step2_desc: 'Receive a tailored service plan with transparent pricing. No surprises, no hidden fees.',
+    step3_title: 'Seamless Onboarding', step3_desc: 'We integrate with your existing tools and assign your dedicated accounting team.',
+    step4_title: 'Ongoing Excellence', step4_desc: 'Timely reports, proactive insights, and continuous optimization of your finances.',
+    ind_eyebrow: 'Industries', ind_title: 'Sector-Specific Expertise',
+    ind_desc: 'Specialized accounting knowledge tailored to the unique demands of your industry.',
+    ind_ecom: 'E-Commerce', ind_tech: 'Technology & SaaS', ind_const: 'Construction',
+    ind_health: 'Healthcare', ind_hosp: 'Hospitality', ind_real: 'Real Estate',
+    ind_log: 'Logistics', ind_prof: 'Professional Services',
+    test_eyebrow: 'Client Stories', test_title: 'Trusted Worldwide',
+    test_desc: "Hear from business leaders who've transformed their financial operations with DiligenceOS.",
+    test1_quote: '"DiligenceOS transformed our bookkeeping process. We used to spend weekends on reconciliations — now everything is handled with precision and delivered on time."',
+    test2_quote: '"Switching saved us nearly 50% compared to our in-house team, with better accuracy and faster reporting. The ROI was immediate and substantial."',
+    test3_quote: '"Their payroll processing is flawless across our three offices. Zero errors since onboarding, and their team truly feels like an extension of ours."',
+    global_eyebrow: 'Global Reach', global_title: 'Offices & Operations',
+    global_desc: 'Strategically located to serve clients across North America and beyond.',
+    global_canada_city: 'Serving Canadian Businesses', global_canada_ops: 'Remote operations & support',
+    cta_title: 'Ready to Elevate Your Financial Operations?',
+    cta_desc: 'Join 500+ businesses worldwide that trust DiligenceOS for precision, transparency, and growth.',
+    cta_btn1: 'Start Free Consultation', cta_btn2: 'View All Services',
+    contact_eyebrow: 'Get in Touch', contact_title: "Let's Start a Conversation",
+    contact_desc: 'No obligations, no pressure — just answers from our expert team.',
+    contact_reach: 'Reach Our Team',
+    contact_reach_desc: "Whether you're exploring outsourced accounting for the first time or looking to switch providers, we're here to help.",
+    contact_hq: 'Headquarters', contact_mail: 'Mailing Address',
+    contact_sales: 'Sales Enquiries', contact_ops: 'Operations Support', contact_email: 'Email',
+    form_title: 'Schedule a Free Consultation',
+    form_desc: 'Fill in your details and our team will respond within 24 hours.',
+    form_name: 'Full Name *', form_company: 'Company', form_email: 'Email *', form_phone: 'Phone',
+    form_service: 'Service of Interest', form_select: 'Select a service...',
+    form_msg: 'How Can We Help?', form_submit: 'Send Request',
+    form_note: 'Your information is secure and will never be shared.',
+    ph_name: 'John Smith', ph_company: 'Your Company',
+    ph_msg: 'Tell us about your business and what you\'re looking for...',
+    footer_desc: 'World-class bookkeeping and accounting services for ambitious businesses across the USA, Canada, and beyond.',
+    footer_services: 'Services', footer_company: 'Company', footer_resources: 'Resources'
+  },
+  hi: {
+    announcement: '<strong>USA, कनाडा और विश्वभर</strong> में व्यवसायों की सेवा',
+    announcement_cta: 'निःशुल्क परामर्श शेड्यूल करें <i class="fas fa-arrow-right" style="font-size:.6rem"></i>',
+    nav_services: 'सेवाएँ', nav_about: 'हमारे बारे में', nav_process: 'प्रक्रिया',
+    nav_industries: 'उद्योग', nav_clients: 'ग्राहक', nav_contact: 'संपर्क',
+    nav_cta: 'शुरू करें',
+    hero_badge: '500+ वैश्विक व्यवसायों द्वारा विश्वसनीय',
+    hero_title: '<span class="accent">महत्वाकांक्षी व्यवसायों</span> के लिए सटीक लेखांकन',
+    hero_desc: 'बहीखाता से लेकर रणनीतिक सलाह तक — हम विश्वस्तरीय वित्तीय संचालन प्रदान करते हैं ताकि आप अपने व्यवसाय को आगे बढ़ाने पर ध्यान केंद्रित कर सकें।',
+    hero_cta1: 'निःशुल्क परामर्श बुक करें', hero_cta2: 'सेवाएँ देखें',
+    trust_clients: 'ग्राहक', trust_years: 'वर्ष', trust_retention: 'प्रतिधारण', trust_countries: 'देश',
+    mc_savings: 'औसत लागत बचत', mc_turnaround: 'टर्नअराउंड समय',
+    mc_accuracy: 'सटीकता दर', mc_experts: 'लेखांकन विशेषज्ञ',
+    logos_label: 'इनके साथ एकीकृत',
+    svc_eyebrow: 'हमारी सेवाएँ', svc_title: 'संपूर्ण वित्तीय संचालन',
+    svc_desc: 'बड़े पैमाने पर काम करने वाले आधुनिक व्यवसायों के लिए व्यापक लेखांकन समाधान।',
+    svc1_title: 'खाता मिलान', svc1_desc: 'सावधानीपूर्ण मासिक मिलान यह सुनिश्चित करता है कि आपका खाता बैंक स्टेटमेंट से मेल खाता है — समस्या बनने से पहले विसंगतियों को पकड़ना।',
+    svc2_title: 'बिक्री कर दाखिल', svc2_desc: 'विशेषज्ञों द्वारा संभाली जाने वाली बहु-राज्य कर अनुपालन। सभी 50 राज्यों में तैयारी, दाखिल और ऑडिट सहायता।',
+    svc3_title: 'वार्षिक खाते', svc3_desc: 'वर्ष-अंत वित्तीय विवरण, अनुपालन फाइलिंग और कर-तैयार रिपोर्ट — हर बार सटीक और समय पर।',
+    svc4_title: 'परियोजना लेखांकन', svc4_desc: 'आपके पोर्टफोलियो में हर परियोजना के लिए विस्तृत लागत ट्रैकिंग, राजस्व मान्यता और रियल-टाइम लाभप्रदता डैशबोर्ड।',
+    svc5_title: 'पेरोल प्रोसेसिंग', svc5_desc: 'कर कटौती, लाभ प्रशासन और क्षेत्राधिकारों में नियामक अनुपालन के साथ संपूर्ण पेरोल प्रबंधन।',
+    svc6_title: 'पूर्वानुमान और सलाह', svc6_desc: 'डेटा-संचालित वित्तीय मॉडल, नकदी प्रवाह अनुमान और सूचित निर्णय लेने के लिए रणनीतिक सलाह।',
+    learn_more: 'और जानें <i class="fas fa-arrow-right"></i>',
+    about_eyebrow: 'DiligenceOS क्यों', about_title: 'वित्तीय उत्कृष्टता का वैश्विक मानक',
+    about_desc: 'हम गहरी लेखांकन विशेषज्ञता को प्रौद्योगिकी-संचालित प्रक्रियाओं के साथ जोड़कर विश्वभर के व्यवसायों के लिए विश्वसनीय और किफायती वित्तीय संचालन प्रदान करते हैं।',
+    feat1_title: 'समर्पित अकाउंट मैनेजर', feat1_desc: 'एक विशेषज्ञ जो आपके व्यवसाय, उद्योग और लक्ष्यों को समझता है।',
+    feat2_title: '50% तक लागत में कमी', feat2_desc: 'इन-हाउस लागत के एक अंश पर एंटरप्राइज़-ग्रेड सेवाएँ।',
+    feat3_title: 'बैंक-स्तरीय डेटा सुरक्षा', feat3_desc: '256-बिट एन्क्रिप्शन के साथ SOC 2 अनुपालन बुनियादी ढाँचा।',
+    feat4_title: 'क्रॉस-टाइमज़ोन सहायता', feat4_desc: 'आपके व्यावसायिक घंटों के अनुरूप उत्तरदायी संचार।',
+    proc_eyebrow: 'यह कैसे काम करता है', proc_title: 'सरल। पारदर्शी। प्रभावी।',
+    proc_desc: 'आपके वित्तीय संचालन को बदलने के चार कदम।',
+    step1_title: 'डिस्कवरी कॉल', step1_desc: 'हम एक निःशुल्क परामर्श में आपके व्यवसाय, चुनौतियों और वित्तीय लक्ष्यों के बारे में जानते हैं।',
+    step2_title: 'कस्टम प्रस्ताव', step2_desc: 'पारदर्शी मूल्य निर्धारण के साथ एक अनुकूलित सेवा योजना प्राप्त करें। कोई आश्चर्य नहीं, कोई छिपी फीस नहीं।',
+    step3_title: 'सहज ऑनबोर्डिंग', step3_desc: 'हम आपके मौजूदा टूल्स के साथ एकीकृत करते हैं और आपकी समर्पित लेखांकन टीम नियुक्त करते हैं।',
+    step4_title: 'निरंतर उत्कृष्टता', step4_desc: 'समय पर रिपोर्ट, सक्रिय अंतर्दृष्टि और आपके वित्त का निरंतर अनुकूलन।',
+    ind_eyebrow: 'उद्योग', ind_title: 'क्षेत्र-विशिष्ट विशेषज्ञता',
+    ind_desc: 'आपके उद्योग की अनूठी माँगों के अनुरूप विशेष लेखांकन ज्ञान।',
+    ind_ecom: 'ई-कॉमर्स', ind_tech: 'प्रौद्योगिकी और SaaS', ind_const: 'निर्माण',
+    ind_health: 'स्वास्थ्य सेवा', ind_hosp: 'आतिथ्य', ind_real: 'रियल एस्टेट',
+    ind_log: 'लॉजिस्टिक्स', ind_prof: 'पेशेवर सेवाएँ',
+    test_eyebrow: 'ग्राहक कहानियाँ', test_title: 'विश्वभर में विश्वसनीय',
+    test_desc: 'उन व्यापारिक नेताओं से सुनें जिन्होंने DiligenceOS के साथ अपने वित्तीय संचालन को बदल दिया।',
+    test1_quote: '"DiligenceOS ने हमारी बहीखाता प्रक्रिया को बदल दिया। हम सप्ताहांत मिलान पर बिताते थे — अब सब कुछ सटीकता से और समय पर संभाला जाता है।"',
+    test2_quote: '"स्विच करने से हमारी इन-हाउस टीम की तुलना में लगभग 50% बचत हुई, बेहतर सटीकता और तेज़ रिपोर्टिंग के साथ। ROI तुरंत था।"',
+    test3_quote: '"हमारे तीन कार्यालयों में उनकी पेरोल प्रोसेसिंग त्रुटिरहित है। ऑनबोर्डिंग के बाद से शून्य त्रुटियाँ, और उनकी टीम हमारी अपनी टीम का विस्तार लगती है।"',
+    global_eyebrow: 'वैश्विक पहुँच', global_title: 'कार्यालय और संचालन',
+    global_desc: 'उत्तरी अमेरिका और उससे आगे ग्राहकों की सेवा के लिए रणनीतिक रूप से स्थित।',
+    global_canada_city: 'कनाडाई व्यवसायों की सेवा', global_canada_ops: 'रिमोट संचालन और सहायता',
+    cta_title: 'अपने वित्तीय संचालन को उन्नत करने के लिए तैयार?',
+    cta_desc: 'विश्वभर के 500+ व्यवसायों से जुड़ें जो सटीकता, पारदर्शिता और विकास के लिए DiligenceOS पर भरोसा करते हैं।',
+    cta_btn1: 'निःशुल्क परामर्श शुरू करें', cta_btn2: 'सभी सेवाएँ देखें',
+    contact_eyebrow: 'संपर्क करें', contact_title: 'आइए बातचीत शुरू करें',
+    contact_desc: 'कोई बाध्यता नहीं, कोई दबाव नहीं — बस हमारी विशेषज्ञ टीम से उत्तर।',
+    contact_reach: 'हमारी टीम से संपर्क करें',
+    contact_reach_desc: 'चाहे आप पहली बार आउटसोर्स अकाउंटिंग की खोज कर रहे हों या प्रदाता बदलना चाहते हों, हम यहाँ मदद के लिए हैं।',
+    contact_hq: 'मुख्यालय', contact_mail: 'डाक पता',
+    contact_sales: 'बिक्री पूछताछ', contact_ops: 'संचालन सहायता', contact_email: 'ईमेल',
+    form_title: 'निःशुल्क परामर्श शेड्यूल करें',
+    form_desc: 'अपना विवरण भरें और हमारी टीम 24 घंटे के भीतर जवाब देगी।',
+    form_name: 'पूरा नाम *', form_company: 'कंपनी', form_email: 'ईमेल *', form_phone: 'फ़ोन',
+    form_service: 'रुचि की सेवा', form_select: 'एक सेवा चुनें...',
+    form_msg: 'हम कैसे मदद कर सकते हैं?', form_submit: 'अनुरोध भेजें',
+    form_note: 'आपकी जानकारी सुरक्षित है और कभी साझा नहीं की जाएगी।',
+    ph_name: 'आपका नाम', ph_company: 'आपकी कंपनी',
+    ph_msg: 'हमें अपने व्यवसाय के बारे में बताएं...',
+    footer_desc: 'USA, कनाडा और उससे आगे महत्वाकांक्षी व्यवसायों के लिए विश्वस्तरीय बहीखाता और लेखांकन सेवाएँ।',
+    footer_services: 'सेवाएँ', footer_company: 'कंपनी', footer_resources: 'संसाधन'
+  }
+};
+
+/* ═══════ LANGUAGE SWITCH ═══════ */
+function switchLang(lang) {
+  document.body.setAttribute('data-lang', lang);
+  document.documentElement.lang = lang;
+  const t = translations[lang];
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+  // Update dropdown UI
+  const flags = { en: '\u{1F1EC}\u{1F1E7}', hi: '\u{1F1EE}\u{1F1F3}' };
+  const names = { en: 'English', hi: 'हिन्दी' };
+  document.getElementById('currentFlag').textContent = flags[lang];
+  document.getElementById('currentLangLabel').textContent = names[lang];
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+  });
+  document.getElementById('langDropdown').classList.remove('open');
+  // Smooth content transition
+  document.body.style.opacity = '0';
+  setTimeout(() => { document.body.style.transition = 'opacity .3s'; document.body.style.opacity = '1'; }, 50);
+}
+
+// Close dropdown on outside click
+document.addEventListener('click', e => {
+  const dd = document.getElementById('langDropdown');
+  if (!dd.contains(e.target)) dd.classList.remove('open');
+});
+
+/* ═══════ SCROLL REVEAL ═══════ */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => observer.observe(el));
+
+/* ═══════ PARTICLES ═══════ */
+(function createParticles() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.top = (60 + Math.random() * 40) + '%';
+    p.style.animationDuration = (8 + Math.random() * 12) + 's';
+    p.style.animationDelay = Math.random() * 10 + 's';
+    p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+    container.appendChild(p);
+  }
+})();
+
+/* ═══════ COUNTER ANIMATION ═══════ */
+setTimeout(() => {
+  document.querySelectorAll('.hero-trust-item .number').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    const suffix = target >= 100 ? '+' : target === 3 ? '' : '%';
+    let current = 0;
+    const step = Math.max(1, Math.ceil(target / 50));
+    const interval = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(interval); }
+      el.textContent = current + suffix;
+    }, 25);
+  });
+}, 800);
+
+/* ═══════ PARALLAX ORBS ═══════ */
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      const orbs = document.querySelectorAll('.orb');
+      if (orbs[0]) orbs[0].style.transform = `translate(${y*.02}px,${y*.03}px)`;
+      if (orbs[1]) orbs[1].style.transform = `translate(${-y*.015}px,${y*.02}px)`;
+      if (orbs[2]) orbs[2].style.transform = `translate(${y*.01}px,${-y*.025}px)`;
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+</script>
+</body>
+</html>
