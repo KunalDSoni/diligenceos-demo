@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DiligenceOS — Global Bookkeeping & Accounting Services</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -38,9 +38,13 @@ body {
   -webkit-font-smoothing: antialiased; background: var(--warm-white);
 }
 body[data-lang="hi"] { font-family: 'Noto Sans Devanagari', 'Plus Jakarta Sans', sans-serif; }
+body[data-lang="gu"] { font-family: 'Noto Sans Gujarati', 'Plus Jakarta Sans', sans-serif; }
 h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; }
 body[data-lang="hi"] h1, body[data-lang="hi"] h2, body[data-lang="hi"] h3 {
   font-family: 'Noto Sans Devanagari', sans-serif; font-weight: 700;
+}
+body[data-lang="gu"] h1, body[data-lang="gu"] h2, body[data-lang="gu"] h3 {
+  font-family: 'Noto Sans Gujarati', sans-serif; font-weight: 700;
 }
 
 /* ═══════ SCROLL ANIMATIONS ═══════ */
@@ -252,6 +256,7 @@ nav {
 .hero-trust-item { text-align:center; }
 .hero-trust-item .number { font-family:'Playfair Display',serif; font-size:2rem; color:var(--cream); display:block; line-height:1.1; }
 body[data-lang="hi"] .hero-trust-item .number { font-family:'Plus Jakarta Sans',sans-serif; }
+body[data-lang="gu"] .hero-trust-item .number { font-family:'Plus Jakarta Sans',sans-serif; }
 .hero-trust-item .label { font-size:.75rem; color:rgba(255,255,255,.38); text-transform:uppercase; letter-spacing:1.2px; font-weight:500; }
 .hero-trust-divider { width:1px; height:36px; background:rgba(255,255,255,.08); }
 
@@ -269,6 +274,7 @@ body[data-lang="hi"] .hero-trust-item .number { font-family:'Plus Jakarta Sans',
 }
 .metric-card .mc-value { font-family:'Playfair Display',serif; font-size:1.9rem; margin-bottom:4px; }
 body[data-lang="hi"] .metric-card .mc-value { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
+body[data-lang="gu"] .metric-card .mc-value { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
 .metric-card .mc-label { font-size:.8rem; color:rgba(255,255,255,.5); }
 .mc1 { top:0; left:8%; width:210px; } .mc1 .mc-icon { background:rgba(196,101,74,.2); color:#e8856e; }
 .mc2 { top:30px; right:0; width:230px; } .mc2 .mc-icon { background:rgba(194,169,126,.2); color:var(--sand); }
@@ -372,6 +378,7 @@ body[data-lang="hi"] .metric-card .mc-value { font-family:'Plus Jakarta Sans',sa
 .about-stat:hover { background:rgba(255,255,255,.1); transform:translateY(-4px); }
 .about-stat .val { font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--sand-light); display:block; }
 body[data-lang="hi"] .about-stat .val { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
+body[data-lang="gu"] .about-stat .val { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
 .about-stat .lbl { font-size:.72rem; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:1.5px; }
 .about-content .section-eyebrow { margin-bottom:12px; }
 .about-content h2 { font-size:2.4rem; margin-bottom:20px; color:var(--forest); line-height:1.2; }
@@ -656,6 +663,11 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
           <button class="lang-option" data-lang="hi" onclick="switchLang('hi')">
             <span class="flag-icon">&#127470;&#127475;</span>
             <span class="lang-name">हिन्दी</span>
+            <i class="fas fa-check check"></i>
+          </button>
+          <button class="lang-option" data-lang="gu" onclick="switchLang('gu')">
+            <span class="flag-icon">&#127470;&#127475;</span>
+            <span class="lang-name">ગુજરાતી</span>
             <i class="fas fa-check check"></i>
           </button>
         </div>
@@ -1121,6 +1133,74 @@ const translations = {
     ph_msg: 'हमें अपने व्यवसाय के बारे में बताएं...',
     footer_desc: 'USA, कनाडा और उससे आगे महत्वाकांक्षी व्यवसायों के लिए विश्वस्तरीय बहीखाता और लेखांकन सेवाएँ।',
     footer_services: 'सेवाएँ', footer_company: 'कंपनी', footer_resources: 'संसाधन'
+  },
+  gu: {
+    announcement: '<strong>USA, કેનેડા અને વિશ્વભરમાં</strong> વ્યવસાયોની સેવા',
+    announcement_cta: 'મફત પરામર્શ શેડ્યૂલ કરો <i class="fas fa-arrow-right" style="font-size:.6rem"></i>',
+    nav_services: 'સેવાઓ', nav_about: 'અમારા વિશે', nav_process: 'પ્રક્રિયા',
+    nav_industries: 'ઉદ્યોગો', nav_clients: 'ગ્રાહકો', nav_contact: 'સંપર્ક',
+    nav_cta: 'શરૂ કરો',
+    hero_badge: '500+ વૈશ્વિક વ્યવસાયો દ્વારા વિશ્વસનીય',
+    hero_title: '<span class="accent">મહત્વાકાંક્ષી વ્યવસાયો</span> માટે ચોક્કસ હિસાબ',
+    hero_desc: 'બુકકીપિંગથી લઈને વ્યૂહાત્મક સલાહ સુધી — અમે વિશ્વ-સ્તરીય નાણાકીય કામગીરી પ્રદાન કરીએ છીએ જેથી તમે તમારા વ્યવસાયને વિસ્તારવા પર ધ્યાન કેન્દ્રિત કરી શકો.',
+    hero_cta1: 'મફત પરામર્શ બુક કરો', hero_cta2: 'સેવાઓ જુઓ',
+    trust_clients: 'ગ્રાહકો', trust_years: 'વર્ષ', trust_retention: 'જાળવણી', trust_countries: 'દેશો',
+    mc_savings: 'સરેરાશ ખર્ચ બચત', mc_turnaround: 'ટર્નઅરાઉન્ડ સમય',
+    mc_accuracy: 'ચોકસાઈ દર', mc_experts: 'હિસાબી નિષ્ણાતો',
+    logos_label: 'સાથે સંકલિત',
+    svc_eyebrow: 'અમારી સેવાઓ', svc_title: 'સંપૂર્ણ નાણાકીય કામગીરી',
+    svc_desc: 'મોટા પાયે કાર્યરત આધુનિક વ્યવસાયો માટે વ્યાપક હિસાબી ઉકેલો.',
+    svc1_title: 'ખાતા સમાધાન', svc1_desc: 'કાળજીપૂર્વક માસિક સમાધાન ખાતરી કરે છે કે તમારું ખાતાવહી બેંક સ્ટેટમેન્ટ સાથે મેળ ખાય છે — સમસ્યા બને તે પહેલાં વિસંગતતાઓ પકડવી.',
+    svc2_title: 'વેચાણ કર ફાઇલિંગ', svc2_desc: 'નિષ્ણાતો દ્વારા સંભાળવામાં આવતું બહુ-રાજ્ય કર અનુપાલન. તમામ 50 રાજ્યોમાં તૈયારી, ફાઇલિંગ અને ઓડિટ સહાય.',
+    svc3_title: 'વાર્ષિક ખાતાઓ', svc3_desc: 'વર્ષ-અંતના નાણાકીય નિવેદનો, અનુપાલન ફાઇલિંગ અને કર-તૈયાર અહેવાલો — દર વખતે ચોક્કસ અને સમયસર.',
+    svc4_title: 'પ્રોજેક્ટ હિસાબ', svc4_desc: 'તમારા પોર્ટફોલિયોમાં દરેક પ્રોજેક્ટ માટે વિગતવાર ખર્ચ ટ્રેકિંગ, આવક માન્યતા અને રીયલ-ટાઇમ નફાકારકતા ડેશબોર્ડ.',
+    svc5_title: 'પેરોલ પ્રોસેસિંગ', svc5_desc: 'કર કપાત, લાભ વ્યવસ્થાપન અને અધિકારક્ષેત્રોમાં નિયમનકારી અનુપાલન સાથે સંપૂર્ણ પેરોલ વ્યવસ્થાપન.',
+    svc6_title: 'આગાહી અને સલાહ', svc6_desc: 'ડેટા-સંચાલિત નાણાકીય મોડેલ, રોકડ પ્રવાહ અંદાજો અને માહિતગાર નિર્ણય લેવા માટે વ્યૂહાત્મક સલાહ.',
+    learn_more: 'વધુ જાણો <i class="fas fa-arrow-right"></i>',
+    about_eyebrow: 'DiligenceOS શા માટે', about_title: 'નાણાકીય ઉત્કૃષ્ટતાનું વૈશ્વિક ધોરણ',
+    about_desc: 'અમે ઊંડી હિસાબી કુશળતાને ટેકનોલોજી-સંચાલિત પ્રક્રિયાઓ સાથે જોડીને વિશ્વભરના વ્યવસાયો માટે વિશ્વસનીય અને ખર્ચ-અસરકારક નાણાકીય કામગીરી પ્રદાન કરીએ છીએ.',
+    feat1_title: 'સમર્પિત એકાઉન્ટ મેનેજર', feat1_desc: 'એક નિષ્ણાત જે તમારા વ્યવસાય, ઉદ્યોગ અને લક્ષ્યોને સમજે છે.',
+    feat2_title: '50% સુધી ખર્ચ ઘટાડો', feat2_desc: 'ઇન-હાઉસ ખર્ચના એક અંશ પર એન્ટરપ્રાઇઝ-ગ્રેડ સેવાઓ.',
+    feat3_title: 'બેંક-સ્તરીય ડેટા સુરક્ષા', feat3_desc: '256-બિટ એન્ક્રિપ્શન સાથે SOC 2 અનુપાલન ઇન્ફ્રાસ્ટ્રક્ચર.',
+    feat4_title: 'ક્રોસ-ટાઇમઝોન સહાય', feat4_desc: 'તમારા વ્યવસાયિક કલાકો સાથે સંરેખિત પ્રતિભાવશીલ સંચાર.',
+    proc_eyebrow: 'તે કેવી રીતે કામ કરે છે', proc_title: 'સરળ. પારદર્શક. અસરકારક.',
+    proc_desc: 'તમારી નાણાકીય કામગીરીને બદલવા માટેના ચાર પગલાં.',
+    step1_title: 'ડિસ્કવરી કૉલ', step1_desc: 'અમે મફત પરામર્શમાં તમારા વ્યવસાય, પડકારો અને નાણાકીય લક્ષ્યો વિશે જાણીએ છીએ.',
+    step2_title: 'કસ્ટમ પ્રસ્તાવ', step2_desc: 'પારદર્શક કિંમત સાથે અનુકૂળ સેવા યોજના મેળવો. કોઈ આશ્ચર્ય નહીં, કોઈ છુપી ફી નહીં.',
+    step3_title: 'સરળ ઓનબોર્ડિંગ', step3_desc: 'અમે તમારા હાલના સાધનો સાથે સંકલિત કરીએ છીએ અને તમારી સમર્પિત હિસાબી ટીમ નિયુક્ત કરીએ છીએ.',
+    step4_title: 'સતત ઉત્કૃષ્ટતા', step4_desc: 'સમયસર અહેવાલો, સક્રિય આંતરદૃષ્ટિ અને તમારા નાણાંનું સતત ઑપ્ટિમાઇઝેશન.',
+    ind_eyebrow: 'ઉદ્યોગો', ind_title: 'ક્ષેત્ર-વિશિષ્ટ કુશળતા',
+    ind_desc: 'તમારા ઉદ્યોગની અનન્ય માંગણીઓને અનુરૂપ વિશેષ હિસાબી જ્ઞાન.',
+    ind_ecom: 'ઈ-કોમર્સ', ind_tech: 'ટેકનોલોજી અને SaaS', ind_const: 'બાંધકામ',
+    ind_health: 'આરોગ્ય સેવા', ind_hosp: 'આતિથ્ય', ind_real: 'રિયલ એસ્ટેટ',
+    ind_log: 'લોજિસ્ટિક્સ', ind_prof: 'વ્યાવસાયિક સેવાઓ',
+    test_eyebrow: 'ગ્રાહક વાર્તાઓ', test_title: 'વિશ્વભરમાં વિશ્વસનીય',
+    test_desc: 'એ વ્યાપારી નેતાઓ પાસેથી સાંભળો જેમણે DiligenceOS સાથે તેમની નાણાકીય કામગીરી બદલી નાખી.',
+    test1_quote: '"DiligenceOS એ અમારી બુકકીપિંગ પ્રક્રિયા બદલી નાખી. અમે સપ્તાહાંતે સમાધાન પર વિતાવતા હતા — હવે બધું ચોકસાઈથી અને સમયસર સંભાળવામાં આવે છે."',
+    test2_quote: '"સ્વિચ કરવાથી અમારી ઇન-હાઉસ ટીમની સરખામણીમાં લગભગ 50% બચત થઈ, વધુ સારી ચોકસાઈ અને ઝડપી રિપોર્ટિંગ સાથે. ROI તાત્કાલિક હતો."',
+    test3_quote: '"અમારી ત્રણ ઓફિસોમાં તેમની પેરોલ પ્રોસેસિંગ ત્રુટિરહિત છે. ઓનબોર્ડિંગ પછી શૂન્ય ભૂલો, અને તેમની ટીમ ખરેખર અમારી પોતાની ટીમનું વિસ્તરણ લાગે છે."',
+    global_eyebrow: 'વૈશ્વિક પહોંચ', global_title: 'ઓફિસો અને કામગીરી',
+    global_desc: 'ઉત્તર અમેરિકા અને તેનાથી આગળ ગ્રાહકોની સેવા માટે વ્યૂહાત્મક રીતે સ્થિત.',
+    global_canada_city: 'કેનેડિયન વ્યવસાયોની સેવા', global_canada_ops: 'રિમોટ કામગીરી અને સહાય',
+    cta_title: 'તમારી નાણાકીય કામગીરીને ઉન્નત કરવા તૈયાર છો?',
+    cta_desc: 'વિશ્વભરના 500+ વ્યવસાયો સાથે જોડાઓ જે ચોકસાઈ, પારદર્શિતા અને વૃદ્ધિ માટે DiligenceOS પર ભરોસો કરે છે.',
+    cta_btn1: 'મફત પરામર્શ શરૂ કરો', cta_btn2: 'બધી સેવાઓ જુઓ',
+    contact_eyebrow: 'સંપર્ક કરો', contact_title: 'ચાલો વાતચીત શરૂ કરીએ',
+    contact_desc: 'કોઈ બંધન નહીં, કોઈ દબાણ નહીં — ફક્ત અમારી નિષ્ણાત ટીમ પાસેથી જવાબો.',
+    contact_reach: 'અમારી ટીમનો સંપર્ક કરો',
+    contact_reach_desc: 'ભલે તમે પહેલીવાર આઉટસોર્સ્ડ એકાઉન્ટિંગ શોધી રહ્યા હો અથવા પ્રદાતા બદલવા માંગતા હો, અમે મદદ કરવા માટે અહીં છીએ.',
+    contact_hq: 'મુખ્ય કાર્યાલય', contact_mail: 'ટપાલ સરનામું',
+    contact_sales: 'વેચાણ પૂછપરછ', contact_ops: 'કામગીરી સહાય', contact_email: 'ઈમેલ',
+    form_title: 'મફત પરામર્શ શેડ્યૂલ કરો',
+    form_desc: 'તમારી વિગતો ભરો અને અમારી ટીમ 24 કલાકમાં જવાબ આપશે.',
+    form_name: 'પૂરું નામ *', form_company: 'કંપની', form_email: 'ઈમેલ *', form_phone: 'ફોન',
+    form_service: 'રસની સેવા', form_select: 'એક સેવા પસંદ કરો...',
+    form_msg: 'અમે કેવી રીતે મદદ કરી શકીએ?', form_submit: 'વિનંતી મોકલો',
+    form_note: 'તમારી માહિતી સુરક્ષિત છે અને ક્યારેય શેર કરવામાં આવશે નહીં.',
+    ph_name: 'તમારું નામ', ph_company: 'તમારી કંપની',
+    ph_msg: 'અમને તમારા વ્યવસાય વિશે જણાવો...',
+    footer_desc: 'USA, કેનેડા અને તેનાથી આગળ મહત્વાકાંક્ષી વ્યવસાયો માટે વિશ્વ-સ્તરીય બુકકીપિંગ અને હિસાબી સેવાઓ.',
+    footer_services: 'સેવાઓ', footer_company: 'કંપની', footer_resources: 'સંસાધનો'
   }
 };
 
@@ -1140,8 +1220,8 @@ function switchLang(lang) {
     if (t[key] !== undefined) el.placeholder = t[key];
   });
   // Update dropdown UI
-  const flags = { en: '\u{1F1EC}\u{1F1E7}', hi: '\u{1F1EE}\u{1F1F3}' };
-  const names = { en: 'English', hi: 'हिन्दी' };
+  const flags = { en: '\u{1F1EC}\u{1F1E7}', hi: '\u{1F1EE}\u{1F1F3}', gu: '\u{1F1EE}\u{1F1F3}' };
+  const names = { en: 'English', hi: 'हिन्दी', gu: 'ગુજરાતી' };
   document.getElementById('currentFlag').textContent = flags[lang];
   document.getElementById('currentLangLabel').textContent = names[lang];
   document.querySelectorAll('.lang-option').forEach(opt => {
