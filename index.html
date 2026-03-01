@@ -207,6 +207,117 @@ nav {
   100% { transform:translateY(-100vh) translateX(40px); opacity:0; }
 }
 
+/* ═══════ FLOATING ACCOUNTING NUMBERS ═══════ */
+.accounting-numbers { position:absolute; inset:0; z-index:2; pointer-events:none; overflow:hidden; }
+.acc-num {
+  position:absolute; font-family:'Plus Jakarta Sans',monospace; color:rgba(255,255,255,.06);
+  font-weight:700; animation:accFloat linear infinite;
+}
+@keyframes accFloat {
+  0% { transform:translateY(100vh) rotate(0deg); opacity:0; }
+  5% { opacity:1; }
+  95% { opacity:1; }
+  100% { transform:translateY(-20vh) rotate(25deg); opacity:0; }
+}
+
+/* ═══════ HIGHLIGHTED NUMBERS ═══════ */
+.num-highlight {
+  display:inline-block; position:relative; color:var(--terracotta);
+  font-weight:800; font-family:'Playfair Display',serif;
+}
+.num-highlight::after {
+  content:''; position:absolute; bottom:-2px; left:0; width:100%; height:3px;
+  background:linear-gradient(90deg, var(--terracotta), var(--sand));
+  border-radius:2px; animation:numGlow 2s ease-in-out infinite alternate;
+}
+@keyframes numGlow {
+  0% { opacity:.4; transform:scaleX(.8); }
+  100% { opacity:1; transform:scaleX(1); }
+}
+.hero-trust-item .number {
+  font-family:'Playfair Display',serif; font-size:2rem; display:block; line-height:1.1;
+  background:linear-gradient(135deg, var(--sand-light), var(--sand), #e8856e);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  filter:drop-shadow(0 0 8px rgba(194,169,126,.3));
+}
+.metric-card .mc-value {
+  font-family:'Playfair Display',serif; font-size:1.9rem; margin-bottom:4px;
+  background:linear-gradient(135deg, #fff, var(--sand-light));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  filter:drop-shadow(0 0 6px rgba(255,255,255,.2));
+}
+.service-card .s-number {
+  font-family:'Playfair Display',serif; font-size:3.2rem; line-height:1; margin-bottom:18px;
+  background:linear-gradient(135deg, var(--terracotta-light), rgba(196,101,74,.25));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  transition:var(--transition);
+}
+.service-card:hover .s-number {
+  background:linear-gradient(135deg, var(--terracotta), var(--sand));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  filter:drop-shadow(0 0 8px rgba(196,101,74,.3));
+}
+
+/* ═══════ LEDGER LINE ANIMATION ═══════ */
+.ledger-lines {
+  position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden;
+}
+.ledger-line {
+  position:absolute; left:0; width:100%; height:1px;
+  background:linear-gradient(90deg, transparent 0%, rgba(255,255,255,.03) 20%, rgba(255,255,255,.03) 80%, transparent 100%);
+  animation:ledgerScan 8s ease-in-out infinite;
+}
+@keyframes ledgerScan {
+  0%,100% { opacity:0; transform:translateX(-100%); }
+  50% { opacity:1; transform:translateX(0); }
+}
+
+/* ═══════ PARTNERSHIP BADGE ═══════ */
+.partnership-badge {
+  display:inline-flex; align-items:center; gap:10px;
+  background:linear-gradient(135deg, rgba(255,153,51,.1), rgba(0,56,168,.1));
+  border:1px solid rgba(255,153,51,.2); padding:10px 20px;
+  border-radius:100px; margin-bottom:20px; font-size:.82rem;
+  font-weight:600; color:rgba(255,255,255,.8);
+  animation:fadeSlideDown .8s ease .1s both;
+}
+.partnership-badge .flag-pair { display:flex; gap:4px; font-size:1.1rem; }
+
+/* ═══════ INDIA-AUSTRALIA CONNECTOR ═══════ */
+.connector-section {
+  background:linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+  padding:60px 36px; position:relative; overflow:hidden;
+}
+.connector-inner {
+  max-width:900px; margin:0 auto; display:flex; align-items:center;
+  justify-content:center; gap:40px; flex-wrap:wrap;
+}
+.connector-country {
+  text-align:center; padding:30px 40px; background:var(--warm-white);
+  border:1px solid var(--border); border-radius:20px;
+  transition:var(--transition); min-width:200px;
+}
+.connector-country:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+.connector-country .flag-big { font-size:3rem; display:block; margin-bottom:10px; }
+.connector-country h3 { font-size:1.1rem; color:var(--forest); margin-bottom:4px; }
+.connector-country p { font-size:.85rem; color:var(--slate); }
+.connector-bridge {
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+}
+.connector-bridge .bridge-line {
+  width:80px; height:2px;
+  background:linear-gradient(90deg, #FF9933, var(--sage), #00008B, #012169);
+  border-radius:1px; position:relative;
+}
+.connector-bridge .bridge-line::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg, #FF9933, #012169);
+  border-radius:1px; animation:bridgePulse 2s ease-in-out infinite;
+}
+@keyframes bridgePulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+.connector-bridge .bridge-icon { font-size:1.4rem; color:var(--forest); }
+.connector-bridge span { font-size:.72rem; text-transform:uppercase; letter-spacing:2px; color:var(--slate-light); font-weight:600; }
+
 .hero-content {
   max-width:1320px; margin:0 auto; padding:100px 36px 80px; width:100%;
   display:grid; grid-template-columns:1.1fr .9fr; gap:80px; align-items:center;
@@ -254,9 +365,6 @@ nav {
   animation:fadeSlideUp .9s ease .7s both;
 }
 .hero-trust-item { text-align:center; }
-.hero-trust-item .number { font-family:'Playfair Display',serif; font-size:2rem; color:var(--cream); display:block; line-height:1.1; }
-body[data-lang="hi"] .hero-trust-item .number { font-family:'Plus Jakarta Sans',sans-serif; }
-body[data-lang="gu"] .hero-trust-item .number { font-family:'Plus Jakarta Sans',sans-serif; }
 .hero-trust-item .label { font-size:.75rem; color:rgba(255,255,255,.38); text-transform:uppercase; letter-spacing:1.2px; font-weight:500; }
 .hero-trust-divider { width:1px; height:36px; background:rgba(255,255,255,.08); }
 
@@ -272,9 +380,6 @@ body[data-lang="gu"] .hero-trust-item .number { font-family:'Plus Jakarta Sans',
   width:42px; height:42px; border-radius:12px;
   display:flex; align-items:center; justify-content:center; margin-bottom:14px; font-size:1rem;
 }
-.metric-card .mc-value { font-family:'Playfair Display',serif; font-size:1.9rem; margin-bottom:4px; }
-body[data-lang="hi"] .metric-card .mc-value { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
-body[data-lang="gu"] .metric-card .mc-value { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
 .metric-card .mc-label { font-size:.8rem; color:rgba(255,255,255,.5); }
 .mc1 { top:0; left:8%; width:210px; } .mc1 .mc-icon { background:rgba(196,101,74,.2); color:#e8856e; }
 .mc2 { top:30px; right:0; width:230px; } .mc2 .mc-icon { background:rgba(194,169,126,.2); color:var(--sand); }
@@ -339,11 +444,7 @@ body[data-lang="gu"] .metric-card .mc-value { font-family:'Plus Jakarta Sans',sa
 }
 .service-card:hover { border-color:transparent; box-shadow:var(--shadow-lg); transform:translateY(-6px); }
 .service-card:hover::before { transform:scaleX(1); }
-.service-card .s-number {
-  font-family:'Playfair Display',serif; font-size:3.2rem;
-  color:var(--border); line-height:1; margin-bottom:18px; transition:var(--transition);
-}
-.service-card:hover .s-number { color:var(--terracotta-light); }
+/* s-number styles moved to highlighted numbers section */
 .service-card h3 { font-size:1.2rem; color:var(--forest); margin-bottom:12px; }
 .service-card p { color:var(--slate); font-size:.9rem; line-height:1.75; margin-bottom:18px; }
 .service-link {
@@ -617,8 +718,8 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
 
 <!-- ANNOUNCEMENT BAR -->
 <div class="announcement-bar">
-  <i class="fas fa-leaf" style="margin-right:6px;font-size:.75rem;color:var(--sage-light)"></i>
-  <span data-i18n="announcement">Serving businesses across <strong>USA, Canada & globally</strong></span> —
+  <span style="margin-right:6px;">&#127470;&#127475; &#129309; &#127462;&#127482;</span>
+  <span data-i18n="announcement">India &amp; Australia Accounting Partnership — Serving businesses <strong>globally</strong></span> —
   <a href="#contact" data-i18n="announcement_cta">Schedule your free consultation <i class="fas fa-arrow-right" style="font-size:.6rem"></i></a>
 </div>
 
@@ -683,11 +784,14 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
   <div class="hero-bg"></div>
   <div class="hero-organic"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
   <div class="particles" id="particles"></div>
+  <div class="accounting-numbers" id="accNumbers"></div>
+  <div class="ledger-lines" id="ledgerLines"></div>
   <div class="hero-content">
     <div class="hero-text">
+      <div class="partnership-badge"><span class="flag-pair">&#127470;&#127475; &#127462;&#127482;</span> India — Australia Partnership</div>
       <div class="hero-badge"><i class="fas fa-shield-alt"></i> <span data-i18n="hero_badge">Trusted by 500+ Global Businesses</span></div>
       <h1 data-i18n="hero_title">Precision Accounting for <span class="accent">Ambitious Businesses</span></h1>
-      <p data-i18n="hero_desc">From bookkeeping to strategic advisory — we deliver world-class financial operations so you can focus on scaling your business across borders.</p>
+      <p data-i18n="hero_desc">India-Australia accounting powerhouse — we deliver world-class financial operations with cross-border expertise so you can focus on scaling your business.</p>
       <div class="hero-buttons">
         <a href="#contact" class="btn btn-terracotta"><i class="fas fa-calendar-check"></i> <span data-i18n="hero_cta1">Book Free Consultation</span></a>
         <a href="#services" class="btn btn-ghost"><span data-i18n="hero_cta2">Explore Services</span> <i class="fas fa-arrow-right"></i></a>
@@ -699,7 +803,7 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
         <div class="hero-trust-divider"></div>
         <div class="hero-trust-item"><span class="number" data-count="99">0</span><span class="label" data-i18n="trust_retention">Retention</span></div>
         <div class="hero-trust-divider"></div>
-        <div class="hero-trust-item"><span class="number" data-count="3">0</span><span class="label" data-i18n="trust_countries">Countries</span></div>
+        <div class="hero-trust-item"><span class="number" data-count="2">0</span><span class="label" data-i18n="trust_countries">Countries</span></div>
       </div>
     </div>
     <div class="hero-visual">
@@ -804,8 +908,13 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
         <i class="fas fa-globe-americas globe-icon"></i>
         <div class="about-stat-row">
           <div class="about-stat"><span class="val">500+</span><span class="lbl" data-i18n="trust_clients">Clients</span></div>
-          <div class="about-stat"><span class="val">3</span><span class="lbl" data-i18n="trust_countries">Countries</span></div>
+          <div class="about-stat"><span class="val">2</span><span class="lbl">Hubs</span></div>
           <div class="about-stat"><span class="val">12+</span><span class="lbl" data-i18n="trust_years">Years</span></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:20px;justify-content:center">
+          <span style="font-size:2rem">&#127470;&#127475;</span>
+          <span style="font-size:1.2rem;color:rgba(255,255,255,.3);align-self:center">&#10230;</span>
+          <span style="font-size:2rem">&#127462;&#127482;</span>
         </div>
       </div>
     </div>
@@ -884,30 +993,52 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
   </div>
 </section>
 
+<!-- INDIA-AUSTRALIA CONNECTOR -->
+<section class="connector-section reveal">
+  <div class="connector-inner">
+    <div class="connector-country">
+      <span class="flag-big">&#127470;&#127475;</span>
+      <h3>India</h3>
+      <p>Accounting Operations Hub</p>
+    </div>
+    <div class="connector-bridge">
+      <div class="bridge-line"></div>
+      <i class="fas fa-exchange-alt bridge-icon"></i>
+      <span>Partnership</span>
+      <div class="bridge-line"></div>
+    </div>
+    <div class="connector-country">
+      <span class="flag-big">&#127462;&#127482;</span>
+      <h3>Australia</h3>
+      <p>Client Services Hub</p>
+    </div>
+  </div>
+</section>
+
 <!-- GLOBAL -->
 <section class="section global-section" id="global">
   <div class="section-header center reveal">
     <div class="section-eyebrow" data-i18n="global_eyebrow">Global Reach</div>
     <h2 data-i18n="global_title">Offices & Operations</h2>
-    <p data-i18n="global_desc">Strategically located to serve clients across North America and beyond.</p>
+    <p data-i18n="global_desc">Strategically located across India and Australia to deliver seamless accounting operations.</p>
   </div>
   <div class="global-grid">
     <div class="global-card reveal stagger-1">
-      <span class="flag">&#127482;&#127480;</span><h3>United States</h3>
-      <div class="city">Wilmington, Delaware (HQ)</div>
-      <div class="detail"><i class="fas fa-map-marker-alt"></i> 919 N. Market St, Suite 950, DE 19801</div>
-      <div class="detail"><i class="fas fa-phone"></i> +1 302 231 1573</div>
+      <span class="flag">&#127470;&#127475;</span><h3>India</h3>
+      <div class="city">Mumbai, Maharashtra (Operations HQ)</div>
+      <div class="detail"><i class="fas fa-map-marker-alt"></i> Financial District, BKC, Mumbai</div>
+      <div class="detail"><i class="fas fa-users"></i> 80+ Accounting Professionals</div>
     </div>
     <div class="global-card reveal stagger-2">
-      <span class="flag">&#127482;&#127480;</span><h3>United States</h3>
-      <div class="city">Schaumburg, Illinois</div>
-      <div class="detail"><i class="fas fa-map-marker-alt"></i> 221 Hawk CT, IL 60193</div>
-      <div class="detail"><i class="fas fa-phone"></i> +1 302 231 1438</div>
+      <span class="flag">&#127462;&#127482;</span><h3>Australia</h3>
+      <div class="city">Sydney, NSW (Client Hub)</div>
+      <div class="detail"><i class="fas fa-map-marker-alt"></i> Sydney CBD, NSW 2000</div>
+      <div class="detail"><i class="fas fa-phone"></i> +61 2 8000 0000</div>
     </div>
     <div class="global-card reveal stagger-3">
-      <span class="flag">&#127464;&#127462;</span><h3>Canada</h3>
-      <div class="city" data-i18n="global_canada_city">Serving Canadian Businesses</div>
-      <div class="detail"><i class="fas fa-globe"></i> <span data-i18n="global_canada_ops">Remote operations & support</span></div>
+      <span class="flag">&#127462;&#127482;</span><h3>Australia</h3>
+      <div class="city">Melbourne, VIC</div>
+      <div class="detail"><i class="fas fa-map-marker-alt"></i> Melbourne CBD, VIC 3000</div>
       <div class="detail"><i class="fas fa-envelope"></i> mrunal@diligenceoutsourcing.com</div>
     </div>
   </div>
@@ -976,7 +1107,7 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="logo" style="text-decoration:none"><div class="logo-svg-wrap" style="animation:none"><svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="38" height="38" rx="10" ry="10" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2"/><rect x="11" y="20" width="5" height="12" rx="1.5" fill="var(--terracotta)"/><rect x="18.5" y="15" width="5" height="17" rx="1.5" fill="var(--sage)"/><rect x="26" y="10" width="5" height="22" rx="1.5" fill="var(--sand)"/></svg></div><span class="logo-text" style="color:white">Diligence<em>OS</em></span></a>
-      <p data-i18n="footer_desc">World-class bookkeeping and accounting services for ambitious businesses across the USA, Canada, and beyond.</p>
+      <p data-i18n="footer_desc">World-class bookkeeping and accounting services powered by our India-Australia partnership, serving ambitious businesses globally.</p>
       <div class="social-links">
         <a href="#"><i class="fab fa-linkedin-in"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -999,14 +1130,14 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
 /* ═══════ TRANSLATIONS ═══════ */
 const translations = {
   en: {
-    announcement: 'Serving businesses across <strong>USA, Canada & globally</strong>',
+    announcement: 'India &amp; Australia Accounting Partnership — Serving businesses <strong>globally</strong>',
     announcement_cta: 'Schedule your free consultation <i class="fas fa-arrow-right" style="font-size:.6rem"></i>',
     nav_services: 'Services', nav_about: 'About', nav_process: 'Process',
     nav_industries: 'Industries', nav_clients: 'Clients', nav_contact: 'Contact',
     nav_cta: 'Get Started',
     hero_badge: 'Trusted by 500+ Global Businesses',
     hero_title: 'Precision Accounting for <span class="accent">Ambitious Businesses</span>',
-    hero_desc: 'From bookkeeping to strategic advisory — we deliver world-class financial operations so you can focus on scaling your business across borders.',
+    hero_desc: 'India-Australia accounting powerhouse — we deliver world-class financial operations with cross-border expertise so you can focus on scaling your business.',
     hero_cta1: 'Book Free Consultation', hero_cta2: 'Explore Services',
     trust_clients: 'Clients', trust_years: 'Years', trust_retention: 'Retention', trust_countries: 'Countries',
     mc_savings: 'Average Cost Savings', mc_turnaround: 'Turnaround Time',
@@ -1044,7 +1175,7 @@ const translations = {
     test2_quote: '"Switching saved us nearly 50% compared to our in-house team, with better accuracy and faster reporting. The ROI was immediate and substantial."',
     test3_quote: '"Their payroll processing is flawless across our three offices. Zero errors since onboarding, and their team truly feels like an extension of ours."',
     global_eyebrow: 'Global Reach', global_title: 'Offices & Operations',
-    global_desc: 'Strategically located to serve clients across North America and beyond.',
+    global_desc: 'Strategically located across India and Australia to deliver seamless accounting operations.',
     global_canada_city: 'Serving Canadian Businesses', global_canada_ops: 'Remote operations & support',
     cta_title: 'Ready to Elevate Your Financial Operations?',
     cta_desc: 'Join 500+ businesses worldwide that trust DiligenceOS for precision, transparency, and growth.',
@@ -1063,7 +1194,7 @@ const translations = {
     form_note: 'Your information is secure and will never be shared.',
     ph_name: 'John Smith', ph_company: 'Your Company',
     ph_msg: 'Tell us about your business and what you\'re looking for...',
-    footer_desc: 'World-class bookkeeping and accounting services for ambitious businesses across the USA, Canada, and beyond.',
+    footer_desc: 'World-class bookkeeping and accounting services powered by our India-Australia partnership, serving ambitious businesses globally.',
     footer_services: 'Services', footer_company: 'Company', footer_resources: 'Resources'
   },
   hi: {
@@ -1244,6 +1375,37 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => observer.observe(el));
+
+/* ═══════ FLOATING ACCOUNTING NUMBERS ═══════ */
+(function createAccNumbers() {
+  const container = document.getElementById('accNumbers');
+  if (!container) return;
+  const terms = ['$','₹','A$','CR','DR','P&L','GST','ROI','EBITDA','₹','$','TAX','AP','AR','GL','BS','CF','YTD','FY','NP','GP','%','Rev','Exp'];
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement('div');
+    el.className = 'acc-num';
+    el.textContent = terms[Math.floor(Math.random() * terms.length)];
+    el.style.left = Math.random() * 100 + '%';
+    el.style.fontSize = (0.7 + Math.random() * 1.8) + 'rem';
+    el.style.animationDuration = (12 + Math.random() * 20) + 's';
+    el.style.animationDelay = Math.random() * 15 + 's';
+    container.appendChild(el);
+  }
+})();
+
+/* ═══════ LEDGER LINES ═══════ */
+(function createLedgerLines() {
+  const container = document.getElementById('ledgerLines');
+  if (!container) return;
+  for (let i = 0; i < 8; i++) {
+    const line = document.createElement('div');
+    line.className = 'ledger-line';
+    line.style.top = (10 + i * 12) + '%';
+    line.style.animationDelay = (i * 1.2) + 's';
+    line.style.animationDuration = (6 + Math.random() * 4) + 's';
+    container.appendChild(line);
+  }
+})();
 
 /* ═══════ PARTICLES ═══════ */
 (function createParticles() {
