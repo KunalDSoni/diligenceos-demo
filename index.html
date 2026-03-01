@@ -992,6 +992,32 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
 .vig-gold { fill:var(--sand); opacity:0; transition:opacity .5s ease 1.2s; }
 .reveal.visible .vig-gold { opacity:1; }
 
+/* light variant for dark backgrounds */
+.vig-draw-light {
+  fill:none; stroke:rgba(255,255,255,.5); stroke-width:1.5;
+  stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:var(--dash); stroke-dashoffset:var(--dash);
+  transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1);
+}
+.reveal.visible .vig-draw-light { stroke-dashoffset:0; }
+.vig-fill-light { opacity:0; transition:opacity .6s ease .8s; }
+.reveal.visible .vig-fill-light { opacity:1; }
+
+/* theater seats — staggered fade-in */
+.vig-seat { fill:var(--charcoal); opacity:0; transition:opacity .35s ease; }
+.vig-seat.s1 { transition-delay:.5s; }
+.vig-seat.s2 { transition-delay:.6s; }
+.vig-seat.s3 { transition-delay:.7s; }
+.vig-seat.s4 { transition-delay:.8s; }
+.vig-seat.s5 { transition-delay:.9s; }
+.vig-seat.s6 { transition-delay:1s; }
+.vig-seat.s7 { transition-delay:1.1s; }
+.vig-seat.s8 { transition-delay:1.2s; }
+.vig-seat.s9 { transition-delay:1.3s; }
+.reveal.visible .vig-seat { opacity:1; }
+.vig-person { fill:var(--charcoal); opacity:0; transition:opacity .3s ease 1.5s; }
+.reveal.visible .vig-person { opacity:1; }
+
 /* ═══════ RESPONSIVE ═══════ */
 @media(max-width:1024px){
   .pricing-grid{grid-template-columns:1fr}
@@ -1371,24 +1397,24 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
 <section class="section industries-section" id="industries">
   <div class="ind-orb ind-orb-1"></div><div class="ind-orb ind-orb-2"></div>
   <div class="section-header center reveal">
-    <!-- Vignette: Cityscape Skyline -->
-    <svg class="section-vignette" width="180" height="55" viewBox="0 0 180 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line class="vig-draw" style="--dash:180" x1="0" y1="50" x2="180" y2="50" stroke-width="1"/>
-      <rect class="vig-fill" x="8" y="32" width="10" height="18" rx="1"/>
-      <rect class="vig-fill" x="22" y="22" width="8" height="28" rx="1"/>
-      <rect class="vig-fill" x="34" y="28" width="12" height="22" rx="1"/>
-      <rect class="vig-fill" x="50" y="14" width="9" height="36" rx="1"/>
-      <rect class="vig-fill" x="63" y="8" width="7" height="42" rx="1"/>
-      <rect class="vig-fill" x="74" y="18" width="11" height="32" rx="1"/>
-      <rect class="vig-fill" x="89" y="4" width="8" height="46" rx="1"/>
-      <rect class="vig-fill" x="101" y="20" width="10" height="30" rx="1"/>
-      <rect class="vig-fill" x="115" y="12" width="7" height="38" rx="1"/>
-      <rect class="vig-fill" x="126" y="26" width="12" height="24" rx="1"/>
-      <rect class="vig-fill" x="142" y="18" width="9" height="32" rx="1"/>
-      <rect class="vig-fill" x="155" y="30" width="10" height="20" rx="1"/>
-      <rect class="vig-fill" x="169" y="36" width="8" height="14" rx="1"/>
+    <!-- Vignette: Cityscape Skyline (light for dark bg) -->
+    <svg class="section-vignette vig-light" width="180" height="55" viewBox="0 0 180 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line style="--dash:180" x1="0" y1="50" x2="180" y2="50" stroke-width="1" fill="none" stroke="rgba(255,255,255,.6)" stroke-dasharray="180" stroke-dashoffset="180" stroke-linecap="round" class="vig-draw-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="8" y="32" width="10" height="18" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="22" y="22" width="8" height="28" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="34" y="28" width="12" height="22" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="50" y="14" width="9" height="36" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="63" y="8" width="7" height="42" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="74" y="18" width="11" height="32" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.85)" x="89" y="4" width="8" height="46" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="101" y="20" width="10" height="30" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="115" y="12" width="7" height="38" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="126" y="26" width="12" height="24" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="142" y="18" width="9" height="32" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.7)" x="155" y="30" width="10" height="20" rx="1" class="vig-fill-light"/>
+      <rect fill="rgba(255,255,255,.5)" x="169" y="36" width="8" height="14" rx="1" class="vig-fill-light"/>
       <rect class="vig-gold" x="89" y="1" width="8" height="3" rx="1"/>
-      <line class="vig-draw" style="--dash:20" x1="93" y1="0" x2="93" y2="4"/>
+      <line style="--dash:20" x1="93" y1="0" x2="93" y2="4" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="20" stroke-dashoffset="20" class="vig-draw-light"/>
     </svg>
     <div class="section-eyebrow" data-i18n="ind_eyebrow">Industries</div>
     <h2 data-i18n="ind_title">Sector-Specific Expertise</h2>
@@ -1412,18 +1438,18 @@ footer { background:var(--forest); color:rgba(255,255,255,.55); }
     <!-- Vignette: Theater Seats (New Yorker "The Critics" style) -->
     <svg class="section-vignette" width="160" height="60" viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <!-- Back row seats -->
-      <path class="vig-fill" d="M4 28 C4 18,14 14,20 14 C26 14,30 18,30 24 L30 32 L4 32 Z" style="opacity:0;transition:opacity .4s ease .6s"/>
-      <path class="vig-fill" d="M34 28 C34 18,44 14,50 14 C56 14,60 18,60 24 L60 32 L34 32 Z" style="opacity:0;transition:opacity .4s ease .7s"/>
-      <path class="vig-fill" d="M64 28 C64 18,74 14,80 14 C86 14,90 18,90 24 L90 32 L64 32 Z" style="opacity:0;transition:opacity .4s ease .8s"/>
-      <path class="vig-fill" d="M94 28 C94 18,104 14,110 14 C116 14,120 18,120 24 L120 32 L94 32 Z" style="opacity:0;transition:opacity .4s ease .9s"/>
-      <path class="vig-fill" d="M124 28 C124 18,134 14,140 14 C146 14,150 18,150 24 L150 32 L124 32 Z" style="opacity:0;transition:opacity .4s ease 1s"/>
+      <path class="vig-seat s1" d="M4 28 C4 18,14 14,20 14 C26 14,30 18,30 24 L30 32 L4 32 Z"/>
+      <path class="vig-seat s2" d="M34 28 C34 18,44 14,50 14 C56 14,60 18,60 24 L60 32 L34 32 Z"/>
+      <path class="vig-seat s3" d="M64 28 C64 18,74 14,80 14 C86 14,90 18,90 24 L90 32 L64 32 Z"/>
+      <path class="vig-seat s4" d="M94 28 C94 18,104 14,110 14 C116 14,120 18,120 24 L120 32 L94 32 Z"/>
+      <path class="vig-seat s5" d="M124 28 C124 18,134 14,140 14 C146 14,150 18,150 24 L150 32 L124 32 Z"/>
       <!-- Front row seats -->
-      <path class="vig-fill" d="M14 48 C14 38,24 34,32 34 C40 34,46 38,46 44 L46 52 L14 52 Z" style="opacity:0;transition:opacity .4s ease 1.1s"/>
-      <path class="vig-fill" d="M50 48 C50 38,60 34,68 34 C76 34,82 38,82 44 L82 52 L50 52 Z" style="opacity:0;transition:opacity .4s ease 1.2s"/>
-      <path class="vig-fill" d="M86 48 C86 38,96 34,104 34 C112 34,118 38,118 44 L118 52 L86 52 Z" style="opacity:0;transition:opacity .4s ease 1.3s"/>
-      <path class="vig-fill" d="M122 48 C122 38,132 34,140 34 C148 34,154 38,154 44 L154 52 L122 52 Z" style="opacity:0;transition:opacity .4s ease 1.4s"/>
+      <path class="vig-seat s6" d="M14 48 C14 38,24 34,32 34 C40 34,46 38,46 44 L46 52 L14 52 Z"/>
+      <path class="vig-seat s7" d="M50 48 C50 38,60 34,68 34 C76 34,82 38,82 44 L82 52 L50 52 Z"/>
+      <path class="vig-seat s8" d="M86 48 C86 38,96 34,104 34 C112 34,118 38,118 44 L118 52 L86 52 Z"/>
+      <path class="vig-seat s9" d="M122 48 C122 38,132 34,140 34 C148 34,154 38,154 44 L154 52 L122 52 Z"/>
       <!-- Small person in back row -->
-      <circle class="vig-fill" cx="77" cy="8" r="3" style="opacity:0;transition:opacity .3s ease 1.5s"/>
+      <circle class="vig-person" cx="77" cy="8" r="3.5"/>
       <line class="vig-draw" style="--dash:10" x1="77" y1="11" x2="77" y2="16"/>
     </svg>
     <div class="section-eyebrow" data-i18n="test_eyebrow">Client Stories</div>
