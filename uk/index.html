@@ -100,6 +100,7 @@ nav {
   justify-content: space-between;
   padding: 0 40px;
   height: 72px;
+  position: relative;
 }
 
 /* ═══════ ANIMATED LOGO ═══════ */
@@ -1665,7 +1666,23 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .nav-links { display: none; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--primary-bg);
+    flex-direction: column;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    gap: 4px;
+    z-index: 999;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; width: 100%; }
+  .nav-links a:hover { background: var(--secondary-bg); }
   .mobile-toggle { display: flex; }
   .nav-right { gap: 8px; }
   .region-trigger { padding: 5px 8px; }
@@ -2618,8 +2635,21 @@ if (mobileToggle) {
   mobileToggle.addEventListener('click', () => {
     const navLinks = document.querySelector('.nav-links');
     if (navLinks) {
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+      navLinks.classList.toggle('open');
+      const icon = mobileToggle.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      }
     }
+  });
+  // Close menu when a link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+      const icon = mobileToggle.querySelector('i');
+      if (icon) { icon.classList.add('fa-bars'); icon.classList.remove('fa-times'); }
+    });
   });
 }
 
