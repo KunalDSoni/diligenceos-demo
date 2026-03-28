@@ -22,26 +22,6 @@
 }
 
 /* ═══════ DARK THEME ═══════ */
-[data-theme="dark"] {
-  --primary-bg: #0a0e1a;
-  --secondary-bg: #111827;
-  --accent-primary: #818cf8;
-  --accent-secondary: #60a5fa;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-light: #64748b;
-  --border-color: #1e293b;
-  --shadow-subtle: 0 2px 4px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
-}
-[data-theme="dark"] footer { background: #060810; }
-[data-theme="dark"] nav { background: rgba(10, 14, 26, 0.95); backdrop-filter: blur(12px); }
-[data-theme="dark"] .announcement-bar { background: #060810; }
-[data-theme="dark"] .hero { background: var(--primary-bg); }
-[data-theme="dark"] .nav-cta { background: var(--accent-primary); }
-[data-theme="dark"] img, [data-theme="dark"] svg text { filter: brightness(1.2); }
-[data-theme="dark"] .fin-ticker { background: #060810; border-color: var(--border-color); }
-[data-theme="dark"] .counters-section { background: var(--secondary-bg); }
-[data-theme="dark"] .cta-section { background: var(--secondary-bg); }
 
 html { scroll-behavior: smooth; }
 body {
@@ -230,25 +210,6 @@ nav {
   gap: 16px;
 }
 
-.nav-cta {
-  background: var(--accent-primary);
-  color: white;
-  padding: 10px 22px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border: none;
-  cursor: pointer;
-}
-.nav-cta:hover {
-  background: var(--accent-secondary);
-  transform: translateY(-1px);
-}
 .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text-primary); cursor: pointer; }
 
 /* ═══════ REGION SELECTOR ═══════ */
@@ -302,22 +263,6 @@ nav {
 }
 
 /* ═══════ THEME TOGGLE ═══════ */
-.theme-toggle {
-  display: flex; align-items: center; gap: 0;
-  border: 1px solid var(--border-color); border-radius: 8px;
-  overflow: hidden; background: transparent;
-}
-.theme-btn {
-  display: flex; align-items: center; justify-content: center;
-  width: 34px; height: 34px; border: none; background: transparent;
-  color: var(--text-light); cursor: pointer;
-  transition: var(--transition); font-size: 0.85rem;
-}
-.theme-btn:hover { color: var(--accent-primary); }
-.theme-btn.active {
-  background: var(--accent-primary); color: #fff;
-}
-
 /* ═══════ HERO ═══════ */
 .hero {
   min-height: 95vh;
@@ -1704,8 +1649,6 @@ footer {
   .nav-links { display: none; }
   .mobile-toggle { display: flex; }
   .nav-right { gap: 8px; }
-  .nav-cta { padding: 8px 16px; font-size: 0.8rem; }
-  .theme-toggle { width: 32px; height: 32px; font-size: 0.8rem; }
   .region-trigger { padding: 5px 8px; }
   .region-trigger-flag { font-size: 0.98rem; }
   .region-chevron { font-size: 0.45rem; }
@@ -1785,12 +1728,9 @@ footer {
       <li><a href="#process">Process</a></li>
       <li><a href="#industries">Industries</a></li>
       <li><a href="#testimonials">Clients</a></li>
+      <li><a href="#contact">Contact Us</a></li>
     </ul>
     <div class="nav-right">
-      <div class="theme-toggle">
-        <button class="theme-btn theme-light active" aria-label="Light theme"><i class="fas fa-sun"></i></button>
-        <button class="theme-btn theme-dark" aria-label="Dark theme"><i class="fas fa-moon"></i></button>
-      </div>
       <div class="region-selector">
         <button class="region-trigger">
           <span class="region-trigger-flag">🇺🇸</span>
@@ -1798,12 +1738,11 @@ footer {
         </button>
         <div class="region-dropdown">
           <a href="../index.html" class="region-option">🌎</a>
-          <a href="../us/index.html" class="region-option active">🇺🇸</a>
-          <a href="../au/index.html" class="region-option">🇦🇺</a>
-          <a href="../uk/index.html" class="region-option">🇬🇧</a>
+          <a href="../us/index.html" class="region-option active">&#127482;&#127480;</a>
+          <a href="../au/index.html" class="region-option">&#127462;&#127482;</a>
+          <a href="../uk/index.html" class="region-option">&#127468;&#127463;</a>
         </div>
       </div>
-      <a href="#contact" class="nav-cta">Get Started</a>
     </div>
     <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
   </div>
@@ -2558,36 +2497,7 @@ if (mobileToggle) {
   });
 }
 
-// ═══════ THEME TOGGLE ═══════
-(function() {
-  const lightBtn = document.querySelector('.theme-light');
-  const darkBtn = document.querySelector('.theme-dark');
-  if (!lightBtn || !darkBtn) return;
 
-  function getTheme() {
-    try { return localStorage.getItem('dos-theme'); } catch(e) { return null; }
-  }
-  function saveTheme(t) {
-    try { localStorage.setItem('dos-theme', t); } catch(e) {}
-  }
-  function setDark() {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    darkBtn.classList.add('active');
-    lightBtn.classList.remove('active');
-    saveTheme('dark');
-  }
-  function setLight() {
-    document.documentElement.removeAttribute('data-theme');
-    lightBtn.classList.add('active');
-    darkBtn.classList.remove('active');
-    saveTheme('light');
-  }
-
-  if (getTheme() === 'dark') setDark();
-
-  lightBtn.addEventListener('click', setLight);
-  darkBtn.addEventListener('click', setDark);
-})();
 </script>
 
 </body>
