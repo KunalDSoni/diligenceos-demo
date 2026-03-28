@@ -1666,7 +1666,6 @@ footer {
   .form-row { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-  .logos-row { justify-content: center; }
   .faq-container { padding: 0; }
   .faq-question { font-size: 0.88rem; padding: 14px 16px; }
   .faq-answer-content { font-size: 0.82rem; }
@@ -1680,6 +1679,26 @@ footer {
   .hero-content { padding: 40px 20px; }
   .hero-text h1 { font-size: 1.6rem; }
   .hero-trust { flex-wrap: wrap; gap: 16px; }
+
+  /* Dashboard cards: stack properly on mobile */
+  .hero-visual { height: auto; min-height: 350px; }
+  .dashboard-mockup { position: relative; }
+  .dash-row { flex-direction: column; }
+  .dash-widget { flex: none !important; }
+  .dash-widget .dw-val { font-size: 1.1rem; }
+  .dash-widget .dw-val[style*="font-size:2rem"] { font-size: 1.4rem !important; }
+  .donut-svg { width: 60px; height: 60px; }
+  .dash-ledger { gap: 4px; }
+  .ledger-row { font-size: 0.6rem; padding: 5px 6px; }
+
+  /* Logos row: proper grid on mobile */
+  .logos-row { gap: 20px; justify-content: center; }
+  .logo-item svg { height: 18px; }
+
+  /* About section: Why Choose list fix */
+  .about-features li { align-items: flex-start; gap: 10px; font-size: 0.88rem; }
+  .about-features li i { margin-top: 3px; font-size: 1rem; }
+  .about-visual { min-height: 200px; padding: 24px; font-size: 2rem; }
 }
 
 @media (max-width: 480px) {
@@ -1691,6 +1710,22 @@ footer {
   .hero-text p { font-size: 0.95rem; }
   .counters-grid { grid-template-columns: 1fr 1fr; }
   .footer-top { padding: 40px 16px; }
+
+  /* Dashboard: 2-column grid for small stats */
+  .dash-row { flex-direction: row; flex-wrap: wrap; }
+  .dash-widget { flex: 1 1 45% !important; min-width: 0; }
+  .dash-widget .dw-title { font-size: 0.6rem; }
+  .dash-widget .dw-val { font-size: 1rem; }
+  .dash-widget[style*="flex:1.3"] { flex: 1 1 100% !important; }
+  .dashboard-mockup { padding: 12px; gap: 8px; }
+  .dash-row { gap: 8px; }
+
+  /* About visual smaller */
+  .about-visual { min-height: 150px; }
+
+  /* Logos tighter */
+  .logos-row { gap: 16px; }
+  .logo-item svg { height: 16px; }
 }
 
 </style>
