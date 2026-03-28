@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DiligenceOS — Global Bookkeeping & Accounting Services</title>
+<title>DiligenceOS — Accounting Services for Australian Businesses</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -230,35 +230,9 @@ nav {
   gap: 16px;
 }
 
-.nav-cta {
-  background: var(--accent-primary);
-  color: white;
-  padding: 10px 22px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border: none;
-  cursor: pointer;
-}
-.nav-cta:hover {
-  background: var(--accent-secondary);
-  transform: translateY(-1px);
-}
-.mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text-primary); cursor: pointer; }
-
 /* ═══════ REGION SELECTOR ═══════ */
 .region-selector { position: relative; }
-.region-trigger {
-  display: flex; align-items: center; gap: 6px;
-  padding: 7px 10px; border: 1px solid var(--border-color); border-radius: 8px;
-  background: transparent; cursor: pointer; font-family: inherit;
-  font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); transition: var(--transition);
-}
+.region-trigger { display: flex; align-items: center; gap: 6px; padding: 7px 10px; border: 1px solid var(--border-color); border-radius: 8px; background: transparent; cursor: pointer; font-family: inherit; font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); transition: var(--transition); }
 .region-trigger:hover { border-color: var(--accent-primary); color: var(--accent-primary); background: rgba(99, 91, 255, 0.04); }
 .region-trigger-flag { font-size: 1.35rem; line-height: 1; }
 .region-chevron { font-size: 0.55rem; transition: var(--transition); margin-left: 2px; }
@@ -301,6 +275,27 @@ nav {
 .theme-btn.active {
   background: var(--accent-primary); color: #fff;
 }
+
+.nav-cta {
+  background: var(--accent-primary);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  cursor: pointer;
+}
+.nav-cta:hover {
+  background: var(--accent-secondary);
+  transform: translateY(-1px);
+}
+.mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text-primary); cursor: pointer; }
 
 /* ═══════ HERO ═══════ */
 .hero {
@@ -1740,7 +1735,7 @@ footer {
 <!-- ANNOUNCEMENT BAR -->
 <div class="announcement-bar">
   <i class="fas fa-chart-bar"></i>
-  <span>Trusted by <strong>500+ businesses worldwide</strong> for precision accounting</span> —
+  <span>Trusted by <strong>200+ Australian businesses</strong> — ATO-compliant accounting made seamless</span> —
   <a href="#contact">Schedule your free consultation <i class="fas fa-arrow-right"></i></a>
 </div>
 
@@ -1777,13 +1772,14 @@ footer {
       </div>
       <div class="region-selector">
         <button class="region-trigger">
-          <span class="region-trigger-flag">🌎</span>
+          <span class="region-trigger-flag">🇦🇺</span>
           <i class="fas fa-chevron-down region-chevron"></i>
         </button>
         <div class="region-dropdown">
-          <a href="us/index.html" class="region-option">&#127482;&#127480;</a>
-          <a href="au/index.html" class="region-option">&#127462;&#127482;</a>
-          <a href="uk/index.html" class="region-option">&#127468;&#127463;</a>
+          <a href="../index.html" class="region-option">🌎</a>
+          <a href="../us/index.html" class="region-option">🇺🇸</a>
+          <a href="../au/index.html" class="region-option active">🇦🇺</a>
+          <a href="../uk/index.html" class="region-option">🇬🇧</a>
         </div>
       </div>
       <a href="#contact" class="nav-cta">Get Started</a>
@@ -1796,21 +1792,21 @@ footer {
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-badge"><i class="fas fa-shield-alt"></i> Trusted by 500+ Global Businesses</div>
-      <h1>Precision Accounting for <span class="accent">Ambitious Businesses</span></h1>
-      <p>From bookkeeping to strategic advisory — we deliver world-class financial operations so you can focus on scaling your business across borders.</p>
+      <div class="hero-badge"><i class="fas fa-shield-alt"></i> Trusted Across Australia & New Zealand</div>
+      <h1>Expert Accounting for <span class="accent">Australian Business</span></h1>
+      <p>From BAS lodgement to strategic advisory — we deliver ATO-compliant financial operations for businesses across every state and territory.</p>
       <div class="hero-buttons">
         <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Free Consultation</a>
         <a href="#services" class="btn btn-secondary"><span>Explore Services</span> <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="hero-trust">
-        <div class="hero-trust-item"><span class="number" data-count="500">0</span><span class="label">Clients</span></div>
+        <div class="hero-trust-item"><span class="number" data-count="200">0</span><span class="label">AU Clients</span></div>
         <div class="hero-trust-divider"></div>
-        <div class="hero-trust-item"><span class="number" data-count="12">0</span><span class="label">Years</span></div>
+        <div class="hero-trust-item"><span class="number" data-count="8">0</span><span class="label">States & Territories</span></div>
         <div class="hero-trust-divider"></div>
-        <div class="hero-trust-item"><span class="number" data-count="99">0</span><span class="label">Retention</span></div>
+        <div class="hero-trust-item"><span class="number" data-count="99">0</span><span class="label">Accuracy</span></div>
         <div class="hero-trust-divider"></div>
-        <div class="hero-trust-item"><span class="number" data-count="15">0</span><span class="label">Countries</span></div>
+        <div class="hero-trust-item"><span class="number" data-count="10">0</span><span class="label">Years</span></div>
       </div>
     </div>
     <div class="hero-visual">
@@ -1818,7 +1814,7 @@ footer {
         <div class="dash-row">
           <div class="dash-widget" style="flex:1.3">
             <div class="dw-title">Revenue This Quarter</div>
-            <div class="dw-val">$2.4M</div>
+            <div class="dw-val">A$1.8M</div>
             <span class="dw-change dw-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> 18.2%</span>
             <div class="mini-bars">
               <div class="mini-bar" style="height:45%;background:rgba(99,91,255,.2);animation-delay:.1s"></div>
@@ -1832,7 +1828,7 @@ footer {
             </div>
           </div>
           <div class="dash-widget">
-            <div class="dw-title">Expense Ratio</div>
+            <div class="dw-title">Invoices</div>
             <div class="donut-wrap">
               <svg class="donut-svg" viewBox="0 0 42 42">
                 <circle class="donut-ring donut-bg" cx="21" cy="21" r="15.9"/>
@@ -1841,28 +1837,28 @@ footer {
                 <circle class="donut-ring donut-fill" cx="21" cy="21" r="15.9" stroke="#00d97e" stroke-dashoffset="175" style="animation-delay:1.1s"/>
               </svg>
             </div>
-            <div style="text-align:center;font-size:.65rem;color:var(--text-light)">Ops 38% | Tax 22% | Admin 12%</div>
+            <div style="text-align:center;font-size:.65rem;color:var(--text-light)">A$9,200 | Pending</div>
           </div>
         </div>
         <div class="dash-row">
           <div class="dash-widget">
-            <div class="dw-title">Recent Ledger Entries</div>
+            <div class="dw-title">Recent BAS Activity</div>
             <div class="dash-ledger">
-              <div class="ledger-row"><span>Invoice #4821</span><span class="lr-amt">$12,450</span></div>
-              <div class="ledger-row"><span>Payroll — Mar</span><span class="lr-dr">($34,200)</span></div>
-              <div class="ledger-row"><span>Client Payment</span><span class="lr-amt">$28,900</span></div>
-              <div class="ledger-row"><span>Tax Filing Q1</span><span class="lr-dr">($8,750)</span></div>
-              <div class="ledger-row"><span>Revenue Adj.</span><span class="lr-amt">$5,100</span></div>
+              <div class="ledger-row"><span>GST Collected</span><span class="lr-amt">A$18,500</span></div>
+              <div class="ledger-row"><span>PAYG Withheld</span><span class="lr-dr">(A$12,300)</span></div>
+              <div class="ledger-row"><span>HELP Repayment</span><span class="lr-dr">(A$4,200)</span></div>
+              <div class="ledger-row"><span>Superannuation</span><span class="lr-dr">(A$28,400)</span></div>
+              <div class="ledger-row"><span>Net BAS Amount</span><span class="lr-amt">A$6,100</span></div>
             </div>
           </div>
           <div class="dash-widget" style="flex:.7">
-            <div class="dw-title">Accuracy</div>
-            <div class="dw-val" style="font-size:2rem;text-align:center;margin-top:12px">99.8%</div>
-            <div style="text-align:center"><span class="dw-change dw-up"><i class="fas fa-check" style="font-size:.5rem"></i> Verified</span></div>
+            <div class="dw-title">Compliance</div>
+            <div class="dw-val" style="font-size:2rem;text-align:center;margin-top:12px">100%</div>
+            <div style="text-align:center"><span class="dw-change dw-up"><i class="fas fa-check" style="font-size:.5rem"></i> ATO Ready</span></div>
           </div>
           <div class="dash-widget" style="flex:.7">
             <div class="dw-title">Tax Returns</div>
-            <div class="dw-val" style="font-size:2rem;text-align:center;margin-top:12px">1,240</div>
+            <div class="dw-val" style="font-size:2rem;text-align:center;margin-top:12px">680</div>
             <div style="text-align:center;font-size:.6rem;color:var(--text-light)">Filed this year</div>
           </div>
         </div>
@@ -1873,47 +1869,47 @@ footer {
 <!-- FINANCIAL TICKER -->
 <div class="fin-ticker">
   <div class="ticker-track" id="tickerTrack">
-    <div class="ticker-item"><span class="t-label">Reconciled Today</span><span class="t-val">$1.8M</span><span class="t-change t-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> 12%</span></div>
+    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">BAS Lodged</span><span class="t-val">A$1.2M</span><span class="t-change t-up"><i class="fas fa-check" style="font-size:.5rem"></i></span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">₹</span><span class="t-label">Processed MTD</span><span class="t-val">₹45Cr</span></div>
+    <div class="ticker-item"><span class="t-label">GST Compliance</span><span class="t-val">100%</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">Tax Returns Filed</span><span class="t-val">1,240</span><span class="t-change t-up"><i class="fas fa-check" style="font-size:.5rem"></i></span></div>
+    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">Superannuation Processed</span><span class="t-val">A$85M+</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Accuracy Rate</span><span class="t-val">99.8%</span></div>
+    <div class="ticker-item"><span class="t-label">ATO Accuracy</span><span class="t-val">99.8%</span><span class="t-change t-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> Perfect</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">$</span><span class="t-label">Cost Savings</span><span class="t-val">50%</span><span class="t-change t-up">avg</span></div>
+    <div class="ticker-item"><span class="t-label">States Covered</span><span class="t-val">8/8</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Payrolls Processed</span><span class="t-val">8,500+</span></div>
+    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">R&D Incentives Claimed</span><span class="t-val">A$45M+</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">€</span><span class="t-label">Revenue Managed</span><span class="t-val">€120M+</span></div>
+    <div class="ticker-item"><span class="t-label">Monthly Transactions</span><span class="t-val">35,000+</span></div>
     <span class="ticker-sep">|</span>
     <!-- Duplicate for seamless scroll -->
-    <div class="ticker-item"><span class="t-label">Reconciled Today</span><span class="t-val">$1.8M</span><span class="t-change t-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> 12%</span></div>
+    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">BAS Lodged</span><span class="t-val">A$1.2M</span><span class="t-change t-up"><i class="fas fa-check" style="font-size:.5rem"></i></span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">₹</span><span class="t-label">Processed MTD</span><span class="t-val">₹45Cr</span></div>
+    <div class="ticker-item"><span class="t-label">GST Compliance</span><span class="t-val">100%</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">Tax Returns Filed</span><span class="t-val">1,240</span><span class="t-change t-up"><i class="fas fa-check" style="font-size:.5rem"></i></span></div>
+    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">Superannuation Processed</span><span class="t-val">A$85M+</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Accuracy Rate</span><span class="t-val">99.8%</span></div>
+    <div class="ticker-item"><span class="t-label">ATO Accuracy</span><span class="t-val">99.8%</span><span class="t-change t-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> Perfect</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">$</span><span class="t-label">Cost Savings</span><span class="t-val">50%</span><span class="t-change t-up">avg</span></div>
+    <div class="ticker-item"><span class="t-label">States Covered</span><span class="t-val">8/8</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Payrolls Processed</span><span class="t-val">8,500+</span></div>
+    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">R&D Incentives Claimed</span><span class="t-val">A$45M+</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">€</span><span class="t-label">Revenue Managed</span><span class="t-val">€120M+</span></div>
+    <div class="ticker-item"><span class="t-label">Monthly Transactions</span><span class="t-val">35,000+</span></div>
   </div>
 </div>
 
 <!-- LOGOS BAR -->
 <div class="logos-bar reveal">
   <div class="logos-bar-inner">
-    <p>Trusted by Leading Businesses Worldwide</p>
+    <p>Trusted by Leading Australian Businesses</p>
     <div class="logos-row">
-      <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">QuickBooks</text></svg></div>
       <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">Xero</text></svg></div>
-      <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">NetSuite</text></svg></div>
+      <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">MYOB</text></svg></div>
+      <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">KeyPay</text></svg></div>
       <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">Stripe</text></svg></div>
-      <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">Shopify</text></svg></div>
+      <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">Square</text></svg></div>
     </div>
   </div>
 </div>
@@ -1921,50 +1917,50 @@ footer {
 <!-- SERVICES SECTION -->
 <section class="section" id="services">
   <div class="section-header reveal">
-    <h2>Services for Your Growing Business</h2>
-    <p>We offer a comprehensive suite of accounting and financial advisory services tailored to your unique needs.</p>
+    <h2>Services for Australian Businesses</h2>
+    <p>Comprehensive accounting and advisory services tailored to Australian compliance and tax requirements.</p>
   </div>
   <div class="services-grid">
     <div class="service-card reveal stagger-1">
       <div class="s-number">01</div>
-      <i class="fas fa-book"></i>
-      <h3>Bookkeeping</h3>
-      <p>Accurate, timely bookkeeping services that keep your financial records in perfect order. Daily transaction recording, reconciliation, and reporting.</p>
+      <i class="fas fa-receipt"></i>
+      <h3>BAS & GST Lodgement</h3>
+      <p>Quarterly BAS preparation, GST reconciliation, and ATO lodgement. We ensure on-time filing and accurate reporting every quarter.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-2">
       <div class="s-number">02</div>
-      <i class="fas fa-file-invoice"></i>
-      <h3>Tax Filing & Compliance</h3>
-      <p>Expert tax planning and filing services across multiple jurisdictions. We ensure full compliance with international tax requirements.</p>
+      <i class="fas fa-book"></i>
+      <h3>AASB-Compliant Bookkeeping</h3>
+      <p>Daily transaction recording following Australian Accounting Standards. Complete reconciliation, ledger management, and financial records.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-3">
       <div class="s-number">03</div>
-      <i class="fas fa-chart-pie"></i>
-      <h3>Financial Advisory</h3>
-      <p>Strategic financial guidance to optimize your business performance. From forecasting to growth strategy, we're your trusted partner.</p>
+      <i class="fas fa-file-invoice-dollar"></i>
+      <h3>ATO Tax Preparation</h3>
+      <p>Company tax returns, individual returns, trust returns, and partnership returns. Expert tax planning and compliance for all entity types.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-4">
       <div class="s-number">04</div>
-      <i class="fas fa-money-bill-wave"></i>
-      <h3>Sales Tax Filing</h3>
-      <p>Comprehensive sales tax and VAT management for multi-state and international operations. Accurate filings, zero penalties.</p>
+      <i class="fas fa-users"></i>
+      <h3>Australian Payroll & Super</h3>
+      <p>STP reporting, superannuation guarantee compliance, and award interpretation. Complete payroll management for all business sizes.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-5">
       <div class="s-number">05</div>
-      <i class="fas fa-users"></i>
-      <h3>Payroll Processing</h3>
-      <p>End-to-end payroll management including tax withholdings, filings, and benefits administration across all locations.</p>
+      <i class="fas fa-chart-pie"></i>
+      <h3>Financial Reporting</h3>
+      <p>AASB-compliant statements, ASIC-ready reports, and board packages. Professional financial reporting tailored to your needs.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-6">
       <div class="s-number">06</div>
-      <i class="fas fa-crystal-ball"></i>
-      <h3>Forecasting & Strategy</h3>
-      <p>Data-driven financial forecasting and strategic planning to guide your business decisions and maximize profitability.</p>
+      <i class="fas fa-lightbulb"></i>
+      <h3>Business Advisory</h3>
+      <p>Cash flow forecasting, R&D tax incentive claims, and growth strategy. Strategic guidance to help your business scale.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
@@ -1974,15 +1970,15 @@ footer {
 <section class="section about-section" id="about">
   <div class="about-content">
     <div class="about-text reveal-left">
-      <h3>Why Choose DiligenceOS?</h3>
-      <p>We're not just accountants—we're partners in your financial success. With over a decade of experience serving ambitious businesses globally, we bring expertise, precision, and dedication to every engagement.</p>
-      <p>Our team combines deep technical expertise with a commitment to exceptional service. We leverage technology to streamline processes while maintaining the human touch that makes all the difference.</p>
+      <h3>Why Choose DiligenceOS for Australian Accounting?</h3>
+      <p>We specialise in Australian tax law and accounting standards. Our team understands the unique requirements of businesses across all states and territories, from ATO compliance to superannuation obligations.</p>
+      <p>With over 10 years of experience serving Australian businesses, we combine deep technical expertise with a commitment to exceptional service. We stay current with all ATO changes, GST requirements, and AASB standards.</p>
       <ul class="about-features">
-        <li><i class="fas fa-check-circle"></i> <strong>500+ Clients Worldwide</strong> — Serving businesses across 15+ countries</li>
-        <li><i class="fas fa-check-circle"></i> <strong>99.8% Accuracy Rate</strong> — Precision in every number</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Expert Team</strong> — CAs, CPAs, and financial advisors</li>
-        <li><i class="fas fa-check-circle"></i> <strong>24/7 Support</strong> — Always available when you need us</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Technology-Enabled</strong> — Modern tools, human expertise</li>
+        <li><i class="fas fa-check-circle"></i> <strong>200+ Australian Clients</strong> — Serving businesses across all states & territories</li>
+        <li><i class="fas fa-check-circle"></i> <strong>99.8% ATO Accuracy</strong> — Precision in every filing</li>
+        <li><i class="fas fa-check-circle"></i> <strong>CA/CPA Australia Team</strong> — Qualified Australian accountants</li>
+        <li><i class="fas fa-check-circle"></i> <strong>AASB Expert</strong> — Full Australian Accounting Standards compliance</li>
+        <li><i class="fas fa-check-circle"></i> <strong>Xero & MYOB Certified</strong> — Expert integration with Australian platforms</li>
         <li><i class="fas fa-check-circle"></i> <strong>Cost Savings</strong> — 40-50% savings vs. in-house accounting</li>
       </ul>
     </div>
@@ -1995,29 +1991,29 @@ footer {
 <!-- PROCESS SECTION -->
 <section class="section process-section" id="process">
   <div class="section-header reveal">
-    <h2>Our Proven Process</h2>
-    <p>A streamlined, efficient approach to managing your finances.</p>
+    <h2>Our Australian Accounting Process</h2>
+    <p>A streamlined approach to managing your Australian finances and compliance.</p>
   </div>
   <div class="process-track">
     <div class="process-step reveal stagger-1">
       <div class="process-dot"><i class="fas fa-handshake"></i></div>
       <h4>Initial Consultation</h4>
-      <p>We understand your business, goals, and current financial situation.</p>
+      <p>We understand your business, compliance needs, and Australian tax situation.</p>
     </div>
     <div class="process-step reveal stagger-2">
       <div class="process-dot"><i class="fas fa-cogs"></i></div>
       <h4>Setup & Integration</h4>
-      <p>We integrate with your accounting software and establish processes.</p>
+      <p>We integrate with Xero, MYOB, or your existing accounting software seamlessly.</p>
     </div>
     <div class="process-step reveal stagger-3">
       <div class="process-dot"><i class="fas fa-sync"></i></div>
       <h4>Ongoing Management</h4>
-      <p>Regular monitoring, reconciliation, and reporting every month.</p>
+      <p>Monthly bookkeeping, quarterly BAS preparation, and annual tax compliance.</p>
     </div>
     <div class="process-step reveal stagger-4">
       <div class="process-dot"><i class="fas fa-chart-line"></i></div>
-      <h4>Growth & Optimization</h4>
-      <p>Strategic insights and advice to help your business scale.</p>
+      <h4>Growth & Strategy</h4>
+      <p>Strategic insights and tax optimisation to help your business scale profitably.</p>
     </div>
   </div>
 </section>
@@ -2026,39 +2022,39 @@ footer {
 <section class="section industries-section" id="industries">
   <div class="industries-content">
     <div class="industry-header reveal">
-      <h2>Industries We Serve</h2>
-      <p>Specialized expertise across diverse sectors and business types.</p>
+      <h2>Industries We Serve in Australia</h2>
+      <p>Specialised expertise across diverse Australian sectors and business types.</p>
     </div>
     <div class="industries-grid">
       <div class="industry-card reveal stagger-1">
         <i class="fas fa-shopping-cart"></i>
         <h4>E-Commerce & Retail</h4>
-        <p>Multi-channel sales management, inventory accounting, and marketplace integration for online retailers.</p>
+        <p>GST on online sales, marketplace accounting, multi-channel management, and inventory accounting for Australian online retailers.</p>
       </div>
       <div class="industry-card reveal stagger-2">
-        <i class="fas fa-hospital"></i>
-        <h4>Healthcare & Medical</h4>
-        <p>HIPAA-compliant accounting, insurance claims management, and medical practice financial planning.</p>
+        <i class="fas fa-code"></i>
+        <h4>Technology & SaaS</h4>
+        <p>R&D tax incentive claims, ASX listing preparation, startup accounting, and equity management for Australian tech companies.</p>
       </div>
       <div class="industry-card reveal stagger-3">
-        <i class="fas fa-graduation-cap"></i>
-        <h4>Education & Training</h4>
-        <p>Student fee management, grant accounting, and educational institution financial oversight.</p>
+        <i class="fas fa-hospital"></i>
+        <h4>Healthcare & Allied Health</h4>
+        <p>Medicare billing accounting, practice management accounting, and ATO compliance for healthcare professionals.</p>
       </div>
       <div class="industry-card reveal stagger-4">
-        <i class="fas fa-code"></i>
-        <h4>Technology & Startups</h4>
-        <p>Startup-friendly accounting, equity management, and investor reporting for tech companies.</p>
+        <i class="fas fa-building"></i>
+        <h4>Property & Construction</h4>
+        <p>Negative gearing planning, capital gains tax planning, trust structures, and project-based accounting for construction businesses.</p>
       </div>
       <div class="industry-card reveal stagger-5">
-        <i class="fas fa-building"></i>
-        <h4>Real Estate & Property</h4>
-        <p>Property accounting, lease management, and real estate investment analysis.</p>
+        <i class="fas fa-gem"></i>
+        <h4>Mining & Resources</h4>
+        <p>Royalty accounting, FIFO workforce management, resource management accounting, and environmental compliance reporting.</p>
       </div>
       <div class="industry-card reveal stagger-6">
-        <i class="fas fa-restaurant"></i>
-        <h4>Hospitality & Food</h4>
-        <p>Restaurant accounting, multi-location management, and hospitality-specific compliance.</p>
+        <i class="fas fa-utensils"></i>
+        <h4>Hospitality & Tourism</h4>
+        <p>Award wage compliance, tip reporting, seasonal forecasting, and multi-location accounting for hospitality businesses.</p>
       </div>
     </div>
   </div>
@@ -2067,8 +2063,8 @@ footer {
 <!-- TESTIMONIALS SECTION -->
 <section class="section testimonials-section" id="testimonials">
   <div class="section-header reveal">
-    <h2>What Our Clients Say</h2>
-    <p>Trusted by business leaders and entrepreneurs who demand excellence.</p>
+    <h2>What Australian Clients Say</h2>
+    <p>Trusted by business leaders and entrepreneurs across Australia.</p>
   </div>
   <div class="testimonials-grid">
     <div class="testimonial-card reveal stagger-1">
@@ -2079,9 +2075,9 @@ footer {
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
       </div>
-      <p class="testimonial-text">"DiligenceOS has been a game-changer for our business. Their attention to detail and proactive approach have saved us thousands in tax optimization."</p>
-      <div class="testimonial-author">Sarah Johnson</div>
-      <div class="testimonial-role">CEO, TechFlow Inc.</div>
+      <p class="testimonial-text">"DiligenceOS transformed our BAS lodgement process. What used to take our team days is now handled accurately and on time, every quarter."</p>
+      <div class="testimonial-author">Emily Watson</div>
+      <div class="testimonial-role">Finance Director, ShopAus Digital, Sydney</div>
     </div>
     <div class="testimonial-card reveal stagger-2">
       <div class="testimonial-stars">
@@ -2091,9 +2087,9 @@ footer {
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
       </div>
-      <p class="testimonial-text">"Finally, an accounting team that understands global business. They handle our multi-country operations flawlessly and always keep us audit-ready."</p>
-      <div class="testimonial-author">Rajesh Kumar</div>
-      <div class="testimonial-role">Founder, Global Ventures</div>
+      <p class="testimonial-text">"Their understanding of Australian tax law is exceptional. They helped us claim A$340K in R&D tax incentives we didn't know we qualified for."</p>
+      <div class="testimonial-author">James Li</div>
+      <div class="testimonial-role">CTO, CloudBridge Technologies, Melbourne</div>
     </div>
     <div class="testimonial-card reveal stagger-3">
       <div class="testimonial-stars">
@@ -2103,9 +2099,9 @@ footer {
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
       </div>
-      <p class="testimonial-text">"The professionalism and responsiveness from the DiligenceOS team is outstanding. They're truly invested in our financial success."</p>
-      <div class="testimonial-author">Emma Chen</div>
-      <div class="testimonial-role">CFO, Growth Partners LLC</div>
+      <p class="testimonial-text">"Moving our bookkeeping to DiligenceOS saved us 50% compared to our previous firm, with better accuracy and faster turnarounds."</p>
+      <div class="testimonial-author">Sarah Mitchell</div>
+      <div class="testimonial-role">Owner, Coastal Construction Group, Brisbane</div>
     </div>
   </div>
 </section>
@@ -2113,56 +2109,56 @@ footer {
 <!-- PRICING SECTION -->
 <section class="section pricing-section" id="pricing">
   <div class="section-header reveal">
-    <h2>Simple, Transparent Pricing</h2>
-    <p>No hidden fees. Choose the plan that fits your business.</p>
+    <h2>Simple, Transparent Australian Pricing</h2>
+    <p>No hidden fees. Choose the plan that fits your business in AUD.</p>
   </div>
   <div class="pricing-grid">
     <div class="pricing-card reveal stagger-1">
       <div class="pricing-name">Starter</div>
       <div class="pricing-desc">For small businesses and freelancers</div>
       <div class="pricing-price">
-        <span class="currency">$</span>
-        <span class="amount">499</span>
+        <span class="currency">A$</span>
+        <span class="amount">699</span>
         <span class="period">/month</span>
       </div>
       <ul class="pricing-features">
-        <li><i class="fas fa-check"></i> Monthly bookkeeping</li>
-        <li><i class="fas fa-check"></i> Bank reconciliation</li>
+        <li><i class="fas fa-check"></i> Quarterly BAS lodgement</li>
+        <li><i class="fas fa-check"></i> Bookkeeping & reconciliation</li>
+        <li><i class="fas fa-check"></i> Monthly financial reports</li>
         <li><i class="fas fa-check"></i> Basic tax planning</li>
-        <li><i class="fas fa-check"></i> Monthly reports</li>
       </ul>
       <button class="btn btn-secondary">Get Started</button>
     </div>
     <div class="pricing-card featured reveal stagger-2">
       <div class="pricing-badge">Most Popular</div>
-      <div class="pricing-name">Professional</div>
-      <div class="pricing-desc">For growing companies</div>
+      <div class="pricing-name">Growth</div>
+      <div class="pricing-desc">For growing Australian companies</div>
       <div class="pricing-price">
-        <span class="currency">$</span>
-        <span class="amount">999</span>
+        <span class="currency">A$</span>
+        <span class="amount">1,499</span>
         <span class="period">/month</span>
       </div>
       <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> Full BAS & GST management</li>
         <li><i class="fas fa-check"></i> Complete bookkeeping</li>
-        <li><i class="fas fa-check"></i> Multi-location support</li>
-        <li><i class="fas fa-check"></i> Tax compliance</li>
-        <li><i class="fas fa-check"></i> Quarterly reviews</li>
-        <li><i class="fas fa-check"></i> Financial advisory</li>
+        <li><i class="fas fa-check"></i> Payroll & superannuation</li>
+        <li><i class="fas fa-check"></i> Quarterly strategy reviews</li>
+        <li><i class="fas fa-check"></i> Tax planning & advisory</li>
       </ul>
       <button class="btn btn-primary">Get Started</button>
     </div>
     <div class="pricing-card reveal stagger-3">
       <div class="pricing-name">Enterprise</div>
-      <div class="pricing-desc">For established organizations</div>
+      <div class="pricing-desc">For established organisations</div>
       <div class="pricing-price">
-        <span class="currency">$</span>
+        <span class="currency">A$</span>
         <span class="amount">Custom</span>
       </div>
       <ul class="pricing-features">
         <li><i class="fas fa-check"></i> Full-service accounting</li>
-        <li><i class="fas fa-check"></i> Global tax planning</li>
-        <li><i class="fas fa-check"></i> Dedicated account team</li>
-        <li><i class="fas fa-check"></i> Strategic consulting</li>
+        <li><i class="fas fa-check"></i> Multi-entity management</li>
+        <li><i class="fas fa-check"></i> Dedicated AU team</li>
+        <li><i class="fas fa-check"></i> CFO advisory services</li>
         <li><i class="fas fa-check"></i> SLA guarantee</li>
       </ul>
       <button class="btn btn-secondary">Contact Us</button>
@@ -2174,72 +2170,72 @@ footer {
 <section class="section faq-section" id="faq">
   <div class="section-header reveal">
     <h2>Frequently Asked Questions</h2>
-    <p>Everything you need to know about our services.</p>
+    <p>Everything you need to know about our Australian accounting services.</p>
   </div>
   <div class="faq-content">
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>How quickly can you get started with my business?</span>
+        <span>Are you ATO registered and compliant?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          Most businesses are fully onboarded and running within 2-3 weeks. We handle the setup of integrations, process documentation, and team training to ensure a smooth transition. Your dedicated account manager will guide you through every step.
+          Yes, DiligenceOS is fully ATO registered and maintains all required compliance standards. Our team includes qualified Australian accountants (CAs and CPAs) who are members of professional bodies. We maintain strict adherence to all ATO guidelines and Australian tax law.
         </div>
       </div>
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>Do you handle multi-country operations?</span>
+        <span>How do you handle BAS lodgement?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          Yes! We have extensive experience with multi-country accounting, tax filing, and compliance. Our team includes experts across major jurisdictions including the US, Canada, UK, EU, Australia, and India. We ensure compliance with local regulations in each country.
+          We handle complete BAS preparation quarterly (or monthly if required). This includes GST reconciliation, PAYG withheld, HELP repayments, superannuation guarantee, and any other reportable items. We lodge directly with the ATO and ensure on-time filing to avoid penalties.
         </div>
       </div>
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>What accounting software do you use?</span>
+        <span>Do you help with superannuation compliance?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          We're platform-agnostic and work with QuickBooks, Xero, NetSuite, Freshbooks, Wave, and many other systems. We integrate with your existing tools and can also recommend the best solution for your business needs.
+          Absolutely. We ensure superannuation guarantee compliance, calculate correct contributions based on ordinary time earnings, handle EISS reporting, and manage superannuation fund registrations. We keep up to date with all ATO and industry changes.
         </div>
       </div>
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>Is my financial data secure?</span>
+        <span>Do you work with Xero and MYOB?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          Absolutely. We use bank-level encryption, SOC 2 Type II compliance, and secure cloud infrastructure. Your data is backed up automatically and we maintain strict access controls. Your confidentiality and security are our top priorities.
+          Yes, we're certified in both Xero and MYOB, which are the most popular accounting platforms in Australia. We integrate seamlessly with your existing software and can help you transition to the best platform for your business needs.
         </div>
       </div>
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>Can you help with tax optimization?</span>
+        <span>Can you help with R&D tax incentive claims?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          Yes, tax optimization is a core part of what we do. Our team reviews your business structure, deductions, timing strategies, and more to minimize your tax liability legally. This often pays for our services many times over.
+          Yes, we specialise in R&D tax incentive claims. Our team understands the ATO's requirements and can help identify eligible R&D activities, maintain proper documentation, and lodge successful claims. This often results in significant tax offsets for Australian companies.
         </div>
       </div>
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>What's your cancellation policy?</span>
+        <span>Are you available across all Australian states?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          We're confident you'll love working with us. You can cancel anytime with 30 days notice. We'll transition your books and provide full documentation to ensure continuity with any future accountant.
+          Yes, we serve businesses across all 8 Australian states and territories. Whether you're in NSW, Victoria, Queensland, WA, SA, Tasmania, ACT, or NT, we have expertise in local tax requirements and can provide comprehensive accounting services.
         </div>
       </div>
     </div>
@@ -2249,24 +2245,24 @@ footer {
 <section class="counters-section">
   <div class="counters-grid">
     <div class="counter-card reveal stagger-1">
-      <div class="counter-icon ci-1"><i class="fas fa-users"></i></div>
-      <div class="counter-val"><span class="counter-curr">$</span><span data-count="250000000">0</span></div>
-      <div class="counter-label">Assets Under Management</div>
+      <div class="counter-icon ci-1"><i class="fas fa-dollar-sign"></i></div>
+      <div class="counter-val"><span class="counter-curr">A$</span><span data-count="85000000">0</span></div>
+      <div class="counter-label">Revenue Managed</div>
     </div>
     <div class="counter-card reveal stagger-2">
       <div class="counter-icon ci-2"><i class="fas fa-file-check"></i></div>
-      <div class="counter-val"><span data-count="8500">0</span></div>
-      <div class="counter-label">Tax Returns Filed Annually</div>
+      <div class="counter-val"><span data-count="680">0</span></div>
+      <div class="counter-label">Tax Returns Filed</div>
     </div>
     <div class="counter-card reveal stagger-3">
-      <div class="counter-icon ci-3"><i class="fas fa-clock"></i></div>
-      <div class="counter-val"><span data-count="12">0</span></div>
-      <div class="counter-label">Years of Experience</div>
+      <div class="counter-icon ci-3"><i class="fas fa-receipt"></i></div>
+      <div class="counter-val"><span data-count="35000">0</span><span class="counter-curr">+</span></div>
+      <div class="counter-label">Monthly Transactions</div>
     </div>
     <div class="counter-card reveal stagger-4">
-      <div class="counter-icon ci-4"><i class="fas fa-smile"></i></div>
-      <div class="counter-val"><span data-count="99">0</span><span class="counter-curr">%</span></div>
-      <div class="counter-label">Client Retention Rate</div>
+      <div class="counter-icon ci-4"><i class="fas fa-map"></i></div>
+      <div class="counter-val"><span data-count="8">0</span></div>
+      <div class="counter-label">States & Territories</div>
     </div>
   </div>
 </section>
@@ -2277,29 +2273,29 @@ footer {
     <div class="comp-label">Certified & Compliant</div>
     <div class="compliance-grid">
       <div class="comp-badge cb-1">
-        <div class="comp-icon"><i class="fas fa-certificate"></i></div>
-        <div class="comp-name">ISO 9001</div>
-        <div class="comp-desc">Quality Management</div>
-      </div>
-      <div class="comp-badge cb-2">
         <div class="comp-icon"><i class="fas fa-lock"></i></div>
         <div class="comp-name">SOC 2 Type II</div>
         <div class="comp-desc">Data Security</div>
       </div>
+      <div class="comp-badge cb-2">
+        <div class="comp-icon"><i class="fas fa-certificate"></i></div>
+        <div class="comp-name">ATO Registered Agent</div>
+        <div class="comp-desc">Australian Compliance</div>
+      </div>
       <div class="comp-badge cb-3">
-        <div class="comp-icon"><i class="fas fa-shield-alt"></i></div>
-        <div class="comp-name">GDPR Compliant</div>
-        <div class="comp-desc">Privacy Protected</div>
+        <div class="comp-icon"><i class="fas fa-user-tie"></i></div>
+        <div class="comp-name">CA ANZ Member</div>
+        <div class="comp-desc">Chartered Accountant</div>
       </div>
       <div class="comp-badge cb-4">
         <div class="comp-icon"><i class="fas fa-balance-scale"></i></div>
-        <div class="comp-name">Licensed CPAs</div>
+        <div class="comp-name">CPA Australia</div>
         <div class="comp-desc">Professional Standards</div>
       </div>
       <div class="comp-badge cb-5">
-        <div class="comp-icon"><i class="fas fa-user-check"></i></div>
-        <div class="comp-name">HIPAA Certified</div>
-        <div class="comp-desc">Healthcare Compliant</div>
+        <div class="comp-icon"><i class="fas fa-check"></i></div>
+        <div class="comp-name">Xero Certified</div>
+        <div class="comp-desc">Gold Partner</div>
       </div>
     </div>
 </section>
@@ -2308,51 +2304,51 @@ footer {
 <section class="section global-section" id="global">
   <div class="global-content">
     <div class="global-header reveal">
-      <h2>Serving Businesses Worldwide</h2>
-      <p>With offices and operations across multiple continents, we're truly global.</p>
+      <h2>Our Australian Offices</h2>
+      <p>Serving businesses across all Australian states and territories with local expertise.</p>
     </div>
     <div class="global-grid">
       <div class="global-card reveal stagger-1">
-        <div class="global-flag">🇺🇸</div>
-        <h3>United States</h3>
-        <div class="city">Serving American Businesses</div>
-        <div class="ops">Full service accounting & tax compliance</div>
-        <p style="margin-top:12px">From startups in Silicon Valley to established corporations across the nation, we handle US accounting with expertise in all 50 states.</p>
+        <div class="global-flag">🇦🇺</div>
+        <h3>Sydney, NSW</h3>
+        <div class="city">Australian Headquarters</div>
+        <div class="ops">Full service accounting & advisory</div>
+        <p style="margin-top:12px">Level 12, 123 Pitt Street, Sydney NSW 2000. Our main office serving NSW and surrounding regions with comprehensive accounting and tax services.</p>
       </div>
       <div class="global-card reveal stagger-2">
-        <div class="global-flag">🇨🇦</div>
-        <h3>Canada</h3>
-        <div class="city">Serving Canadian Businesses</div>
-        <div class="ops">Remote operations & support</div>
-        <p style="margin-top:12px">We provide comprehensive accounting services for Canadian companies, handling both federal and provincial compliance requirements.</p>
+        <div class="global-flag">🏢</div>
+        <h3>Melbourne, VIC</h3>
+        <div class="city">Victorian Operations</div>
+        <div class="ops">Accounting & bookkeeping</div>
+        <p style="margin-top:12px">456 Collins Street, Melbourne VIC 3000. Serving Victoria's business community with specialised accounting and BAS lodgement services.</p>
       </div>
       <div class="global-card reveal stagger-3">
-        <div class="global-flag">🇮🇳</div>
-        <h3>India</h3>
-        <div class="city">Serving Indian Businesses</div>
-        <div class="ops">Domestic & international support</div>
-        <p style="margin-top:12px">Expert in Indian tax law, GST compliance, and accounting for companies operating domestically and internationally.</p>
+        <div class="global-flag">🌏</div>
+        <h3>Nationwide</h3>
+        <div class="city">All States & Territories</div>
+        <div class="ops">Remote & local support</div>
+        <p style="margin-top:12px">Serving businesses across all Australian states and territories. Whether you're in Brisbane, Perth, Adelaide, Hobart, or Canberra, we provide tailored accounting services.</p>
       </div>
       <div class="global-card reveal stagger-4">
-        <div class="global-flag">🇬🇧</div>
-        <h3>United Kingdom</h3>
-        <div class="city">Serving UK Businesses</div>
-        <div class="ops">London-based operations</div>
-        <p style="margin-top:12px">Full UK accounting, VAT compliance, and corporation tax filing for established and growing UK enterprises.</p>
+        <div class="global-flag">📱</div>
+        <h3>New Zealand</h3>
+        <div class="city">Regional Expansion</div>
+        <div class="ops">Accounting support</div>
+        <p style="margin-top:12px">Now expanding to New Zealand with the same ATO-quality standards adapted for NZ tax law and requirements for trans-Tasman businesses.</p>
       </div>
       <div class="global-card reveal stagger-5">
-        <div class="global-flag">🇦🇺</div>
-        <h3>Australia</h3>
-        <div class="city">Serving Australian Businesses</div>
-        <div class="ops">Sydney & Melbourne presence</div>
-        <p style="margin-top:12px">Australian accounting expertise including GST, tax compliance, and financial advisory for local and international companies.</p>
+        <div class="global-flag">🤝</div>
+        <h3>Virtual Consultations</h3>
+        <div class="city">Available 24/7</div>
+        <div class="ops">Online & phone support</div>
+        <p style="margin-top:12px">Get expert advice via video call, email, or phone. Perfect for busy business owners who need flexible, responsive accounting support.</p>
       </div>
       <div class="global-card reveal stagger-6">
-        <div class="global-flag">🌍</div>
-        <h3>Other Regions</h3>
-        <div class="city">Expanding Globally</div>
-        <div class="ops">Growing presence worldwide</div>
-        <p style="margin-top:12px">We're actively expanding to serve more regions. Contact us to discuss your international accounting needs.</p>
+        <div class="global-flag">🌐</div>
+        <h3>International Clients</h3>
+        <div class="city">Global Expansion</div>
+        <div class="ops">Australian & NZ focus</div>
+        <p style="margin-top:12px">Supporting Australian expats, international business owners, and multinational companies with Australian operations and tax obligations.</p>
       </div>
     </div>
   </div>
@@ -2361,10 +2357,10 @@ footer {
 <!-- CTA SECTION -->
 <section class="cta-section">
   <div class="cta-content">
-    <h2>Ready to Elevate Your Financial Operations?</h2>
-    <p>Join 500+ businesses worldwide that trust DiligenceOS for precision, transparency, and growth.</p>
+    <h2>Ready to Streamline Your Australian Accounting?</h2>
+    <p>Join 200+ Australian businesses that trust DiligenceOS for ATO-compliant financial operations, expert tax planning, and reliable advisory.</p>
     <div class="cta-buttons">
-      <a href="#contact" class="btn">Start Free Consultation</a>
+      <a href="#contact" class="btn">Schedule Free Consultation</a>
       <a href="#services" class="btn">View All Services</a>
     </div>
   </div>
@@ -2374,38 +2370,38 @@ footer {
 <section class="section contact-section" id="contact">
   <div class="contact-header">
     <div class="eyebrow">Get in Touch</div>
-    <h2>Let's Start a Conversation</h2>
-    <p>No obligations, no pressure — just answers from our expert team.</p>
+    <h2>Let's Talk Australian Accounting</h2>
+    <p>No obligations, no pressure — just expert advice from our Australian team.</p>
   </div>
   <div class="contact-content">
     <div class="contact-locations">
         <div class="location-block">
-          <div class="location-label">Headquarters</div>
+          <div class="location-label">Sydney Headquarters</div>
           <div class="location-value">
-            DiligenceOS Inc<br>
-            New York, NY 10001<br>
-            United States
+            DiligenceOS Australia<br>
+            Level 12, 123 Pitt Street<br>
+            Sydney NSW 2000
           </div>
         </div>
         <div class="location-block">
-          <div class="location-label">Mailing Address</div>
+          <div class="location-label">Melbourne Office</div>
           <div class="location-value">
-            123 Business Avenue<br>
-            New York, NY 10001<br>
-            USA
+            456 Collins Street<br>
+            Melbourne VIC 3000<br>
+            Australia
           </div>
         </div>
         <div class="location-block">
           <div class="location-label">Sales Enquiries</div>
           <div class="location-value">
-            <a href="mailto:sales@diligenceos.com" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">sales@diligenceos.com</a><br>
-            +1 (888) 445-3468
+            <a href="mailto:sales@diligenceos.com.au" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">sales@diligenceos.com.au</a><br>
+            +61 2 8012 3456
           </div>
         </div>
         <div class="location-block">
-          <div class="location-label">Operations Support</div>
+          <div class="location-label">Support & Operations</div>
           <div class="location-value">
-            <a href="mailto:support@diligenceos.com" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">support@diligenceos.com</a><br>
+            <a href="mailto:support@diligenceos.com.au" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">support@diligenceos.com.au</a><br>
             Available 24/7
           </div>
         </div>
@@ -2428,7 +2424,7 @@ footer {
           <span class="logo-name" style="color:rgba(255,255,255,.9);font-size:1.3rem">DILIGENCE<span class="logo-accent">OS</span></span>
         </div>
       </a>
-      <p>World-class bookkeeping and accounting services for ambitious businesses across the globe.</p>
+      <p>Expert accounting and advisory services for ambitious Australian businesses across all states and territories.</p>
       <div class="social-links">
         <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
@@ -2439,8 +2435,8 @@ footer {
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
+        <li><a href="#services">BAS & GST</a></li>
         <li><a href="#services">Bookkeeping</a></li>
-        <li><a href="#services">Tax Filing</a></li>
         <li><a href="#services">Payroll</a></li>
         <li><a href="#services">Advisory</a></li>
       </ul>
@@ -2449,7 +2445,7 @@ footer {
       <h4>Company</h4>
       <ul>
         <li><a href="#about">About Us</a></li>
-        <li><a href="#global">Global Presence</a></li>
+        <li><a href="#global">Our Offices</a></li>
         <li><a href="#">Careers</a></li>
       </ul>
     </div>
@@ -2457,14 +2453,14 @@ footer {
       <h4>Resources</h4>
       <ul>
         <li><a href="#">Blog</a></li>
-        <li><a href="#">Tax Guides</a></li>
+        <li><a href="#">ATO Guides</a></li>
         <li><a href="#">Case Studies</a></li>
         <li><a href="#">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2024 DiligenceOS. All rights reserved.</p>
+    <p>&copy; 2024 DiligenceOS Australia. All rights reserved.</p>
     <ul class="footer-links">
       <li><a href="#">Privacy Policy</a></li>
       <li><a href="#">Terms of Service</a></li>

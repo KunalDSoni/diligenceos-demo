@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DiligenceOS — Global Bookkeeping & Accounting Services</title>
+<title>DiligenceOS — US Accounting Services for American Businesses</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -252,17 +252,33 @@ nav {
 .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text-primary); cursor: pointer; }
 
 /* ═══════ REGION SELECTOR ═══════ */
-.region-selector { position: relative; }
-.region-trigger {
-  display: flex; align-items: center; gap: 6px;
-  padding: 7px 10px; border: 1px solid var(--border-color); border-radius: 8px;
-  background: transparent; cursor: pointer; font-family: inherit;
-  font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); transition: var(--transition);
+.region-selector {
+  position: relative;
 }
-.region-trigger:hover { border-color: var(--accent-primary); color: var(--accent-primary); background: rgba(99, 91, 255, 0.04); }
+.region-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+.region-trigger:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(99, 91, 255, 0.04);
+}
 .region-trigger-flag { font-size: 1.35rem; line-height: 1; }
 .region-chevron { font-size: 0.55rem; transition: var(--transition); margin-left: 2px; }
 .region-selector:hover .region-chevron { transform: rotate(180deg); }
+
 .region-dropdown {
   position: absolute; top: calc(100% + 10px); right: 0;
   background: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 12px;
@@ -1740,14 +1756,14 @@ footer {
 <!-- ANNOUNCEMENT BAR -->
 <div class="announcement-bar">
   <i class="fas fa-chart-bar"></i>
-  <span>Trusted by <strong>500+ businesses worldwide</strong> for precision accounting</span> —
+  <span>Trusted by <strong>500+ American businesses</strong> — multi-state tax compliance made effortless</span> —
   <a href="#contact">Schedule your free consultation <i class="fas fa-arrow-right"></i></a>
 </div>
 
 <!-- NAVIGATION -->
 <nav>
   <div class="nav-container">
-    <a href="#" class="logo">
+    <a href="/" class="logo">
       <!-- Monogram Icon -->
       <div class="logo-icon">
         <svg viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg">
@@ -1760,7 +1776,7 @@ footer {
       <!-- Wordmark -->
       <div class="logo-mark">
         <span class="logo-name">DILIGENCE<span class="logo-accent">OS</span></span>
-        <span class="logo-sub">Global Accounting & Advisory</span>
+        <span class="logo-sub">US Accounting & Advisory</span>
       </div>
     </a>
     <ul class="nav-links">
@@ -1777,13 +1793,14 @@ footer {
       </div>
       <div class="region-selector">
         <button class="region-trigger">
-          <span class="region-trigger-flag">🌎</span>
+          <span class="region-trigger-flag">🇺🇸</span>
           <i class="fas fa-chevron-down region-chevron"></i>
         </button>
         <div class="region-dropdown">
-          <a href="us/index.html" class="region-option">&#127482;&#127480;</a>
-          <a href="au/index.html" class="region-option">&#127462;&#127482;</a>
-          <a href="uk/index.html" class="region-option">&#127468;&#127463;</a>
+          <a href="../index.html" class="region-option">🌎</a>
+          <a href="../us/index.html" class="region-option active">🇺🇸</a>
+          <a href="../au/index.html" class="region-option">🇦🇺</a>
+          <a href="../uk/index.html" class="region-option">🇬🇧</a>
         </div>
       </div>
       <a href="#contact" class="nav-cta">Get Started</a>
@@ -1796,9 +1813,9 @@ footer {
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-badge"><i class="fas fa-shield-alt"></i> Trusted by 500+ Global Businesses</div>
-      <h1>Precision Accounting for <span class="accent">Ambitious Businesses</span></h1>
-      <p>From bookkeeping to strategic advisory — we deliver world-class financial operations so you can focus on scaling your business across borders.</p>
+      <div class="hero-badge"><i class="fas fa-shield-alt"></i> Trusted by 500+ US Businesses</div>
+      <h1>Precision Accounting for <span class="accent">American Enterprise</span></h1>
+      <p>From multi-state tax compliance to strategic advisory — we deliver world-class financial operations for businesses across all 50 states.</p>
       <div class="hero-buttons">
         <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Free Consultation</a>
         <a href="#services" class="btn btn-secondary"><span>Explore Services</span> <i class="fas fa-arrow-right"></i></a>
@@ -1806,11 +1823,11 @@ footer {
       <div class="hero-trust">
         <div class="hero-trust-item"><span class="number" data-count="500">0</span><span class="label">Clients</span></div>
         <div class="hero-trust-divider"></div>
+        <div class="hero-trust-item"><span class="number" data-count="50">0</span><span class="label">States</span></div>
+        <div class="hero-trust-divider"></div>
+        <div class="hero-trust-item"><span class="number" data-count="99">0</span><span class="label">Accuracy</span></div>
+        <div class="hero-trust-divider"></div>
         <div class="hero-trust-item"><span class="number" data-count="12">0</span><span class="label">Years</span></div>
-        <div class="hero-trust-divider"></div>
-        <div class="hero-trust-item"><span class="number" data-count="99">0</span><span class="label">Retention</span></div>
-        <div class="hero-trust-divider"></div>
-        <div class="hero-trust-item"><span class="number" data-count="15">0</span><span class="label">Countries</span></div>
       </div>
     </div>
     <div class="hero-visual">
@@ -1873,45 +1890,41 @@ footer {
 <!-- FINANCIAL TICKER -->
 <div class="fin-ticker">
   <div class="ticker-track" id="tickerTrack">
-    <div class="ticker-item"><span class="t-label">Reconciled Today</span><span class="t-val">$1.8M</span><span class="t-change t-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> 12%</span></div>
+    <div class="ticker-item"><span class="t-currency">$</span><span class="t-label">Reconciled Daily</span><span class="t-val">$1.8M</span><span class="t-change t-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> 12%</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">₹</span><span class="t-label">Processed MTD</span><span class="t-val">₹45Cr</span></div>
+    <div class="ticker-item"><span class="t-label">IRS Compliance</span><span class="t-val">99.8%</span><span class="t-change t-up"><i class="fas fa-check" style="font-size:.5rem"></i></span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">Tax Returns Filed</span><span class="t-val">1,240</span><span class="t-change t-up"><i class="fas fa-check" style="font-size:.5rem"></i></span></div>
+    <div class="ticker-item"><span class="t-label">States Served</span><span class="t-val">50</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Accuracy Rate</span><span class="t-val">99.8%</span></div>
+    <div class="ticker-item"><span class="t-label">Payroll Processed</span><span class="t-val">8,500+</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">$</span><span class="t-label">Cost Savings</span><span class="t-val">50%</span><span class="t-change t-up">avg</span></div>
+    <div class="ticker-item"><span class="t-currency">$</span><span class="t-label">Cost Savings</span><span class="t-val">40-50%</span><span class="t-change t-up">avg</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Payrolls Processed</span><span class="t-val">8,500+</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">€</span><span class="t-label">Revenue Managed</span><span class="t-val">€120M+</span></div>
+    <div class="ticker-item"><span class="t-label">Tax Returns Filed</span><span class="t-val">1,240+</span></div>
     <span class="ticker-sep">|</span>
     <!-- Duplicate for seamless scroll -->
-    <div class="ticker-item"><span class="t-label">Reconciled Today</span><span class="t-val">$1.8M</span><span class="t-change t-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> 12%</span></div>
+    <div class="ticker-item"><span class="t-currency">$</span><span class="t-label">Reconciled Daily</span><span class="t-val">$1.8M</span><span class="t-change t-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> 12%</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">₹</span><span class="t-label">Processed MTD</span><span class="t-val">₹45Cr</span></div>
+    <div class="ticker-item"><span class="t-label">IRS Compliance</span><span class="t-val">99.8%</span><span class="t-change t-up"><i class="fas fa-check" style="font-size:.5rem"></i></span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">Tax Returns Filed</span><span class="t-val">1,240</span><span class="t-change t-up"><i class="fas fa-check" style="font-size:.5rem"></i></span></div>
+    <div class="ticker-item"><span class="t-label">States Served</span><span class="t-val">50</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Accuracy Rate</span><span class="t-val">99.8%</span></div>
+    <div class="ticker-item"><span class="t-label">Payroll Processed</span><span class="t-val">8,500+</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">$</span><span class="t-label">Cost Savings</span><span class="t-val">50%</span><span class="t-change t-up">avg</span></div>
+    <div class="ticker-item"><span class="t-currency">$</span><span class="t-label">Cost Savings</span><span class="t-val">40-50%</span><span class="t-change t-up">avg</span></div>
     <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Payrolls Processed</span><span class="t-val">8,500+</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">€</span><span class="t-label">Revenue Managed</span><span class="t-val">€120M+</span></div>
+    <div class="ticker-item"><span class="t-label">Tax Returns Filed</span><span class="t-val">1,240+</span></div>
   </div>
 </div>
 
 <!-- LOGOS BAR -->
 <div class="logos-bar reveal">
   <div class="logos-bar-inner">
-    <p>Trusted by Leading Businesses Worldwide</p>
+    <p>Trusted by Leading American Businesses</p>
     <div class="logos-row">
       <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">QuickBooks</text></svg></div>
-      <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">Xero</text></svg></div>
-      <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">NetSuite</text></svg></div>
+      <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">ADP</text></svg></div>
+      <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">Gusto</text></svg></div>
       <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">Stripe</text></svg></div>
       <div class="logo-item"><svg viewBox="0 0 120 28" height="22"><text x="0" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#0a2540">Shopify</text></svg></div>
     </div>
@@ -1921,50 +1934,50 @@ footer {
 <!-- SERVICES SECTION -->
 <section class="section" id="services">
   <div class="section-header reveal">
-    <h2>Services for Your Growing Business</h2>
-    <p>We offer a comprehensive suite of accounting and financial advisory services tailored to your unique needs.</p>
+    <h2>US Accounting Services</h2>
+    <p>Comprehensive financial solutions designed specifically for American businesses, from startups to enterprises.</p>
   </div>
   <div class="services-grid">
     <div class="service-card reveal stagger-1">
       <div class="s-number">01</div>
-      <i class="fas fa-book"></i>
-      <h3>Bookkeeping</h3>
-      <p>Accurate, timely bookkeeping services that keep your financial records in perfect order. Daily transaction recording, reconciliation, and reporting.</p>
+      <i class="fas fa-map"></i>
+      <h3>Multi-State Tax Compliance</h3>
+      <p>Sales tax nexus, filing across all 50 states, and audit defense. We keep you compliant in every jurisdiction where you operate.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-2">
       <div class="s-number">02</div>
-      <i class="fas fa-file-invoice"></i>
-      <h3>Tax Filing & Compliance</h3>
-      <p>Expert tax planning and filing services across multiple jurisdictions. We ensure full compliance with international tax requirements.</p>
+      <i class="fas fa-book"></i>
+      <h3>US GAAP Bookkeeping</h3>
+      <p>Precise daily recording following US GAAP standards. Every transaction properly documented and categorized for accuracy.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-3">
       <div class="s-number">03</div>
-      <i class="fas fa-chart-pie"></i>
-      <h3>Financial Advisory</h3>
-      <p>Strategic financial guidance to optimize your business performance. From forecasting to growth strategy, we're your trusted partner.</p>
+      <i class="fas fa-file-invoice"></i>
+      <h3>IRS Tax Preparation</h3>
+      <p>Federal and state income tax prep, quarterly estimates, and extensions. Expert handling of complex tax situations.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-4">
       <div class="s-number">04</div>
-      <i class="fas fa-money-bill-wave"></i>
-      <h3>Sales Tax Filing</h3>
-      <p>Comprehensive sales tax and VAT management for multi-state and international operations. Accurate filings, zero penalties.</p>
+      <i class="fas fa-users"></i>
+      <h3>US Payroll Processing</h3>
+      <p>W-2 and 1099 processing, multi-state withholding, and benefits administration. Complete payroll management simplified.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-5">
       <div class="s-number">05</div>
-      <i class="fas fa-users"></i>
-      <h3>Payroll Processing</h3>
-      <p>End-to-end payroll management including tax withholdings, filings, and benefits administration across all locations.</p>
+      <i class="fas fa-chart-pie"></i>
+      <h3>Financial Reporting</h3>
+      <p>GAAP-compliant statements, board-ready dashboards, and KPI tracking. Insights that drive business decisions.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-6">
       <div class="s-number">06</div>
-      <i class="fas fa-crystal-ball"></i>
-      <h3>Forecasting & Strategy</h3>
-      <p>Data-driven financial forecasting and strategic planning to guide your business decisions and maximize profitability.</p>
+      <i class="fas fa-briefcase"></i>
+      <h3>CFO Advisory Services</h3>
+      <p>Cash flow forecasting, fundraising support, and financial strategy. Expert guidance to scale your business.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
@@ -1974,20 +1987,20 @@ footer {
 <section class="section about-section" id="about">
   <div class="about-content">
     <div class="about-text reveal-left">
-      <h3>Why Choose DiligenceOS?</h3>
-      <p>We're not just accountants—we're partners in your financial success. With over a decade of experience serving ambitious businesses globally, we bring expertise, precision, and dedication to every engagement.</p>
-      <p>Our team combines deep technical expertise with a commitment to exceptional service. We leverage technology to streamline processes while maintaining the human touch that makes all the difference.</p>
+      <h3>Why Choose DiligenceOS for US Accounting?</h3>
+      <p>We specialize in serving businesses across all 50 states with deep expertise in US tax law, GAAP standards, and IRS compliance. Our team understands the complexity of multi-state operations and delivers precision-focused accounting.</p>
+      <p>With 12+ years of experience and a proven track record of helping American businesses optimize their finances, we're the partner you can trust to handle your accounting with meticulous attention to detail.</p>
       <ul class="about-features">
-        <li><i class="fas fa-check-circle"></i> <strong>500+ Clients Worldwide</strong> — Serving businesses across 15+ countries</li>
-        <li><i class="fas fa-check-circle"></i> <strong>99.8% Accuracy Rate</strong> — Precision in every number</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Expert Team</strong> — CAs, CPAs, and financial advisors</li>
-        <li><i class="fas fa-check-circle"></i> <strong>24/7 Support</strong> — Always available when you need us</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Technology-Enabled</strong> — Modern tools, human expertise</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Cost Savings</strong> — 40-50% savings vs. in-house accounting</li>
+        <li><i class="fas fa-check-circle"></i> <strong>500+ US Clients</strong> — Serving businesses in all 50 states</li>
+        <li><i class="fas fa-check-circle"></i> <strong>99.8% Accuracy</strong> — IRS-compliant precision</li>
+        <li><i class="fas fa-check-circle"></i> <strong>CPA Team</strong> — US-certified public accountants</li>
+        <li><i class="fas fa-check-circle"></i> <strong>24/7 Support</strong> — Always here when you need us</li>
+        <li><i class="fas fa-check-circle"></i> <strong>GAAP Expert</strong> — US accounting standards mastery</li>
+        <li><i class="fas fa-check-circle"></i> <strong>Cost Savings</strong> — 40-50% savings vs. in-house</li>
       </ul>
     </div>
     <div class="about-visual reveal-right">
-      <i class="fas fa-briefcase"></i>
+      <i class="fas fa-flag-usa"></i>
     </div>
   </div>
 </section>
@@ -1995,29 +2008,29 @@ footer {
 <!-- PROCESS SECTION -->
 <section class="section process-section" id="process">
   <div class="section-header reveal">
-    <h2>Our Proven Process</h2>
-    <p>A streamlined, efficient approach to managing your finances.</p>
+    <h2>Our US Accounting Process</h2>
+    <p>A streamlined, proven approach integrating with US tools like QuickBooks, ADP, and Gusto.</p>
   </div>
   <div class="process-track">
     <div class="process-step reveal stagger-1">
       <div class="process-dot"><i class="fas fa-handshake"></i></div>
       <h4>Initial Consultation</h4>
-      <p>We understand your business, goals, and current financial situation.</p>
+      <p>We understand your business, goals, and current financial situation. Discuss your multi-state needs and compliance requirements.</p>
     </div>
     <div class="process-step reveal stagger-2">
       <div class="process-dot"><i class="fas fa-cogs"></i></div>
       <h4>Setup & Integration</h4>
-      <p>We integrate with your accounting software and establish processes.</p>
+      <p>We integrate with QuickBooks, ADP, Gusto, and establish processes tailored to your US operations.</p>
     </div>
     <div class="process-step reveal stagger-3">
       <div class="process-dot"><i class="fas fa-sync"></i></div>
       <h4>Ongoing Management</h4>
-      <p>Regular monitoring, reconciliation, and reporting every month.</p>
+      <p>Regular monitoring, reconciliation, and IRS-compliant reporting every month across all states.</p>
     </div>
     <div class="process-step reveal stagger-4">
       <div class="process-dot"><i class="fas fa-chart-line"></i></div>
       <h4>Growth & Optimization</h4>
-      <p>Strategic insights and advice to help your business scale.</p>
+      <p>Strategic tax insights and advice to maximize profitability and ensure compliance as you scale.</p>
     </div>
   </div>
 </section>
@@ -2026,39 +2039,39 @@ footer {
 <section class="section industries-section" id="industries">
   <div class="industries-content">
     <div class="industry-header reveal">
-      <h2>Industries We Serve</h2>
-      <p>Specialized expertise across diverse sectors and business types.</p>
+      <h2>Industries We Serve in the US</h2>
+      <p>Specialized expertise across diverse sectors and business types across all 50 states.</p>
     </div>
     <div class="industries-grid">
       <div class="industry-card reveal stagger-1">
         <i class="fas fa-shopping-cart"></i>
-        <h4>E-Commerce & Retail</h4>
-        <p>Multi-channel sales management, inventory accounting, and marketplace integration for online retailers.</p>
+        <h4>E-Commerce & DTC</h4>
+        <p>Shopify, Amazon seller accounting, multi-state nexus management, and sales tax compliance across all channels.</p>
       </div>
       <div class="industry-card reveal stagger-2">
-        <i class="fas fa-hospital"></i>
-        <h4>Healthcare & Medical</h4>
-        <p>HIPAA-compliant accounting, insurance claims management, and medical practice financial planning.</p>
+        <i class="fas fa-code"></i>
+        <h4>Technology & SaaS</h4>
+        <p>ASC 606 revenue recognition, startup accounting, equity management, and Series A/B financial readiness.</p>
       </div>
       <div class="industry-card reveal stagger-3">
-        <i class="fas fa-graduation-cap"></i>
-        <h4>Education & Training</h4>
-        <p>Student fee management, grant accounting, and educational institution financial oversight.</p>
+        <i class="fas fa-hospital"></i>
+        <h4>Healthcare & Medical</h4>
+        <p>HIPAA-compliant financial records, medical billing accounting, and practice financial planning.</p>
       </div>
       <div class="industry-card reveal stagger-4">
-        <i class="fas fa-code"></i>
-        <h4>Technology & Startups</h4>
-        <p>Startup-friendly accounting, equity management, and investor reporting for tech companies.</p>
+        <i class="fas fa-building"></i>
+        <h4>Real Estate</h4>
+        <p>1031 exchanges, property management accounting, depreciation schedules, and investment analysis.</p>
       </div>
       <div class="industry-card reveal stagger-5">
-        <i class="fas fa-building"></i>
-        <h4>Real Estate & Property</h4>
-        <p>Property accounting, lease management, and real estate investment analysis.</p>
+        <i class="fas fa-hammer"></i>
+        <h4>Construction</h4>
+        <p>Job costing, progress billing, retainage tracking, and project profitability analysis.</p>
       </div>
       <div class="industry-card reveal stagger-6">
-        <i class="fas fa-restaurant"></i>
-        <h4>Hospitality & Food</h4>
-        <p>Restaurant accounting, multi-location management, and hospitality-specific compliance.</p>
+        <i class="fas fa-briefcase"></i>
+        <h4>Professional Services</h4>
+        <p>Time-based billing, project profitability, consultant accounting, and realization tracking.</p>
       </div>
     </div>
   </div>
@@ -2067,8 +2080,8 @@ footer {
 <!-- TESTIMONIALS SECTION -->
 <section class="section testimonials-section" id="testimonials">
   <div class="section-header reveal">
-    <h2>What Our Clients Say</h2>
-    <p>Trusted by business leaders and entrepreneurs who demand excellence.</p>
+    <h2>What US Business Leaders Say</h2>
+    <p>Trusted by entrepreneurs and CFOs across America who demand excellence.</p>
   </div>
   <div class="testimonials-grid">
     <div class="testimonial-card reveal stagger-1">
@@ -2079,9 +2092,9 @@ footer {
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
       </div>
-      <p class="testimonial-text">"DiligenceOS has been a game-changer for our business. Their attention to detail and proactive approach have saved us thousands in tax optimization."</p>
-      <div class="testimonial-author">Sarah Johnson</div>
-      <div class="testimonial-role">CEO, TechFlow Inc.</div>
+      <p class="testimonial-text">"DiligenceOS eliminated our multi-state tax headaches. Filing across 23 states used to be a nightmare — now it's handled with zero penalties."</p>
+      <div class="testimonial-author">Sarah Chen</div>
+      <div class="testimonial-role">CFO, TechVista Labs · San Francisco, CA</div>
     </div>
     <div class="testimonial-card reveal stagger-2">
       <div class="testimonial-stars">
@@ -2091,9 +2104,9 @@ footer {
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
       </div>
-      <p class="testimonial-text">"Finally, an accounting team that understands global business. They handle our multi-country operations flawlessly and always keep us audit-ready."</p>
-      <div class="testimonial-author">Rajesh Kumar</div>
-      <div class="testimonial-role">Founder, Global Ventures</div>
+      <p class="testimonial-text">"Their GAAP compliance expertise is unmatched. Our Series B due diligence was seamless thanks to their meticulous financial records."</p>
+      <div class="testimonial-author">Marcus Johnson</div>
+      <div class="testimonial-role">CEO, GreenLeaf Commerce · New York, NY</div>
     </div>
     <div class="testimonial-card reveal stagger-3">
       <div class="testimonial-stars">
@@ -2103,9 +2116,9 @@ footer {
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
       </div>
-      <p class="testimonial-text">"The professionalism and responsiveness from the DiligenceOS team is outstanding. They're truly invested in our financial success."</p>
-      <div class="testimonial-author">Emma Chen</div>
-      <div class="testimonial-role">CFO, Growth Partners LLC</div>
+      <p class="testimonial-text">"Switching to DiligenceOS saved us 45% on accounting costs while improving accuracy. Our board packages are now delivered a week early."</p>
+      <div class="testimonial-author">Rachel Kim</div>
+      <div class="testimonial-role">VP Finance, BuildRight Group · Chicago, IL</div>
     </div>
   </div>
 </section>
@@ -2113,30 +2126,30 @@ footer {
 <!-- PRICING SECTION -->
 <section class="section pricing-section" id="pricing">
   <div class="section-header reveal">
-    <h2>Simple, Transparent Pricing</h2>
-    <p>No hidden fees. Choose the plan that fits your business.</p>
+    <h2>US Pricing in USD</h2>
+    <p>Simple, transparent pricing with no hidden fees. Choose the plan that fits your business.</p>
   </div>
   <div class="pricing-grid">
     <div class="pricing-card reveal stagger-1">
       <div class="pricing-name">Starter</div>
-      <div class="pricing-desc">For small businesses and freelancers</div>
+      <div class="pricing-desc">Small business bookkeeping</div>
       <div class="pricing-price">
         <span class="currency">$</span>
         <span class="amount">499</span>
         <span class="period">/month</span>
       </div>
       <ul class="pricing-features">
-        <li><i class="fas fa-check"></i> Monthly bookkeeping</li>
         <li><i class="fas fa-check"></i> Bank reconciliation</li>
+        <li><i class="fas fa-check"></i> Monthly financials</li>
         <li><i class="fas fa-check"></i> Basic tax planning</li>
-        <li><i class="fas fa-check"></i> Monthly reports</li>
+        <li><i class="fas fa-check"></i> Single state support</li>
       </ul>
       <button class="btn btn-secondary">Get Started</button>
     </div>
     <div class="pricing-card featured reveal stagger-2">
       <div class="pricing-badge">Most Popular</div>
-      <div class="pricing-name">Professional</div>
-      <div class="pricing-desc">For growing companies</div>
+      <div class="pricing-name">Growth</div>
+      <div class="pricing-desc">Full-service + payroll</div>
       <div class="pricing-price">
         <span class="currency">$</span>
         <span class="amount">999</span>
@@ -2144,8 +2157,8 @@ footer {
       </div>
       <ul class="pricing-features">
         <li><i class="fas fa-check"></i> Complete bookkeeping</li>
-        <li><i class="fas fa-check"></i> Multi-location support</li>
-        <li><i class="fas fa-check"></i> Tax compliance</li>
+        <li><i class="fas fa-check"></i> Payroll processing</li>
+        <li><i class="fas fa-check"></i> Multi-state tax</li>
         <li><i class="fas fa-check"></i> Quarterly reviews</li>
         <li><i class="fas fa-check"></i> Financial advisory</li>
       </ul>
@@ -2153,16 +2166,16 @@ footer {
     </div>
     <div class="pricing-card reveal stagger-3">
       <div class="pricing-name">Enterprise</div>
-      <div class="pricing-desc">For established organizations</div>
+      <div class="pricing-desc">Multi-entity consolidation</div>
       <div class="pricing-price">
         <span class="currency">$</span>
         <span class="amount">Custom</span>
       </div>
       <ul class="pricing-features">
         <li><i class="fas fa-check"></i> Full-service accounting</li>
-        <li><i class="fas fa-check"></i> Global tax planning</li>
-        <li><i class="fas fa-check"></i> Dedicated account team</li>
-        <li><i class="fas fa-check"></i> Strategic consulting</li>
+        <li><i class="fas fa-check"></i> CFO advisory</li>
+        <li><i class="fas fa-check"></i> Dedicated team</li>
+        <li><i class="fas fa-check"></i> Multi-entity support</li>
         <li><i class="fas fa-check"></i> SLA guarantee</li>
       </ul>
       <button class="btn btn-secondary">Contact Us</button>
@@ -2173,73 +2186,73 @@ footer {
 <!-- FAQ SECTION -->
 <section class="section faq-section" id="faq">
   <div class="section-header reveal">
-    <h2>Frequently Asked Questions</h2>
-    <p>Everything you need to know about our services.</p>
+    <h2>US Accounting Questions</h2>
+    <p>Answers to common questions about our US services.</p>
   </div>
   <div class="faq-content">
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>How quickly can you get started with my business?</span>
+        <span>Do you handle multi-state tax compliance?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          Most businesses are fully onboarded and running within 2-3 weeks. We handle the setup of integrations, process documentation, and team training to ensure a smooth transition. Your dedicated account manager will guide you through every step.
+          Yes, absolutely. We specialize in multi-state tax compliance and can handle sales tax, income tax, and payroll tax across all 50 states. We manage nexus determinations, filing obligations, and audit defense.
         </div>
       </div>
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>Do you handle multi-country operations?</span>
+        <span>Are you IRS authorized to file tax returns?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          Yes! We have extensive experience with multi-country accounting, tax filing, and compliance. Our team includes experts across major jurisdictions including the US, Canada, UK, EU, Australia, and India. We ensure compliance with local regulations in each country.
+          Yes, our team includes IRS-authorized e-file preparers. We can file 1040s, 1065s, 1120s, and other federal returns directly with the IRS. We maintain current PTIN certifications and compliance standards.
         </div>
       </div>
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>What accounting software do you use?</span>
+        <span>What's your experience with US GAAP accounting?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          We're platform-agnostic and work with QuickBooks, Xero, NetSuite, Freshbooks, Wave, and many other systems. We integrate with your existing tools and can also recommend the best solution for your business needs.
+          We're experts in US Generally Accepted Accounting Principles (GAAP). All our bookkeeping, financial statements, and reporting follow GAAP standards, ensuring compliance with US accounting regulations and investor expectations.
         </div>
       </div>
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>Is my financial data secure?</span>
+        <span>Do you work with QuickBooks, ADP, and Gusto?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          Absolutely. We use bank-level encryption, SOC 2 Type II compliance, and secure cloud infrastructure. Your data is backed up automatically and we maintain strict access controls. Your confidentiality and security are our top priorities.
+          Yes, we're QuickBooks ProAdvisors and trained on ADP and Gusto payroll platforms. We integrate seamlessly with these tools and can recommend the best solution for your business needs.
         </div>
       </div>
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>Can you help with tax optimization?</span>
+        <span>How quickly can you get started?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          Yes, tax optimization is a core part of what we do. Our team reviews your business structure, deductions, timing strategies, and more to minimize your tax liability legally. This often pays for our services many times over.
+          Most businesses are fully onboarded within 2-3 weeks. We handle integration with your accounting systems, establish processes, and ensure proper compliance setup before we begin managing your finances.
         </div>
       </div>
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>What's your cancellation policy?</span>
+        <span>What about data security and compliance?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          We're confident you'll love working with us. You can cancel anytime with 30 days notice. We'll transition your books and provide full documentation to ensure continuity with any future accountant.
+          We maintain SOC 2 Type II compliance, use bank-level encryption, and comply with all IRS data security requirements. Your financial data is protected with automatic backups, strict access controls, and confidentiality agreements.
         </div>
       </div>
     </div>
@@ -2249,24 +2262,24 @@ footer {
 <section class="counters-section">
   <div class="counters-grid">
     <div class="counter-card reveal stagger-1">
-      <div class="counter-icon ci-1"><i class="fas fa-users"></i></div>
-      <div class="counter-val"><span class="counter-curr">$</span><span data-count="250000000">0</span></div>
-      <div class="counter-label">Assets Under Management</div>
+      <div class="counter-icon ci-1"><i class="fas fa-dollar-sign"></i></div>
+      <div class="counter-val"><span class="counter-curr">$</span><span data-count="120000000">0</span>M</div>
+      <div class="counter-label">Revenue Managed</div>
     </div>
     <div class="counter-card reveal stagger-2">
       <div class="counter-icon ci-2"><i class="fas fa-file-check"></i></div>
-      <div class="counter-val"><span data-count="8500">0</span></div>
-      <div class="counter-label">Tax Returns Filed Annually</div>
+      <div class="counter-val"><span data-count="50000">0</span></div>
+      <div class="counter-label">Monthly Transactions</div>
     </div>
     <div class="counter-card reveal stagger-3">
-      <div class="counter-icon ci-3"><i class="fas fa-clock"></i></div>
-      <div class="counter-val"><span data-count="12">0</span></div>
-      <div class="counter-label">Years of Experience</div>
+      <div class="counter-icon ci-3"><i class="fas fa-file-invoice"></i></div>
+      <div class="counter-val"><span data-count="1240">0</span>+</div>
+      <div class="counter-label">Tax Returns Filed</div>
     </div>
     <div class="counter-card reveal stagger-4">
-      <div class="counter-icon ci-4"><i class="fas fa-smile"></i></div>
-      <div class="counter-val"><span data-count="99">0</span><span class="counter-curr">%</span></div>
-      <div class="counter-label">Client Retention Rate</div>
+      <div class="counter-icon ci-4"><i class="fas fa-map"></i></div>
+      <div class="counter-val"><span data-count="50">0</span></div>
+      <div class="counter-label">States Covered</div>
     </div>
   </div>
 </section>
@@ -2274,32 +2287,32 @@ footer {
 <!-- COMPLIANCE SECTION -->
 <section class="compliance-section reveal">
   <div class="compliance-inner">
-    <div class="comp-label">Certified & Compliant</div>
+    <div class="comp-label">US Certifications & Compliance</div>
     <div class="compliance-grid">
       <div class="comp-badge cb-1">
-        <div class="comp-icon"><i class="fas fa-certificate"></i></div>
-        <div class="comp-name">ISO 9001</div>
-        <div class="comp-desc">Quality Management</div>
-      </div>
-      <div class="comp-badge cb-2">
         <div class="comp-icon"><i class="fas fa-lock"></i></div>
         <div class="comp-name">SOC 2 Type II</div>
         <div class="comp-desc">Data Security</div>
       </div>
-      <div class="comp-badge cb-3">
-        <div class="comp-icon"><i class="fas fa-shield-alt"></i></div>
-        <div class="comp-name">GDPR Compliant</div>
-        <div class="comp-desc">Privacy Protected</div>
+      <div class="comp-badge cb-2">
+        <div class="comp-icon"><i class="fas fa-file-invoice"></i></div>
+        <div class="comp-name">IRS Authorized</div>
+        <div class="comp-desc">E-File Provider</div>
       </div>
-      <div class="comp-badge cb-4">
-        <div class="comp-icon"><i class="fas fa-balance-scale"></i></div>
-        <div class="comp-name">Licensed CPAs</div>
+      <div class="comp-badge cb-3">
+        <div class="comp-icon"><i class="fas fa-certificate"></i></div>
+        <div class="comp-name">CPA Certified</div>
         <div class="comp-desc">Professional Standards</div>
       </div>
-      <div class="comp-badge cb-5">
+      <div class="comp-badge cb-4">
         <div class="comp-icon"><i class="fas fa-user-check"></i></div>
-        <div class="comp-name">HIPAA Certified</div>
-        <div class="comp-desc">Healthcare Compliant</div>
+        <div class="comp-name">AICPA Member</div>
+        <div class="comp-desc">Industry Leader</div>
+      </div>
+      <div class="comp-badge cb-5">
+        <div class="comp-icon"><i class="fas fa-user-tie"></i></div>
+        <div class="comp-name">QB ProAdvisor</div>
+        <div class="comp-desc">QuickBooks Expert</div>
       </div>
     </div>
 </section>
@@ -2308,51 +2321,30 @@ footer {
 <section class="section global-section" id="global">
   <div class="global-content">
     <div class="global-header reveal">
-      <h2>Serving Businesses Worldwide</h2>
-      <p>With offices and operations across multiple continents, we're truly global.</p>
+      <h2>US Presence & Support</h2>
+      <p>Serving American businesses from offices across the nation.</p>
     </div>
     <div class="global-grid">
       <div class="global-card reveal stagger-1">
-        <div class="global-flag">🇺🇸</div>
-        <h3>United States</h3>
-        <div class="city">Serving American Businesses</div>
+        <div class="global-flag">🏛️</div>
+        <h3>Wilmington, Delaware</h3>
+        <div class="city">Headquarters</div>
         <div class="ops">Full service accounting & tax compliance</div>
-        <p style="margin-top:12px">From startups in Silicon Valley to established corporations across the nation, we handle US accounting with expertise in all 50 states.</p>
+        <p style="margin-top:12px">919 North Market St, Suite 950, DE 19801 — +1 (302) 231-1573</p>
       </div>
       <div class="global-card reveal stagger-2">
-        <div class="global-flag">🇨🇦</div>
-        <h3>Canada</h3>
-        <div class="city">Serving Canadian Businesses</div>
-        <div class="ops">Remote operations & support</div>
-        <p style="margin-top:12px">We provide comprehensive accounting services for Canadian companies, handling both federal and provincial compliance requirements.</p>
+        <div class="global-flag">🌆</div>
+        <h3>Schaumburg, Illinois</h3>
+        <div class="city">Midwest Office</div>
+        <div class="ops">Multi-state operations & support</div>
+        <p style="margin-top:12px">221 Hawk CT, IL 60193 — +1 (302) 231-1438</p>
       </div>
       <div class="global-card reveal stagger-3">
-        <div class="global-flag">🇮🇳</div>
-        <h3>India</h3>
-        <div class="city">Serving Indian Businesses</div>
-        <div class="ops">Domestic & international support</div>
-        <p style="margin-top:12px">Expert in Indian tax law, GST compliance, and accounting for companies operating domestically and internationally.</p>
-      </div>
-      <div class="global-card reveal stagger-4">
-        <div class="global-flag">🇬🇧</div>
-        <h3>United Kingdom</h3>
-        <div class="city">Serving UK Businesses</div>
-        <div class="ops">London-based operations</div>
-        <p style="margin-top:12px">Full UK accounting, VAT compliance, and corporation tax filing for established and growing UK enterprises.</p>
-      </div>
-      <div class="global-card reveal stagger-5">
-        <div class="global-flag">🇦🇺</div>
-        <h3>Australia</h3>
-        <div class="city">Serving Australian Businesses</div>
-        <div class="ops">Sydney & Melbourne presence</div>
-        <p style="margin-top:12px">Australian accounting expertise including GST, tax compliance, and financial advisory for local and international companies.</p>
-      </div>
-      <div class="global-card reveal stagger-6">
-        <div class="global-flag">🌍</div>
-        <h3>Other Regions</h3>
-        <div class="city">Expanding Globally</div>
-        <div class="ops">Growing presence worldwide</div>
-        <p style="margin-top:12px">We're actively expanding to serve more regions. Contact us to discuss your international accounting needs.</p>
+        <div class="global-flag">🇺🇸</div>
+        <h3>Nationwide Presence</h3>
+        <div class="city">All 50 States</div>
+        <div class="ops">Virtual accounting services nationwide</div>
+        <p style="margin-top:12px">We serve businesses across all 50 states with dedicated support for your region's specific tax requirements.</p>
       </div>
     </div>
   </div>
@@ -2361,8 +2353,8 @@ footer {
 <!-- CTA SECTION -->
 <section class="cta-section">
   <div class="cta-content">
-    <h2>Ready to Elevate Your Financial Operations?</h2>
-    <p>Join 500+ businesses worldwide that trust DiligenceOS for precision, transparency, and growth.</p>
+    <h2>Ready to Optimize Your US Accounting?</h2>
+    <p>Join 500+ American businesses that trust DiligenceOS for precision, transparency, and growth across all 50 states.</p>
     <div class="cta-buttons">
       <a href="#contact" class="btn">Start Free Consultation</a>
       <a href="#services" class="btn">View All Services</a>
@@ -2375,7 +2367,7 @@ footer {
   <div class="contact-header">
     <div class="eyebrow">Get in Touch</div>
     <h2>Let's Start a Conversation</h2>
-    <p>No obligations, no pressure — just answers from our expert team.</p>
+    <p>No obligations, no pressure — just answers from our expert US accounting team.</p>
   </div>
   <div class="contact-content">
     <div class="contact-locations">
@@ -2383,15 +2375,15 @@ footer {
           <div class="location-label">Headquarters</div>
           <div class="location-value">
             DiligenceOS Inc<br>
-            New York, NY 10001<br>
-            United States
+            919 North Market St, Suite 950<br>
+            Wilmington, Delaware 19801
           </div>
         </div>
         <div class="location-block">
-          <div class="location-label">Mailing Address</div>
+          <div class="location-label">Midwest Office</div>
           <div class="location-value">
-            123 Business Avenue<br>
-            New York, NY 10001<br>
+            221 Hawk CT<br>
+            Schaumburg, Illinois 60193<br>
             USA
           </div>
         </div>
@@ -2399,7 +2391,7 @@ footer {
           <div class="location-label">Sales Enquiries</div>
           <div class="location-value">
             <a href="mailto:sales@diligenceos.com" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">sales@diligenceos.com</a><br>
-            +1 (888) 445-3468
+            +1 (302) 231-1573
           </div>
         </div>
         <div class="location-block">
@@ -2416,7 +2408,7 @@ footer {
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="logo" style="display: flex; align-items: center; gap: 12px;">
+      <a href="/" class="logo" style="display: flex; align-items: center; gap: 12px;">
         <div class="logo-icon" style="width:36px;height:36px">
           <svg viewBox="0 0 46 46" style="width:36px;height:36px" xmlns="http://www.w3.org/2000/svg">
             <circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/>
@@ -2428,7 +2420,7 @@ footer {
           <span class="logo-name" style="color:rgba(255,255,255,.9);font-size:1.3rem">DILIGENCE<span class="logo-accent">OS</span></span>
         </div>
       </a>
-      <p>World-class bookkeeping and accounting services for ambitious businesses across the globe.</p>
+      <p>Precision accounting and financial advisory services for ambitious American businesses across all 50 states.</p>
       <div class="social-links">
         <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
@@ -2439,17 +2431,17 @@ footer {
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
-        <li><a href="#services">Bookkeeping</a></li>
-        <li><a href="#services">Tax Filing</a></li>
-        <li><a href="#services">Payroll</a></li>
-        <li><a href="#services">Advisory</a></li>
+        <li><a href="#services">Multi-State Tax</a></li>
+        <li><a href="#services">US GAAP Bookkeeping</a></li>
+        <li><a href="#services">Payroll Processing</a></li>
+        <li><a href="#services">CFO Advisory</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
       <ul>
         <li><a href="#about">About Us</a></li>
-        <li><a href="#global">Global Presence</a></li>
+        <li><a href="#global">Locations</a></li>
         <li><a href="#">Careers</a></li>
       </ul>
     </div>
