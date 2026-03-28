@@ -1,5 +1,7 @@
 # DiligenceOS — Global Bookkeeping & Accounting Services
 
+**Live Site:** [https://kunaldsoni.github.io/diligenceos-demo/](https://kunaldsoni.github.io/diligenceos-demo/)
+
 A static, multi-region marketing website for DiligenceOS, a global bookkeeping and accounting services company. Built with a Stripe-inspired design language — clean, modern, and international.
 
 ## Project Structure
@@ -89,4 +91,3 @@ Tested on modern browsers (Chrome, Safari, Firefox, Edge). Uses CSS custom prope
 ## License
 
 Copyright © 2026 DiligenceOS. All rights reserved.
->>>>>>> 978ffa6 (Initial commit: DiligenceOS multi-region website)
