@@ -4,7 +4,6 @@ A static, multi-region marketing website for DiligenceOS, a global bookkeeping a
 
 ## Project Structure
 
-```
 Diligiance/
 ├── index.html            # Global landing page (default)
 ├── us/index.html         # United States region page
@@ -90,3 +89,4 @@ Tested on modern browsers (Chrome, Safari, Firefox, Edge). Uses CSS custom prope
 ## License
 
 Copyright © 2026 DiligenceOS. All rights reserved.
+>>>>>>> 978ffa6 (Initial commit: DiligenceOS multi-region website)
