@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DiligenceOS -Global Bookkeeping & Accounting Services</title>
+<title>DiligenceOS | Global Bookkeeping & Accounting Services</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -61,9 +61,9 @@ html.js-ready .reveal.visible, html.js-ready .reveal-left.visible, html.js-ready
 
 /* ═══════ ANNOUNCEMENT BAR ═══════ */
 .announcement-bar {
-  background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%);
-  border-bottom: 1px solid rgba(201, 162, 39, 0.2);
-  color: #ffffff;
+  background: linear-gradient(135deg, #f8f6f0 0%, #faf8f2 100%);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+  color: #425466;
   text-align: center;
   padding: 12px 24px;
   font-size: 0.82rem;
@@ -71,7 +71,7 @@ html.js-ready .reveal.visible, html.js-ready .reveal-left.visible, html.js-ready
   position: relative;
 }
 .announcement-bar i { color: var(--accent-gold); margin-right: 8px; }
-.announcement-bar strong { font-weight: 600; color: var(--accent-gold-light); }
+.announcement-bar strong { font-weight: 600; color: var(--accent-gold-hover); }
 .announcement-bar a {
   color: var(--accent-gold);
   text-decoration: none;
@@ -80,7 +80,7 @@ html.js-ready .reveal.visible, html.js-ready .reveal-left.visible, html.js-ready
   transition: var(--transition);
 }
 .announcement-bar a:hover { color: var(--accent-gold-light); text-decoration: underline; }
-.announcement-bar span { color: rgba(255,255,255,0.9); }
+.announcement-bar span { color: #425466; }
 
 /* ═══════ NAVIGATION ═══════ */
 nav {
@@ -93,7 +93,7 @@ nav {
   box-shadow: 0 1px 0 rgba(201, 162, 39, 0.08);
 }
 .nav-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -228,7 +228,7 @@ nav {
   background: transparent; cursor: pointer; font-family: inherit;
   font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); transition: var(--transition);
 }
-.region-trigger:hover { border-color: var(--accent-primary); color: var(--accent-primary); background: rgba(99, 91, 255, 0.04); }
+.region-trigger:hover { border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(201, 162, 39, 0.04); }
 .region-trigger-flag { font-size: 1.35rem; line-height: 1; }
 .region-chevron { font-size: 0.55rem; transition: var(--transition); margin-left: 2px; }
 .region-selector:hover .region-chevron { transform: rotate(180deg); }
@@ -253,7 +253,7 @@ nav {
 /* ═══════ THEME TOGGLE ═══════ */
 /* ═══════ HERO ═══════ */
 .hero {
-  min-height: auto;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   position: relative;
@@ -264,21 +264,21 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(99, 91, 255, 0.06) 0%, transparent 50%),
+  background: radial-gradient(circle at 80% 20%, rgba(201, 162, 39, 0.04) 0%, transparent 50%),
               radial-gradient(circle at 20% 80%, rgba(201, 162, 39, 0.05) 0%, transparent 50%),
               radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.03) 0%, transparent 30%);
   pointer-events: none;
 }
 
 .hero-content {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 40px;
+  padding: 80px 40px;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   position: relative;
   z-index: 2;
 }
@@ -287,11 +287,11 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, rgba(201, 162, 39, 0.08), rgba(99, 91, 255, 0.06));
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.04));
   border: 1px solid rgba(201, 162, 39, 0.25);
   padding: 10px 16px;
   border-radius: 100px;
-  margin-bottom: 12px;
+  margin: 0 auto 16px;
   font-size: 0.85rem;
   color: var(--accent-gold-hover);
   font-weight: 600;
@@ -302,18 +302,19 @@ nav {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 .hero-text h1 {
-  font-size: 1.85rem;
+  font-size: 2.8rem;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.2;
-  margin-bottom: 12px;
+  margin: 0 auto 12px;
+  max-width: 800px;
   letter-spacing: -0.5px;
   animation: slideUp 0.8s ease 0.3s both;
 }
 @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 .hero-text h1 .accent {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-gold-hover), var(--accent-gold));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -322,7 +323,8 @@ nav {
 .hero-text p {
   font-size: 0.88rem;
   line-height: 1.7;
-  margin-bottom: 20px;
+  margin: 0 auto 24px;
+  max-width: 640px;
   color: var(--text-secondary);
   animation: slideUp 0.8s ease 0.4s both;
 }
@@ -331,6 +333,7 @@ nav {
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
+  justify-content: center;
   animation: slideUp 0.8s ease 0.5s both;
 }
 
@@ -362,13 +365,13 @@ nav {
 
 .btn-secondary {
   background: var(--secondary-bg);
-  color: var(--accent-primary);
+  color: var(--accent-gold);
   border: 1px solid var(--border-color);
 }
 .btn-secondary:hover {
-  background: var(--accent-primary);
+  background: var(--accent-gold);
   color: white;
-  border-color: var(--accent-primary);
+  border-color: var(--accent-gold);
 }
 
 .hero-trust {
@@ -438,8 +441,8 @@ nav {
 }
 
 .dash-widget:hover {
-  border-color: var(--accent-primary);
-  box-shadow: 0 8px 16px rgba(99, 91, 255, 0.1);
+  border-color: var(--accent-gold);
+  box-shadow: 0 8px 16px rgba(201, 162, 39, 0.1);
 }
 
 .dash-widget .dw-title {
@@ -454,7 +457,7 @@ nav {
 .dash-widget .dw-val {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--accent-primary);
+  color: var(--accent-gold);
   margin-bottom: 6px;
 }
 
@@ -467,8 +470,8 @@ nav {
 }
 
 .dw-up {
-  background: rgba(99, 91, 255, 0.1);
-  color: var(--accent-primary);
+  background: rgba(201, 162, 39, 0.1);
+  color: var(--accent-gold);
 }
 
 .dw-down {
@@ -514,7 +517,7 @@ nav {
 
 .ledger-row .lr-amt {
   font-weight: 700;
-  color: var(--accent-primary);
+  color: var(--accent-gold);
 }
 
 .ledger-row .lr-dr {
@@ -588,7 +591,7 @@ nav {
 }
 
 .ticker-item .t-val {
-  color: var(--accent-primary);
+  color: var(--accent-gold);
   font-weight: 700;
   font-size: 1rem;
 }
@@ -601,8 +604,8 @@ nav {
 }
 
 .ticker-item .t-up {
-  background: rgba(99, 91, 255, 0.1);
-  color: var(--accent-primary);
+  background: rgba(201, 162, 39, 0.1);
+  color: var(--accent-gold);
 }
 
 .ticker-item .t-currency {
@@ -620,7 +623,7 @@ nav {
 }
 
 .logos-bar-inner {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -677,6 +680,7 @@ nav {
   margin-bottom: 16px;
   position: relative;
   display: inline-block;
+  font-size: 1.8rem;
 }
 
 .section-header h2::after {
@@ -690,17 +694,19 @@ nav {
 }
 
 .section-header p {
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* ═══════ SERVICES SECTION ═══════ */
 .services-grid {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
 }
 
@@ -709,6 +715,7 @@ nav {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 32px;
+  min-height: 220px;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
@@ -721,7 +728,7 @@ nav {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-gold), var(--accent-primary));
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold));
   transform: scaleX(0);
   transform-origin: left;
   transition: var(--transition);
@@ -729,7 +736,7 @@ nav {
 
 .service-card:hover {
   border-color: rgba(201, 162, 39, 0.3);
-  box-shadow: 0 12px 24px rgba(201, 162, 39, 0.08), 0 4px 8px rgba(99, 91, 255, 0.06);
+  box-shadow: 0 12px 24px rgba(201, 162, 39, 0.08), 0 4px 8px rgba(201, 162, 39, 0.06);
   transform: translateY(-4px);
 }
 
@@ -748,7 +755,7 @@ nav {
 
 .service-card i {
   font-size: 1.4rem;
-  color: var(--accent-primary);
+  color: var(--accent-gold);
   margin-bottom: 16px;
   display: block;
 }
@@ -756,17 +763,18 @@ nav {
 .service-card h3 {
   margin-bottom: 12px;
   color: var(--text-primary);
+  font-size: 1.1rem;
 }
 
 .service-card p {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 20px;
 }
 
 .service-card .learn-more {
-  color: var(--accent-primary);
+  color: var(--accent-gold-hover);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
@@ -784,17 +792,24 @@ nav {
 .about-content {
   max-width: 1000px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+  text-align: center;
 }
 
-.about-text h3 {
-  margin-bottom: 20px;
+.about-text h2 {
+  margin-bottom: 16px;
   position: relative;
-  padding-left: 16px;
-  border-left: 3px solid var(--accent-gold);
+  display: inline-block;
+  font-size: 1.8rem;
+}
+
+.about-text h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+  border-radius: 2px;
+  margin: 12px auto 0;
 }
 
 .about-text p {
@@ -806,16 +821,30 @@ nav {
 
 .about-features {
   list-style: none;
-  margin-top: 32px;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  text-align: left;
 }
 
 .about-features li {
+  background: var(--secondary-bg);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: 14px;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
+}
+
+.about-features li:hover {
+  border-color: var(--accent-gold);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-2px);
 }
 
 .about-features li i {
@@ -851,21 +880,10 @@ nav {
 .process-step {
   position: relative;
   text-align: center;
+  padding: 24px 16px;
 }
 
 .process-step::after {
-  content: '';
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  width: 100%;
-  height: 3px;
-  background: var(--border-color);
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-.process-step:last-child::after {
   display: none;
 }
 
@@ -873,8 +891,8 @@ nav {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-gold));
-  color: white;
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.12), rgba(201, 162, 39, 0.06));
+  color: var(--accent-gold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -882,7 +900,8 @@ nav {
   margin: 0 auto 16px;
   position: relative;
   z-index: 1;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 2px 8px rgba(201, 162, 39, 0.1);
+  border: 1px solid rgba(201, 162, 39, 0.2);
 }
 
 .process-step h4 {
@@ -897,7 +916,7 @@ nav {
 
 /* ═══════ INDUSTRIES SECTION ═══════ */
 .industries-content {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -926,7 +945,7 @@ nav {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover));
   opacity: 0;
   transition: var(--transition);
   z-index: 1;
@@ -944,7 +963,7 @@ nav {
 .industry-card i {
   font-size: 1.8rem;
   margin-bottom: 16px;
-  color: var(--accent-secondary);
+  color: var(--accent-gold-hover);
 }
 
 .industry-card h4 {
@@ -960,7 +979,7 @@ nav {
 
 /* ═══════ TESTIMONIALS SECTION ═══════ */
 .testimonials-grid {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -976,8 +995,8 @@ nav {
 }
 
 .testimonial-card:hover {
-  border-color: var(--accent-primary);
-  box-shadow: 0 12px 24px rgba(99, 91, 255, 0.08);
+  border-color: var(--accent-gold);
+  box-shadow: 0 12px 24px rgba(201, 162, 39, 0.08);
 }
 
 .testimonial-stars {
@@ -1030,7 +1049,7 @@ nav {
 
 .pricing-card.featured {
   border: 2px solid var(--accent-gold);
-  box-shadow: 0 20px 40px rgba(201, 162, 39, 0.12), 0 8px 16px rgba(99, 91, 255, 0.06);
+  box-shadow: 0 20px 40px rgba(201, 162, 39, 0.12), 0 8px 16px rgba(201, 162, 39, 0.06);
   transform: translateY(-8px);
   position: relative;
 }
@@ -1040,7 +1059,7 @@ nav {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-gold), var(--accent-primary));
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold));
   border-radius: 12px 12px 0 0;
 }
 
@@ -1090,7 +1109,7 @@ nav {
 .pricing-price .amount {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--accent-primary);
+  color: var(--accent-gold);
 }
 
 .pricing-price .period {
@@ -1133,7 +1152,7 @@ nav {
 
 /* ═══════ FAQ SECTION ═══════ */
 .faq-content {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -1146,8 +1165,8 @@ nav {
 }
 
 .faq-item:hover {
-  border-color: var(--accent-primary);
-  box-shadow: 0 8px 16px rgba(99, 91, 255, 0.08);
+  border-color: var(--accent-gold);
+  box-shadow: 0 8px 16px rgba(201, 162, 39, 0.08);
 }
 
 .faq-question {
@@ -1167,7 +1186,7 @@ nav {
 }
 
 .faq-question:hover {
-  color: var(--accent-primary);
+  color: var(--accent-gold);
 }
 
 .faq-question i {
@@ -1207,7 +1226,7 @@ nav {
 }
 
 .counters-grid {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1240,14 +1259,14 @@ nav {
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  background: linear-gradient(135deg, rgba(201, 162, 39, 0.12), rgba(99, 91, 255, 0.08));
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.12), rgba(201, 162, 39, 0.06));
   color: var(--accent-gold);
 }
 
 .counter-card .counter-val {
   font-size: 1.8rem;
   line-height: 1;
-  color: var(--accent-primary);
+  color: var(--accent-gold);
   margin-bottom: 8px;
   font-weight: 700;
 }
@@ -1256,7 +1275,7 @@ nav {
   font-size: 1rem;
   font-weight: 300;
   opacity: 0.7;
-  color: var(--accent-primary);
+  color: var(--accent-gold);
   margin-right: 4px;
 }
 
@@ -1313,7 +1332,7 @@ nav {
 
 .comp-badge:hover {
   transform: translateY(-4px);
-  border-color: var(--accent-primary);
+  border-color: var(--accent-gold);
   box-shadow: var(--shadow-subtle);
 }
 
@@ -1326,8 +1345,8 @@ nav {
   justify-content: center;
   font-size: 1.3rem;
   transition: var(--transition);
-  background: rgba(99, 91, 255, 0.1);
-  color: var(--accent-primary);
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.12), rgba(201, 162, 39, 0.06));
+  color: var(--accent-gold);
 }
 
 .comp-badge:hover .comp-icon {
@@ -1347,13 +1366,41 @@ nav {
 
 /* ═══════ GLOBAL SECTION ═══════ */
 .global-content {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .global-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 64px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.global-header h2 {
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-block;
+  font-size: 1.8rem;
+}
+
+.global-header h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+.global-header p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .global-grid {
@@ -1376,14 +1423,17 @@ nav {
   transform: translateY(-4px);
 }
 
-.global-flag {
-  font-size: 1.8rem;
-  margin-bottom: 16px;
-}
-
 .global-card h3 {
   margin-bottom: 8px;
   color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.global-card h3 .global-flag {
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
 .global-card p {
@@ -1406,20 +1456,21 @@ nav {
 
 /* ═══════ CTA SECTION ═══════ */
 .cta-section {
-  background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 50%, #0a2540 100%);
-  color: white;
+  background: linear-gradient(135deg, #f8f6f0 0%, #faf8f2 50%, #f5f0e6 100%);
+  color: var(--text-primary);
   padding: 80px 40px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid rgba(201, 162, 39, 0.15);
 }
 
 .cta-section::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(201, 162, 39, 0.1) 0%, transparent 40%),
-              radial-gradient(circle at 70% 50%, rgba(99, 91, 255, 0.08) 0%, transparent 40%);
+  background: radial-gradient(circle at 30% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 40%),
+              radial-gradient(circle at 70% 50%, rgba(201, 162, 39, 0.05) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -1431,15 +1482,19 @@ nav {
 }
 
 .cta-content h2 {
-  color: white;
+  color: var(--text-primary);
   margin-bottom: 16px;
+  font-size: 2.2rem;
+  max-width: 700px;
+  margin: 0 auto 16px;
 }
 
 .cta-content p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.98rem;
+  color: var(--text-primary);
+  font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: 32px;
+  margin: 0 auto 32px;
+  max-width: 540px;
 }
 
 .cta-buttons {
@@ -1461,6 +1516,13 @@ nav {
   box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
 }
 
+.cta-buttons .btn-secondary {
+  background: white;
+  color: var(--accent-gold);
+  border: 1px solid var(--border-color);
+  box-shadow: none;
+}
+
 /* ═══════ CONTACT SECTION ═══════ */
 .contact-section {
   padding: 100px 40px;
@@ -1468,7 +1530,7 @@ nav {
 
 .contact-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 64px;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
@@ -1478,13 +1540,34 @@ nav {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--accent-primary);
+  color: var(--accent-gold);
   font-weight: 700;
   margin-bottom: 12px;
 }
 
 .contact-header h2 {
   margin-bottom: 16px;
+  position: relative;
+  display: inline-block;
+  font-size: 1.8rem;
+}
+
+.contact-header h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+.contact-header p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .contact-content {
@@ -1507,8 +1590,8 @@ nav {
 }
 
 .location-block:hover {
-  border-color: var(--accent-primary);
-  box-shadow: 0 8px 24px rgba(99, 91, 255, 0.08);
+  border-color: var(--accent-gold);
+  box-shadow: 0 8px 24px rgba(201, 162, 39, 0.08);
   transform: translateY(-2px);
 }
 
@@ -1516,7 +1599,7 @@ nav {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: var(--accent-primary);
+  color: var(--accent-gold);
   font-weight: 700;
   margin-bottom: 12px;
 }
@@ -1530,21 +1613,20 @@ nav {
 
 /* ═══════ FOOTER ═══════ */
 footer {
-  background: linear-gradient(180deg, #0a2540 0%, #071e33 100%);
-  color: white;
+  background: #ffffff;
+  color: var(--text-primary);
   padding: 60px 40px 32px;
-  border-top: 2px solid var(--accent-gold);
 }
 
 .footer-top {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 40px;
   margin-bottom: 48px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 48px;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .footer-brand a {
@@ -1556,13 +1638,13 @@ footer {
 }
 
 .footer-brand .logo-name {
-  color: white;
+  color: var(--text-primary);
   font-size: 1.2rem;
 }
 
 .footer-brand p {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #2d3748;
   line-height: 1.7;
   margin-bottom: 20px;
 }
@@ -1576,12 +1658,14 @@ footer {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   text-decoration: none;
+  font-size: 1rem;
   transition: var(--transition);
 }
 
@@ -1597,7 +1681,7 @@ footer {
   font-size: 0.82rem;
   font-weight: 700;
   margin-bottom: 16px;
-  color: var(--accent-gold-light);
+  color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -1611,30 +1695,32 @@ footer {
 }
 
 .footer-col ul li a {
-  color: rgba(255, 255, 255, 0.7);
+  color: #2d3748;
   text-decoration: none;
   font-size: 0.9rem;
+  font-weight: 500;
   transition: var(--transition);
 }
 
 .footer-col ul li a:hover {
-  color: var(--accent-gold-light);
+  color: var(--accent-gold);
   padding-left: 4px;
 }
 
 .footer-bottom {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-light);
+  padding-top: 32px;
 }
 
 .footer-bottom p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.6);
+  color: #4a5568;
 }
 
 .footer-links {
@@ -1644,13 +1730,14 @@ footer {
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.6);
+  color: #2d3748;
   text-decoration: none;
+  font-weight: 500;
   transition: var(--transition);
 }
 
 .footer-links a:hover {
-  color: white;
+  color: var(--accent-gold);
 }
 
 /* ═══════ RESPONSIVE ═══════ */
@@ -1718,14 +1805,15 @@ footer {
   h3 { font-size: 0.88rem; }
   .section { padding: 48px 20px; }
   .nav-container { padding: 0 20px; }
-  .hero-content { padding: 32px 20px; }
-  .hero-text h1 { font-size: 1.4rem; }
+  .hero-content { padding: 48px 24px; }
+  .hero-text h1 { font-size: 2rem; }
   .hero-text p { font-size: 0.82rem; }
   .hero-trust { flex-wrap: wrap; gap: 12px; }
   .service-card i { font-size: 1.2rem; margin-bottom: 12px; }
   .service-card .s-number { font-size: 1.2rem; }
   .service-card p { font-size: 0.8rem; }
   .about-text p { font-size: 0.82rem; }
+  .about-features { grid-template-columns: 1fr; }
   .industry-card i { font-size: 1.4rem; }
   .industry-card p { font-size: 0.8rem; }
   .process-dot { width: 44px; height: 44px; font-size: 0.95rem; }
@@ -1763,7 +1851,7 @@ footer {
   h3 { font-size: 0.82rem; }
   .section { padding: 36px 16px; }
   .nav-container { padding: 0 16px; height: 56px; }
-  .hero-text h1 { font-size: 1.25rem; }
+  .hero-text h1 { font-size: 1.6rem; }
   .hero-text p { font-size: 0.78rem; }
   .counters-grid { grid-template-columns: 1fr 1fr; }
   .footer-top { padding: 40px 16px; }
@@ -1791,8 +1879,8 @@ footer {
 
 <!-- ANNOUNCEMENT BAR -->
 <div class="announcement-bar">
-  <i class="fas fa-chart-bar"></i>
-  <span>Trusted by <strong>500+ businesses worldwide</strong> for precision accounting</span> —
+  <i class="fas fa-globe"></i>
+  <span>Trusted by <strong>leading businesses worldwide</strong> for precision accounting</span> —
   <a href="#contact">Schedule your free consultation <i class="fas fa-arrow-right"></i></a>
 </div>
 
@@ -1819,7 +1907,6 @@ footer {
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#process">Process</a></li>
-      <li><a href="#industries">Industries</a></li>
       <li><a href="#testimonials">Clients</a></li>
       <li><a href="#contact">Contact Us</a></li>
     </ul>
@@ -1844,113 +1931,16 @@ footer {
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-badge"><i class="fas fa-shield-alt"></i> Trusted by 500+ Global Businesses</div>
+      <div class="hero-badge"><i class="fas fa-shield-alt"></i> Trusted by Leading Global Businesses</div>
       <h1>Precision Accounting for <span class="accent">Ambitious Businesses</span></h1>
       <p>From bookkeeping to strategic advisory -we deliver world-class financial operations so you can focus on scaling your business across borders.</p>
       <div class="hero-buttons">
         <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Free Consultation</a>
         <a href="#services" class="btn btn-secondary"><span>Explore Services</span> <i class="fas fa-arrow-right"></i></a>
       </div>
-      <div class="hero-trust">
-        <div class="hero-trust-item"><span class="number" data-count="500">0</span><span class="label">Clients</span></div>
-        <div class="hero-trust-divider"></div>
-        <div class="hero-trust-item"><span class="number" data-count="12">0</span><span class="label">Years</span></div>
-        <div class="hero-trust-divider"></div>
-        <div class="hero-trust-item"><span class="number" data-count="99">0</span><span class="label">Retention</span></div>
-        <div class="hero-trust-divider"></div>
-        <div class="hero-trust-item"><span class="number" data-count="15">0</span><span class="label">Countries</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="dashboard-mockup">
-        <div class="dash-row">
-          <div class="dash-widget" style="flex:1.3">
-            <div class="dw-title">Revenue This Quarter</div>
-            <div class="dw-val">$2.4M</div>
-            <span class="dw-change dw-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> 18.2%</span>
-            <div class="mini-bars">
-              <div class="mini-bar" style="height:45%;background:rgba(99,91,255,.2);animation-delay:.1s"></div>
-              <div class="mini-bar" style="height:60%;background:rgba(99,91,255,.25);animation-delay:.2s"></div>
-              <div class="mini-bar" style="height:35%;background:rgba(99,91,255,.2);animation-delay:.3s"></div>
-              <div class="mini-bar" style="height:80%;background:rgba(99,91,255,.35);animation-delay:.4s"></div>
-              <div class="mini-bar" style="height:55%;background:rgba(99,91,255,.25);animation-delay:.5s"></div>
-              <div class="mini-bar" style="height:90%;background:rgba(0,115,230,.35);animation-delay:.6s"></div>
-              <div class="mini-bar" style="height:70%;background:rgba(0,115,230,.25);animation-delay:.7s"></div>
-              <div class="mini-bar" style="height:100%;background:var(--accent-secondary);animation-delay:.8s"></div>
-            </div>
-          </div>
-          <div class="dash-widget">
-            <div class="dw-title">Expense Ratio</div>
-            <div class="donut-wrap">
-              <svg class="donut-svg" viewBox="0 0 42 42">
-                <circle class="donut-ring donut-bg" cx="21" cy="21" r="15.9"/>
-                <circle class="donut-ring donut-fill" cx="21" cy="21" r="15.9" stroke="var(--accent-secondary)" stroke-dashoffset="62" style="animation-delay:.5s"/>
-                <circle class="donut-ring donut-fill" cx="21" cy="21" r="15.9" stroke="var(--accent-primary)" stroke-dashoffset="140" style="animation-delay:.8s"/>
-                <circle class="donut-ring donut-fill" cx="21" cy="21" r="15.9" stroke="#00d97e" stroke-dashoffset="175" style="animation-delay:1.1s"/>
-              </svg>
-            </div>
-            <div style="text-align:center;font-size:.65rem;color:var(--text-light)">Ops 38% | Tax 22% | Admin 12%</div>
-          </div>
-        </div>
-        <div class="dash-row">
-          <div class="dash-widget">
-            <div class="dw-title">Recent Ledger Entries</div>
-            <div class="dash-ledger">
-              <div class="ledger-row"><span>Invoice #4821</span><span class="lr-amt">$12,450</span></div>
-              <div class="ledger-row"><span>Payroll -Mar</span><span class="lr-dr">($34,200)</span></div>
-              <div class="ledger-row"><span>Client Payment</span><span class="lr-amt">$28,900</span></div>
-              <div class="ledger-row"><span>Tax Filing Q1</span><span class="lr-dr">($8,750)</span></div>
-              <div class="ledger-row"><span>Revenue Adj.</span><span class="lr-amt">$5,100</span></div>
-            </div>
-          </div>
-          <div class="dash-widget" style="flex:.7">
-            <div class="dw-title">Accuracy</div>
-            <div class="dw-val" style="font-size:2rem;text-align:center;margin-top:12px">99.8%</div>
-            <div style="text-align:center"><span class="dw-change dw-up"><i class="fas fa-check" style="font-size:.5rem"></i> Verified</span></div>
-          </div>
-          <div class="dash-widget" style="flex:.7">
-            <div class="dw-title">Tax Returns</div>
-            <div class="dw-val" style="font-size:2rem;text-align:center;margin-top:12px">1,240</div>
-            <div style="text-align:center;font-size:.6rem;color:var(--text-light)">Filed this year</div>
-          </div>
-        </div>
-      </div>
     </div>
 </section>
 
-<!-- FINANCIAL TICKER -->
-<div class="fin-ticker">
-  <div class="ticker-track" id="tickerTrack">
-    <div class="ticker-item"><span class="t-label">Reconciled Today</span><span class="t-val">$1.8M</span><span class="t-change t-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> 12%</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">₹</span><span class="t-label">Processed MTD</span><span class="t-val">₹45Cr</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">Tax Returns Filed</span><span class="t-val">1,240</span><span class="t-change t-up"><i class="fas fa-check" style="font-size:.5rem"></i></span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Accuracy Rate</span><span class="t-val">99.8%</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">$</span><span class="t-label">Cost Savings</span><span class="t-val">50%</span><span class="t-change t-up">avg</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Payrolls Processed</span><span class="t-val">8,500+</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">€</span><span class="t-label">Revenue Managed</span><span class="t-val">€120M+</span></div>
-    <span class="ticker-sep">|</span>
-    <!-- Duplicate for seamless scroll -->
-    <div class="ticker-item"><span class="t-label">Reconciled Today</span><span class="t-val">$1.8M</span><span class="t-change t-up"><i class="fas fa-arrow-up" style="font-size:.5rem"></i> 12%</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">₹</span><span class="t-label">Processed MTD</span><span class="t-val">₹45Cr</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">A$</span><span class="t-label">Tax Returns Filed</span><span class="t-val">1,240</span><span class="t-change t-up"><i class="fas fa-check" style="font-size:.5rem"></i></span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Accuracy Rate</span><span class="t-val">99.8%</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">$</span><span class="t-label">Cost Savings</span><span class="t-val">50%</span><span class="t-change t-up">avg</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-label">Payrolls Processed</span><span class="t-val">8,500+</span></div>
-    <span class="ticker-sep">|</span>
-    <div class="ticker-item"><span class="t-currency">€</span><span class="t-label">Revenue Managed</span><span class="t-val">€120M+</span></div>
-  </div>
-</div>
 
 <!-- LOGOS BAR -->
 <div class="logos-bar reveal">
@@ -1982,34 +1972,20 @@ footer {
     </div>
     <div class="service-card reveal stagger-2">
       <div class="s-number">02</div>
-      <i class="fas fa-file-invoice"></i>
-      <h3>Tax Filing & Compliance</h3>
-      <p>Expert tax planning and filing services across multiple jurisdictions. We ensure full compliance with international tax requirements.</p>
-      <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <div class="service-card reveal stagger-3">
-      <div class="s-number">03</div>
-      <i class="fas fa-chart-pie"></i>
+      <i class="fas fa-lightbulb"></i>
       <h3>Financial Advisory</h3>
       <p>Strategic financial guidance to optimize your business performance. From forecasting to growth strategy, we're your trusted partner.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
-    <div class="service-card reveal stagger-4">
-      <div class="s-number">04</div>
-      <i class="fas fa-money-bill-wave"></i>
-      <h3>Sales Tax Filing</h3>
-      <p>Comprehensive sales tax and VAT management for multi-state and international operations. Accurate filings, zero penalties.</p>
-      <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <div class="service-card reveal stagger-5">
-      <div class="s-number">05</div>
+    <div class="service-card reveal stagger-3">
+      <div class="s-number">03</div>
       <i class="fas fa-users"></i>
       <h3>Payroll Processing</h3>
-      <p>End-to-end payroll management including tax withholdings, filings, and benefits administration across all locations.</p>
+      <p>End-to-end payroll management including statutory withholdings, filings, and benefits administration across all locations.</p>
       <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
     </div>
-    <div class="service-card reveal stagger-6">
-      <div class="s-number">06</div>
+    <div class="service-card reveal stagger-4">
+      <div class="s-number">04</div>
       <i class="fas fa-crystal-ball"></i>
       <h3>Forecasting & Strategy</h3>
       <p>Data-driven financial forecasting and strategic planning to guide your business decisions and maximize profitability.</p>
@@ -2021,70 +1997,18 @@ footer {
 <!-- ABOUT SECTION -->
 <section class="section about-section" id="about">
   <div class="about-content">
-    <div class="about-text reveal-left">
-      <h3>Why Choose DiligenceOS?</h3>
+    <div class="about-text reveal">
+      <h2>Why Choose DiligenceOS?</h2>
       <p>We're not just accountants—we're partners in your financial success. With over a decade of experience serving ambitious businesses globally, we bring expertise, precision, and dedication to every engagement.</p>
       <p>Our team combines deep technical expertise with a commitment to exceptional service. We leverage technology to streamline processes while maintaining the human touch that makes all the difference.</p>
       <ul class="about-features">
-        <li><i class="fas fa-check-circle"></i> <strong>500+ Clients Worldwide</strong> -Serving businesses across 15+ countries</li>
-        <li><i class="fas fa-check-circle"></i> <strong>99.8% Accuracy Rate</strong> -Precision in every number</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Expert Team</strong> -CAs, CPAs, and financial advisors</li>
-        <li><i class="fas fa-check-circle"></i> <strong>24/7 Support</strong> -Always available when you need us</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Technology-Enabled</strong> -Modern tools, human expertise</li>
-        <li><i class="fas fa-check-circle"></i> <strong>Cost Savings</strong> -40-50% savings vs. in-house accounting</li>
+        <li><i class="fas fa-check-circle"></i> <strong>Global Client Base</strong> Serving businesses across multiple countries</li>
+        <li><i class="fas fa-check-circle"></i> <strong>Industry-Leading Accuracy</strong> Precision in every detail</li>
+        <li><i class="fas fa-check-circle"></i> <strong>Expert Team</strong> CAs, CPAs, and financial advisors</li>
+        <li><i class="fas fa-check-circle"></i> <strong>Always-On Support</strong> Available whenever you need us</li>
+        <li><i class="fas fa-check-circle"></i> <strong>Technology-Enabled</strong> Modern tools, human expertise</li>
+        <li><i class="fas fa-check-circle"></i> <strong>Significant Cost Savings</strong> More efficient than in-house accounting</li>
       </ul>
-    </div>
-    <div class="about-visual reveal-right">
-      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-        <!-- Background elements -->
-        <rect x="40" y="60" width="200" height="240" rx="12" fill="#fff" stroke="#e6ebf1" stroke-width="1.5"/>
-        <rect x="55" y="80" width="170" height="16" rx="4" fill="#635bff" opacity="0.15"/>
-        <rect x="55" y="108" width="130" height="10" rx="3" fill="#e6ebf1"/>
-        <rect x="55" y="128" width="150" height="10" rx="3" fill="#e6ebf1"/>
-        <rect x="55" y="148" width="110" height="10" rx="3" fill="#e6ebf1"/>
-        <!-- Chart bars -->
-        <rect x="55" y="230" width="24" height="50" rx="4" fill="#635bff" opacity="0.2"/>
-        <rect x="87" y="210" width="24" height="70" rx="4" fill="#635bff" opacity="0.35"/>
-        <rect x="119" y="195" width="24" height="85" rx="4" fill="#635bff" opacity="0.5"/>
-        <rect x="151" y="178" width="24" height="102" rx="4" fill="#635bff" opacity="0.7"/>
-        <rect x="183" y="190" width="24" height="90" rx="4" fill="#635bff" opacity="0.85"/>
-        <!-- Trend line -->
-        <polyline points="67,225 99,200 131,185 163,168 195,175" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="67" cy="225" r="3.5" fill="#c9a227"/>
-        <circle cx="99" cy="200" r="3.5" fill="#c9a227"/>
-        <circle cx="131" cy="185" r="3.5" fill="#c9a227"/>
-        <circle cx="163" cy="168" r="3.5" fill="#c9a227"/>
-        <circle cx="195" cy="175" r="3.5" fill="#c9a227"/>
-        <!-- Floating card: checkmark -->
-        <rect x="220" y="40" width="150" height="70" rx="10" fill="#fff" stroke="#e6ebf1" stroke-width="1.5" filter="url(#shadow1)"/>
-        <circle cx="250" cy="75" r="16" fill="#635bff" opacity="0.12"/>
-        <path d="M243 75 l5 5 l10-10" stroke="#635bff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="275" y="70" font-family="Inter,sans-serif" font-size="10" fill="#425466" font-weight="600">99.8%</text>
-        <text x="275" y="85" font-family="Inter,sans-serif" font-size="8" fill="#8898aa">Accuracy</text>
-        <!-- Floating card: growth -->
-        <rect x="240" y="140" width="140" height="70" rx="10" fill="#fff" stroke="#e6ebf1" stroke-width="1.5" filter="url(#shadow1)"/>
-        <circle cx="268" cy="175" r="16" fill="#c9a227" opacity="0.15"/>
-        <text x="261" y="180" font-family="Inter,sans-serif" font-size="14" fill="#c9a227" font-weight="700">$</text>
-        <text x="293" y="168" font-family="Inter,sans-serif" font-size="10" fill="#425466" font-weight="600">500+</text>
-        <text x="293" y="183" font-family="Inter,sans-serif" font-size="8" fill="#8898aa">Clients Served</text>
-        <!-- Floating card: globe -->
-        <rect x="200" y="240" width="160" height="55" rx="10" fill="#fff" stroke="#e6ebf1" stroke-width="1.5" filter="url(#shadow1)"/>
-        <circle cx="228" cy="267" r="14" fill="#0073e6" opacity="0.1"/>
-        <text x="222" y="273" font-size="16">🌎</text>
-        <text x="252" y="263" font-family="Inter,sans-serif" font-size="10" fill="#425466" font-weight="600">15+ Countries</text>
-        <text x="252" y="278" font-family="Inter,sans-serif" font-size="8" fill="#8898aa">Global Reach</text>
-        <!-- Decorative dots -->
-        <circle cx="350" cy="50" r="4" fill="#635bff" opacity="0.15"/>
-        <circle cx="365" cy="65" r="3" fill="#c9a227" opacity="0.2"/>
-        <circle cx="30" cy="280" r="5" fill="#635bff" opacity="0.1"/>
-        <circle cx="20" cy="260" r="3" fill="#c9a227" opacity="0.15"/>
-        <!-- Shadow filter -->
-        <defs>
-          <filter id="shadow1" x="-4%" y="-4%" width="108%" height="116%">
-            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0a2540" flood-opacity="0.06"/>
-          </filter>
-        </defs>
-      </svg>
     </div>
   </div>
 </section>
@@ -2112,54 +2036,13 @@ footer {
       <p>Regular monitoring, reconciliation, and reporting every month.</p>
     </div>
     <div class="process-step reveal stagger-4">
-      <div class="process-dot"><i class="fas fa-chart-line"></i></div>
+      <div class="process-dot"><i class="fas fa-clipboard-check"></i></div>
       <h4>Growth & Optimization</h4>
       <p>Strategic insights and advice to help your business scale.</p>
     </div>
   </div>
 </section>
 
-<!-- INDUSTRIES SECTION -->
-<section class="section industries-section" id="industries">
-  <div class="industries-content">
-    <div class="industry-header reveal">
-      <h2>Industries We Serve</h2>
-      <p>Specialized expertise across diverse sectors and business types.</p>
-    </div>
-    <div class="industries-grid">
-      <div class="industry-card reveal stagger-1">
-        <i class="fas fa-shopping-cart"></i>
-        <h4>E-Commerce & Retail</h4>
-        <p>Multi-channel sales management, inventory accounting, and marketplace integration for online retailers.</p>
-      </div>
-      <div class="industry-card reveal stagger-2">
-        <i class="fas fa-hospital"></i>
-        <h4>Healthcare & Medical</h4>
-        <p>HIPAA-compliant accounting, insurance claims management, and medical practice financial planning.</p>
-      </div>
-      <div class="industry-card reveal stagger-3">
-        <i class="fas fa-graduation-cap"></i>
-        <h4>Education & Training</h4>
-        <p>Student fee management, grant accounting, and educational institution financial oversight.</p>
-      </div>
-      <div class="industry-card reveal stagger-4">
-        <i class="fas fa-code"></i>
-        <h4>Technology & Startups</h4>
-        <p>Startup-friendly accounting, equity management, and investor reporting for tech companies.</p>
-      </div>
-      <div class="industry-card reveal stagger-5">
-        <i class="fas fa-building"></i>
-        <h4>Real Estate & Property</h4>
-        <p>Property accounting, lease management, and real estate investment analysis.</p>
-      </div>
-      <div class="industry-card reveal stagger-6">
-        <i class="fas fa-restaurant"></i>
-        <h4>Hospitality & Food</h4>
-        <p>Restaurant accounting, multi-location management, and hospitality-specific compliance.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- TESTIMONIALS SECTION -->
 <section class="section testimonials-section" id="testimonials">
@@ -2176,7 +2059,7 @@ footer {
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
       </div>
-      <p class="testimonial-text">"DiligenceOS has been a game-changer for our business. Their attention to detail and proactive approach have saved us thousands in tax optimization."</p>
+      <p class="testimonial-text">"DiligenceOS has been a game-changer for our business. Their attention to detail and proactive approach have saved us thousands through proactive financial management."</p>
       <div class="testimonial-author">Sarah Johnson</div>
       <div class="testimonial-role">CEO, TechFlow Inc.</div>
     </div>
@@ -2225,7 +2108,7 @@ footer {
       <ul class="pricing-features">
         <li><i class="fas fa-check"></i> Monthly bookkeeping</li>
         <li><i class="fas fa-check"></i> Bank reconciliation</li>
-        <li><i class="fas fa-check"></i> Basic tax planning</li>
+        <li><i class="fas fa-check"></i> Basic compliance support</li>
         <li><i class="fas fa-check"></i> Monthly reports</li>
       </ul>
       <button class="btn btn-secondary">Get Started</button>
@@ -2242,7 +2125,7 @@ footer {
       <ul class="pricing-features">
         <li><i class="fas fa-check"></i> Complete bookkeeping</li>
         <li><i class="fas fa-check"></i> Multi-location support</li>
-        <li><i class="fas fa-check"></i> Tax compliance</li>
+        <li><i class="fas fa-check"></i> Regulatory compliance</li>
         <li><i class="fas fa-check"></i> Quarterly reviews</li>
         <li><i class="fas fa-check"></i> Financial advisory</li>
       </ul>
@@ -2257,7 +2140,7 @@ footer {
       </div>
       <ul class="pricing-features">
         <li><i class="fas fa-check"></i> Full-service accounting</li>
-        <li><i class="fas fa-check"></i> Global tax planning</li>
+        <li><i class="fas fa-check"></i> Global compliance planning</li>
         <li><i class="fas fa-check"></i> Dedicated account team</li>
         <li><i class="fas fa-check"></i> Strategic consulting</li>
         <li><i class="fas fa-check"></i> SLA guarantee</li>
@@ -2292,7 +2175,7 @@ footer {
       </button>
       <div class="faq-answer">
         <div class="faq-answer-content">
-          Yes! We have extensive experience with multi-country accounting, tax filing, and compliance. Our team includes experts across major jurisdictions including the US, Canada, UK, EU, Australia, and India. We ensure compliance with local regulations in each country.
+          Yes! We have extensive experience with multi-country accounting, regulatory filing, and compliance. Our team includes experts across major jurisdictions including the US, Canada, UK, EU, Australia, and India. We ensure compliance with local regulations in each country.
         </div>
       </div>
     </div>
@@ -2320,17 +2203,6 @@ footer {
     </div>
     <div class="faq-item reveal">
       <button class="faq-question">
-        <span>Can you help with tax optimization?</span>
-        <i class="fas fa-chevron-down"></i>
-      </button>
-      <div class="faq-answer">
-        <div class="faq-answer-content">
-          Yes, tax optimization is a core part of what we do. Our team reviews your business structure, deductions, timing strategies, and more to minimize your tax liability legally. This often pays for our services many times over.
-        </div>
-      </div>
-    </div>
-    <div class="faq-item reveal">
-      <button class="faq-question">
         <span>What's your cancellation policy?</span>
         <i class="fas fa-chevron-down"></i>
       </button>
@@ -2342,31 +2214,6 @@ footer {
     </div>
 </section>
 
-<!-- COUNTERS SECTION -->
-<section class="counters-section">
-  <div class="counters-grid">
-    <div class="counter-card reveal stagger-1">
-      <div class="counter-icon ci-1"><i class="fas fa-users"></i></div>
-      <div class="counter-val"><span class="counter-curr">$</span><span data-count="250000000">0</span></div>
-      <div class="counter-label">Assets Under Management</div>
-    </div>
-    <div class="counter-card reveal stagger-2">
-      <div class="counter-icon ci-2"><i class="fas fa-file-invoice"></i></div>
-      <div class="counter-val"><span data-count="8500">0</span></div>
-      <div class="counter-label">Tax Returns Filed Annually</div>
-    </div>
-    <div class="counter-card reveal stagger-3">
-      <div class="counter-icon ci-3"><i class="fas fa-clock"></i></div>
-      <div class="counter-val"><span data-count="12">0</span></div>
-      <div class="counter-label">Years of Experience</div>
-    </div>
-    <div class="counter-card reveal stagger-4">
-      <div class="counter-icon ci-4"><i class="fas fa-smile"></i></div>
-      <div class="counter-val"><span data-count="99">0</span><span class="counter-curr">%</span></div>
-      <div class="counter-label">Client Retention Rate</div>
-    </div>
-  </div>
-</section>
 
 <!-- COMPLIANCE SECTION -->
 <section class="compliance-section reveal">
@@ -2410,43 +2257,37 @@ footer {
     </div>
     <div class="global-grid">
       <div class="global-card reveal stagger-1">
-        <div class="global-flag">🇺🇸</div>
-        <h3>United States</h3>
+        <h3>United States <span class="global-flag">🇺🇸</span></h3>
         <div class="city">Serving American Businesses</div>
-        <div class="ops">Full service accounting & tax compliance</div>
+        <div class="ops">Full service accounting & regulatory compliance</div>
         <p style="margin-top:12px">From startups in Silicon Valley to established corporations across the nation, we handle US accounting with expertise in all 50 states.</p>
       </div>
       <div class="global-card reveal stagger-2">
-        <div class="global-flag">🇨🇦</div>
-        <h3>Canada</h3>
+        <h3>Canada <span class="global-flag">🇨🇦</span></h3>
         <div class="city">Serving Canadian Businesses</div>
         <div class="ops">Remote operations & support</div>
         <p style="margin-top:12px">We provide comprehensive accounting services for Canadian companies, handling both federal and provincial compliance requirements.</p>
       </div>
       <div class="global-card reveal stagger-3">
-        <div class="global-flag">🇮🇳</div>
-        <h3>India</h3>
+        <h3>India <span class="global-flag">🇮🇳</span></h3>
         <div class="city">Serving Indian Businesses</div>
         <div class="ops">Domestic & international support</div>
-        <p style="margin-top:12px">Expert in Indian tax law, GST compliance, and accounting for companies operating domestically and internationally.</p>
+        <p style="margin-top:12px">Expert in Indian regulatory law, GST compliance, and accounting for companies operating domestically and internationally.</p>
       </div>
       <div class="global-card reveal stagger-4">
-        <div class="global-flag">🇬🇧</div>
-        <h3>United Kingdom</h3>
+        <h3>United Kingdom <span class="global-flag">🇬🇧</span></h3>
         <div class="city">Serving UK Businesses</div>
         <div class="ops">London-based operations</div>
-        <p style="margin-top:12px">Full UK accounting, VAT compliance, and corporation tax filing for established and growing UK enterprises.</p>
+        <p style="margin-top:12px">Full UK accounting, VAT compliance, and regulatory filing for established and growing UK enterprises.</p>
       </div>
       <div class="global-card reveal stagger-5">
-        <div class="global-flag">🇦🇺</div>
-        <h3>Australia</h3>
+        <h3>Australia <span class="global-flag">🇦🇺</span></h3>
         <div class="city">Serving Australian Businesses</div>
         <div class="ops">Sydney & Melbourne presence</div>
-        <p style="margin-top:12px">Australian accounting expertise including GST, tax compliance, and financial advisory for local and international companies.</p>
+        <p style="margin-top:12px">Australian accounting expertise including GST, regulatory compliance, and financial advisory for local and international companies.</p>
       </div>
       <div class="global-card reveal stagger-6">
-        <div class="global-flag">🌍</div>
-        <h3>Other Regions</h3>
+        <h3>Other Regions <span class="global-flag">🌍</span></h3>
         <div class="city">Expanding Globally</div>
         <div class="ops">Growing presence worldwide</div>
         <p style="margin-top:12px">We're actively expanding to serve more regions. Contact us to discuss your international accounting needs.</p>
@@ -2459,7 +2300,7 @@ footer {
 <section class="cta-section">
   <div class="cta-content">
     <h2>Ready to Elevate Your Financial Operations?</h2>
-    <p>Join 500+ businesses worldwide that trust DiligenceOS for precision, transparency, and growth.</p>
+    <p>Join leading businesses worldwide that trust DiligenceOS for precision, transparency, and growth.</p>
     <div class="cta-buttons">
       <a href="#contact" class="btn">Start Free Consultation</a>
       <a href="#services" class="btn">View All Services</a>
@@ -2472,7 +2313,7 @@ footer {
   <div class="contact-header">
     <div class="eyebrow">Get in Touch</div>
     <h2>Let's Start a Conversation</h2>
-    <p>No obligations, no pressure -just answers from our expert team.</p>
+    <p>No obligations, no pressure, just answers from our expert team.</p>
   </div>
   <div class="contact-content">
     <div class="contact-locations">
@@ -2495,15 +2336,15 @@ footer {
         <div class="location-block">
           <div class="location-label">Sales Enquiries</div>
           <div class="location-value">
-            <a href="mailto:sales@diligenceos.com" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">sales@diligenceos.com</a><br>
+            <a href="mailto:sales@diligenceos.com" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">sales@diligenceos.com</a><br>
             +1 (888) 445-3468
           </div>
         </div>
         <div class="location-block">
           <div class="location-label">Operations Support</div>
           <div class="location-value">
-            <a href="mailto:support@diligenceos.com" style="color: var(--accent-primary); text-decoration: none; font-weight: 600;">support@diligenceos.com</a><br>
-            Available 24/7
+            <a href="mailto:support@diligenceos.com" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">support@diligenceos.com</a><br>
+            Always Available
           </div>
         </div>
       </div>
@@ -2516,13 +2357,13 @@ footer {
       <a href="#" class="logo" style="display: flex; align-items: center; gap: 12px;">
         <div class="logo-icon" style="width:36px;height:36px">
           <svg viewBox="0 0 46 46" style="width:36px;height:36px" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="23" cy="23" r="21" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/>
-            <path d="M16 12 L16 34 L24 34 C32 34 36 28 36 23 C36 18 32 12 24 12 Z" fill="rgba(255,255,255,.85)"/>
-            <circle cx="37" cy="10" r="2.5" fill="var(--accent-primary)"/>
+            <circle cx="23" cy="23" r="21" fill="none" stroke="var(--text-primary)" stroke-width="1.5"/>
+            <path d="M16 12 L16 34 L24 34 C32 34 36 28 36 23 C36 18 32 12 24 12 Z" fill="var(--text-primary)"/>
+            <circle cx="37" cy="10" r="2.5" fill="var(--accent-gold)"/>
           </svg>
         </div>
         <div class="logo-mark">
-          <span class="logo-name" style="color:rgba(255,255,255,.9);font-size:1.3rem">DILIGENCE<span class="logo-accent">OS</span></span>
+          <span class="logo-name" style="color:var(--text-primary);font-size:1.3rem">DILIGENCE<span class="logo-accent">OS</span></span>
         </div>
       </a>
       <p>World-class bookkeeping and accounting services for ambitious businesses across the globe.</p>
@@ -2537,9 +2378,9 @@ footer {
       <h4>Services</h4>
       <ul>
         <li><a href="#services">Bookkeeping</a></li>
-        <li><a href="#services">Tax Filing</a></li>
         <li><a href="#services">Payroll</a></li>
         <li><a href="#services">Advisory</a></li>
+        <li><a href="#services">Forecasting</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -2554,7 +2395,7 @@ footer {
       <h4>Resources</h4>
       <ul>
         <li><a href="#">Blog</a></li>
-        <li><a href="#">Tax Guides</a></li>
+        <li><a href="#">Compliance Guides</a></li>
         <li><a href="#">Case Studies</a></li>
         <li><a href="#">Privacy Policy</a></li>
       </ul>
