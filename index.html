@@ -1405,8 +1405,9 @@ nav {
 
 .global-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 380px));
   gap: 32px;
+  justify-content: center;
 }
 
 .global-card {
@@ -1919,7 +1920,6 @@ footer {
         <div class="region-dropdown">
           <a href="us/index.html" class="region-option">&#127482;&#127480;</a>
           <a href="au/index.html" class="region-option">&#127462;&#127482;</a>
-          <a href="uk/index.html" class="region-option">&#127468;&#127463;</a>
         </div>
       </div>
     </div>
@@ -2061,7 +2061,6 @@ footer {
       </div>
       <p class="testimonial-text">"DiligenceOS has been a game-changer for our business. Their attention to detail and proactive approach have saved us thousands through proactive financial management."</p>
       <div class="testimonial-author">Sarah Johnson</div>
-      <div class="testimonial-role">CEO, TechFlow Inc.</div>
     </div>
     <div class="testimonial-card reveal stagger-2">
       <div class="testimonial-stars">
@@ -2073,7 +2072,6 @@ footer {
       </div>
       <p class="testimonial-text">"Finally, an accounting team that understands global business. They handle our multi-country operations flawlessly and always keep us audit-ready."</p>
       <div class="testimonial-author">Rajesh Kumar</div>
-      <div class="testimonial-role">Founder, Global Ventures</div>
     </div>
     <div class="testimonial-card reveal stagger-3">
       <div class="testimonial-stars">
@@ -2085,7 +2083,6 @@ footer {
       </div>
       <p class="testimonial-text">"The professionalism and responsiveness from the DiligenceOS team is outstanding. They're truly invested in our financial success."</p>
       <div class="testimonial-author">Emma Chen</div>
-      <div class="testimonial-role">CFO, Growth Partners LLC</div>
     </div>
   </div>
 </section>
@@ -2170,12 +2167,6 @@ footer {
         <p style="margin-top:12px">From startups in Silicon Valley to established corporations across the nation, we handle US accounting with expertise in all 50 states.</p>
       </div>
       <div class="global-card reveal stagger-2">
-        <h3>India <span class="global-flag">🇮🇳</span></h3>
-        <div class="city">Serving Indian Businesses</div>
-        <div class="ops">Domestic & international support</div>
-        <p style="margin-top:12px">Expert in Indian regulatory law, GST compliance, and accounting for companies operating domestically and internationally.</p>
-      </div>
-      <div class="global-card reveal stagger-3">
         <h3>Australia <span class="global-flag">🇦🇺</span></h3>
         <div class="city">Serving Australian Businesses</div>
         <div class="ops">Sydney & Melbourne presence</div>
