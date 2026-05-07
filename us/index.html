@@ -1133,6 +1133,35 @@ nav {
   margin-left: 4px;
 }
 
+.pricing-tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.pricing-tier-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.pricing-tier-value {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.pricing-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 48px 0 16px;
+  text-align: center;
+}
+
 .pricing-features {
   list-style: none;
   margin-bottom: 32px;
@@ -2088,13 +2117,24 @@ footer {
 <!-- PRICING SECTION -->
 <section class="section pricing-section" id="pricing">
   <div class="section-header reveal">
-    <h2>US Pricing in USD</h2>
+    <h2>Pricing in USD</h2>
     <p>Simple, transparent pricing with no hidden fees. Choose the plan that fits your business.</p>
   </div>
+  <h3 class="pricing-section-title">Accounting Services</h3>
   <div class="pricing-grid">
     <div class="pricing-card reveal stagger-1">
-      <div class="pricing-name">Starter</div>
+      <div class="pricing-name">Bookkeeper</div>
       <div class="pricing-desc">Small business bookkeeping</div>
+      <div class="pricing-tiers">
+        <div>
+          <div class="pricing-tier-label">Dedicated Seat</div>
+          <div class="pricing-tier-value">US $ 2400 / month</div>
+        </div>
+        <div>
+          <div class="pricing-tier-label">Hourly Seat</div>
+          <div class="pricing-tier-value">US $ 20 / hour</div>
+        </div>
+      </div>
       <ul class="pricing-features">
         <li><i class="fas fa-check"></i> Bank reconciliation</li>
         <li><i class="fas fa-check"></i> Monthly financials</li>
@@ -2105,8 +2145,18 @@ footer {
     </div>
     <div class="pricing-card featured reveal stagger-2">
       <div class="pricing-badge">Most Popular</div>
-      <div class="pricing-name">Growth</div>
+      <div class="pricing-name">Sr. Accountant</div>
       <div class="pricing-desc">Full-service + payroll</div>
+      <div class="pricing-tiers">
+        <div>
+          <div class="pricing-tier-label">Dedicated Seat</div>
+          <div class="pricing-tier-value">US $ 3200 / month</div>
+        </div>
+        <div>
+          <div class="pricing-tier-label">Hourly Seat</div>
+          <div class="pricing-tier-value">US $ 25 / hour</div>
+        </div>
+      </div>
       <ul class="pricing-features">
         <li><i class="fas fa-check"></i> Complete bookkeeping</li>
         <li><i class="fas fa-check"></i> Payroll processing</li>
@@ -2117,14 +2167,94 @@ footer {
       <button class="btn btn-primary">Get Started</button>
     </div>
     <div class="pricing-card reveal stagger-3">
-      <div class="pricing-name">Enterprise</div>
+      <div class="pricing-name">Accounting Manager</div>
       <div class="pricing-desc">Multi-entity consolidation</div>
+      <div class="pricing-tiers">
+        <div>
+          <div class="pricing-tier-label">Dedicated Seat</div>
+          <div class="pricing-tier-value">US $ 4000 / month</div>
+        </div>
+        <div>
+          <div class="pricing-tier-label">Hourly Seat</div>
+          <div class="pricing-tier-value">US $ 30 / hour</div>
+        </div>
+      </div>
       <ul class="pricing-features">
         <li><i class="fas fa-check"></i> Full-service accounting</li>
         <li><i class="fas fa-check"></i> Financial advisory</li>
         <li><i class="fas fa-check"></i> Dedicated team</li>
         <li><i class="fas fa-check"></i> Multi-entity support</li>
         <li><i class="fas fa-check"></i> SLA guarantee</li>
+      </ul>
+      <button class="btn btn-secondary">Contact Us</button>
+    </div>
+  </div>
+
+  <h3 class="pricing-section-title">Tax Services</h3>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal stagger-1">
+      <div class="pricing-name">Tax Preparer</div>
+      <div class="pricing-desc">US tax preparation support</div>
+      <div class="pricing-tiers">
+        <div>
+          <div class="pricing-tier-label">Dedicated Seat</div>
+          <div class="pricing-tier-value">US $ 4000 / month</div>
+        </div>
+        <div>
+          <div class="pricing-tier-label">Hourly Seat</div>
+          <div class="pricing-tier-value">US $ 30 / hour</div>
+        </div>
+      </div>
+      <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> 2 to 4 years of experience in US tax preparation</li>
+        <li><i class="fas fa-check"></i> 1040, 1120s, 1065</li>
+        <li><i class="fas fa-check"></i> Preparation of FBAR</li>
+      </ul>
+      <button class="btn btn-secondary">Get Started</button>
+    </div>
+    <div class="pricing-card featured reveal stagger-2">
+      <div class="pricing-badge">Most Popular</div>
+      <div class="pricing-name">Sr. Tax Preparer</div>
+      <div class="pricing-desc">Complex returns &amp; entities</div>
+      <div class="pricing-tiers">
+        <div>
+          <div class="pricing-tier-label">Dedicated Seat</div>
+          <div class="pricing-tier-value">US $ 4800 / month</div>
+        </div>
+        <div>
+          <div class="pricing-tier-label">Hourly Seat</div>
+          <div class="pricing-tier-value">US $ 35 / hour</div>
+        </div>
+      </div>
+      <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> 4 to 6 years of experience in US tax preparation</li>
+        <li><i class="fas fa-check"></i> Individual &amp; Estate taxes</li>
+        <li><i class="fas fa-check"></i> Business &amp; Non-profits taxes</li>
+        <li><i class="fas fa-check"></i> Expert in Federal and State returns</li>
+        <li><i class="fas fa-check"></i> Skilled in handling complex entity structures</li>
+        <li><i class="fas fa-check"></i> Good communication skills</li>
+      </ul>
+      <button class="btn btn-primary">Get Started</button>
+    </div>
+    <div class="pricing-card reveal stagger-3">
+      <div class="pricing-name">Tax Manager</div>
+      <div class="pricing-desc">Review, delivery &amp; team coaching</div>
+      <div class="pricing-tiers">
+        <div>
+          <div class="pricing-tier-label">Dedicated Seat</div>
+          <div class="pricing-tier-value">US $ 5600 / month</div>
+        </div>
+        <div>
+          <div class="pricing-tier-label">Hourly Seat</div>
+          <div class="pricing-tier-value">US $ 40 / hour</div>
+        </div>
+      </div>
+      <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> 6 to 8 years of experience in US taxes</li>
+        <li><i class="fas fa-check"></i> Perform review of taxes prepared by Tax Preparers</li>
+        <li><i class="fas fa-check"></i> Based on the review, deliver ready to file taxes</li>
+        <li><i class="fas fa-check"></i> Excellent at client communications</li>
+        <li><i class="fas fa-check"></i> Track daily, weekly, monthly progress reports of tax preparers and coach them where required</li>
       </ul>
       <button class="btn btn-secondary">Contact Us</button>
     </div>
