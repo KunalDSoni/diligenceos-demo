@@ -14,16 +14,17 @@
   --secondary-bg: #f6f9fc;
   --accent-primary: #635bff;
   --accent-secondary: #0073e6;
-  --accent-gold: #c9a227;
+  --accent-gold: #8a6a12;
   --accent-gold-light: #f5e6b8;
-  --accent-gold-hover: #b8911f;
-  --accent-gold-glow: rgba(201, 162, 39, 0.15);
+  --accent-gold-hover: #6f540e;
+  --accent-gold-text: #8a6a12;
+  --accent-gold-glow: rgba(138, 106, 18, 0.15);
   --text-primary: #111111;
   --text-secondary: #2a2a2a;
   --text-light: #555555;
   --border-color: #e6ebf1;
   --shadow-subtle: 0 2px 4px rgba(0,0,0,0.06), 0 4px 6px rgba(0,0,0,0.04);
-  --shadow-gold: 0 4px 16px rgba(201, 162, 39, 0.12);
+  --shadow-gold: 0 4px 16px rgba(138, 106, 18, 0.12);
   --transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 html { scroll-behavior: smooth; scroll-padding-top: 76px; }
@@ -46,7 +47,7 @@ nav {
   background: var(--primary-bg);
   border-bottom: 1px solid var(--border-color);
   transition: var(--transition);
-  box-shadow: 0 1px 0 rgba(201, 162, 39, 0.08);
+  box-shadow: 0 1px 0 rgba(138, 106, 18, 0.08);
 }
 .nav-container {
   max-width: 1200px; margin: 0 auto;
@@ -77,7 +78,7 @@ nav {
 @keyframes iconPulse { 0%,100% { transform: scale(1); } 30% { transform: scale(1.08) rotate(-2deg); } 60% { transform: scale(1.04) rotate(1deg); } }
 .logo-mark { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
 .logo-name { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); letter-spacing: 1px; white-space: nowrap; }
-.logo-accent { color: var(--accent-gold); font-weight: 700; }
+.logo-accent { color: var(--accent-gold-text); font-weight: 700; }
 .logo-sub { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-top: 4px; font-weight: 500; }
 .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
 .nav-links a {
@@ -90,10 +91,10 @@ nav {
 }
 .nav-links a:hover { color: var(--text-primary); }
 .nav-links a:hover::after { width: 18px; }
-.nav-links a.active { color: var(--accent-gold-hover); }
+.nav-links a.active { color: var(--accent-gold-text); }
 .nav-links a.active::after { width: 18px; }
 .nav-right { display: flex; align-items: center; gap: 16px; }
-.mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text-primary); cursor: pointer; }
+.mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text-primary); cursor: pointer; width: 44px; height: 44px; align-items: center; justify-content: center; margin-right: -8px; }
 
 /* ═══════ REGION SELECTOR ═══════ */
 .region-selector { position: relative; }
@@ -102,10 +103,10 @@ nav {
   border: 1px solid var(--border-color); border-radius: 8px; background: transparent; cursor: pointer;
   font-family: inherit; font-size: 0.88rem; font-weight: 600; color: var(--text-secondary); transition: var(--transition);
 }
-.region-trigger:hover { border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(201, 162, 39, 0.04); }
+.region-trigger:hover { border-color: var(--accent-gold-text); color: var(--accent-gold-text); background: rgba(138, 106, 18, 0.04); }
 .region-trigger-flag { font-size: 1.35rem; line-height: 1; }
 .region-chevron { font-size: 0.55rem; transition: var(--transition); margin-left: 2px; }
-.region-selector:hover .region-chevron { transform: rotate(180deg); }
+.region-selector:hover .region-chevron, .region-selector.open .region-chevron { transform: rotate(180deg); }
 .region-dropdown {
   position: absolute; top: calc(100% + 10px); right: 0; background: var(--primary-bg);
   border: 1px solid var(--border-color); border-radius: 12px;
@@ -113,65 +114,71 @@ nav {
   padding: 6px; opacity: 0; visibility: hidden; transform: translateY(-6px) scale(0.98);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1001; display: flex; flex-direction: column; gap: 2px;
 }
-.region-selector:hover .region-dropdown { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.region-selector:hover .region-dropdown, .region-selector.open .region-dropdown { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 .region-option { display: flex; align-items: center; justify-content: center; padding: 8px 12px; border-radius: 8px; text-decoration: none; transition: var(--transition); font-size: 1.5rem; line-height: 1; }
 .region-option:hover { background: var(--secondary-bg); }
 
 /* ═══════ HERO ═══════ */
-.lead-hero { position: relative; overflow: hidden; background: var(--primary-bg); padding: 72px 40px 56px; text-align: center; }
+.lead-hero { position: relative; overflow: hidden; background: var(--primary-bg); padding: 44px 40px 28px; text-align: center; }
 .lead-hero::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(circle at 80% 20%, rgba(201, 162, 39, 0.05) 0%, transparent 50%),
-              radial-gradient(circle at 20% 80%, rgba(201, 162, 39, 0.06) 0%, transparent 50%),
-              radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.04) 0%, transparent 30%);
+  background: radial-gradient(circle at 80% 20%, rgba(138, 106, 18, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 20% 80%, rgba(138, 106, 18, 0.06) 0%, transparent 50%),
+              radial-gradient(circle at 50% 0%, rgba(138, 106, 18, 0.04) 0%, transparent 30%);
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.04));
-  border: 1px solid rgba(201, 162, 39, 0.25); padding: 10px 16px; border-radius: 100px; margin: 0 auto 16px;
-  font-size: 0.85rem; color: var(--accent-gold-hover); font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase;
+  background: linear-gradient(135deg, rgba(138, 106, 18, 0.1), rgba(138, 106, 18, 0.04));
+  border: 1px solid rgba(138, 106, 18, 0.25); padding: 10px 16px; border-radius: 100px; margin: 0 auto 16px;
+  font-size: 0.85rem; color: var(--accent-gold-text); font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase;
   position: relative;
 }
 .lead-hero h1 { position: relative; font-size: 2.8rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.5px; margin-bottom: 14px; }
 .lead-hero h1 .accent {
-  background: linear-gradient(135deg, var(--accent-gold-hover), var(--accent-gold));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  color: var(--accent-gold-text);
 }
 .lead-hero p { position: relative; color: var(--text-secondary); max-width: 660px; margin: 0 auto; font-size: 1rem; line-height: 1.8; }
 
 /* ═══════ TABS ═══════ */
 .lead-section {
-  position: relative; overflow: hidden; min-height: 680px;
-  margin: 0 32px 64px; border-radius: 28px;
-  border: 1px solid rgba(99, 91, 255, 0.12);
-  box-shadow: 0 10px 40px rgba(99, 91, 255, 0.04);
+  position: relative; overflow: hidden;
+  margin: 0 32px 48px; border-radius: 24px;
+  border: 1px solid rgba(138, 106, 18, 0.14);
+  box-shadow: 0 10px 40px rgba(138, 106, 18, 0.05);
   background:
-    radial-gradient(120% 85% at 50% 112%, rgba(255, 138, 101, 0.35) 0%, rgba(255, 235, 230, 0) 60%),
-    linear-gradient(180deg, #ffffff 0%, #faf8ff 45%, #f1ebff 100%);
+    radial-gradient(120% 85% at 50% 112%, rgba(201, 162, 39, 0.22) 0%, rgba(245, 230, 184, 0) 60%),
+    linear-gradient(180deg, #ffffff 0%, #fdfbf3 45%, #f7efd8 100%);
 }
 .hero-burst {
   position: absolute; inset: 0; width: 100%; height: 100%;
   pointer-events: none; z-index: 0;
 }
-.lead-wrap { position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; padding: 48px 40px 90px; }
-.tabs { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; }
+.lead-wrap { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 32px 40px 44px; }
+.tabs {
+  display: inline-flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+  margin: 0 auto 32px;
+}
+.tabs-wrap { display: flex; justify-content: center; }
 .tab-btn {
   appearance: none; cursor: pointer; font-family: inherit; font-size: 0.92rem; font-weight: 600;
-  padding: 11px 24px; border-radius: 100px; transition: var(--transition);
-  background: var(--secondary-bg); color: var(--text-secondary); border: 1px solid var(--border-color);
+  padding: 11px 22px; border-radius: 100px; transition: var(--transition);
+  background: var(--primary-bg); color: var(--text-secondary); border: 1px solid var(--border-color);
+  letter-spacing: 0.01em; white-space: nowrap;
 }
-.tab-btn:hover { border-color: var(--accent-gold); color: var(--accent-gold); background: rgba(201, 162, 39, 0.04); }
+.tab-btn:hover { color: var(--accent-gold-text); border-color: var(--accent-gold-light); background: rgba(138, 106, 18, 0.06); }
 .tab-btn.active {
-  background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover));
-  color: #111111; font-weight: 700; border-color: transparent; box-shadow: 0 2px 8px rgba(201, 162, 39, 0.25);
+  background: linear-gradient(135deg, var(--accent-gold-text), #6f540e);
+  color: #ffffff; font-weight: 700; border-color: transparent;
+  box-shadow: 0 4px 14px rgba(138, 106, 18, 0.30);
 }
+.tab-btn.active:hover { color: #ffffff; }
 .tab-panel { display: none; animation: fade .4s ease; }
 .tab-panel.active { display: block; }
 @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 /* section header (matches site) */
-.section-header { text-align: center; margin: 0 auto 40px; max-width: 760px; }
-.section-header h2 { margin-bottom: 16px; position: relative; display: inline-block; font-size: 1.8rem; }
+.section-header { text-align: center; margin: 0 auto 28px; max-width: 760px; }
+.section-header h2 { margin-bottom: 12px; position: relative; display: inline-block; font-size: 1.6rem; }
 .section-header h2::after {
   content: ''; display: block; width: 40px; height: 3px;
   background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
@@ -182,8 +189,8 @@ nav {
 /* ═══════ TEAM GRID + CARDS ═══════ */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 268px);
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
   justify-content: center;
   align-items: stretch;
 }
@@ -194,10 +201,10 @@ nav {
 }
 .member-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-gold); border-color: var(--accent-gold-light); }
 .member-photo {
-  width: 112px; height: 112px; border-radius: 50%; margin: 0 0 18px; flex-shrink: 0;
+  width: 168px; height: 168px; border-radius: 50%; margin: 0 0 18px; flex-shrink: 0;
   background: linear-gradient(135deg, var(--secondary-bg), #eef2f8);
   border: 2px solid var(--border-color); display: flex; align-items: center; justify-content: center;
-  color: #c2cad9; font-size: 2.4rem; transition: var(--transition);
+  color: #c2cad9; font-size: 3.6rem; transition: var(--transition);
 }
 .member-photo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
 .member-card:hover .member-photo { border-color: var(--accent-gold-light); }
@@ -211,17 +218,17 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
 .footer-brand p { font-size: 0.88rem; color: var(--text-light); margin: 16px 0; max-width: 320px; }
 .social-links { display: flex; gap: 12px; }
 .social-links a { width: 36px; height: 36px; border-radius: 50%; background: var(--primary-bg); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-light); transition: var(--transition); text-decoration: none; }
-.social-links a:hover { color: var(--accent-gold); border-color: var(--accent-gold-light); }
+.social-links a:hover { color: var(--accent-gold-text); border-color: var(--accent-gold-light); }
 .footer-col h4 { font-size: 0.95rem; margin-bottom: 16px; color: var(--text-primary); }
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: 10px; }
 .footer-col ul li a { font-size: 0.86rem; color: var(--text-light); transition: var(--transition); text-decoration: none; }
-.footer-col ul li a:hover { color: var(--accent-gold-hover); }
+.footer-col ul li a:hover { color: var(--accent-gold-text); }
 .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 22px 40px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
 .footer-bottom p { font-size: 0.82rem; color: var(--text-light); }
 .footer-links { display: flex; gap: 20px; list-style: none; }
 .footer-links a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; }
-.footer-links a:hover { color: var(--accent-gold-hover); }
+.footer-links a:hover { color: var(--accent-gold-text); }
 
 /* ═══════ RESPONSIVE ═══════ */
 @media (max-width: 860px) {
@@ -230,13 +237,29 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
   .nav-links.open { display: flex; }
   .nav-links a { padding: 12px 16px; border-radius: 8px; width: 100%; }
   .nav-links a:hover { background: var(--secondary-bg); }
-  .mobile-toggle { display: block; }
-  .lead-hero { padding: 48px 20px 40px; }
+  .mobile-toggle { display: flex; }
+  .lead-hero { padding: 36px 20px 24px; }
   .lead-hero h1 { font-size: 2rem; }
-  .lead-wrap { padding: 0 20px 60px; }
+  .lead-hero p { font-size: 0.92rem; }
+  .lead-section { margin: 0 20px 40px; }
+  .lead-wrap { padding: 28px 20px 36px; }
+  .section-header h2 { font-size: 1.4rem; }
+  .section-header p { font-size: 0.92rem; }
+  .team-grid { grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px; }
   .footer-top { grid-template-columns: 1fr 1fr; padding: 40px 20px; }
 }
 @media (max-width: 520px) {
+  .lead-hero { padding: 28px 16px 20px; }
+  .lead-hero h1 { font-size: 1.6rem; }
+  .lead-hero p { font-size: 0.88rem; }
+  .hero-badge { font-size: 0.72rem; padding: 8px 12px; }
+  .lead-section { margin: 0 16px 32px; border-radius: 20px; }
+  .lead-wrap { padding: 24px 16px 32px; }
+  .tabs { width: 100%; }
+  .tab-btn { flex: 1 1 auto; padding: 10px 16px; font-size: 0.84rem; }
+  .team-grid { grid-template-columns: 1fr; gap: 16px; }
+  .member-card { padding: 26px 20px 22px; }
+  .member-photo { width: 132px; height: 132px; font-size: 3rem; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
 }
@@ -288,17 +311,19 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
 <section class="lead-hero">
   <span class="hero-badge"><i class="fas fa-users"></i> Our People</span>
   <h1>Meet Our <span class="accent">Leaders</span></h1>
-  <p>The people driving DiligenceOS Global Pvt. Ltd. — from strategy and growth to the accounting expertise that powers our clients.</p>
+  <p>The people driving DiligenceOS Global Pvt. Ltd., from strategy and growth to the accounting expertise that powers our clients.</p>
 </section>
 
 <!-- TABS + CONTENT -->
 <section class="lead-section">
 <canvas class="hero-burst" id="heroBurst"></canvas>
 <div class="lead-wrap">
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="board">Board of Directors &amp; Advisors</button>
-    <button class="tab-btn" data-tab="sales">Sales Team</button>
-    <button class="tab-btn" data-tab="dev">Development &amp; Accountant</button>
+  <div class="tabs-wrap">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="board">Board of Directors &amp; Advisors</button>
+      <button class="tab-btn" data-tab="sales">Sales Team</button>
+      <button class="tab-btn" data-tab="dev">Accountants</button>
+    </div>
   </div>
 
   <!-- BOARD -->
@@ -318,6 +343,11 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
         <div class="member-name">Debanshu</div>
         <div class="member-role">Advisor at DiligenceOS Global Pvt. Ltd.</div>
       </div>
+      <div class="member-card">
+        <div class="member-photo"><img src="Photos/CA%20Gaurav%20Nahta.png" alt="CA Gaurav Nahta"></div>
+        <div class="member-name">CA Gaurav Nahta</div>
+        <div class="member-role">Partner at DiligenceOS Global Pvt. Ltd.</div>
+      </div>
     </div>
   </div>
 
@@ -325,7 +355,7 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
   <div class="tab-panel" id="sales">
     <div class="section-header">
       <h2>Sales Team</h2>
-      <p>Our sales specialists connect CPA &amp; EA firms and growing businesses with the right outsourced accounting solutions — from first conversation through to long-term retention.</p>
+      <p>Our sales specialists connect CPA &amp; EA firms and growing businesses with the right outsourced accounting solutions, from first conversation through to long-term retention.</p>
     </div>
     <div class="team-grid">
       <div class="member-card">
@@ -349,8 +379,8 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
   <!-- DEV & ACCOUNTANT -->
   <div class="tab-panel" id="dev">
     <div class="section-header">
-      <h2>Development &amp; Accountant</h2>
-      <p>Our delivery team handles US accounting, tax preparation, payroll, and bookkeeping — bringing precision and compliance to every client engagement.</p>
+      <h2>Accountants</h2>
+      <p>Our delivery team handles US accounting, tax preparation, payroll, and bookkeeping, bringing precision and compliance to every client engagement.</p>
     </div>
     <div class="team-grid">
       <div class="member-card">
@@ -445,7 +475,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById(target).classList.add('active');
-    // section height changes with the active panel — rebuild the burst canvas
+    // section height changes with the active panel, rebuild the burst canvas
     requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
   });
 });
@@ -463,12 +493,12 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     return [Math.round(lerp(c1[0], c2[0], k)), Math.round(lerp(c1[1], c2[1], k)), Math.round(lerp(c1[2], c2[2], k))];
   }
 
-  // Stripe "backbone of global commerce" color palette
-  const INDIGO = [99, 91, 255];
-  const VIOLET = [168, 85, 247];
-  const PINK = [244, 63, 94];
-  const ORANGE = [255, 127, 80];
-  const GOLD = [251, 191, 36];
+  // Warm gold brand palette (light gold -> honey -> amber -> deep gold -> bronze)
+  const CHAMP  = [206, 168, 78];
+  const HONEY  = [188, 148, 52];
+  const AMBER  = [168, 128, 34];
+  const GOLD   = [138, 106, 18];
+  const BRONZE = [104, 78, 14];
 
   function build() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
@@ -476,9 +506,17 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     canvas.width = w * dpr; canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     W = w; H = h; cx = w / 2; cy = h + 80;
-    // contained dome — kept well inside the panel so there's space above and on the sides
-    const maxLen = Math.min(w * 0.40, h * 0.62) + 60;
-    const count = Math.round(Math.min(220, Math.max(120, w / 7))); // more dense, rich lines
+    // Reach the dome up so the tallest center rays touch the tab row (Board of Directors / Sales Team)
+    let targetY = h * 0.10; // fallback near the top
+    const tabsEl = document.querySelector('.tabs');
+    if (tabsEl) {
+      const cRect = canvas.getBoundingClientRect();
+      const tRect = tabsEl.getBoundingClientRect();
+      targetY = (tRect.top + tRect.bottom) / 2 - cRect.top; // center of the tabs row within the canvas
+    }
+    // center ray apex is at (cy - maxLen); +18 so the tips just cross into the tabs
+    const maxLen = Math.max(Math.min(w * 0.40, h * 0.62) + 60, (cy - targetY) + 18);
+    const count = Math.round(Math.min(180, Math.max(100, w / 9))); // balanced, delicate lines
     rays = [];
     for (let i = 0; i < count; i++) {
       // upper semicircle, slightly past horizontal on both sides
@@ -487,20 +525,20 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
       let col;
       if (distFromCenter < 0.4) {
-        // Center: Amber-gold and coral orange blending into pink
+        // Center: bright champagne blending into warm honey
         const k = distFromCenter / 0.4;
-        const base = mix(GOLD, ORANGE, Math.random());
-        col = mix(base, PINK, k);
+        const base = mix(CHAMP, HONEY, Math.random());
+        col = mix(base, HONEY, k);
       } else if (distFromCenter < 0.75) {
-        // Intermediate: Pink transitioning to rich violet
+        // Intermediate: honey transitioning to amber gold
         const k = (distFromCenter - 0.4) / 0.35;
-        const base = mix(PINK, ORANGE, Math.random() * 0.5);
-        col = mix(base, VIOLET, k);
+        const base = mix(HONEY, AMBER, Math.random() * 0.6);
+        col = mix(base, AMBER, k);
       } else {
-        // Edges: Cool violet and deep indigo
+        // Edges: amber deepening into rich gold and bronze
         const k = (distFromCenter - 0.75) / 0.25;
-        const base = mix(VIOLET, INDIGO, Math.random());
-        col = mix(base, INDIGO, k);
+        const base = mix(AMBER, GOLD, Math.random());
+        col = mix(base, BRONZE, k);
       }
 
       const a = Math.PI * (0.97 + 1.06 * norm);
@@ -515,9 +553,9 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
         speed: 0.5 + Math.random() * 0.5,
         amp: 0.012 + Math.random() * 0.025,
         ph: Math.random() * Math.PI * 2,
-        w: 0.35 + Math.random() * 0.35, // ultra-fine, delicate lines
-        dot: 0.8 + Math.random() * 1.3, // delicate sparkling dots
-        alpha: 0.22 + Math.random() * 0.28, // softer opacity
+        w: 0.4 + Math.random() * 0.4, // fine, delicate lines
+        dot: 0.7 + Math.random() * 1.0, // soft sparkling dots
+        alpha: 0.26 + Math.random() * 0.26, // visible yet refined
         pulses: [], // active transaction flow pulses
         flash: 0 // tip strike flash brightness (0 to 1)
       });
@@ -619,8 +657,12 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
       }
       r.pulses = pulsesToKeep;
       
-      // Draw the base ray line
-      ctx.strokeStyle = `rgba(${cr},${cg},${cb},${r.alpha * grow})`;
+      // Draw the base ray line, fading toward the tip so it stays subtle over text
+      const rg = ctx.createLinearGradient(cx, cy, ex, ey);
+      rg.addColorStop(0, `rgba(${cr},${cg},${cb},${r.alpha * grow})`);
+      rg.addColorStop(0.7, `rgba(${cr},${cg},${cb},${r.alpha * grow * 0.55})`);
+      rg.addColorStop(1, `rgba(${cr},${cg},${cb},0)`);
+      ctx.strokeStyle = rg;
       ctx.lineWidth = r.w;
       ctx.beginPath();
       ctx.moveTo(cx, cy);
@@ -633,13 +675,13 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
       const tw = reduce ? 1 : 0.7 + 0.3 * Math.sin(t * 2 + r.ph);
       
       // Outer glow ring (halo)
-      ctx.fillStyle = `rgba(${cr},${cg},${cb},${Math.min(0.25 * flashAlphaMultiplier, r.alpha * 0.55 * grow) * tw})`;
+      ctx.fillStyle = `rgba(${cr},${cg},${cb},${Math.min(0.16 * flashAlphaMultiplier, r.alpha * 0.45 * grow) * tw})`;
       ctx.beginPath();
-      ctx.arc(ex, ey, r.dot * 2.8 * grow * flashMultiplier, 0, Math.PI * 2);
+      ctx.arc(ex, ey, r.dot * 2.4 * grow * flashMultiplier, 0, Math.PI * 2);
       ctx.fill();
-      
+
       // Center solid dot
-      ctx.fillStyle = `rgba(${cr},${cg},${cb},${Math.min(0.95 * flashAlphaMultiplier, r.alpha * 2.5 * grow) * tw})`;
+      ctx.fillStyle = `rgba(${cr},${cg},${cb},${Math.min(0.7 * flashAlphaMultiplier, r.alpha * 1.8 * grow) * tw})`;
       ctx.beginPath();
       ctx.arc(ex, ey, r.dot * grow * flashMultiplier, 0, Math.PI * 2);
       ctx.fill();
@@ -693,6 +735,19 @@ if (mobileToggle) {
     const icon = mobileToggle.querySelector('i');
     icon.classList.toggle('fa-bars');
     icon.classList.toggle('fa-times');
+  });
+}
+
+// Region selector: tap to toggle on touch devices (hover doesn't fire on touch)
+const regionSelector = document.querySelector('.region-selector');
+const regionTrigger = document.querySelector('.region-trigger');
+if (regionSelector && regionTrigger) {
+  regionTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    regionSelector.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!regionSelector.contains(e.target)) regionSelector.classList.remove('open');
   });
 }
 </script>

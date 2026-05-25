@@ -1,8 +1,8 @@
-# DiligenceOS — Global Bookkeeping & Accounting Services
+# DiligenceOS: Global Bookkeeping & Accounting Services
 
 **Live Site:** [https://kunaldsoni.github.io/diligenceos-demo/](https://kunaldsoni.github.io/diligenceos-demo/)
 
-A static, multi-region marketing website for DiligenceOS, a global bookkeeping and accounting services company. Built with a Stripe-inspired design language — clean, modern, and international.
+A static, multi-region marketing website for DiligenceOS, a global bookkeeping and accounting services company. Built with a Stripe-inspired design language: clean, modern, and international.
 
 ## Project Structure
 
@@ -17,29 +17,29 @@ Diligiance/
 
 ## Architecture
 
-Each page is a **self-contained single HTML file** with embedded CSS and JavaScript — no build tools, no frameworks, no external dependencies beyond Google Fonts and Font Awesome via CDN.
+Each page is a **self-contained single HTML file** with embedded CSS and JavaScript: no build tools, no frameworks, no external dependencies beyond Google Fonts and Font Awesome via CDN.
 
 ### Multi-Region System
 
 The site supports region-specific pages, each with fully unique content:
 
-- **Global** (`/index.html`) — Default landing page with a globe icon trigger, general worldwide messaging
-- **US** (`/us/index.html`) — IRS, GAAP, USD pricing, Delaware & Illinois offices
-- **AU** (`/au/index.html`) — ATO, BAS/GST, AUD pricing, Sydney & Melbourne offices
-- **UK** (`/uk/index.html`) — HMRC, VAT/MTD, GBP pricing, London & Manchester offices
+- **Global** (`/index.html`): Default landing page with a globe icon trigger, general worldwide messaging
+- **US** (`/us/index.html`): IRS, GAAP, USD pricing, Delaware & Illinois offices
+- **AU** (`/au/index.html`): ATO, BAS/GST, AUD pricing, Sydney & Melbourne offices
+- **UK** (`/uk/index.html`): HMRC, VAT/MTD, GBP pricing, London & Manchester offices
 
 A **region selector** in the top-right nav allows switching between regions via flag emojis. Each region page displays its own flag as the trigger; the global page uses a 🌎 globe.
 
 ## Features
 
-- **Dark/Light Theme Toggle** — Sun and moon buttons in the nav. Persists preference via `localStorage`. Gracefully degrades on `file://` protocol.
-- **Stripe-Inspired Design** — Inter font, indigo (#635bff) accent, clean card layouts, generous whitespace.
-- **Scroll Reveal Animations** — Sections animate in on scroll via IntersectionObserver. Visible by default if JS is unavailable.
-- **Animated Counters** — Key metrics count up when scrolled into view.
-- **FAQ Accordion** — Expandable question/answer pairs.
-- **Financial Ticker** — Scrolling ticker bar with key financial metrics.
-- **Mobile Responsive** — Three breakpoints: 1200px, 768px, 480px.
-- **Social Media Hover Effects** — Brand-colored hover states (LinkedIn blue, Twitter blue, Facebook blue, Instagram gradient).
+- **Dark/Light Theme Toggle**: Sun and moon buttons in the nav. Persists preference via `localStorage`. Gracefully degrades on `file://` protocol.
+- **Stripe-Inspired Design**: Inter font, indigo (#635bff) accent, clean card layouts, generous whitespace.
+- **Scroll Reveal Animations**: Sections animate in on scroll via IntersectionObserver. Visible by default if JS is unavailable.
+- **Animated Counters**: Key metrics count up when scrolled into view.
+- **FAQ Accordion**: Expandable question/answer pairs.
+- **Financial Ticker**: Scrolling ticker bar with key financial metrics.
+- **Mobile Responsive**: Three breakpoints: 1200px, 768px, 480px.
+- **Social Media Hover Effects**: Brand-colored hover states (LinkedIn blue, Twitter blue, Facebook blue, Instagram gradient).
 
 ## Design Tokens (CSS Variables)
 
@@ -86,7 +86,7 @@ Using a local server is recommended because `file://` protocol doesn't auto-reso
 
 ## Browser Support
 
-Tested on modern browsers (Chrome, Safari, Firefox, Edge). Uses CSS custom properties, CSS Grid, IntersectionObserver, and ES6 — all widely supported.
+Tested on modern browsers (Chrome, Safari, Firefox, Edge). Uses CSS custom properties, CSS Grid, IntersectionObserver, and ES6, all widely supported.
 
 ## License
 
