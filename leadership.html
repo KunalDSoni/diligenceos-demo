@@ -95,6 +95,39 @@ nav {
 .nav-links a.active::after { width: 18px; }
 .nav-right { display: flex; align-items: center; gap: 16px; }
 .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text-primary); cursor: pointer; width: 44px; height: 44px; align-items: center; justify-content: center; margin-right: -8px; }
+.nav-cta {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #b8920e 0%, #8a6a12 60%, #6f540e 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+  padding: 9px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 2px 10px rgba(138, 106, 18, 0.32), inset 0 1px 0 rgba(255,255,255,0.1);
+  transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94), background 0.3s ease;
+}
+.nav-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+}
+.nav-cta:hover {
+  background: linear-gradient(135deg, #c9a018 0%, #9a7618 60%, #7c5f10 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(138, 106, 18, 0.42), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.nav-cta:hover::before { left: 160%; }
+.nav-cta:active { transform: translateY(0); transition: transform 0.1s ease; }
 
 /* ═══════ REGION SELECTOR ═══════ */
 .region-selector { position: relative; }
@@ -208,6 +241,16 @@ nav {
 }
 .member-photo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
 .member-card:hover .member-photo { border-color: var(--accent-gold-light); }
+
+/* Delivery Team: zoom into each face and keep it centered */
+#dev .member-photo { overflow: hidden; }
+#dev .member-photo img { object-position: center top; transform: scale(1.7); transform-origin: center top; }
+#dev .member-card[data-face="right"] .member-photo img { transform-origin: 60% top; }
+#dev .member-card[data-photo="original"] .member-photo img { transform: none; object-position: center; }
+#dev .member-card[data-photo="soft"] .member-photo img { transform: scale(1.4); transform-origin: center 40%; }
+#dev .member-card[data-photo="soft"][data-anchor="high"] .member-photo img { transform-origin: center 10%; }
+#dev .member-card[data-photo="in"] .member-photo img { transform: scale(1.25); }
+#dev .member-card[data-photo="soft"][data-anchor="out"] .member-photo img { transform: scale(1.2); }
 .member-name { font-size: 1.12rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
 .member-role { font-size: 0.84rem; color: var(--text-light); line-height: 1.55; }
 
@@ -238,6 +281,9 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
   .nav-links a { padding: 12px 16px; border-radius: 8px; width: 100%; }
   .nav-links a:hover { background: var(--secondary-bg); }
   .mobile-toggle { display: flex; }
+  .nav-cta { display: none; }
+  .nav-cta-item { display: list-item !important; padding: 8px 16px; }
+  .nav-cta-item a { background: linear-gradient(135deg, #b8920e 0%, #8a6a12 60%, #6f540e 100%) !important; color: #ffffff !important; border-radius: 8px; font-weight: 700; text-align: center; justify-content: center; box-shadow: 0 2px 10px rgba(138,106,18,0.3); }
   .lead-hero { padding: 36px 20px 24px; }
   .lead-hero h1 { font-size: 2rem; }
   .lead-hero p { font-size: 0.92rem; }
@@ -292,6 +338,7 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
       <li><a href="index.html#contact">Contact Us</a></li>
     </ul>
     <div class="nav-right">
+      <a href="https://calendly.com/" class="nav-cta" target="_blank" rel="noopener"><i class="fas fa-calendar-check"></i> Book a Meeting</a>
       <div class="region-selector">
         <button class="region-trigger">
           <span class="region-trigger-flag">🌎</span>
@@ -398,37 +445,37 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
         <div class="member-name">Nauka Dholariya</div>
         <div class="member-role">Assistant Manager | US Accountant &amp; Tax Preparer | Payroll Accounting | Sales Tax | Finalising Accounting Reports</div>
       </div>
-      <div class="member-card">
+      <div class="member-card" data-face="right">
         <div class="member-photo"><img src="Photos/Ajay%20Makwana.png" alt="Ajay Makwana"></div>
         <div class="member-name">Ajay Makwana</div>
         <div class="member-role">US Tax Preparer | Individual and Business Returns</div>
       </div>
-      <div class="member-card">
-        <div class="member-photo"><img src="Photos/Ramsha%20Mirza.png" alt="Ramsha Mirza"></div>
+      <div class="member-card" data-photo="soft">
+        <div class="member-photo"><img src="Photos/Ramsha%20Mirza.png" alt="Ramsha Mirza" style="object-position: center 25%;"></div>
         <div class="member-name">Ramsha Mirza</div>
         <div class="member-role">US Tax Preparer | Individual and Business Returns</div>
       </div>
-      <div class="member-card">
+      <div class="member-card" data-photo="original">
         <div class="member-photo"><img src="Photos/Pujan%20Soni.png" alt="Pujan Soni"></div>
         <div class="member-name">Pujan Soni</div>
         <div class="member-role">Accounting Associate | US Accountant | Financial Analysis | Payroll Processing | Sales Tax | Bookkeeping</div>
       </div>
-      <div class="member-card">
+      <div class="member-card" data-photo="original">
         <div class="member-photo"><img src="Photos/Vishal%20Shah.png" alt="Vishal Shah"></div>
         <div class="member-name">Vishal Shah</div>
         <div class="member-role">Accounting Executive (AU F&amp;A)</div>
       </div>
-      <div class="member-card">
+      <div class="member-card" data-photo="soft" data-anchor="high">
         <div class="member-photo"><img src="Photos/Jayesh%20Makwana.png" alt="Jayesh Makwana"></div>
         <div class="member-name">Jayesh Makwana</div>
         <div class="member-role">US Tax Preparer</div>
       </div>
-      <div class="member-card">
+      <div class="member-card" data-photo="in">
         <div class="member-photo"><img src="Photos/Shaikh%20Abdul%20Altaf.png" alt="Shaikh Abdul Altaf"></div>
         <div class="member-name">Shaikh Abdul Altaf</div>
         <div class="member-role">US Accounting Executive | Payroll Processing | Sales Tax | Bookkeeping &amp; Financial Reporting</div>
       </div>
-      <div class="member-card">
+      <div class="member-card" data-photo="soft" data-anchor="out">
         <div class="member-photo"><img src="Photos/Sahil%20Atar.png" alt="Sahil Atar"></div>
         <div class="member-name">Sahil Atar</div>
         <div class="member-role">Senior Tax Preparer and Reviewer</div>

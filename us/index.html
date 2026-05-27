@@ -220,6 +220,40 @@ nav {
 }
 
 .mobile-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text-primary); cursor: pointer; width: 44px; height: 44px; align-items: center; justify-content: center; margin-right: -8px; }
+.nav-cta {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #b8920e 0%, #8a6a12 60%, #6f540e 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+  padding: 9px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 2px 10px rgba(138, 106, 18, 0.32), inset 0 1px 0 rgba(255,255,255,0.1);
+  transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94), background 0.3s ease;
+}
+.nav-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+}
+.nav-cta:hover {
+  background: linear-gradient(135deg, #c9a018 0%, #9a7618 60%, #7c5f10 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(138, 106, 18, 0.42), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.nav-cta:hover::before { left: 160%; }
+.nav-cta:active { transform: translateY(0); transition: transform 0.1s ease; }
+.nav-cta-item { display: none; }
 
 /* ═══════ REGION SELECTOR ═══════ */
 .region-selector {
@@ -367,15 +401,36 @@ nav {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover));
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #b8920e 0%, #8a6a12 60%, #6f540e 100%);
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(138, 106, 18, 0.25);
+  letter-spacing: 0.3px;
+  padding: 13px 28px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(138, 106, 18, 0.32), 0 1px 3px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1);
+  transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94), background 0.3s ease;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
 }
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--accent-gold-hover), #5c460c);
+  background: linear-gradient(135deg, #c9a018 0%, #9a7618 60%, #7c5f10 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(138, 106, 18, 0.35);
+  box-shadow: 0 8px 28px rgba(138, 106, 18, 0.45), 0 3px 8px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.btn-primary:hover::before { left: 160%; }
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(138, 106, 18, 0.28), 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .btn-secondary {
@@ -1806,6 +1861,9 @@ footer {
   .nav-links a:hover { background: var(--secondary-bg); }
   .mobile-toggle { display: flex; }
   .nav-right { gap: 8px; }
+  .nav-cta { display: none; }
+  .nav-cta-item { display: list-item !important; padding: 8px 16px; }
+  .nav-cta-item a { background: linear-gradient(135deg, #b8920e 0%, #8a6a12 60%, #6f540e 100%) !important; color: #ffffff !important; border-radius: 8px; font-weight: 700; text-align: center; justify-content: center; box-shadow: 0 2px 10px rgba(138,106,18,0.3); }
   .region-trigger { padding: 5px 8px; }
   .region-trigger-flag { font-size: 0.98rem; }
   .region-chevron { font-size: 0.45rem; }
@@ -1941,6 +1999,7 @@ footer {
       <li><a href="#contact">Contact Us</a></li>
     </ul>
     <div class="nav-right">
+      <a href="https://calendly.com/" class="nav-cta" target="_blank" rel="noopener"><i class="fas fa-calendar-check"></i> Book a Meeting</a>
       <div class="region-selector">
         <button class="region-trigger">
           <span class="region-trigger-flag">🇺🇸</span>
