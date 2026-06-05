@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DiligenceOS | Accounting Services for Australian Businesses</title>
+<link rel="canonical" href="https://dosacc.com/au/">
+<meta property="og:url" content="https://dosacc.com/au/">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -1988,9 +1990,9 @@ footer {
           <i class="fas fa-chevron-down region-chevron"></i>
         </button>
         <div class="region-dropdown">
-          <a href="../index.html" class="region-option">🌎</a>
-          <a href="../us/index.html" class="region-option">&#127482;&#127480;</a>
-          <a href="../au/index.html" class="region-option active">&#127462;&#127482;</a>
+          <a href="../" class="region-option">🌎</a>
+          <a href="../us/" class="region-option">&#127482;&#127480;</a>
+          <a href="../au/" class="region-option active">&#127462;&#127482;</a>
         </div>
       </div>
     </div>
@@ -2536,5 +2538,12 @@ if (regionSelector && regionTrigger) {
 
 </script>
 
+<script>
+  // Clean URLs: strip "index.html" from the address bar without reloading.
+  // No redirect loop (replaceState fires no navigation); GitHub Pages still serves the file.
+  if (location.pathname.endsWith('/index.html')) {
+    history.replaceState(null, '', location.pathname.slice(0, -'index.html'.length) + location.search + location.hash);
+  }
+</script>
 </body>
 </html>
