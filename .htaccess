@@ -1,0 +1,3 @@
+# Branded booking short URL -> Google Calendar appointment page
+# Matches exactly /schedule and /schedule/ (not /schedule-anything) and issues a true 301.
+RedirectMatch 301 ^/schedule/?$ https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ24nRwarlEHRIqP__SksAWodismqxu4oV-ivuneLN22ToB-Y9ge9ebpz0Ni8tlkEWqp6HKukDpI
