@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DiligenceOS | Meet Our Leaders</title>
-<meta name="description" content="Meet the leadership, sales, and accounting team behind DiligenceOS Global Pvt. Ltd.">
-<link rel="canonical" href="https://dosacc.com/leadership.html">
+<title>DiligenceOS | Events — AICPA ENGAGE & Las Vegas 2026</title>
+<meta name="description" content="DiligenceOS out in the field in 2026 — from AICPA ENGAGE (The Next Wave) to a walking tour of the Las Vegas Strip. Photo highlights from the team.">
+<link rel="canonical" href="https://dosacc.com/events.html">
 
 <!-- Open Graph / LinkedIn / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DiligenceOS">
-<meta property="og:title" content="Meet Our Leaders — DiligenceOS">
-<meta property="og:description" content="The leadership, sales, and accounting team behind DiligenceOS Global Pvt. Ltd.">
-<meta property="og:url" content="https://dosacc.com/leadership.html">
-<meta property="og:image" content="https://dosacc.com/og-leadership.png">
+<meta property="og:title" content="Events — AICPA ENGAGE & Las Vegas 2026 | DiligenceOS">
+<meta property="og:description" content="DiligenceOS out in the field in 2026 — from AICPA ENGAGE (The Next Wave) to a walking tour of the Las Vegas Strip.">
+<meta property="og:url" content="https://dosacc.com/events.html">
+<meta property="og:image" content="https://dosacc.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Meet Our Leaders — DiligenceOS">
+<meta property="og:image:alt" content="DiligenceOS events in 2026 — AICPA ENGAGE and the Las Vegas Strip">
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Meet Our Leaders — DiligenceOS">
-<meta name="twitter:description" content="The leadership, sales, and accounting team behind DiligenceOS Global Pvt. Ltd.">
-<meta name="twitter:image" content="https://dosacc.com/og-leadership.png">
+<meta name="twitter:title" content="Events — AICPA ENGAGE & Las Vegas 2026 | DiligenceOS">
+<meta name="twitter:description" content="DiligenceOS out in the field in 2026 — from AICPA ENGAGE to the Las Vegas Strip.">
+<meta name="twitter:image" content="https://dosacc.com/og-image.png">
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -191,10 +191,10 @@ nav {
 }
 .lead-hero p { position: relative; color: var(--text-secondary); max-width: 660px; margin: 0 auto; font-size: 1rem; line-height: 1.8; }
 
-/* ═══════ TABS ═══════ */
+/* ═══════ EVENT SECTION (mirrors leadership .lead-section) ═══════ */
 .lead-section {
   position: relative; overflow: hidden;
-  max-width: min(980px, calc(100% - 64px)); margin: 40px auto 40px; border-radius: 24px;
+  max-width: min(1100px, calc(100% - 64px)); margin: 40px auto 40px; border-radius: 24px;
   border: 1px solid rgba(138, 106, 18, 0.14);
   box-shadow: 0 10px 40px rgba(138, 106, 18, 0.05);
   background:
@@ -206,72 +206,103 @@ nav {
   pointer-events: none; z-index: 0;
 }
 .lead-wrap { position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 40px 40px 40px; }
-.tabs {
-  display: inline-flex; gap: 10px; flex-wrap: wrap; justify-content: center;
-  margin: 0 auto 32px;
-}
-.tabs-wrap { display: flex; justify-content: center; }
-.tab-btn {
-  appearance: none; cursor: pointer; font-family: inherit; font-size: 0.92rem; font-weight: 600;
-  padding: 11px 22px; border-radius: 100px; transition: var(--transition);
-  background: var(--primary-bg); color: var(--text-secondary); border: 1px solid var(--border-color);
-  letter-spacing: 0.01em; white-space: nowrap;
-}
-.tab-btn:hover { color: var(--accent-gold-text); border-color: var(--accent-gold-light); background: rgba(138, 106, 18, 0.06); }
-.tab-btn.active {
+
+/* ═══════ EVENT TITLE BLOCK ═══════ */
+.event-title { text-align: center; margin: 0 auto 36px; max-width: 760px; }
+.event-name {
+  font-size: 2.4rem; font-weight: 800; letter-spacing: 1px; line-height: 1.1;
   background: linear-gradient(135deg, var(--accent-gold-text), #6f540e);
-  color: #ffffff; font-weight: 700; border-color: transparent;
-  box-shadow: 0 4px 14px rgba(138, 106, 18, 0.30);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  margin-bottom: 10px;
 }
-.tab-btn.active:hover { color: #ffffff; }
-.tab-panel { display: none; animation: fade .4s ease; }
-.tab-panel.active { display: block; }
-@keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-
-/* section header (matches site) */
-.section-header { text-align: center; margin: 0 auto 28px; max-width: 760px; }
-.section-header h2 { margin-bottom: 12px; position: relative; display: inline-block; font-size: 1.6rem; }
-.section-header h2::after {
-  content: ''; display: block; width: 40px; height: 3px;
+.event-theme {
+  font-size: 1.05rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--text-secondary); margin-bottom: 18px; position: relative; display: inline-block;
+}
+.event-theme::after {
+  content: ''; display: block; width: 48px; height: 3px;
   background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
-  border-radius: 2px; margin: 12px auto 0;
+  border-radius: 2px; margin: 14px auto 0;
 }
-.section-header p { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; max-width: 640px; margin: 0 auto; }
+.event-meta { display: inline-flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 18px; }
+.event-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--primary-bg); border: 1px solid var(--border-color);
+  border-radius: 100px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);
+  box-shadow: var(--shadow-subtle);
+}
+.event-chip i { color: var(--accent-gold-text); }
+.event-title p { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; max-width: 640px; margin: 0 auto; }
 
-/* ═══════ TEAM GRID + CARDS ═══════ */
-.team-grid {
+/* ═══════ GALLERY ═══════ */
+.gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 268px);
-  gap: 28px;
-  justify-content: center;
-  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 22px;
 }
-.member-card {
-  background: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 16px;
-  padding: 32px 24px 26px; text-align: center; box-shadow: var(--shadow-subtle); transition: var(--transition);
-  display: flex; flex-direction: column; align-items: center; height: 100%;
+.gallery-item {
+  position: relative; margin: 0; border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border-color); box-shadow: var(--shadow-subtle);
+  background: var(--primary-bg); cursor: pointer; aspect-ratio: 4 / 3;
+  transition: var(--transition); appearance: none; padding: 0; width: 100%; display: block;
 }
-.member-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-gold); border-color: var(--accent-gold-light); }
-.member-photo {
-  width: 168px; height: 168px; border-radius: 50%; margin: 0 0 18px; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--secondary-bg), #eef2f8);
-  border: 2px solid var(--border-color); display: flex; align-items: center; justify-content: center;
-  color: #c2cad9; font-size: 3.6rem; transition: var(--transition);
+.gallery-item:hover, .gallery-item:focus-visible {
+  transform: translateY(-6px); box-shadow: var(--shadow-gold);
+  border-color: var(--accent-gold-light); outline: none;
 }
-.member-photo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
-.member-card:hover .member-photo { border-color: var(--accent-gold-light); }
+.gallery-item:focus-visible { box-shadow: 0 0 0 3px rgba(138, 106, 18, 0.35), var(--shadow-gold); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+.gallery-item:hover img, .gallery-item:focus-visible img { transform: scale(1.06); }
+.gallery-overlay {
+  position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 12px; padding: 16px 18px; color: #fff;
+  background: linear-gradient(180deg, rgba(20,15,2,0) 45%, rgba(20,15,2,0.55) 100%);
+  opacity: 0; transition: var(--transition);
+}
+.gallery-item:hover .gallery-overlay, .gallery-item:focus-visible .gallery-overlay { opacity: 1; }
+.gallery-overlay span { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.3px; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+.gallery-zoom {
+  width: 36px; height: 36px; flex-shrink: 0; border-radius: 50%;
+  background: rgba(255,255,255,0.18); backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+}
 
-/* Delivery Team: zoom into each face and keep it centered */
-#dev .member-photo { overflow: hidden; }
-#dev .member-photo img { object-position: center top; transform: scale(1.7); transform-origin: center top; }
-#dev .member-card[data-face="right"] .member-photo img { transform-origin: 60% top; }
-#dev .member-card[data-photo="original"] .member-photo img { transform: none; object-position: center; }
-#dev .member-card[data-photo="soft"] .member-photo img { transform: scale(1.4); transform-origin: center 40%; }
-#dev .member-card[data-photo="soft"][data-anchor="high"] .member-photo img { transform-origin: center 10%; }
-#dev .member-card[data-photo="in"] .member-photo img { transform: scale(1.25); }
-#dev .member-card[data-photo="soft"][data-anchor="out"] .member-photo img { transform: scale(1.2); }
-.member-name { font-size: 1.12rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
-.member-role { font-size: 0.84rem; color: var(--text-light); line-height: 1.55; }
+/* ═══════ LIGHTBOX ═══════ */
+.lightbox {
+  position: fixed; inset: 0; z-index: 2000; display: none;
+  align-items: center; justify-content: center; padding: 32px;
+  background: rgba(12, 9, 2, 0.93); backdrop-filter: blur(6px);
+}
+.lightbox.open { display: flex; animation: lbFade 0.25s ease; }
+@keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+.lightbox-figure { margin: 0; max-width: 1000px; width: 100%; text-align: center; }
+.lightbox-img {
+  max-width: 100%; max-height: 78vh; border-radius: 12px; display: block; margin: 0 auto;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5); object-fit: contain;
+}
+.lightbox-caption { color: #f2ead3; font-size: 0.9rem; font-weight: 500; margin-top: 16px; letter-spacing: 0.3px; }
+.lb-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.1); color: #fff; font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: var(--transition);
+}
+.lb-btn:hover { background: rgba(138,106,18,0.55); border-color: var(--accent-gold-light); }
+.lb-prev { left: 24px; }
+.lb-next { right: 24px; }
+.lb-close {
+  position: absolute; top: 24px; right: 24px; width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.1); color: #fff;
+  font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition);
+}
+.lb-close:hover { background: rgba(138,106,18,0.55); border-color: var(--accent-gold-light); transform: rotate(90deg); }
+
+/* Touch devices have no hover: keep the caption/zoom hint visible so photos read as tappable */
+@media (hover: none) {
+  .gallery-overlay { opacity: 1; background: linear-gradient(180deg, rgba(20,15,2,0) 55%, rgba(20,15,2,0.5) 100%); }
+  .gallery-item img { transform: none !important; }
+}
 
 /* ═══════ FOOTER ═══════ */
 footer { background: var(--secondary-bg); border-top: 1px solid var(--border-color); }
@@ -308,10 +339,12 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
   .lead-hero p { font-size: 0.92rem; }
   .lead-section { max-width: calc(100% - 40px); margin: 32px auto 32px; }
   .lead-wrap { padding: 32px 20px 32px; }
-  .section-header h2 { font-size: 1.4rem; }
-  .section-header p { font-size: 0.92rem; }
-  .team-grid { grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px; }
+  .event-name { font-size: 1.9rem; }
+  .event-theme { font-size: 0.95rem; letter-spacing: 3px; }
+  .gallery { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px; }
   .footer-top { grid-template-columns: 1fr 1fr; padding: 40px 20px; }
+  .lb-prev { left: 12px; } .lb-next { right: 12px; }
+  .lb-btn { width: 44px; height: 44px; }
 }
 @media (max-width: 520px) {
   .lead-hero { padding: 28px 16px 20px; }
@@ -320,13 +353,16 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
   .hero-badge { font-size: 0.72rem; padding: 8px 12px; }
   .lead-section { max-width: calc(100% - 32px); margin: 24px auto 24px; border-radius: 20px; }
   .lead-wrap { padding: 28px 16px 28px; }
-  .tabs { width: 100%; }
-  .tab-btn { flex: 1 1 auto; padding: 10px 16px; font-size: 0.84rem; }
-  .team-grid { grid-template-columns: 1fr; gap: 16px; }
-  .member-card { padding: 26px 20px 22px; }
-  .member-photo { width: 132px; height: 132px; font-size: 3rem; }
+  .event-name { font-size: 1.55rem; letter-spacing: 0.5px; }
+  .event-meta { gap: 8px; }
+  .event-chip { font-size: 0.78rem; padding: 7px 12px; }
+  .gallery { grid-template-columns: 1fr; gap: 16px; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
+  .lightbox { padding: 16px; }
+  .lightbox-img { max-height: 72vh; }
+  .lightbox-caption { font-size: 0.82rem; margin-top: 12px; }
+  .lb-close { top: 14px; right: 14px; }
 }
 </style>
 </head>
@@ -353,8 +389,8 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
       <li><a href="./#services">Services</a></li>
       <li><a href="./#about">About</a></li>
       <li><a href="./#process">Process</a></li>
-      <li><a href="leadership.html" class="active">Leadership</a></li>
-      <li><a href="events.html" target="_blank" rel="noopener">Events</a></li>
+      <li><a href="leadership.html" target="_blank" rel="noopener">Leadership</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
       <li><a href="./#contact">Contact Us</a></li>
     </ul>
     <div class="nav-right">
@@ -376,129 +412,89 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
 
 <!-- HERO -->
 <section class="lead-hero">
-  <span class="hero-badge"><i class="fas fa-users"></i> Our People</span>
-  <h1>Meet Our <span class="accent">Leaders</span></h1>
-  <p>The people driving DiligenceOS Global Pvt. Ltd., from strategy and growth to the accounting expertise that powers our clients.</p>
+  <span class="hero-badge"><i class="fas fa-camera-retro"></i> Events</span>
+  <h1>Where We Show Up: <span class="accent">2026</span></h1>
+  <p>From the main stage at AICPA ENGAGE to the lights of the Las Vegas Strip — here are the highlights from where the DiligenceOS team showed up in 2026.</p>
 </section>
 
-<!-- TABS + CONTENT -->
+<!-- EVENT + GALLERY -->
 <section class="lead-section">
 <canvas class="hero-burst" id="heroBurst"></canvas>
 <div class="lead-wrap">
-  <div class="tabs-wrap">
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="board">Board of Directors &amp; Advisors</button>
-      <button class="tab-btn" data-tab="sales">Sales &amp; HR</button>
-      <button class="tab-btn" data-tab="dev">Delivery Team</button>
+
+  <div class="event-title">
+    <h2 class="event-name">AICPA ENGAGE</h2>
+    <div class="event-theme">The Next Wave</div>
+    <div class="event-meta">
+      <span class="event-chip"><i class="fas fa-calendar-day"></i> 2026</span>
+      <span class="event-chip"><i class="fas fa-microphone-lines"></i> AICPA ENGAGE</span>
+      <span class="event-chip"><i class="fas fa-users"></i> DiligenceOS Team</span>
     </div>
+    <p>Connecting with CPA &amp; EA firms, advisors, and innovators shaping the next wave of accounting, advisory, and finance technology.</p>
   </div>
 
-  <!-- BOARD -->
-  <div class="tab-panel active" id="board">
-    <div class="section-header">
-      <h2>Board of Directors &amp; Advisors</h2>
-      <p>The Board is ultimately responsible for the business strategy and the financial robustness of the Group, monitoring performance and establishing a governance structure that facilitates effective decision-making.</p>
-    </div>
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo"><img src="Photos/Mrunal%20Solanki.png" alt="Mrunal Solanki"></div>
-        <div class="member-name">Mrunal Solanki</div>
-        <div class="member-role">Director</div>
-      </div>
-      <div class="member-card">
-        <div class="member-photo"><img src="Photos/Debanshu%20Banerjee.png" alt="Debanshu Banerjee"></div>
-        <div class="member-name">Debanshu Banerjee</div>
-        <div class="member-role">Strategic Advisor</div>
-      </div>
-      <div class="member-card">
-        <div class="member-photo"><img src="Photos/CA%20Gaurav%20Nahta.png" alt="CA Gaurav Nahta"></div>
-        <div class="member-name">CA Gaurav Nahta</div>
-        <div class="member-role">Partner</div>
-      </div>
-    </div>
+  <div class="gallery" id="gallery">
+    <button type="button" class="gallery-item" data-index="0" aria-label="View larger: DiligenceOS at AICPA ENGAGE 2026, photo 1">
+      <img src="Event/AICPA%201.jpeg" alt="DiligenceOS at AICPA ENGAGE 2026 — The Next Wave, photo 1" loading="lazy">
+      <span class="gallery-overlay"><span>AICPA ENGAGE 2026</span><span class="gallery-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span></span>
+    </button>
+    <button type="button" class="gallery-item" data-index="1" aria-label="View larger: DiligenceOS at AICPA ENGAGE 2026, photo 2">
+      <img src="Event/AICPA%202.jpeg" alt="DiligenceOS at AICPA ENGAGE 2026 — The Next Wave, photo 2" loading="lazy">
+      <span class="gallery-overlay"><span>AICPA ENGAGE 2026</span><span class="gallery-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span></span>
+    </button>
+    <button type="button" class="gallery-item" data-index="2" aria-label="View larger: DiligenceOS at AICPA ENGAGE 2026, photo 3">
+      <img src="Event/AICPA%203.jpeg" alt="DiligenceOS at AICPA ENGAGE 2026 — The Next Wave, photo 3" loading="lazy">
+      <span class="gallery-overlay"><span>AICPA ENGAGE 2026</span><span class="gallery-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span></span>
+    </button>
   </div>
 
-  <!-- SALES -->
-  <div class="tab-panel" id="sales">
-    <div class="section-header">
-      <h2>Sales &amp; HR</h2>
-      <p>Our sales specialists connect CPA &amp; EA firms and growing businesses with the right outsourced accounting solutions, from first conversation through to long-term retention.</p>
-    </div>
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo"><img src="Photos/Pradeep%20Parekh.jpeg" alt="Pradeep Parekh"></div>
-        <div class="member-name">Pradeep Parekh</div>
-        <div class="member-role">VP, Growth &amp; Partnerships</div>
-      </div>
-      <div class="member-card">
-        <div class="member-photo"><img src="Photos/Ankit%20Bamroliya.png" alt="Ankit Bamroliya"></div>
-        <div class="member-name">Ankit Bamroliya</div>
-        <div class="member-role">B2B Sales Specialist, CPA &amp; EA Firms</div>
-      </div>
-      <div class="member-card">
-        <div class="member-photo"><img src="Photos/Avani%20Jani.png" alt="Avani Jani"></div>
-        <div class="member-name">Avani Jani</div>
-        <div class="member-role">Business Development Executive</div>
-      </div>
-      <div class="member-card">
-        <div class="member-photo"><img src="Photos/Jhanvi%20Pandya.png" alt="Jhanvi Pandya"></div>
-        <div class="member-name">Jhanvi Pandya</div>
-        <div class="member-role">Human Resources</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DEV & ACCOUNTANT -->
-  <div class="tab-panel" id="dev">
-    <div class="section-header">
-      <h2>Delivery Team</h2>
-      <p>Our delivery team handles US accounting, tax preparation, payroll, and bookkeeping, bringing precision and compliance to every client engagement.</p>
-    </div>
-    <div class="team-grid">
-      <div class="member-card">
-        <div class="member-photo"><img src="Photos/Nauka%20Dholariya.jpeg" alt="Nauka Dholariya"></div>
-        <div class="member-name">Nauka Dholariya</div>
-        <div class="member-role">Assistant Manager, US Accounting &amp; Tax</div>
-      </div>
-      <div class="member-card" data-photo="soft">
-        <div class="member-photo"><img src="Photos/Ajay%20Makwana.png" alt="Ajay Makwana" style="object-position: center 8%; transform: scale(1.55); transform-origin: center 26%;"></div>
-        <div class="member-name">Ajay Makwana</div>
-        <div class="member-role">US Tax Preparer, Individual &amp; Business Returns</div>
-      </div>
-      <div class="member-card" data-photo="soft">
-        <div class="member-photo"><img src="Photos/Ramsha%20Mirza.png" alt="Ramsha Mirza" style="object-position: center 25%;"></div>
-        <div class="member-name">Ramsha Mirza</div>
-        <div class="member-role">US Tax Preparer, Individual &amp; Business Returns</div>
-      </div>
-      <div class="member-card" data-photo="original">
-        <div class="member-photo"><img src="Photos/Pujan%20Soni.png" alt="Pujan Soni"></div>
-        <div class="member-name">Pujan Soni</div>
-        <div class="member-role">Accounting Associate, US Accounting &amp; Payroll</div>
-      </div>
-      <div class="member-card" data-photo="original">
-        <div class="member-photo"><img src="Photos/Vishal%20Shah.png" alt="Vishal Shah"></div>
-        <div class="member-name">Vishal Shah</div>
-        <div class="member-role">Accounting Executive, AU Finance &amp; Accounts</div>
-      </div>
-      <div class="member-card" data-photo="soft" data-anchor="high">
-        <div class="member-photo"><img src="Photos/Jayesh%20Makwana.png" alt="Jayesh Makwana"></div>
-        <div class="member-name">Jayesh Makwana</div>
-        <div class="member-role">US Tax Preparer</div>
-      </div>
-      <div class="member-card" data-photo="in">
-        <div class="member-photo"><img src="Photos/Shaikh%20Abdul%20Altaf.png" alt="Shaikh Abdul Altaf"></div>
-        <div class="member-name">Shaikh Abdul Altaf</div>
-        <div class="member-role">US Accounting Executive, Payroll &amp; Reporting</div>
-      </div>
-      <div class="member-card" data-photo="soft" data-anchor="out">
-        <div class="member-photo"><img src="Photos/Sahil%20Atar.png" alt="Sahil Atar"></div>
-        <div class="member-name">Sahil Atar</div>
-        <div class="member-role">Senior Tax Preparer &amp; Reviewer</div>
-      </div>
-    </div>
-  </div>
 </div>
 </section>
+
+<!-- EVENT 2 + GALLERY -->
+<section class="lead-section">
+<canvas class="hero-burst" id="heroBurst2"></canvas>
+<div class="lead-wrap">
+
+  <div class="event-title">
+    <h2 class="event-name">Vegas Strip Walking Tour</h2>
+    <div class="event-theme">Off The Clock</div>
+    <div class="event-meta">
+      <span class="event-chip"><i class="fas fa-calendar-day"></i> 2026</span>
+      <span class="event-chip"><i class="fas fa-location-dot"></i> Las Vegas, Nevada</span>
+      <span class="event-chip"><i class="fas fa-users"></i> DiligenceOS Team</span>
+    </div>
+    <p>Beyond the sessions and the show floor, the team took to the iconic Las Vegas Strip — a chance to connect, recharge, and take in the city after a packed conference.</p>
+  </div>
+
+  <div class="gallery" id="galleryVegas">
+    <button type="button" class="gallery-item" data-index="6" aria-label="View larger: DiligenceOS on the Las Vegas Strip walking tour, photo 1">
+      <img src="Event/Vegas%20strip%20walking%20tour/Vegas%20strip%20walking%20tour%201.jpeg" alt="DiligenceOS team on the Las Vegas Strip walking tour, 2026 — photo 1" loading="lazy">
+      <span class="gallery-overlay"><span>Vegas Strip · 2026</span><span class="gallery-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span></span>
+    </button>
+    <button type="button" class="gallery-item" data-index="7" aria-label="View larger: DiligenceOS on the Las Vegas Strip walking tour, photo 2">
+      <img src="Event/Vegas%20strip%20walking%20tour/Vegas%20strip%20walking%20tour%202.jpeg" alt="DiligenceOS team on the Las Vegas Strip walking tour, 2026 — photo 2" loading="lazy">
+      <span class="gallery-overlay"><span>Vegas Strip · 2026</span><span class="gallery-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span></span>
+    </button>
+    <button type="button" class="gallery-item" data-index="8" aria-label="View larger: DiligenceOS on the Las Vegas Strip walking tour, photo 3">
+      <img src="Event/Vegas%20strip%20walking%20tour/Vegas%20strip%20walking%20tour%203.jpeg" alt="DiligenceOS team on the Las Vegas Strip walking tour, 2026 — photo 3" loading="lazy">
+      <span class="gallery-overlay"><span>Vegas Strip · 2026</span><span class="gallery-zoom" aria-hidden="true"><i class="fas fa-expand"></i></span></span>
+    </button>
+  </div>
+
+</div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Event photo viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close photo viewer"><i class="fas fa-times"></i></button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
+  <figure class="lightbox-figure">
+    <img class="lightbox-img" id="lbImg" src="" alt="">
+    <figcaption class="lightbox-caption" id="lbCaption"></figcaption>
+  </figure>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -536,7 +532,7 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
       <ul>
         <li><a href="./#about">About Us</a></li>
         <li><a href="leadership.html">Leadership</a></li>
-        <li><a href="events.html" target="_blank" rel="noopener">Events</a></li>
+        <li><a href="events.html">Events</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -559,23 +555,72 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
 </footer>
 
 <script>
-// ═══════ TABS ═══════
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = btn.dataset.tab;
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(target).classList.add('active');
-    // section height changes with the active panel, rebuild the burst canvas
-    requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+// ═══════ LIGHTBOX GALLERY ═══════
+(function () {
+  const items = Array.from(document.querySelectorAll('.gallery-item'));
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCaption = document.getElementById('lbCaption');
+  if (!items.length || !lightbox) return;
+
+  const slides = items.map(btn => {
+    const img = btn.querySelector('img');
+    return { src: img.getAttribute('src'), alt: img.getAttribute('alt') };
   });
-});
+  let current = 0;
+  let lastFocused = null;
+
+  function render() {
+    const s = slides[current];
+    lbImg.src = s.src;
+    lbImg.alt = s.alt;
+    lbCaption.textContent = s.alt;
+  }
+  function open(index) {
+    current = index;
+    render();
+    lastFocused = document.activeElement;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lbClose').focus();
+  }
+  function close() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
+  function next() { current = (current + 1) % slides.length; render(); }
+  function prev() { current = (current - 1 + slides.length) % slides.length; render(); }
+
+  items.forEach((btn, i) => btn.addEventListener('click', () => open(i)));
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbNext').addEventListener('click', next);
+  document.getElementById('lbPrev').addEventListener('click', prev);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowRight') next();
+    else if (e.key === 'ArrowLeft') prev();
+  });
+
+  // Swipe to navigate on touch devices
+  let touchX = null, touchY = null;
+  lightbox.addEventListener('touchstart', (e) => {
+    touchX = e.changedTouches[0].clientX;
+    touchY = e.changedTouches[0].clientY;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    const dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) { dx < 0 ? next() : prev(); }
+    touchX = touchY = null;
+  }, { passive: true });
+})();
 
 // ═══════ HERO SUNBURST ═══════
-(function () {
-  const canvas = document.getElementById('heroBurst');
-  if (!canvas) return;
+function initBurst(canvas) {
   const ctx = canvas.getContext('2d');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let rays = [], W = 0, H = 0, cx = 0, cy = 0, dpr = 1, raf = null, t0 = 0, lastTime = 0, autoTimer = 0;
@@ -585,7 +630,6 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     return [Math.round(lerp(c1[0], c2[0], k)), Math.round(lerp(c1[1], c2[1], k)), Math.round(lerp(c1[2], c2[2], k))];
   }
 
-  // Warm gold brand palette (light gold -> honey -> amber -> deep gold -> bronze)
   const CHAMP  = [206, 168, 78];
   const HONEY  = [188, 148, 52];
   const AMBER  = [168, 128, 34];
@@ -598,36 +642,30 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     canvas.width = w * dpr; canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     W = w; H = h; cx = w / 2; cy = h + 80;
-    // Reach the dome up so the tallest center rays touch the tab row (Board of Directors / Sales &amp; HR)
-    let targetY = h * 0.10; // fallback near the top
-    const tabsEl = document.querySelector('.tabs');
-    if (tabsEl) {
+    let targetY = h * 0.10;
+    const anchorEl = canvas.closest('.lead-section').querySelector('.event-title');
+    if (anchorEl) {
       const cRect = canvas.getBoundingClientRect();
-      const tRect = tabsEl.getBoundingClientRect();
-      targetY = (tRect.top + tRect.bottom) / 2 - cRect.top; // center of the tabs row within the canvas
+      const tRect = anchorEl.getBoundingClientRect();
+      targetY = (tRect.top + tRect.bottom) / 2 - cRect.top;
     }
-    // center ray apex is at (cy - maxLen); +18 so the tips just cross into the tabs
     const maxLen = Math.max(Math.min(w * 0.40, h * 0.62) + 60, (cy - targetY) + 18);
-    const count = Math.round(Math.min(180, Math.max(100, w / 9))); // balanced, delicate lines
+    const count = Math.round(Math.min(180, Math.max(100, w / 9)));
     rays = [];
     for (let i = 0; i < count; i++) {
-      // upper semicircle, slightly past horizontal on both sides
       const norm = i / (count - 1);
-      const distFromCenter = Math.abs(norm - 0.5) * 2; // 0 at center, 1 at edges
+      const distFromCenter = Math.abs(norm - 0.5) * 2;
 
       let col;
       if (distFromCenter < 0.4) {
-        // Center: bright champagne blending into warm honey
         const k = distFromCenter / 0.4;
         const base = mix(CHAMP, HONEY, Math.random());
         col = mix(base, HONEY, k);
       } else if (distFromCenter < 0.75) {
-        // Intermediate: honey transitioning to amber gold
         const k = (distFromCenter - 0.4) / 0.35;
         const base = mix(HONEY, AMBER, Math.random() * 0.6);
         col = mix(base, AMBER, k);
       } else {
-        // Edges: amber deepening into rich gold and bronze
         const k = (distFromCenter - 0.75) / 0.25;
         const base = mix(AMBER, GOLD, Math.random());
         col = mix(base, BRONZE, k);
@@ -635,8 +673,8 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
       const a = Math.PI * (0.97 + 1.06 * norm);
       const jit = (Math.random() - 0.5) * 0.012;
-      const lenK = 0.45 + Math.random() * 0.55;          // varied tip distance
-      
+      const lenK = 0.45 + Math.random() * 0.55;
+
       rays.push({
         a: a + jit,
         len: maxLen * lenK,
@@ -645,23 +683,21 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
         speed: 0.5 + Math.random() * 0.5,
         amp: 0.012 + Math.random() * 0.025,
         ph: Math.random() * Math.PI * 2,
-        w: 0.4 + Math.random() * 0.4, // fine, delicate lines
-        dot: 0.7 + Math.random() * 1.0, // soft sparkling dots
-        alpha: 0.26 + Math.random() * 0.26, // visible yet refined
-        pulses: [], // active transaction flow pulses
-        flash: 0 // tip strike flash brightness (0 to 1)
+        w: 0.4 + Math.random() * 0.4,
+        dot: 0.7 + Math.random() * 1.0,
+        alpha: 0.26 + Math.random() * 0.26,
+        pulses: [],
+        flash: 0
       });
     }
   }
 
   function triggerSurge() {
     for (const r of rays) {
-      // 80% chance to fire a pulse on this ray to keep the burst looking organic
       if (Math.random() > 0.2) {
-        // Stagger the progress slightly to create a wave propagation effect outwards
         r.pulses.push({
-          progress: -Math.random() * 0.12, // slightly delayed start
-          speed: 1.1 + Math.random() * 0.7, // speeds vary slightly for realistic fluid motion
+          progress: -Math.random() * 0.12,
+          speed: 1.1 + Math.random() * 0.7,
           alpha: 0.75 + Math.random() * 0.25
         });
       }
@@ -671,13 +707,12 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   function draw(now) {
     if (!t0) t0 = now;
     if (!lastTime) lastTime = now;
-    const dt = Math.min((now - lastTime) / 1000, 0.1); // prevent massive jumps on tab switches
+    const dt = Math.min((now - lastTime) / 1000, 0.1);
     lastTime = now;
     const t = (now - t0) / 1000;
-    
+
     ctx.clearRect(0, 0, W, H);
 
-    // Dynamic background traffic (1-3 random transactions flowing automatically every 1.2 seconds)
     autoTimer += dt;
     if (autoTimer > 1.2) {
       autoTimer = 0;
@@ -696,50 +731,44 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
     for (const r of rays) {
       let grow = reduce ? 1 : Math.min(1, Math.max(0, (t - r.delay) * r.speed));
-      grow = 1 - Math.pow(1 - grow, 3); // ease-out
+      grow = 1 - Math.pow(1 - grow, 3);
       const pulse = reduce ? 1 : 1 + Math.sin(t * 1.1 + r.ph) * r.amp;
       const len = r.len * grow * pulse;
       const ex = cx + Math.cos(r.a) * len;
       const ey = cy + Math.sin(r.a) * len;
       const [cr, cg, cb] = r.col;
 
-      // Update flash decay
       if (r.flash > 0) {
-        r.flash -= dt * 2.5; // decays back in ~0.4s
+        r.flash -= dt * 2.5;
         if (r.flash < 0) r.flash = 0;
       }
 
-      // Update and draw active pulses (transactions flowing)
       const pulsesToKeep = [];
       for (const p of r.pulses) {
         p.progress += dt * p.speed;
-        
+
         if (p.progress >= 1.0) {
-          // Reached the tip! Set flash to full brightness
           r.flash = 1.0;
         }
-        
+
         if (p.progress < 1.1) {
           pulsesToKeep.push(p);
 
-          // Render the active pulse segment on the canvas
           if (p.progress >= 0 && p.progress < 1.0) {
-            const startP = Math.max(0, p.progress - 0.08); // pulse segment length
+            const startP = Math.max(0, p.progress - 0.08);
             const endP = p.progress;
             const sx = cx + Math.cos(r.a) * len * startP;
             const sy = cy + Math.sin(r.a) * len * startP;
             const ex2 = cx + Math.cos(r.a) * len * endP;
             const ey2 = cy + Math.sin(r.a) * len * endP;
 
-            // Render glowing core of the transaction pulse
             ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha * grow * 0.95})`;
-            ctx.lineWidth = r.w * 3.0; // thicker glow line
+            ctx.lineWidth = r.w * 3.0;
             ctx.beginPath();
             ctx.moveTo(sx, sy);
             ctx.lineTo(ex2, ey2);
             ctx.stroke();
 
-            // Particle header leading the transaction
             ctx.fillStyle = `rgba(${cr},${cg},${cb},${p.alpha * grow * 0.85})`;
             ctx.beginPath();
             ctx.arc(ex2, ey2, r.dot * 1.6 * grow, 0, Math.PI * 2);
@@ -748,8 +777,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
         }
       }
       r.pulses = pulsesToKeep;
-      
-      // Draw the base ray line, fading toward the tip so it stays subtle over text
+
       const rg = ctx.createLinearGradient(cx, cy, ex, ey);
       rg.addColorStop(0, `rgba(${cr},${cg},${cb},${r.alpha * grow})`);
       rg.addColorStop(0.7, `rgba(${cr},${cg},${cb},${r.alpha * grow * 0.55})`);
@@ -760,25 +788,21 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
       ctx.moveTo(cx, cy);
       ctx.lineTo(ex, ey);
       ctx.stroke();
-      
-      // Calculate dot sizing and scaling based on pulse flashes
+
       const flashMultiplier = 1 + r.flash * 1.8;
       const flashAlphaMultiplier = 1 + r.flash * 0.5;
       const tw = reduce ? 1 : 0.7 + 0.3 * Math.sin(t * 2 + r.ph);
-      
-      // Outer glow ring (halo)
+
       ctx.fillStyle = `rgba(${cr},${cg},${cb},${Math.min(0.16 * flashAlphaMultiplier, r.alpha * 0.45 * grow) * tw})`;
       ctx.beginPath();
       ctx.arc(ex, ey, r.dot * 2.4 * grow * flashMultiplier, 0, Math.PI * 2);
       ctx.fill();
 
-      // Center solid dot
       ctx.fillStyle = `rgba(${cr},${cg},${cb},${Math.min(0.7 * flashAlphaMultiplier, r.alpha * 1.8 * grow) * tw})`;
       ctx.beginPath();
       ctx.arc(ex, ey, r.dot * grow * flashMultiplier, 0, Math.PI * 2);
       ctx.fill();
 
-      // Bright white flash core overlay for peak strikes
       if (r.flash > 0) {
         ctx.fillStyle = `rgba(255, 255, 255, ${r.flash * grow * 0.95})`;
         ctx.beginPath();
@@ -796,12 +820,10 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     raf = requestAnimationFrame(draw);
   }
 
-  // Setup click interactive event listener on the containing section
   const leadSection = canvas.closest('.lead-section');
   if (leadSection) {
     leadSection.addEventListener('click', (e) => {
-      // Don't trigger transaction burst if clicking interactive elements (tabs/links/buttons)
-      if (e.target.closest('.tabs') || e.target.closest('a') || e.target.closest('button')) {
+      if (e.target.closest('.gallery') || e.target.closest('a') || e.target.closest('button')) {
         return;
       }
       triggerSurge();
@@ -816,7 +838,8 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
   build();
   start();
-})();
+}
+document.querySelectorAll('.hero-burst').forEach(initBurst);
 
 // ═══════ MOBILE MENU ═══════
 const mobileToggle = document.querySelector('.mobile-toggle');
