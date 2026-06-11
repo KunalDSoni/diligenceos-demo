@@ -2422,6 +2422,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// Landing with a #hash in the URL (e.g. a link from another page): let the
+// browser jump to the section, then drop the hash so the address stays clean.
+if (location.hash) {
+  setTimeout(() => history.replaceState(null, '', location.pathname + location.search), 0);
+}
+window.addEventListener('hashchange', () => {
+  history.replaceState(null, '', location.pathname + location.search);
+});
+
 // ═══════ MOBILE MENU ═══════
 const mobileToggle = document.querySelector('.mobile-toggle');
 if (mobileToggle) {

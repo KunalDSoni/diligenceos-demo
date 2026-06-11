@@ -146,6 +146,25 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("click", activate);
   });
 
+  /* ---------- Anchor links: smooth scroll without a #hash in the URL ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href");
+      if (href !== "#" && document.querySelector(href)) {
+        e.preventDefault();
+        document.querySelector(href).scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+  // Landing with a #hash in the URL (e.g. a shared link): let the browser
+  // jump to the section, then drop the hash so the address stays clean.
+  if (location.hash) {
+    setTimeout(() => history.replaceState(null, "", location.pathname + location.search), 0);
+  }
+  window.addEventListener("hashchange", () => {
+    history.replaceState(null, "", location.pathname + location.search);
+  });
+
   /* ---------- Marquee: duplicate chips for seamless loop ---------- */
   const track = document.getElementById("marqueeTrack");
   track.innerHTML += track.innerHTML;
