@@ -1,3 +1,18 @@
 # Branded booking short URL -> Google Calendar appointment page
 # Matches exactly /schedule and /schedule/ (not /schedule-anything) and issues a true 301.
 RedirectMatch 301 ^/schedule/?$ https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ24nRwarlEHRIqP__SksAWodismqxu4oV-ivuneLN22ToB-Y9ge9ebpz0Ni8tlkEWqp6HKukDpI
+
+RewriteEngine On
+
+# Clean contact URL: serve the homepage at /contact (the URL stays /contact in the bar);
+# index.html scrolls to the contact section when loaded on this path.
+# /contact/ redirects to /contact so the homepage's relative asset paths still resolve.
+RewriteRule ^contact/$ /contact [R=301,L]
+RewriteRule ^contact$ index.html [L]
+
+# Clean URLs: serve /events as events.html, /leadership as leadership.html, etc.
+# Only rewrites when the requested path isn't a real file/directory but a .html version exists.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]

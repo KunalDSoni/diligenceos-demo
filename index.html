@@ -2468,6 +2468,11 @@ if (regionSelector && regionTrigger) {
   if (location.pathname.endsWith('/index.html')) {
     history.replaceState(null, '', location.pathname.slice(0, -'index.html'.length) + location.search + location.hash);
   }
+
+  // Clean /contact URL: .htaccess serves this page at /contact; jump to the section.
+  if (location.pathname === '/contact') {
+    document.getElementById('contact').scrollIntoView({ behavior: 'instant', block: 'start' });
+  }
 </script>
 </body>
 </html>
