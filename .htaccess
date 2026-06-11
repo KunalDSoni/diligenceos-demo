@@ -1,6 +1,14 @@
-# Branded booking short URL -> Google Calendar appointment page
-# Matches exactly /schedule and /schedule/ (not /schedule-anything) and issues a true 301.
-RedirectMatch 301 ^/schedule/?$ https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ24nRwarlEHRIqP__SksAWodismqxu4oV-ivuneLN22ToB-Y9ge9ebpz0Ni8tlkEWqp6HKukDpI
+# /schedule is now a real booking page (schedule/index.html) with the
+# calendar embedded — no more 301 to Google Calendar.
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
 
 RewriteEngine On
 
