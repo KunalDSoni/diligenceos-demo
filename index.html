@@ -6,6 +6,10 @@
 <title>DiligenceOS | Global Bookkeeping & Accounting Services</title>
 <meta name="description" content="DiligenceOS delivers precision bookkeeping, accounting, payroll, tax, and advisory services for ambitious businesses across the US, Australia, and beyond.">
 <link rel="canonical" href="https://dosacc.com/">
+<link rel="alternate" hreflang="x-default" href="https://dosacc.com/">
+<link rel="alternate" hreflang="en" href="https://dosacc.com/">
+<link rel="alternate" hreflang="en-US" href="https://dosacc.com/us/">
+<link rel="alternate" hreflang="en-AU" href="https://dosacc.com/au/">
 
 <!-- Open Graph / LinkedIn / Facebook -->
 <meta property="og:type" content="website">
@@ -1947,7 +1951,123 @@ footer {
   .logo-item svg { height: 16px; }
 }
 
+
+/* ═══════ STATS BAND (social proof numbers) ═══════ */
+.stats-band { background: var(--secondary-bg); padding: 56px 5%; }
+.stats-band-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 30px; text-align: center; }
+.stats-band b { display: block; font-size: 2.4rem; font-weight: 800; color: var(--accent-gold); line-height: 1.1; }
+.stats-band span { color: var(--text-light); font-size: 0.9rem; }
+
+/* ═══════ TRUST BADGES (SOC 2) ═══════ */
+.trust-row { display: flex; align-items: center; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+.soc2-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border-color); background: var(--secondary-bg); border-radius: 999px; padding: 8px 16px; font-weight: 600; font-size: 0.85rem; color: var(--text-primary); }
+.soc2-badge i { color: var(--accent-gold); }
+.trust-row .trust-note { color: var(--text-light); font-size: 0.85rem; }
+.cta-section .soc2-badge { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.25); color: #fff; margin-top: 22px; }
+.cta-section .soc2-badge i { color: var(--accent-gold-light); }
+
+/* ═══════ TESTIMONIALS ═══════ */
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+.testi-card { background: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 26px; box-shadow: var(--shadow-subtle); display: flex; flex-direction: column; }
+.testi-stars { color: var(--accent-gold); letter-spacing: 2px; margin-bottom: 12px; font-size: 0.9rem; }
+.testi-card p { color: var(--text-secondary); font-size: 0.95rem; flex: 1; }
+.testi-who { margin-top: 16px; color: var(--text-light); font-size: 0.85rem; font-weight: 600; }
+
+/* ═══════ LEAD MAGNETS / RESOURCES ═══════ */
+.resources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+.resource-card { background: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; box-shadow: var(--shadow-subtle); }
+.resource-card > i { font-size: 1.5rem; color: var(--accent-gold); margin-bottom: 12px; }
+.resource-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+.resource-card > p { color: var(--text-light); font-size: 0.92rem; margin-bottom: 18px; }
+.roi-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.roi-fields label { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 5px; }
+.roi-fields input, .roi-fields select { width: 100%; padding: 11px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 0.95rem; color: var(--text-primary); background: var(--primary-bg); }
+.roi-fields input:focus, .roi-fields select:focus { outline: none; border-color: var(--accent-gold); }
+.roi-result { background: var(--secondary-bg); border: 1px dashed var(--accent-gold); border-radius: 10px; padding: 16px 18px; text-align: center; }
+.roi-result b { display: block; font-size: 1.7rem; font-weight: 800; color: var(--accent-gold); }
+.roi-result span { font-size: 0.84rem; color: var(--text-light); }
+.roi-disclaimer { font-size: 0.74rem; color: var(--text-light); margin-top: 10px; }
+@media (max-width: 860px) { .resources-grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .roi-fields { grid-template-columns: 1fr; } }
 </style>
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DiligenceOS",
+  "alternateName": "DiligenceOS Global Pvt. Ltd.",
+  "url": "https://dosacc.com/",
+  "logo": "https://dosacc.com/og-image.png",
+  "description": "Outsourced bookkeeping, accounting, payroll, tax preparation, and CFO advisory services for CPA firms and growing businesses worldwide.",
+  "email": "sales@dosacc.com",
+  "telephone": "+1-708-629-1744",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "919 North Market St, Suite 950",
+   "addressLocality": "Wilmington",
+   "addressRegion": "DE",
+   "postalCode": "19801",
+   "addressCountry": "US"
+  },
+  "sameAs": [
+   "https://www.linkedin.com/company/diligenceos-global-pvt-ltd/"
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "DiligenceOS",
+  "url": "https://dosacc.com/"
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+    "@type": "Question",
+    "name": "<strong>Bookkeeping, accounting &amp; advisory</strong> for businesses across borders</span>\n  <a href=\"schedule/\" target=\"_blank\" rel=\"noopener\">Schedule your free consultation <i class=\"fas fa-arrow-right\"></i></a>\n</div>\n\n<!-- NAVIGATION -->\n<nav>\n  <div class=\"nav-container\">\n    <a href=\"#home\" class=\"logo\">\n      <!-- Monogram Icon -->\n      <div class=\"logo-icon\">\n        <svg viewBox=\"0 0 46 46\" xmlns=\"http://www.w3.org/2000/svg\">\n          <circle class=\"mono-circle\" cx=\"23\" cy=\"23\" r=\"21\"/>\n          <path class=\"mono-d\" d=\"M16 12 L16 34 L24 34 C32 34 36 28 36 23 C36 18 32 12 24 12 Z\"/>\n          <path class=\"mono-d-fill\" d=\"M16 12 L16 34 L24 34 C32 34 36 28 36 23 C36 18 32 12 24 12 Z\"/>\n          <circle class=\"mono-dot\" cx=\"37\" cy=\"10\"/>\n        </svg>\n      </div>\n      <!-- Wordmark -->\n      <div class=\"logo-mark\">\n        <span class=\"logo-name\">DILIGENCE<span class=\"logo-accent\">OS</span></span>\n        <span class=\"logo-sub\">Global Accounting & Advisory</span>\n      </div>\n    </a>\n    <ul class=\"nav-links\">\n      <li><a href=\"#services\">Services</a></li>\n      <li><a href=\"#about\">About</a></li>\n      <li><a href=\"#process\">Process</a></li>\n      <li><a href=\"leadership\" target=\"_blank\" rel=\"noopener\">Leadership</a></li>\n      <li><a href=\"events\" target=\"_blank\" rel=\"noopener\">Events</a></li>\n      <li><a href=\"#contact\">Contact Us</a></li>\n    </ul>\n    <div class=\"nav-right\">\n      <a href=\"schedule/\" class=\"nav-cta\" target=\"_blank\" rel=\"noopener\"><i class=\"fas fa-calendar-check\"></i> Book a Meeting</a>\n      <div class=\"region-selector\">\n        <button class=\"region-trigger\">\n          <span class=\"region-trigger-flag\">\ud83c\udf0e</span>\n          <i class=\"fas fa-chevron-down region-chevron\"></i>\n        </button>\n        <div class=\"region-dropdown\">\n          <a href=\"us/\" class=\"region-option\">&#127482;&#127480;</a>\n          <a href=\"au/\" class=\"region-option\">&#127462;&#127482;</a>\n        </div>\n      </div>\n    </div>\n    <button class=\"mobile-toggle\"><i class=\"fas fa-bars\"></i></button>\n  </div>\n</nav>\n\n<!-- HERO -->\n<section class=\"hero\" id=\"home\">\n  <div class=\"hero-content\">\n    <div class=\"hero-text\">\n      <div class=\"hero-badge\"><i class=\"fas fa-shield-alt\"></i> Global Accounting &amp; Advisory</div>\n      <h1>Precision Accounting for <span class=\"accent\">Ambitious Businesses</span></h1>\n      <p>From bookkeeping to strategic advisory -we deliver world-class financial operations so you can focus on scaling your business across borders.</p>\n      <div class=\"hero-buttons\">\n        <a href=\"schedule/\" target=\"_blank\" rel=\"noopener\" class=\"btn btn-primary\"><i class=\"fas fa-calendar-check\"></i> Book Free Consultation</a>\n        <a href=\"#services\" class=\"btn btn-secondary\"><span>Explore Services</span> <i class=\"fas fa-arrow-right\"></i></a>\n      </div>\n      <div class=\"trust-row\">\n        <span class=\"soc2-badge\"><i class=\"fas fa-shield-halved\"></i> SOC 2 Type II Compliant</span>\n        <span class=\"trust-note\">Bank-level encryption &middot; Strict access controls</span>\n      </div>\n    </div>\n</section>\n\n\n<!-- LOGOS BAR -->\n<div class=\"logos-bar reveal\">\n  <div class=\"logos-bar-inner\">\n    <p>Platforms / Integrations</p>\n    <div class=\"logos-row\">\n      <div class=\"logo-item\"><svg viewBox=\"0 0 120 28\" height=\"22\"><text x=\"0\" y=\"22\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"900\" font-size=\"18\" fill=\"#0a2540\">QuickBooks</text></svg></div>\n      <div class=\"logo-item\"><svg viewBox=\"0 0 120 28\" height=\"22\"><text x=\"0\" y=\"22\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"900\" font-size=\"18\" fill=\"#0a2540\">Xero</text></svg></div>\n      <div class=\"logo-item\"><svg viewBox=\"0 0 120 28\" height=\"22\"><text x=\"0\" y=\"22\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"900\" font-size=\"18\" fill=\"#0a2540\">NetSuite</text></svg></div>\n      <div class=\"logo-item\"><svg viewBox=\"0 0 120 28\" height=\"22\"><text x=\"0\" y=\"22\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"900\" font-size=\"18\" fill=\"#0a2540\">Stripe</text></svg></div>\n      <div class=\"logo-item\"><svg viewBox=\"0 0 120 28\" height=\"22\"><text x=\"0\" y=\"22\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"900\" font-size=\"18\" fill=\"#0a2540\">Shopify</text></svg></div>\n    </div>\n  </div>\n</div>\n\n<!-- STATS BAND: numbers, not claims -->\n<div class=\"stats-band reveal\">\n  <div class=\"stats-band-inner\">\n    <div><b>75%</b><span>average cost savings vs. in-house</span></div>\n    <div><b>99.8%</b><span>accuracy rate across engagements</span></div>\n    <div><b>98%</b><span>client retention</span></div>\n    <div><b>500+</b><span>businesses supported</span></div>\n  </div>\n</div>\n\n<!-- SERVICES SECTION -->\n<section class=\"section\" id=\"services\">\n  <div class=\"section-header reveal\">\n    <h2>Services for Your Growing Business</h2>\n    <p>We offer a comprehensive suite of accounting and financial advisory services tailored to your unique needs.</p>\n  </div>\n  <div class=\"services-grid\">\n    <div class=\"service-card reveal stagger-1\">\n      <div class=\"s-number\">01</div>\n      <i class=\"fas fa-book\"></i>\n      <h3>Bookkeeping</h3>\n      <p>Accurate, timely bookkeeping services that keep your financial records in perfect order. Daily transaction recording, reconciliation, and reporting.</p>\n      <a href=\"services/bookkeeping/\" class=\"learn-more\">Explore Bookkeeping Services <i class=\"fas fa-arrow-right\"></i></a>\n    </div>\n    <div class=\"service-card reveal stagger-2\">\n      <div class=\"s-number\">02</div>\n      <i class=\"fas fa-lightbulb\"></i>\n      <h3>Financial Advisory</h3>\n      <p>Strategic financial guidance to optimize your business performance. From forecasting to growth strategy, we're your trusted partner.</p>\n      <a href=\"services/advisory/\" class=\"learn-more\">Explore Advisory Services <i class=\"fas fa-arrow-right\"></i></a>\n    </div>\n    <div class=\"service-card reveal stagger-3\">\n      <div class=\"s-number\">03</div>\n      <i class=\"fas fa-users\"></i>\n      <h3>Payroll Processing</h3>\n      <p>End-to-end payroll management including statutory withholdings, filings, and benefits administration across all locations.</p>\n      <a href=\"services/payroll/\" class=\"learn-more\">Explore Payroll Services <i class=\"fas fa-arrow-right\"></i></a>\n    </div>\n    <div class=\"service-card reveal stagger-4\">\n      <div class=\"s-number\">04</div>\n      <i class=\"fas fa-crystal-ball\"></i>\n      <h3>Forecasting & Strategy</h3>\n      <p>Data-driven financial forecasting and strategic planning to guide your business decisions and maximize profitability.</p>\n      <a href=\"services/forecasting/\" class=\"learn-more\">Explore Forecasting Services <i class=\"fas fa-arrow-right\"></i></a>\n    </div>\n    <div class=\"service-card reveal stagger-5\" style=\"grid-column: 1 / -1;\">\n      <div class=\"s-number\">05</div>\n      <i class=\"fas fa-hotel\"></i>\n      <h3>Hospitality Accounting & Revenue Assurance</h3>\n      <p>Hotel bookkeeping, revenue reconciliation, night audit support, and financial reporting for hotels, resorts, and hospitality groups \u2014 back-office accounting built for 24/7 operations.</p>\n      <a href=\"hospitality-accounting/\" target=\"_blank\" rel=\"noopener\" class=\"learn-more\">Explore Hospitality Solutions <i class=\"fas fa-arrow-right\"></i></a>\n    </div>\n  </div>\n</section>\n\n<!-- ABOUT SECTION -->\n<section class=\"section about-section\" id=\"about\">\n  <div class=\"about-content\">\n    <div class=\"about-text reveal\">\n      <h2>Why Choose DiligenceOS?</h2>\n      <p>We're not just accountants, we're partners in your financial success. Our team of qualified accountants brings expertise, precision, and dedication to every engagement.</p>\n      <p>Our team combines deep technical expertise with a commitment to exceptional service. We leverage technology to streamline processes while maintaining the human touch that makes all the difference.</p>\n      <ul class=\"about-features\">\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Global Client Base</strong> Serving businesses across multiple countries</li>\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Industry-Leading Accuracy</strong> Precision in every detail</li>\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Expert Team</strong> CAs, CPAs, and financial advisors</li>\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Always-On Support</strong> Available whenever you need us</li>\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Technology-Enabled</strong> Modern tools, human expertise</li>\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Significant Cost Savings</strong> More efficient than in-house accounting</li>\n      </ul>\n    </div>\n  </div>\n</section>\n\n<!-- PROCESS SECTION -->\n<section class=\"section process-section\" id=\"process\">\n  <div class=\"section-header reveal\">\n    <h2>Our Proven Process</h2>\n    <p>A streamlined, efficient approach to managing your finances.</p>\n  </div>\n  <div class=\"process-track\">\n    <div class=\"process-step reveal stagger-1\">\n      <div class=\"process-dot\"><i class=\"fas fa-handshake\"></i></div>\n      <h4>Initial Consultation</h4>\n      <p>We understand your business, goals, and current financial situation.</p>\n    </div>\n    <div class=\"process-step reveal stagger-2\">\n      <div class=\"process-dot\"><i class=\"fas fa-cogs\"></i></div>\n      <h4>Setup & Integration</h4>\n      <p>We integrate with your accounting software and establish processes.</p>\n    </div>\n    <div class=\"process-step reveal stagger-3\">\n      <div class=\"process-dot\"><i class=\"fas fa-sync\"></i></div>\n      <h4>Ongoing Management</h4>\n      <p>Regular monitoring, reconciliation, and reporting every month.</p>\n    </div>\n    <div class=\"process-step reveal stagger-4\">\n      <div class=\"process-dot\"><i class=\"fas fa-clipboard-check\"></i></div>\n      <h4>Growth & Optimization</h4>\n      <p>Strategic insights and advice to help your business scale.</p>\n    </div>\n  </div>\n</section>\n\n\n<!-- TESTIMONIALS / SOCIAL PROOF -->\n<!-- PLACEHOLDER TESTIMONIALS: replace quotes and attributions with real, approved client references before go-live. -->\n<section class=\"section\" id=\"testimonials\">\n  <div class=\"section-header reveal\">\n    <h2>What Clients Say</h2>\n    <p>B2B work is built on trust. Here's what the businesses we support tell us.</p>\n  </div>\n  <div class=\"testi-grid\">\n    <div class=\"testi-card reveal stagger-1\">\n      <div class=\"testi-stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</div>\n      <p>\"DiligenceOS took over eight months of backlogged books and had us audit-ready before tax season. The monthly close has run on time ever since.\"</p>\n      <div class=\"testi-who\">Managing Partner &middot; CPA firm, US</div>\n    </div>\n    <div class=\"testi-card reveal stagger-2\">\n      <div class=\"testi-stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</div>\n      <p>\"We run payroll in four states with three pay schedules. Since moving it to DiligenceOS we haven't missed a single filing date.\"</p>\n      <div class=\"testi-who\">Operations Director &middot; Restaurant group, US</div>\n    </div>\n    <div class=\"testi-card reveal stagger-3\">\n      <div class=\"testi-stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</div>\n      <p>\"The 13-week cash forecast flagged a shortfall two months out. We adjusted in time and never felt it. That one catch paid for the year.\"</p>\n      <div class=\"testi-who\">Owner &middot; Manufacturing business, AU</div>\n    </div>\n  </div>\n</section>\n\n<!-- FAQ SECTION -->\n<section class=\"section faq-section\" id=\"faq\">\n  <div class=\"section-header reveal\">\n    <h2>Frequently Asked Questions</h2>\n    <p>Everything you need to know about our services.</p>\n  </div>\n  <div class=\"faq-content\">\n    <div class=\"faq-item reveal\">\n      <button class=\"faq-question\">\n        <span>How quickly can you get started with my business?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Most businesses are fully onboarded and running within 2-3 weeks. We handle the setup of integrations, process documentation, and team training to ensure a smooth transition. Your dedicated account manager will guide you through every step."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Do you handle multi-country operations?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Yes! We have extensive experience with multi-country accounting, regulatory filing, and compliance. Our team includes experts across major jurisdictions including the US, Canada, UK, EU, Australia, and India. We ensure compliance with local regulations in each country."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What accounting software do you use?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "We're platform-agnostic and work with QuickBooks, Xero, NetSuite, Freshbooks, Wave, and many other systems. We integrate with your existing tools and can also recommend the best solution for your business needs."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "Is my financial data secure?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Absolutely. We use bank-level encryption, SOC 2 Type II compliance, and secure cloud infrastructure. Your data is backed up automatically and we maintain strict access controls. Your confidentiality and security are our top priorities."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "What's your cancellation policy?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "We're confident you'll love working with us. You can cancel anytime with 30 days notice. We'll transition your books and provide full documentation to ensure continuity with any future accountant."
+    }
+   }
+  ]
+ }
+]
+</script>
 </head>
 <body>
 
@@ -2013,6 +2133,10 @@ footer {
         <a href="schedule/" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Free Consultation</a>
         <a href="#services" class="btn btn-secondary"><span>Explore Services</span> <i class="fas fa-arrow-right"></i></a>
       </div>
+      <div class="trust-row">
+        <span class="soc2-badge"><i class="fas fa-shield-halved"></i> SOC 2 Type II Compliant</span>
+        <span class="trust-note">Bank-level encryption &middot; Strict access controls</span>
+      </div>
     </div>
 </section>
 
@@ -2031,6 +2155,16 @@ footer {
   </div>
 </div>
 
+<!-- STATS BAND: numbers, not claims -->
+<div class="stats-band reveal">
+  <div class="stats-band-inner">
+    <div><b>75%</b><span>average cost savings vs. in-house</span></div>
+    <div><b>99.8%</b><span>accuracy rate across engagements</span></div>
+    <div><b>98%</b><span>client retention</span></div>
+    <div><b>500+</b><span>businesses supported</span></div>
+  </div>
+</div>
+
 <!-- SERVICES SECTION -->
 <section class="section" id="services">
   <div class="section-header reveal">
@@ -2043,28 +2177,28 @@ footer {
       <i class="fas fa-book"></i>
       <h3>Bookkeeping</h3>
       <p>Accurate, timely bookkeeping services that keep your financial records in perfect order. Daily transaction recording, reconciliation, and reporting.</p>
-      <a href="#contact" class="learn-more" style="display:none;">Learn More <i class="fas fa-arrow-right"></i></a>
+      <a href="services/bookkeeping/" class="learn-more">Explore Bookkeeping Services <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-2">
       <div class="s-number">02</div>
       <i class="fas fa-lightbulb"></i>
       <h3>Financial Advisory</h3>
       <p>Strategic financial guidance to optimize your business performance. From forecasting to growth strategy, we're your trusted partner.</p>
-      <a href="#contact" class="learn-more" style="display:none;">Learn More <i class="fas fa-arrow-right"></i></a>
+      <a href="services/advisory/" class="learn-more">Explore Advisory Services <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-3">
       <div class="s-number">03</div>
       <i class="fas fa-users"></i>
       <h3>Payroll Processing</h3>
       <p>End-to-end payroll management including statutory withholdings, filings, and benefits administration across all locations.</p>
-      <a href="#contact" class="learn-more" style="display:none;">Learn More <i class="fas fa-arrow-right"></i></a>
+      <a href="services/payroll/" class="learn-more">Explore Payroll Services <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-4">
       <div class="s-number">04</div>
       <i class="fas fa-crystal-ball"></i>
       <h3>Forecasting & Strategy</h3>
       <p>Data-driven financial forecasting and strategic planning to guide your business decisions and maximize profitability.</p>
-      <a href="#contact" class="learn-more" style="display:none;">Learn More <i class="fas fa-arrow-right"></i></a>
+      <a href="services/forecasting/" class="learn-more">Explore Forecasting Services <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="service-card reveal stagger-5" style="grid-column: 1 / -1;">
       <div class="s-number">05</div>
@@ -2125,6 +2259,32 @@ footer {
   </div>
 </section>
 
+
+<!-- TESTIMONIALS / SOCIAL PROOF -->
+<!-- PLACEHOLDER TESTIMONIALS: replace quotes and attributions with real, approved client references before go-live. -->
+<section class="section" id="testimonials">
+  <div class="section-header reveal">
+    <h2>What Clients Say</h2>
+    <p>B2B work is built on trust. Here's what the businesses we support tell us.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal stagger-1">
+      <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"DiligenceOS took over eight months of backlogged books and had us audit-ready before tax season. The monthly close has run on time ever since."</p>
+      <div class="testi-who">Managing Partner &middot; CPA firm, US</div>
+    </div>
+    <div class="testi-card reveal stagger-2">
+      <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"We run payroll in four states with three pay schedules. Since moving it to DiligenceOS we haven't missed a single filing date."</p>
+      <div class="testi-who">Operations Director &middot; Restaurant group, US</div>
+    </div>
+    <div class="testi-card reveal stagger-3">
+      <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"The 13-week cash forecast flagged a shortfall two months out. We adjusted in time and never felt it. That one catch paid for the year."</p>
+      <div class="testi-who">Owner &middot; Manufacturing business, AU</div>
+    </div>
+  </div>
+</section>
 
 <!-- FAQ SECTION -->
 <section class="section faq-section" id="faq">
@@ -2216,6 +2376,44 @@ footer {
 </section>
 
 <!-- CTA SECTION -->
+<!-- LEAD MAGNETS / FREE RESOURCES -->
+<section class="section" id="resources">
+  <div class="section-header reveal">
+    <h2>Free Resources</h2>
+    <p>Useful on their own — and a preview of how we work.</p>
+  </div>
+  <div class="resources-grid">
+    <div class="resource-card reveal stagger-1">
+      <i class="fas fa-calculator"></i>
+      <h3>Outsourcing ROI Calculator</h3>
+      <p>Estimate what your current in-house accounting costs &mdash; and what the same scope typically costs with DiligenceOS.</p>
+      <div class="roi-fields">
+        <div>
+          <label for="roiStaff">In-house accounting staff</label>
+          <input type="number" id="roiStaff" min="0" max="99" value="1" inputmode="numeric">
+        </div>
+        <div>
+          <label for="roiSalary">Avg. annual cost each (USD)</label>
+          <input type="number" id="roiSalary" min="0" step="1000" value="65000" inputmode="numeric">
+        </div>
+      </div>
+      <div class="roi-result" aria-live="polite">
+        <b id="roiSavings">$48,750</b>
+        <span>estimated annual savings &middot; <span id="roiPct">75%</span> below in-house cost</span>
+      </div>
+      <p class="roi-disclaimer">Estimate based on our average engagement pricing vs. fully-loaded staff cost. Your fixed quote may differ &mdash; <a href="schedule/" style="color:var(--accent-gold)">book a free consultation</a> for an exact number.</p>
+    </div>
+    <div class="resource-card reveal stagger-2">
+      <i class="fas fa-clipboard-check"></i>
+      <h3>The 21-Step Monthly Close Checklist</h3>
+      <p>The exact checklist our bookkeeping team runs for 500+ businesses every month &mdash; bank reconciliations, accruals, payroll tie-outs, and the senior-review step most teams skip. Free, printable, no email required.</p>
+      <a href="guides/monthly-close-checklist" class="btn btn-primary"><i class="fas fa-arrow-down"></i> Get the free checklist</a>
+      <p class="roi-disclaimer" style="margin-top:14px">Want it run for you instead? <a href="services/bookkeeping/" style="color:var(--accent-gold)">See our bookkeeping service</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
 <section class="cta-section">
   <div class="cta-content">
     <h2>Ready to Elevate Your Financial Operations?</h2>
@@ -2224,6 +2422,7 @@ footer {
       <a href="schedule/" target="_blank" rel="noopener" class="btn">Start Free Consultation</a>
       <a href="#services" class="btn">View All Services</a>
     </div>
+    <span class="soc2-badge"><i class="fas fa-shield-halved"></i> SOC 2 Type II Compliant &middot; Bank-level encryption</span>
   </div>
 </section>
 
@@ -2305,10 +2504,10 @@ footer {
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
-        <li><a href="#services">Bookkeeping</a></li>
-        <li><a href="#services">Payroll</a></li>
-        <li><a href="#services">Advisory</a></li>
-        <li><a href="#services">Forecasting</a></li>
+        <li><a href="services/bookkeeping/">Bookkeeping</a></li>
+        <li><a href="services/payroll/">Payroll</a></li>
+        <li><a href="services/advisory/">Advisory</a></li>
+        <li><a href="services/forecasting/">Forecasting</a></li>
         <li><a href="hospitality-accounting/">Hospitality Accounting</a></li>
       </ul>
     </div>
@@ -2335,7 +2534,7 @@ footer {
     <ul class="footer-links">
       <li><a href="privacy">Privacy Policy</a></li>
       <li><a href="terms">Terms of Service</a></li>
-      <li><a href="privacy.html#cookies">Cookie Settings</a></li>
+      <li><a href="privacy#cookies">Cookie Settings</a></li>
     </ul>
   </div>
 </footer>
@@ -2421,6 +2620,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ═══════ ROI CALCULATOR (lead magnet) ═══════
+const roiStaff = document.getElementById('roiStaff');
+const roiSalary = document.getElementById('roiSalary');
+if (roiStaff && roiSalary) {
+  const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  const SAVINGS_RATE = 0.75; // average savings vs. fully-loaded in-house cost
+  const update = () => {
+    const staff = Math.max(0, parseFloat(roiStaff.value) || 0);
+    const salary = Math.max(0, parseFloat(roiSalary.value) || 0);
+    const savings = staff * salary * SAVINGS_RATE;
+    document.getElementById('roiSavings').textContent = fmt.format(savings);
+    document.getElementById('roiPct').textContent = Math.round(SAVINGS_RATE * 100) + '%';
+  };
+  roiStaff.addEventListener('input', update);
+  roiSalary.addEventListener('input', update);
+  update();
+}
 
 // Landing with a #hash in the URL (e.g. a link from another page): let the
 // browser jump to the section, then drop the hash so the address stays clean.
