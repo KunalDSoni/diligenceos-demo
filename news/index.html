@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Accounting Intelligence Center - Live Industry Briefing | DiligenceOS</title>
-<meta name="description" content="A live accounting intelligence dashboard: real-time industry news across the US, Australia, UK, Canada and UAE, market pulse, audio briefings, and executive insight.">
+<meta name="description" content="A live accounting intelligence dashboard: real-time industry news across the United States and Australia, market pulse, audio briefings, and executive insight.">
 <link rel="canonical" href="https://dosacc.com/news/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DiligenceOS">
 <meta property="og:title" content="Accounting Intelligence Center | DiligenceOS">
-<meta property="og:description" content="Live accounting and tax intelligence across the US, Australia, UK, Canada and UAE - news stream, market pulse, audio briefing, and executive brief.">
+<meta property="og:description" content="Live accounting and tax intelligence across the United States and Australia - news stream, market pulse, audio briefing, and executive brief.">
 <meta property="og:url" content="https://dosacc.com/news/">
 <meta property="og:image" content="https://dosacc.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -26,7 +26,7 @@
   "@type": "CollectionPage",
   "name": "Accounting Intelligence Center",
   "url": "https://dosacc.com/news/",
-  "description": "Live accounting industry intelligence: news across the US, Australia, UK, Canada and UAE, market pulse, audio briefings, and an executive brief.",
+  "description": "Live accounting industry intelligence: news across the United States and Australia, market pulse, audio briefings, and an executive brief.",
   "publisher": { "@type": "Organization", "name": "DiligenceOS", "url": "https://dosacc.com/" }
  },
  {
@@ -262,7 +262,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
   <div class="hero-inner">
     <div class="kicker"><span class="live-dot"></span> Live &middot; Global Accounting Intelligence</div>
     <h1>The Accounting Intelligence Center</h1>
-    <p class="hero-sub">Real-time signal on tax, audit, AI, and the global accounting talent market - tracked across the United States, Australia, the United Kingdom, Canada, and the UAE, and refreshed throughout the day.</p>
+    <p class="hero-sub">Real-time signal on tax, audit, AI, and the accounting talent market - tracked across the United States and Australia, and refreshed throughout the day.</p>
     <div class="clocks" id="clocks">
       <div class="clock"><b data-tz="America/New_York">--:--</b><span>New York</span></div>
       <div class="clock"><b data-tz="Europe/London">--:--</b><span>London</span></div>
@@ -312,13 +312,9 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
       <span class="sec-note" id="feedUpdated">Connecting to the global news index&hellip;</span>
     </div>
     <div class="regions" id="regions">
-      <button class="region-chip active" data-region="all">&#127757; All regions <span class="cnt"></span></button>
+      <button class="region-chip active" data-region="all">&#127482;&#127480;&#127462;&#127482; United States + Australia <span class="cnt"></span></button>
       <button class="region-chip" data-region="US">&#127482;&#127480; United States <span class="cnt"></span></button>
       <button class="region-chip" data-region="AS">&#127462;&#127482; Australia <span class="cnt"></span></button>
-      <button class="region-chip" data-region="UK">&#127468;&#127463; United Kingdom <span class="cnt"></span></button>
-      <button class="region-chip" data-region="CA">&#127464;&#127462; Canada <span class="cnt"></span></button>
-      <button class="region-chip" data-region="AE">&#127462;&#127466; UAE <span class="cnt"></span></button>
-      <button class="region-chip" data-region="NZ">&#127475;&#127487; New Zealand <span class="cnt"></span></button>
     </div>
     <div class="stream">
       <div id="feed" aria-live="polite">
@@ -473,6 +469,8 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
   function dedupe(arts) {
     var seen = {}, out = [];
     arts.forEach(function (a) {
+      // stream is scoped to the markets DiligenceOS serves: US + Australia
+      if (a.sourcecountry !== 'US' && a.sourcecountry !== 'AS') return;
       var k = (a.title || '').toLowerCase().slice(0, 60);
       if (a.title && a.url && !seen[k]) { seen[k] = 1; out.push(a); }
     });
