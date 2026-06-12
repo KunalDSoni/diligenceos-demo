@@ -1,4 +1,4 @@
-/* DiligenceOS corporate brochure — interactions
+/* DiligenceOS corporate brochure - interactions
    Motion aligned to dosacc.com: 0.3–0.6s cubic-bezier(.25,.46,.45,.94),
    elegant fades; counters, services accordion, expanding process
    cards, marquee, navbar. */
@@ -53,13 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
      Steady state in the track: [past (peeking above, expanded),
      active (expanded), next (collapsed), ...]. Each step slides the
      window down one card, then silently moves the first card to the
-     end and resets the transform — an endless loop. */
+     end and resets the transform - an endless loop. */
   const svTrack = document.getElementById("svTrack");
   const svRail = document.getElementById("svRail");
   const svStage = document.getElementById("svStage");
   const SV_GAP = 14, SV_PEEK = 72, SV_STEP = 600, SV_AUTO = 3800;
 
-  // Mobile (≤900px): CSS stacks all cards expanded — skip the carousel
+  // Mobile (≤900px): CSS stacks all cards expanded - skip the carousel
   if (!matchMedia("(max-width: 900px)").matches) {
 
   // Build the icon tab rail (overlaid on the image) from the cards
