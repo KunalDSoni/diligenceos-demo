@@ -591,40 +591,94 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
 
   /* ───── audio briefing (browser speech synthesis) ───── */
   var synth = window.speechSynthesis;
-  var speaking = false;
-  function buildScript(kind) {
+  var speaking = false, stopRequested = false;
+
+  // Voice quality varies wildly by browser/OS. Rank known-good natural
+  // voices first and never fall back to macOS novelty voices.
+  var JUNK = /Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Fred|Good News|Jester|Organ|Superstar|Trinoids|Whisper|Wobble|Zarvox|Grandma|Grandpa|Rocko|Shelley|Eddy|Flo|Reed|Sandy|Junior|Ralph|Kathy|Hysterical|Deranged/i;
+  var PREFS = [
+    /Microsoft (Aria|Jenny|Michelle|Emma|Ava|Andrew|Guy|Brian).*(Online|Natural)/i,
+    /Natural.*English|English.*Natural/i,
+    /Google US English/i,
+    /Samantha/i,
+    /Karen/i,
+    /Daniel/i,
+    /Google UK English (Female|Male)/i,
+    /Moira|Tessa|Serena|Allison|Ava|Susan|Zoe/i
+  ];
+  function pickVoice() {
+    var voices = synth.getVoices().filter(function (v) { return /^en/i.test(v.lang) && !JUNK.test(v.name); });
+    for (var i = 0; i < PREFS.length; i++) {
+      for (var j = 0; j < voices.length; j++) if (PREFS[i].test(voices[j].name)) return voices[j];
+    }
+    var premium = voices.filter(function (v) { return /premium|enhanced|neural/i.test(v.name); })[0];
+    return premium || voices[0] || null;
+  }
+  function cleanForSpeech(t) {
+    return (t || '')
+      .replace(/&amp;/g, ' and ').replace(/&/g, ' and ')
+      .replace(/[‘’]/g, "'").replace(/[“”]/g, '')
+      .replace(/\bIRS\b/g, 'I.R.S.').replace(/\bATO\b/g, 'A.T.O.')
+      .replace(/\bCPA(s)?\b/g, 'C.P.A.$1').replace(/\bAI\b/g, 'A.I.')
+      .replace(/\bGST\b/g, 'G.S.T.').replace(/\bVAT\b/g, 'V.A.T.')
+      .replace(/\s[-|]\s[^.]*$/, '')
+      .replace(/\s+/g, ' ').trim();
+  }
+  function buildSentences(kind) {
     var hour = new Date().getHours();
     var greet = hour < 12 ? 'Good morning.' : hour < 18 ? 'Good afternoon.' : 'Good evening.';
     if (kind === 'brief') {
-      return greet + ' This is the DiligenceOS executive brief for June 2026. '
-        + 'Four trends define the quarter. One: A.I. adoption is accelerating across mid-market firms, moving from pilots to production. '
-        + 'Two: the C.P.A. talent shortage continues, keeping capacity tight in the United States and Australia. '
-        + 'Three: offshore accounting demand keeps climbing as white-label production becomes a mainstream operating model. '
-        + 'Four: compliance scrutiny is widening, with regulators sharpening focus on audit quality and data security. '
-        + 'That concludes the executive brief. For the full intelligence stream, visit dosacc dot com slash news.';
+      return [greet + ' This is the DiligenceOS executive brief for June, 2026.',
+        'Four trends define the quarter.',
+        'One. A.I. adoption is accelerating across mid-market firms, moving from pilots into production.',
+        'Two. The C.P.A. talent shortage continues, keeping capacity tight in the United States and Australia.',
+        'Three. Offshore accounting demand keeps climbing, as white-label production becomes a mainstream operating model.',
+        'Four. Compliance scrutiny is widening, with regulators sharpening their focus on audit quality and data security.',
+        'That concludes the executive brief, from DiligenceOS.'];
     }
     var top = state.articles.slice(0, 5);
-    if (!top.length) return greet + ' This is the DiligenceOS accounting briefing. The live stream is still loading - please try again in a moment.';
-    var s = greet + ' This is the DiligenceOS daily accounting briefing for '
-      + new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
-      + '. Here are today\'s top developments across the accounting profession. ';
+    if (!top.length) return [greet + ' This is the DiligenceOS accounting briefing. The live stream is still loading. Please try again in a moment.'];
+    var out = [greet + ' This is the DiligenceOS daily accounting briefing for '
+      + new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + '.',
+      'Here are the top developments across the accounting profession in the United States and Australia.'];
     top.forEach(function (a, i) {
-      s += 'Story ' + (i + 1) + ', from ' + (a.domain || 'the wire') + ': ' + a.title + '. ';
+      out.push('Story ' + (i + 1) + '. ' + cleanForSpeech(a.title) + '.');
     });
-    s += 'That\'s today\'s briefing from DiligenceOS - global accounting and advisory.';
-    return s;
+    out.push('That was today\'s briefing, from DiligenceOS. Global accounting and advisory.');
+    return out;
+  }
+  function setPlaying(on) {
+    speaking = on;
+    document.getElementById('player').classList.toggle('playing', on);
+    document.getElementById('playIcon').className = on ? 'fas fa-stop' : 'fas fa-play';
+    document.getElementById('briefStatus').textContent = on
+      ? 'Playing - click the button again to stop.'
+      : 'Today\'s top accounting and outsourcing developments, read aloud - generated from the live stream below.';
+  }
+  // Speak sentence-by-sentence: natural anchor pacing, and it sidesteps
+  // the Chrome bug that cuts off or garbles long single utterances.
+  function speakSentences(sentences) {
+    var voice = pickVoice();
+    var i = 0;
+    setPlaying(true);
+    (function next() {
+      if (stopRequested || i >= sentences.length) { setPlaying(false); return; }
+      var u = new SpeechSynthesisUtterance(sentences[i++]);
+      if (voice) u.voice = voice;
+      u.rate = 0.97; u.pitch = 1;
+      u.onend = function () { setTimeout(next, i === 1 ? 350 : 220); };
+      u.onerror = function () { setPlaying(false); };
+      synth.speak(u);
+    })();
   }
   function speak(kind) {
     if (!synth) { document.getElementById('briefStatus').textContent = 'Audio is not supported in this browser.'; return; }
-    if (speaking) { synth.cancel(); return; }
-    var u = new SpeechSynthesisUtterance(buildScript(kind));
-    u.rate = 0.98; u.pitch = 1;
-    var v = synth.getVoices().filter(function (x) { return /en[-_](US|GB|AU)/i.test(x.lang); })[0];
-    if (v) u.voice = v;
-    var icon = document.getElementById('playIcon');
-    u.onstart = function () { speaking = true; document.getElementById('player').classList.add('playing'); icon.className = 'fas fa-stop'; };
-    u.onend = u.onerror = function () { speaking = false; document.getElementById('player').classList.remove('playing'); icon.className = 'fas fa-play'; };
-    synth.cancel(); synth.speak(u);
+    if (speaking) { stopRequested = true; synth.cancel(); setPlaying(false); return; }
+    stopRequested = false;
+    synth.cancel();
+    var start = function () { speakSentences(buildSentences(kind)); };
+    if (synth.getVoices().length) start();
+    else { synth.onvoiceschanged = function () { synth.onvoiceschanged = null; if (!speaking && !stopRequested) start(); }; setTimeout(function () { if (!speaking && !stopRequested) start(); }, 600); }
   }
   document.getElementById('playBtn').addEventListener('click', function () { speak('daily'); });
   document.getElementById('briefListen').addEventListener('click', function () { speak('brief'); });
