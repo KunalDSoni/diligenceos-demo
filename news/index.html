@@ -547,8 +547,9 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
     if (!items.length) html += '<p class="feed-status">No stories from this region in the current 3-day window - try All regions.</p>';
     items.forEach(function (a) {
       var c = classify(a);
+      var chip = c.id === 'cpa' ? '' : '<span class="cat ' + c.cls + '">' + c.label + '</span>';
       html += '<a class="news-item" href="' + encodeURI(a.url) + '" target="_blank" rel="noopener nofollow">'
-        + '<div class="news-top"><span class="cat ' + c.cls + '">' + c.label + '</span>'
+        + '<div class="news-top">' + chip
         + '<span class="news-meta"><b>' + esc(a.domain || 'source') + '</b> &middot; ' + timeAgo(a.seendate) + '</span></div>'
         + '<h3>' + esc(a.title) + '</h3>'
         + '<div class="why"><b>Why it matters</b> &middot; ' + c.why + '</div></a>';
@@ -598,7 +599,8 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
     // ticker tape (duplicated for a seamless loop)
     var tape = arts.slice(0, 8).map(function (a) {
       var c = classify(a);
-      return '<span class="tape-item"><b>' + c.label.toUpperCase() + '</b><a href="' + encodeURI(a.url) + '" target="_blank" rel="noopener nofollow">' + esc((a.title || '').slice(0, 90)) + '</a></span>';
+      var tag = c.id === 'cpa' ? '' : '<b>' + c.label.toUpperCase() + '</b>';
+      return '<span class="tape-item">' + tag + '<a href="' + encodeURI(a.url) + '" target="_blank" rel="noopener nofollow">' + esc((a.title || '').slice(0, 90)) + '</a></span>';
     }).join('');
     if (tape) document.getElementById('tapeTrack').innerHTML = tape + tape;
 
