@@ -1963,7 +1963,8 @@ footer {
 .soc2-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border-color); background: var(--secondary-bg); border-radius: 999px; padding: 8px 16px; font-weight: 600; font-size: 0.85rem; color: var(--text-primary); }
 .soc2-badge i { color: var(--accent-gold); }
 .trust-row .trust-note { color: var(--text-light); font-size: 0.85rem; }
-.cta-section .soc2-badge { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.25); color: #fff; margin-top: 22px; }
+.cta-section .trust-row { margin-top: 22px; }
+.cta-section .soc2-badge { background: rgba(255,255,255,0.5); border-color: rgba(138,106,18,0.25); color: var(--text-primary); }
 .cta-section .soc2-badge i { color: var(--accent-gold-light); }
 
 /* ═══════ TESTIMONIALS ═══════ */
@@ -2219,7 +2220,8 @@ footer {
       </div>
       <div class="trust-row">
         <span class="soc2-badge"><i class="fas fa-shield-halved"></i> SOC 2 Type II Compliant</span>
-        <span class="trust-note">Bank-level encryption &middot; Strict access controls</span>
+        <span class="soc2-badge"><i class="fas fa-lock"></i> Bank-Level Encryption</span>
+        <span class="soc2-badge"><i class="fas fa-user-lock"></i> Strict Access Controls</span>
       </div>
     </div>
 </section>
@@ -2505,7 +2507,11 @@ footer {
     <div class="cta-buttons">
       <a href="#services" class="btn">View All Services</a>
     </div>
-    <span class="soc2-badge"><i class="fas fa-shield-halved"></i> SOC 2 Type II Compliant &middot; Bank-level encryption</span>
+    <div class="trust-row" style="justify-content:center">
+      <span class="soc2-badge"><i class="fas fa-shield-halved"></i> SOC 2 Type II Compliant</span>
+      <span class="soc2-badge"><i class="fas fa-lock"></i> Bank-Level Encryption</span>
+      <span class="soc2-badge"><i class="fas fa-user-lock"></i> Strict Access Controls</span>
+    </div>
   </div>
 </section>
 
