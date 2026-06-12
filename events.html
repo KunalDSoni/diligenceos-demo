@@ -24,7 +24,7 @@
 <meta name="twitter:description" content="DiligenceOS out in the field in 2026 — from AICPA ENGAGE to the Las Vegas Strip.">
 <meta name="twitter:image" content="https://dosacc.com/og-image.png">
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -391,7 +391,7 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
 .nav-links .nav-drop-menu a { display: block; padding: 9px 12px; font-size: 0.9rem; width: 100%; white-space: nowrap; }
 .nav-links .nav-drop-menu a::after { display: none; }
 .nav-links .nav-drop-menu a:hover { background: var(--secondary-bg); }
-@media (max-width: 768px) {
+@media (max-width: 1199px) {
   .nav-dropdown { width: 100%; }
   .nav-drop-trigger { width: 100%; padding: 12px 16px; font-size: 0.88rem; justify-content: space-between; border-radius: 8px; }
   .nav-drop-trigger:hover { background: var(--secondary-bg); }
@@ -399,6 +399,24 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
   .nav-drop-menu::before { display: none; }
   .nav-dropdown.open .nav-drop-menu { display: flex; }
   .nav-dropdown:not(.open):hover .nav-drop-menu { display: none; }
+}
+
+/* ═══════ NAV FIT FIXES (header with dropdowns) ═══════ */
+.nav-container { max-width: 1320px; }
+.nav-cta { white-space: nowrap; }
+@media (min-width: 600px) { .logo-sub { white-space: nowrap; } }
+.nav-links { gap: 2px; }
+/* squeeze range: keep the full nav on smaller desktops */
+@media (min-width: 1200px) and (max-width: 1366px) {
+  .nav-links > li > a, .nav-drop-trigger { padding: 8px 9px; font-size: 0.9rem; }
+}
+/* the dropdown nav is wider than before: collapse to the hamburger below 1200px */
+@media (max-width: 1199px) {
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--primary-bg); flex-direction: column; align-items: stretch; padding: 16px 20px; gap: 4px; border-bottom: 1px solid var(--border-color); box-shadow: 0 8px 24px rgba(0,0,0,0.08); z-index: 999; }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; width: 100%; }
+  .nav-links a:hover { background: var(--secondary-bg); }
+  .mobile-toggle { display: flex; }
 }
 </style>
 </head>
