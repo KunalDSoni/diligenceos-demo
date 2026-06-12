@@ -140,6 +140,33 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
 .playing .eq { visibility: visible; }
 .brief-note { font-size: .74rem; color: var(--text-light); width: 100%; }
 
+
+/* ───── live broadcasts ───── */
+.bc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.tv-card { overflow: hidden; }
+.tv-poster { position: relative; aspect-ratio: 16/9; background:
+  radial-gradient(420px 200px at 30% 20%, rgba(184,146,14,.25), transparent 60%),
+  linear-gradient(135deg, #1d2430 0%, #2a3242 100%); cursor: pointer; border: 0; width: 100%; display: block; }
+.tv-poster .tv-name { position: absolute; left: 20px; bottom: 18px; text-align: left; color: #fff; }
+.tv-poster .tv-name b { display: block; font-family: var(--serif); font-size: 1.15rem; }
+.tv-poster .tv-name span { font-size: .78rem; color: rgba(255,255,255,.75); }
+.tv-poster .tv-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 62px; height: 62px; border-radius: 50%; background: rgba(255,255,255,.92); color: var(--accent-gold); display: grid; place-items: center; font-size: 1.2rem; transition: var(--transition); }
+.tv-poster:hover .tv-play { transform: translate(-50%,-50%) scale(1.08); }
+.live-badge { position: absolute; top: 14px; left: 14px; display: inline-flex; align-items: center; gap: 6px; background: rgba(200,32,32,.92); color: #fff; font-size: .66rem; font-weight: 800; letter-spacing: .14em; padding: 5px 10px; border-radius: 5px; }
+.live-badge i { font-size: .5rem; animation: pulse 1.6s infinite; }
+.tv-card iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; }
+.radio-row { display: flex; align-items: center; gap: 16px; padding: 16px 20px; margin-top: 14px; }
+.radio-row .r-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-gold-light); color: var(--accent-gold); display: grid; place-items: center; flex-shrink: 0; }
+.radio-row .r-meta { flex: 1; min-width: 0; }
+.radio-row .r-meta b { display: block; font-size: .95rem; }
+.radio-row .r-meta span { font-size: .78rem; color: var(--text-light); }
+.radio-row .r-live { font-size: .64rem; font-weight: 800; letter-spacing: .12em; color: #c82020; }
+.radio-row .r-live i { font-size: .5rem; animation: pulse 1.6s infinite; }
+.r-play { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border-color); background: var(--primary-bg); color: var(--accent-gold); cursor: pointer; font-size: .9rem; transition: var(--transition); flex-shrink: 0; }
+.r-play:hover { border-color: var(--accent-gold); }
+.r-play.on { background: var(--accent-gold); color: #fff; border-color: var(--accent-gold); }
+@media (max-width: 920px) { .bc-grid { grid-template-columns: 1fr; } }
+
 /* ───── region filter / global coverage ───── */
 .regions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
 .region-chip { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border-color); background: var(--primary-bg); border-radius: 999px; padding: 9px 16px; font-size: .85rem; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: inherit; color: var(--text-primary); }
@@ -308,8 +335,51 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
   </div>
 </section>
 
+<!-- LIVE BROADCASTS -->
+<section class="section alt" id="broadcasts">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>Live Broadcasts</h2>
+      <span class="sec-note">Round-the-clock business television and news radio - streams update automatically</span>
+    </div>
+    <div class="bc-grid">
+      <div>
+        <div class="glass tv-card" data-video="7F8J_XE3zzU" data-live="https://www.youtube.com/@livenowfox/live" data-name="LiveNOW from FOX">
+          <button class="tv-poster" aria-label="Play LiveNOW from FOX live">
+            <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
+            <span class="tv-play"><i class="fas fa-play"></i></span>
+            <span class="tv-name"><b>LiveNOW from FOX</b><span>24/7 breaking news &middot; United States</span></span>
+          </button>
+        </div>
+        <div class="glass radio-row" data-stream="https://npr-ice.streamguys1.com/live.mp3" data-name="NPR Live">
+          <span class="r-icon"><i class="fas fa-radio"></i></span>
+          <span class="r-meta"><b>NPR Live Radio</b><span>US news &amp; business coverage</span></span>
+          <span class="r-live"><i class="fas fa-circle"></i> LIVE</span>
+          <button class="r-play" aria-label="Play NPR live radio"><i class="fas fa-play"></i></button>
+        </div>
+      </div>
+      <div>
+        <div class="glass tv-card" data-video="87r-1JKz7E4" data-live="https://www.youtube.com/@SkyNewsAustralia/live" data-name="Sky News Australia">
+          <button class="tv-poster" aria-label="Play Sky News Australia live">
+            <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
+            <span class="tv-play"><i class="fas fa-play"></i></span>
+            <span class="tv-name"><b>Sky News Australia</b><span>24/7 national news channel &middot; Australia</span></span>
+          </button>
+        </div>
+        <div class="glass radio-row" data-stream="https://abc.streamguys1.com/live/newsradio/icecast.audio" data-name="ABC NewsRadio">
+          <span class="r-icon"><i class="fas fa-radio"></i></span>
+          <span class="r-meta"><b>ABC NewsRadio</b><span>Australia's continuous news station</span></span>
+          <span class="r-live"><i class="fas fa-circle"></i> LIVE</span>
+          <button class="r-play" aria-label="Play ABC NewsRadio live"><i class="fas fa-play"></i></button>
+        </div>
+      </div>
+    </div>
+    <p class="disclaimer">Broadcasts are streamed from their networks (FOX and Sky News Australia via their official YouTube live channels, NPR and ABC NewsRadio via their public streams) and play on demand. DiligenceOS is not affiliated with these networks.</p>
+  </div>
+</section>
+
 <!-- GLOBAL COVERAGE + LIVE STREAM -->
-<section class="section alt" id="stream">
+<section class="section" id="stream">
   <div class="inner">
     <div class="sec-head">
       <h2>Live Intelligence Stream</h2>
@@ -353,7 +423,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
 </section>
 
 <!-- EXECUTIVE BRIEF + TALENT INTELLIGENCE -->
-<section class="section" id="brief">
+<section class="section alt" id="brief">
   <div class="inner">
     <div class="sec-head">
       <h2>Executive Intelligence</h2>
@@ -383,7 +453,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
 </section>
 
 <!-- MEDIA CENTER -->
-<section class="section alt" id="media">
+<section class="section" id="media">
   <div class="inner">
     <div class="sec-head">
       <h2>Media Center</h2>
@@ -716,6 +786,48 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
     if (synth.getVoices().length) start();
     else { synth.onvoiceschanged = function () { synth.onvoiceschanged = null; if (!speaking && !stopRequested) start(); }; setTimeout(function () { if (!speaking && !stopRequested) start(); }, 600); }
   }
+
+  /* ───── live broadcasts: click-to-load TV embeds + radio streams ───── */
+  document.querySelectorAll('.tv-card .tv-poster').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.tv-card');
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + card.dataset.video + '?autoplay=1';
+      f.title = card.dataset.name + ' live stream';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.setAttribute('allowfullscreen', '');
+      card.replaceChild(f, btn);
+      // safety net: if the network ever rotates its stream id, offer the
+      // channel /live link, which always resolves to the current broadcast
+      var alt = document.createElement('p');
+      alt.style.cssText = 'font-size:.74rem;color:var(--text-light);padding:8px 14px;margin:0';
+      alt.innerHTML = 'Not playing? <a href="' + card.dataset.live + '" target="_blank" rel="noopener" style="color:var(--accent-gold)">Watch on YouTube</a>';
+      card.appendChild(alt);
+    });
+  });
+  var radio = new Audio();
+  radio.preload = 'none';
+  var radioBtn = null;
+  function radioOff() {
+    if (radioBtn) { radioBtn.classList.remove('on'); radioBtn.innerHTML = '<i class="fas fa-play"></i>'; radioBtn = null; }
+    radio.pause(); radio.removeAttribute('src');
+  }
+  radio.addEventListener('error', function () {
+    if (radioBtn) { var m = radioBtn.closest('.radio-row').querySelector('.r-meta span'); if (m) m.textContent = 'Stream unavailable right now - try again shortly.'; }
+    radioOff();
+  });
+  document.querySelectorAll('.radio-row .r-play').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var row = btn.closest('.radio-row');
+      if (radioBtn === btn) { radioOff(); return; }
+      radioOff();
+      radioBtn = btn;
+      btn.classList.add('on'); btn.innerHTML = '<i class="fas fa-stop"></i>';
+      radio.src = row.dataset.stream;
+      radio.play().catch(function () { radioOff(); });
+    });
+  });
+
   document.getElementById('playBtn').addEventListener('click', function () { speak('daily'); });
   document.getElementById('briefListen').addEventListener('click', function () { speak('brief'); });
 })();
