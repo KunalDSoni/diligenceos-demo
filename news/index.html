@@ -124,6 +124,16 @@ h2 { font-size: clamp(1.35rem, 3vw, 1.8rem); font-weight: 800; text-align: cente
 .source-link { display: flex; align-items: center; gap: 10px; border: 1px solid var(--border-color); border-radius: 10px; padding: 14px 16px; text-decoration: none; color: var(--text-primary); font-weight: 600; font-size: .92rem; transition: var(--transition); }
 .source-link:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
 .source-link i { color: var(--accent-gold); }
+
+.back-link-top { display: inline-flex; align-items: center; gap: 6px; }
+.bk-short { display: none; }
+@media (max-width: 640px) {
+  .bk-long { display: none; }
+  .bk-short { display: inline; }
+  .topbar .logo-name { display: none; }
+  .topbar .btn { padding: 10px 14px; font-size: 0.85rem; }
+  .top-actions { gap: 10px; }
+}
 </style>
 </head>
 <body>
@@ -138,6 +148,7 @@ h2 { font-size: clamp(1.35rem, 3vw, 1.8rem); font-weight: 800; text-align: cente
     <span class="logo-name">DILIGENCE<span class="logo-accent">OS</span></span>
   </a>
   <nav class="top-actions">
+    <a class="back-link-top" href="../">&larr; <span class="bk-long">Back to dosacc.com</span><span class="bk-short">Back</span></a>
     <a class="plain" href="../#services">Services</a>
     <a class="plain" href="../partners/">Partners</a>
     <a class="btn btn-gold" href="../schedule/"><i class="fas fa-calendar-check"></i> Book a meeting</a>
