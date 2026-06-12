@@ -492,7 +492,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
   /* ───── intelligence engine: fetch, classify, render ───── */
   var QUERY = '("accounting firm" OR "accounting industry" OR "CPA firms" OR "audit firm" OR "bookkeeping services" OR "tax preparation") sourcelang:english';
   var URL_ = 'https://api.gdeltproject.org/api/v2/doc/doc?mode=artlist&format=json&maxrecords=30&sort=datedesc&timespan=3d&query=' + encodeURIComponent(QUERY);
-  var CACHE_KEY = 'dosacc-intel-v2';
+  var CACHE_KEY = 'dosacc-intel-v3';
   var CACHE_TTL = 15 * 60 * 1000;
   var REFRESH_MS = 30 * 60 * 1000; // periodic refresh while the page stays open
   var state = { articles: [], region: 'all' };
@@ -522,6 +522,19 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
     return Math.round(m / 1440) + ' d ago';
   }
   function esc(t) { var d = document.createElement('div'); d.textContent = t || ''; return d.innerHTML; }
+  // Relevance scoring: the stream only keeps stories genuinely about the
+  // profession and the services DiligenceOS provides (US + AU focus).
+  var STRONG = [/accounting (firm|industry|profession|services|practice|standard)/i, /\bCPA(s)?\b/, /bookkeep/i, /\baccountants?\b/i, /audit (firm|quality|standards?|partner|season)/i, /\bpayroll\b/i, /tax (preparation|preparers?|season|filing|agents?|practitioners?)/i, /\bIRS\b/, /\bATO\b/, /\bHMRC\b/, /\bCFO\b/i, /offshor\w* (accounting|staffing|team)/i, /outsourc\w* (accounting|bookkeeping|finance)/i, /\bGST\b|\bBAS\b/, /\bPCAOB\b/, /QuickBooks|\bXero\b|\bIntuit\b/i, /month[- ]end close|monthly close/i];
+  var MEDIUM = [/\btax(es)?\b/i, /\baudit\w*\b/i, /complianc/i, /talent shortage|staffing shortage/i, /automation/i, /financial report/i, /outsourc/i, /offshor/i];
+  var NOISE = [/school district|city council|county (board|budget)|police|sheriff|weather|football|basketball|baseball|soccer|obituar|recipe|horoscope|lottery|concert|festival|movie|celebrit/i];
+  function relevance(t) {
+    var sc = 0;
+    for (var i = 0; i < STRONG.length; i++) if (STRONG[i].test(t)) sc += 3;
+    for (var j = 0; j < MEDIUM.length; j++) if (MEDIUM[j].test(t)) sc += 1;
+    for (var k = 0; k < NOISE.length; k++) if (NOISE[k].test(t)) sc -= 4;
+    return sc;
+  }
+
   // GDELT's artlist returns full country names ("United States"); normalize
   // and accept FIPS codes too, just in case the format ever changes.
   function regionOf(a) {
@@ -536,9 +549,14 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
       // stream is scoped to the markets DiligenceOS serves: US + Australia
       if (!regionOf(a)) return;
       var k = (a.title || '').toLowerCase().slice(0, 60);
-      if (a.title && a.url && !seen[k]) { seen[k] = 1; out.push(a); }
+      if (a.title && a.url && !seen[k]) { seen[k] = 1; a._score = relevance(a.title); out.push(a); }
     });
-    return out;
+    // strict topical cut first; relax one notch only if it leaves too little
+    var kept = out.filter(function (a) { return a._score >= 3; });
+    if (kept.length < 4) kept = out.filter(function (a) { return a._score >= 2; });
+    // most relevant first, newest breaking ties (input is already date-sorted)
+    kept.sort(function (x, y) { return y._score - x._score; });
+    return kept;
   }
 
   function render() {
