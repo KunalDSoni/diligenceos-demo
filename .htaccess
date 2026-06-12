@@ -52,9 +52,11 @@ RewriteRule ^contact$ index.html [L]
 
 # Clean URLs: serve /events as events.html, /leadership as leadership.html, etc.
 # Only rewrites when the requested path isn't a real file/directory but a .html version exists.
+# Uses DOCUMENT_ROOT+REQUEST_URI (not REQUEST_FILENAME, which collapses path-info:
+# /events/nope would resolve to the real file /events and loop until a 500).
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
 RewriteRule ^(.+)$ $1.html [L]
 
 # ───────────────── Custom error page ─────────────────
