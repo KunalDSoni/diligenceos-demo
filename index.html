@@ -1989,6 +1989,42 @@ footer {
 .roi-disclaimer { font-size: 0.74rem; color: var(--text-light); margin-top: 10px; }
 @media (max-width: 860px) { .resources-grid { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .roi-fields { grid-template-columns: 1fr; } }
+
+/* ═══════ NAV DROPDOWNS (Services / Company / Resources) ═══════ */
+.nav-dropdown { position: relative; }
+.nav-drop-trigger {
+  display: flex; align-items: center; gap: 6px;
+  background: none; border: none; cursor: pointer; font-family: inherit;
+  color: var(--text-secondary); font-weight: 500; font-size: 0.95rem;
+  padding: 8px 14px; border-radius: 6px; transition: var(--transition);
+}
+.nav-drop-trigger:hover { color: var(--text-primary); }
+.nav-drop-chevron { font-size: 0.55rem; transition: var(--transition); }
+.nav-dropdown:hover .nav-drop-chevron, .nav-dropdown.open .nav-drop-chevron { transform: rotate(180deg); }
+.nav-drop-menu {
+  position: absolute; top: calc(100% + 10px); left: 0; min-width: 215px;
+  background: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+  padding: 6px; opacity: 0; visibility: hidden; list-style: none;
+  transform: translateY(-6px) scale(0.98);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1001;
+  display: flex; flex-direction: column; gap: 2px;
+}
+/* invisible hover bridge so the menu doesn't close crossing the 10px gap */
+.nav-drop-menu::before { content: ''; position: absolute; top: -12px; left: 0; right: 0; height: 12px; }
+.nav-dropdown:hover .nav-drop-menu, .nav-dropdown.open .nav-drop-menu { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.nav-links .nav-drop-menu a { display: block; padding: 9px 12px; font-size: 0.9rem; width: 100%; white-space: nowrap; }
+.nav-links .nav-drop-menu a::after { display: none; }
+.nav-links .nav-drop-menu a:hover { background: var(--secondary-bg); }
+@media (max-width: 768px) {
+  .nav-dropdown { width: 100%; }
+  .nav-drop-trigger { width: 100%; padding: 12px 16px; font-size: 0.88rem; justify-content: space-between; border-radius: 8px; }
+  .nav-drop-trigger:hover { background: var(--secondary-bg); }
+  .nav-drop-menu { position: static; box-shadow: none; border: none; padding: 0 0 4px 14px; display: none; opacity: 1; visibility: visible; transform: none; min-width: 0; }
+  .nav-drop-menu::before { display: none; }
+  .nav-dropdown.open .nav-drop-menu { display: flex; }
+  .nav-dropdown:not(.open):hover .nav-drop-menu { display: none; }
+}
 </style>
 <script type="application/ld+json">
 [
@@ -2026,7 +2062,7 @@ footer {
   "mainEntity": [
    {
     "@type": "Question",
-    "name": "<strong>Bookkeeping, accounting &amp; advisory</strong> for businesses across borders</span>\n  <a href=\"schedule/\" target=\"_blank\" rel=\"noopener\">Schedule your free consultation <i class=\"fas fa-arrow-right\"></i></a>\n</div>\n\n<!-- NAVIGATION -->\n<nav>\n  <div class=\"nav-container\">\n    <a href=\"#home\" class=\"logo\">\n      <!-- Monogram Icon -->\n      <div class=\"logo-icon\">\n        <svg viewBox=\"0 0 46 46\" xmlns=\"http://www.w3.org/2000/svg\">\n          <circle class=\"mono-circle\" cx=\"23\" cy=\"23\" r=\"21\"/>\n          <path class=\"mono-d\" d=\"M16 12 L16 34 L24 34 C32 34 36 28 36 23 C36 18 32 12 24 12 Z\"/>\n          <path class=\"mono-d-fill\" d=\"M16 12 L16 34 L24 34 C32 34 36 28 36 23 C36 18 32 12 24 12 Z\"/>\n          <circle class=\"mono-dot\" cx=\"37\" cy=\"10\"/>\n        </svg>\n      </div>\n      <!-- Wordmark -->\n      <div class=\"logo-mark\">\n        <span class=\"logo-name\">DILIGENCE<span class=\"logo-accent\">OS</span></span>\n        <span class=\"logo-sub\">Global Accounting & Advisory</span>\n      </div>\n    </a>\n    <ul class=\"nav-links\">\n      <li><a href=\"#services\">Services</a></li>\n      <li><a href=\"#about\">About</a></li>\n      <li><a href=\"#process\">Process</a></li>\n      <li><a href=\"leadership\" target=\"_blank\" rel=\"noopener\">Leadership</a></li>\n      <li><a href=\"events\" target=\"_blank\" rel=\"noopener\">Events</a></li>\n      <li><a href=\"#contact\">Contact Us</a></li>\n    </ul>\n    <div class=\"nav-right\">\n      <a href=\"schedule/\" class=\"nav-cta\" target=\"_blank\" rel=\"noopener\"><i class=\"fas fa-calendar-check\"></i> Book a Meeting</a>\n      <div class=\"region-selector\">\n        <button class=\"region-trigger\">\n          <span class=\"region-trigger-flag\">\ud83c\udf0e</span>\n          <i class=\"fas fa-chevron-down region-chevron\"></i>\n        </button>\n        <div class=\"region-dropdown\">\n          <a href=\"us/\" class=\"region-option\">&#127482;&#127480;</a>\n          <a href=\"au/\" class=\"region-option\">&#127462;&#127482;</a>\n        </div>\n      </div>\n    </div>\n    <button class=\"mobile-toggle\"><i class=\"fas fa-bars\"></i></button>\n  </div>\n</nav>\n\n<!-- HERO -->\n<section class=\"hero\" id=\"home\">\n  <div class=\"hero-content\">\n    <div class=\"hero-text\">\n      <div class=\"hero-badge\"><i class=\"fas fa-shield-alt\"></i> Global Accounting &amp; Advisory</div>\n      <h1>Precision Accounting for <span class=\"accent\">Ambitious Businesses</span></h1>\n      <p>From bookkeeping to strategic advisory -we deliver world-class financial operations so you can focus on scaling your business across borders.</p>\n      <div class=\"hero-buttons\">\n        <a href=\"schedule/\" target=\"_blank\" rel=\"noopener\" class=\"btn btn-primary\"><i class=\"fas fa-calendar-check\"></i> Book Free Consultation</a>\n        <a href=\"#services\" class=\"btn btn-secondary\"><span>Explore Services</span> <i class=\"fas fa-arrow-right\"></i></a>\n      </div>\n      <div class=\"trust-row\">\n        <span class=\"soc2-badge\"><i class=\"fas fa-shield-halved\"></i> SOC 2 Type II Compliant</span>\n        <span class=\"trust-note\">Bank-level encryption &middot; Strict access controls</span>\n      </div>\n    </div>\n</section>\n\n\n<!-- LOGOS BAR -->\n<div class=\"logos-bar reveal\">\n  <div class=\"logos-bar-inner\">\n    <p>Platforms / Integrations</p>\n    <div class=\"logos-row\">\n      <div class=\"logo-item\"><svg viewBox=\"0 0 120 28\" height=\"22\"><text x=\"0\" y=\"22\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"900\" font-size=\"18\" fill=\"#0a2540\">QuickBooks</text></svg></div>\n      <div class=\"logo-item\"><svg viewBox=\"0 0 120 28\" height=\"22\"><text x=\"0\" y=\"22\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"900\" font-size=\"18\" fill=\"#0a2540\">Xero</text></svg></div>\n      <div class=\"logo-item\"><svg viewBox=\"0 0 120 28\" height=\"22\"><text x=\"0\" y=\"22\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"900\" font-size=\"18\" fill=\"#0a2540\">NetSuite</text></svg></div>\n      <div class=\"logo-item\"><svg viewBox=\"0 0 120 28\" height=\"22\"><text x=\"0\" y=\"22\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"900\" font-size=\"18\" fill=\"#0a2540\">Stripe</text></svg></div>\n      <div class=\"logo-item\"><svg viewBox=\"0 0 120 28\" height=\"22\"><text x=\"0\" y=\"22\" font-family=\"Arial,Helvetica,sans-serif\" font-weight=\"900\" font-size=\"18\" fill=\"#0a2540\">Shopify</text></svg></div>\n    </div>\n  </div>\n</div>\n\n<!-- STATS BAND: numbers, not claims -->\n<div class=\"stats-band reveal\">\n  <div class=\"stats-band-inner\">\n    <div><b>75%</b><span>average cost savings vs. in-house</span></div>\n    <div><b>99.8%</b><span>accuracy rate across engagements</span></div>\n    <div><b>98%</b><span>client retention</span></div>\n    <div><b>500+</b><span>businesses supported</span></div>\n  </div>\n</div>\n\n<!-- SERVICES SECTION -->\n<section class=\"section\" id=\"services\">\n  <div class=\"section-header reveal\">\n    <h2>Services for Your Growing Business</h2>\n    <p>We offer a comprehensive suite of accounting and financial advisory services tailored to your unique needs.</p>\n  </div>\n  <div class=\"services-grid\">\n    <div class=\"service-card reveal stagger-1\">\n      <div class=\"s-number\">01</div>\n      <i class=\"fas fa-book\"></i>\n      <h3>Bookkeeping</h3>\n      <p>Accurate, timely bookkeeping services that keep your financial records in perfect order. Daily transaction recording, reconciliation, and reporting.</p>\n      <a href=\"services/bookkeeping/\" class=\"learn-more\">Explore Bookkeeping Services <i class=\"fas fa-arrow-right\"></i></a>\n    </div>\n    <div class=\"service-card reveal stagger-2\">\n      <div class=\"s-number\">02</div>\n      <i class=\"fas fa-lightbulb\"></i>\n      <h3>Financial Advisory</h3>\n      <p>Strategic financial guidance to optimize your business performance. From forecasting to growth strategy, we're your trusted partner.</p>\n      <a href=\"services/advisory/\" class=\"learn-more\">Explore Advisory Services <i class=\"fas fa-arrow-right\"></i></a>\n    </div>\n    <div class=\"service-card reveal stagger-3\">\n      <div class=\"s-number\">03</div>\n      <i class=\"fas fa-users\"></i>\n      <h3>Payroll Processing</h3>\n      <p>End-to-end payroll management including statutory withholdings, filings, and benefits administration across all locations.</p>\n      <a href=\"services/payroll/\" class=\"learn-more\">Explore Payroll Services <i class=\"fas fa-arrow-right\"></i></a>\n    </div>\n    <div class=\"service-card reveal stagger-4\">\n      <div class=\"s-number\">04</div>\n      <i class=\"fas fa-crystal-ball\"></i>\n      <h3>Forecasting & Strategy</h3>\n      <p>Data-driven financial forecasting and strategic planning to guide your business decisions and maximize profitability.</p>\n      <a href=\"services/forecasting/\" class=\"learn-more\">Explore Forecasting Services <i class=\"fas fa-arrow-right\"></i></a>\n    </div>\n    <div class=\"service-card reveal stagger-5\" style=\"grid-column: 1 / -1;\">\n      <div class=\"s-number\">05</div>\n      <i class=\"fas fa-hotel\"></i>\n      <h3>Hospitality Accounting & Revenue Assurance</h3>\n      <p>Hotel bookkeeping, revenue reconciliation, night audit support, and financial reporting for hotels, resorts, and hospitality groups \u2014 back-office accounting built for 24/7 operations.</p>\n      <a href=\"hospitality-accounting/\" target=\"_blank\" rel=\"noopener\" class=\"learn-more\">Explore Hospitality Solutions <i class=\"fas fa-arrow-right\"></i></a>\n    </div>\n  </div>\n</section>\n\n<!-- ABOUT SECTION -->\n<section class=\"section about-section\" id=\"about\">\n  <div class=\"about-content\">\n    <div class=\"about-text reveal\">\n      <h2>Why Choose DiligenceOS?</h2>\n      <p>We're not just accountants, we're partners in your financial success. Our team of qualified accountants brings expertise, precision, and dedication to every engagement.</p>\n      <p>Our team combines deep technical expertise with a commitment to exceptional service. We leverage technology to streamline processes while maintaining the human touch that makes all the difference.</p>\n      <ul class=\"about-features\">\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Global Client Base</strong> Serving businesses across multiple countries</li>\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Industry-Leading Accuracy</strong> Precision in every detail</li>\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Expert Team</strong> CAs, CPAs, and financial advisors</li>\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Always-On Support</strong> Available whenever you need us</li>\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Technology-Enabled</strong> Modern tools, human expertise</li>\n        <li><i class=\"fas fa-check-circle\"></i> <strong>Significant Cost Savings</strong> More efficient than in-house accounting</li>\n      </ul>\n    </div>\n  </div>\n</section>\n\n<!-- PROCESS SECTION -->\n<section class=\"section process-section\" id=\"process\">\n  <div class=\"section-header reveal\">\n    <h2>Our Proven Process</h2>\n    <p>A streamlined, efficient approach to managing your finances.</p>\n  </div>\n  <div class=\"process-track\">\n    <div class=\"process-step reveal stagger-1\">\n      <div class=\"process-dot\"><i class=\"fas fa-handshake\"></i></div>\n      <h4>Initial Consultation</h4>\n      <p>We understand your business, goals, and current financial situation.</p>\n    </div>\n    <div class=\"process-step reveal stagger-2\">\n      <div class=\"process-dot\"><i class=\"fas fa-cogs\"></i></div>\n      <h4>Setup & Integration</h4>\n      <p>We integrate with your accounting software and establish processes.</p>\n    </div>\n    <div class=\"process-step reveal stagger-3\">\n      <div class=\"process-dot\"><i class=\"fas fa-sync\"></i></div>\n      <h4>Ongoing Management</h4>\n      <p>Regular monitoring, reconciliation, and reporting every month.</p>\n    </div>\n    <div class=\"process-step reveal stagger-4\">\n      <div class=\"process-dot\"><i class=\"fas fa-clipboard-check\"></i></div>\n      <h4>Growth & Optimization</h4>\n      <p>Strategic insights and advice to help your business scale.</p>\n    </div>\n  </div>\n</section>\n\n\n<!-- TESTIMONIALS / SOCIAL PROOF -->\n<!-- PLACEHOLDER TESTIMONIALS: replace quotes and attributions with real, approved client references before go-live. -->\n<section class=\"section\" id=\"testimonials\">\n  <div class=\"section-header reveal\">\n    <h2>What Clients Say</h2>\n    <p>B2B work is built on trust. Here's what the businesses we support tell us.</p>\n  </div>\n  <div class=\"testi-grid\">\n    <div class=\"testi-card reveal stagger-1\">\n      <div class=\"testi-stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</div>\n      <p>\"DiligenceOS took over eight months of backlogged books and had us audit-ready before tax season. The monthly close has run on time ever since.\"</p>\n      <div class=\"testi-who\">Managing Partner &middot; CPA firm, US</div>\n    </div>\n    <div class=\"testi-card reveal stagger-2\">\n      <div class=\"testi-stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</div>\n      <p>\"We run payroll in four states with three pay schedules. Since moving it to DiligenceOS we haven't missed a single filing date.\"</p>\n      <div class=\"testi-who\">Operations Director &middot; Restaurant group, US</div>\n    </div>\n    <div class=\"testi-card reveal stagger-3\">\n      <div class=\"testi-stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</div>\n      <p>\"The 13-week cash forecast flagged a shortfall two months out. We adjusted in time and never felt it. That one catch paid for the year.\"</p>\n      <div class=\"testi-who\">Owner &middot; Manufacturing business, AU</div>\n    </div>\n  </div>\n</section>\n\n<!-- FAQ SECTION -->\n<section class=\"section faq-section\" id=\"faq\">\n  <div class=\"section-header reveal\">\n    <h2>Frequently Asked Questions</h2>\n    <p>Everything you need to know about our services.</p>\n  </div>\n  <div class=\"faq-content\">\n    <div class=\"faq-item reveal\">\n      <button class=\"faq-question\">\n        <span>How quickly can you get started with my business?",
+    "name": "How quickly can you get started with my business?",
     "acceptedAnswer": {
      "@type": "Answer",
      "text": "Most businesses are fully onboarded and running within 2-3 weeks. We handle the setup of integrations, process documentation, and team training to ensure a smooth transition. Your dedicated account manager will guide you through every step."
@@ -2098,11 +2134,42 @@ footer {
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-drop-trigger" aria-haspopup="true" aria-expanded="false">Services <i class="fas fa-chevron-down nav-drop-chevron"></i></button>
+        <ul class="nav-drop-menu">
+          <li><a href="#services">All Services</a></li>
+          <li><a href="services/bookkeeping/">Bookkeeping</a></li>
+          <li><a href="services/payroll/">Payroll Processing</a></li>
+          <li><a href="services/advisory/">Financial Advisory</a></li>
+          <li><a href="services/forecasting/">Forecasting &amp; Strategy</a></li>
+          <li><a href="hospitality-accounting/">Hospitality Accounting</a></li>
+        </ul>
+      </li>
       <li><a href="#about">About</a></li>
       <li><a href="#process">Process</a></li>
-      <li><a href="leadership" target="_blank" rel="noopener">Leadership</a></li>
-      <li><a href="events" target="_blank" rel="noopener">Events</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-drop-trigger" aria-haspopup="true" aria-expanded="false">Company <i class="fas fa-chevron-down nav-drop-chevron"></i></button>
+        <ul class="nav-drop-menu">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="leadership" target="_blank" rel="noopener">Leadership</a></li>
+          <li><a href="events" target="_blank" rel="noopener">Events</a></li>
+          <li><a href="partners/">Partner Programme</a></li>
+          <li><a href="investors/">Investor Relations</a></li>
+          <li><a href="news/">Industry News</a></li>
+          <li><a href="education-support/">Education Support</a></li>
+          <li><a href="#global">Global Presence</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <button class="nav-drop-trigger" aria-haspopup="true" aria-expanded="false">Resources <i class="fas fa-chevron-down nav-drop-chevron"></i></button>
+        <ul class="nav-drop-menu">
+          <li><a href="#resources">Free Resources</a></li>
+          <li><a href="guides/monthly-close-checklist">Monthly Close Checklist</a></li>
+          <li><a href="schedule/" target="_blank" rel="noopener">Book a Consultation</a></li>
+          <li><a href="privacy">Privacy Policy</a></li>
+          <li><a href="terms">Terms of Service</a></li>
+        </ul>
+      </li>
       <li><a href="#contact">Contact Us</a></li>
     </ul>
     <div class="nav-right">
@@ -2703,6 +2770,26 @@ if (regionSelector && regionTrigger) {
   if (location.pathname === '/contact') {
     document.getElementById('contact').scrollIntoView({ behavior: 'instant', block: 'start' });
   }
+</script>
+
+<script>
+// ═══════ NAV DROPDOWNS ═══════
+document.querySelectorAll('.nav-dropdown').forEach(drop => {
+  const trigger = drop.querySelector('.nav-drop-trigger');
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+      if (d !== drop) { d.classList.remove('open'); d.querySelector('.nav-drop-trigger').setAttribute('aria-expanded', 'false'); }
+    });
+    const open = drop.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+document.addEventListener('click', (e) => {
+  document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+    if (!d.contains(e.target)) { d.classList.remove('open'); d.querySelector('.nav-drop-trigger').setAttribute('aria-expanded', 'false'); }
+  });
+});
 </script>
 </body>
 </html>
