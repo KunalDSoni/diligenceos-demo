@@ -285,5 +285,21 @@ blockquote footer { margin-top: 16px; color: var(--text-light); font-size: .9rem
   &copy; 2026 DiligenceOS. All rights reserved. &middot; <a href="../../privacy">Privacy Policy</a> &middot; <a href="../../terms">Terms of Service</a> &middot; <a href="../../">dosacc.com</a>
 </footer>
 
+
+<script>
+// Smooth-scroll same-page anchors without leaving a #fragment in the URL
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+if (location.hash) {
+  setTimeout(function () { history.replaceState(null, '', location.pathname + location.search); }, 0);
+}
+window.addEventListener('hashchange', function () {
+  history.replaceState(null, '', location.pathname + location.search);
+});
+</script>
 </body>
 </html>
