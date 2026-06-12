@@ -318,7 +318,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
     <div class="regions" id="regions">
       <button class="region-chip active" data-region="all">&#127482;&#127480;&#127462;&#127482; United States + Australia <span class="cnt"></span></button>
       <button class="region-chip" data-region="US">&#127482;&#127480; United States <span class="cnt"></span></button>
-      <button class="region-chip" data-region="AS">&#127462;&#127482; Australia <span class="cnt"></span></button>
+      <button class="region-chip" data-region="AU">&#127462;&#127482; Australia <span class="cnt"></span></button>
     </div>
     <div class="stream">
       <div id="feed" aria-live="polite">
@@ -440,7 +440,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
   /* ───── intelligence engine: fetch, classify, render ───── */
   var QUERY = '("accounting firm" OR "accounting industry" OR "CPA firms" OR "audit firm" OR "bookkeeping services" OR "tax preparation") sourcelang:english';
   var URL_ = 'https://api.gdeltproject.org/api/v2/doc/doc?mode=artlist&format=json&maxrecords=30&sort=datedesc&timespan=3d&query=' + encodeURIComponent(QUERY);
-  var CACHE_KEY = 'dosacc-intel-v1';
+  var CACHE_KEY = 'dosacc-intel-v2';
   var CACHE_TTL = 15 * 60 * 1000;
   var REFRESH_MS = 30 * 60 * 1000; // periodic refresh while the page stays open
   var state = { articles: [], region: 'all' };
@@ -470,11 +470,19 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
     return Math.round(m / 1440) + ' d ago';
   }
   function esc(t) { var d = document.createElement('div'); d.textContent = t || ''; return d.innerHTML; }
+  // GDELT's artlist returns full country names ("United States"); normalize
+  // and accept FIPS codes too, just in case the format ever changes.
+  function regionOf(a) {
+    var c = (a.sourcecountry || '').toLowerCase();
+    if (c === 'united states' || c === 'us') return 'US';
+    if (c === 'australia' || c === 'as' || c === 'au') return 'AU';
+    return '';
+  }
   function dedupe(arts) {
     var seen = {}, out = [];
     arts.forEach(function (a) {
       // stream is scoped to the markets DiligenceOS serves: US + Australia
-      if (a.sourcecountry !== 'US' && a.sourcecountry !== 'AS') return;
+      if (!regionOf(a)) return;
       var k = (a.title || '').toLowerCase().slice(0, 60);
       if (a.title && a.url && !seen[k]) { seen[k] = 1; out.push(a); }
     });
@@ -485,7 +493,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
     var arts = state.articles;
     var feed = document.getElementById('feed');
     if (!arts.length) { fail(); return; }
-    var inRegion = state.region === 'all' ? arts : arts.filter(function (a) { return a.sourcecountry === state.region; });
+    var inRegion = state.region === 'all' ? arts : arts.filter(function (a) { return regionOf(a) === state.region; });
     var items = inRegion.slice(0, 12);
     var html = '<p class="feed-status"><span class="live-dot"></span>Live &middot; updated ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + '</p>';
     if (!items.length) html += '<p class="feed-status">No stories from this region in the current 3-day window - try All regions.</p>';
@@ -502,7 +510,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
     // region counts
     document.querySelectorAll('.region-chip[data-region]').forEach(function (ch) {
       var r = ch.dataset.region;
-      var n = r === 'all' ? arts.length : arts.filter(function (a) { return a.sourcecountry === r; }).length;
+      var n = r === 'all' ? arts.length : arts.filter(function (a) { return regionOf(a) === r; }).length;
       var cnt = ch.querySelector('.cnt'); if (cnt) cnt.textContent = n;
     });
 
@@ -513,7 +521,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
       if (c.id === 'ai') counts.ai++;
       if (c.id === 'talent') counts.talent++;
       if (c.id === 'audit') counts.audit++;
-      if (c.id === 'tax' && a.sourcecountry === 'AS') counts['tax-au']++;
+      if (c.id === 'tax' && regionOf(a) === 'AU') counts['tax-au']++;
       else if (c.id === 'tax') counts['tax-us']++;
     });
     var max = Math.max(1, counts['tax-us'], counts['tax-au'], counts.ai, counts.talent, counts.audit);
