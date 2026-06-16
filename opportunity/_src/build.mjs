@@ -444,6 +444,7 @@ ${block('Accounting requirements', ind.accounting)}
 ${block('Compliance obligations', ind.compliance)}
 ${block('Advisory opportunities', ind.advisory)}
       </div>
+      <div class="indgrowth"><b>Growth trend</b>${bizCite(ind.growth)}</div>
       <div class="indwork"><b>Accounting workload generated</b>${bizCite(ind.workload)}</div>
     </div>`;
 }
@@ -480,6 +481,8 @@ function buildAuBusiness() {
   const cadence = CADENCE.map(c => `        <div class="cad-col"><h4>${c.h}</h4><ul>${c.items.map(i => `<li>${i}</li>`).join('')}</ul></div>`).join('\n');
   const formStats = FORMATION.stats.map(s => `<div><b>${s.v}</b><span>${bizCite(s.l)}</span></div>`).join('\n        ');
   const stateRows = FORMATION.states.map(s => `<div class="bar-row"><span class="bar-label">${s.l}</span><div class="bar-track"><div class="bar-fill${s.muted ? ' muted' : ''}" style="width:${s.w}%"></div></div><span class="bar-val${s.muted ? ' sub' : ''}">${s.v}</span></div>`).join('\n        ');
+  const metroRows = FORMATION.metros.map(s => `<div class="bar-row"><span class="bar-label">${s.l}</span><div class="bar-track"><div class="bar-fill" style="width:${s.w}%"></div></div><span class="bar-val">${s.v}</span></div>`).join('\n        ');
+  const metroCards = FORMATION.metros.map(s => `<div class="metro-card"><div class="metro-val">${s.v}</div><div class="metro-name">${s.l}</div><p>${bizCite(s.note)}</p></div>`).join('\n        ');
   const refs = BIZ_SOURCES.map(s => `<li>${s.t} <a href="${s.url}" target="_blank" rel="noopener">${host(s.url)}</a></li>`).join('\n          ');
 
   const main = `
@@ -571,9 +574,19 @@ ${cadence}
         ${formStats}
       </div>
       <div class="chart">
-        <div class="chart-title">Business growth by state, 2024-25</div>
-        <div class="chart-note">Western Australia and Queensland led the nation; Queensland remains the top destination for businesses relocating interstate.<sup class="cite"><a href="${BIZ_SOURCES[0].url}" target="_blank" rel="noopener">1</a></sup></div>
+        <div class="chart-title">Business growth by state, 2024-25 (% rise)</div>
+        <div class="chart-note">Western Australia and Queensland led the nation by rate; Queensland remains the top destination for businesses relocating interstate.<sup class="cite"><a href="${BIZ_SOURCES[0].url}" target="_blank" rel="noopener">1</a></sup></div>
         ${stateRows}
+      </div>
+      <h3 class="mini-h" style="margin-top:48px;">Where the growth is concentrated: the three big metros</h3>
+      <p class="section-sub">By sheer volume, the new businesses are appearing where they always have, in the three eastern-seaboard capitals. Sydney and Melbourne added the most businesses of anywhere in the country; Brisbane is close behind and accelerating into the 2032 Olympic decade.</p>
+      <div class="chart">
+        <div class="chart-title">Net new businesses, 2024-25 (absolute, by capital-city state)</div>
+        <div class="chart-note">Greater-capital figures are approximated by their state, where each capital holds the large majority of the state&rsquo;s businesses.<sup class="cite"><a href="${BIZ_SOURCES[0].url}" target="_blank" rel="noopener">1</a></sup></div>
+        ${metroRows}
+      </div>
+      <div class="metro-grid">
+        ${metroCards}
       </div>
       <div class="inner-narrow prose" style="margin-top:34px;">
         <p>${bizCite(FORMATION.note)}</p>
