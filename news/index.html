@@ -338,7 +338,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
     </div>
     <div class="bc-grid">
       <div>
-        <div class="glass tv-card" data-video="7F8J_XE3zzU" data-live="https://www.youtube.com/@livenowfox/live" data-name="LiveNOW from FOX">
+        <div class="glass tv-card" data-channel="UCJg9wBPyKMNA5sRDnvzmkdg" data-live="https://www.youtube.com/@livenowfox/live" data-name="LiveNOW from FOX">
           <button class="tv-poster" aria-label="Play LiveNOW from FOX live">
             <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
             <span class="tv-play"><i class="fas fa-play"></i></span>
@@ -347,7 +347,7 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
         </div>
       </div>
       <div>
-        <div class="glass tv-card" data-video="87r-1JKz7E4" data-live="https://www.youtube.com/@SkyNewsAustralia/live" data-name="Sky News Australia">
+        <div class="glass tv-card" data-channel="UCO0akufu9MOzyz3nvGIXAAw" data-live="https://www.youtube.com/@SkyNewsAustralia/live" data-name="Sky News Australia">
           <button class="tv-poster" aria-label="Play Sky News Australia live">
             <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
             <span class="tv-play"><i class="fas fa-play"></i></span>
@@ -794,7 +794,9 @@ h2 { font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-we
     btn.addEventListener('click', function () {
       var card = btn.closest('.tv-card');
       var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + card.dataset.video + '?autoplay=1';
+      // embed the channel's CURRENT live broadcast (resolves automatically each
+      // time the network rotates its stream id) rather than a fixed video id
+      f.src = 'https://www.youtube.com/embed/live_stream?channel=' + card.dataset.channel + '&autoplay=1';
       f.title = card.dataset.name + ' live stream';
       f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       f.setAttribute('allowfullscreen', '');
