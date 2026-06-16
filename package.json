@@ -1,0 +1,7 @@
+{
+  "name": "diligenceos-site",
+  "private": true,
+  "scripts": {
+    "build:opp": "node opportunity/_src/build.mjs"
+  }
+}

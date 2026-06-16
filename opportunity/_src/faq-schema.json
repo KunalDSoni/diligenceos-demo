@@ -1,0 +1,102 @@
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Is the constraint on Australian accounting firms demand or capacity?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It is capacity. Business formation, compliance complexity, and advisory appetite are all rising, while the supply of qualified accountants is contracting. The binding constraint on most firms is the number of hours available to deliver work, not the number of clients willing to pay for it."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How large is the Australian accountant shortage?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Industry estimates point to a shortfall of more than 10,000 qualified accountants, and Jobs and Skills Australia projects a net requirement of roughly 17,700 additional accountants between 2025 and 2030. CA ANZ vacancy fill rates for general accountants and auditors sit well below the 67 per cent threshold that signals a structural shortage."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is global delivery for accounting firms?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Global delivery is an operating model in which standardised and process-driven work is executed by qualified teams in lower-cost locations, supervised under the firm's own controls and quality framework, while client relationships, judgement, and advisory remain local. It is the same model the Big Four and mid-tier networks have used for two decades, now available to independent firms."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How is this different from offshoring or outsourcing?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Traditional outsourcing hands work to a third party and hopes for the best. A modern global delivery model embeds a dedicated, named team inside the firm's workflow, software, and review process. The firm retains ownership of the client, the file, and the standard of work. The objective is capacity and scalability, not a transaction."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will clients accept that some work is delivered offshore?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Clients buy outcomes, accuracy, and responsiveness from a firm they trust. The relationship, the advice, and the sign-off remain local. Surveys consistently show clients care about turnaround, price stability, and the quality of advice far more than the physical location of every keystroke."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What about data security and privacy compliance?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A credible delivery model operates under SOC 2 Type II controls, bank-level encryption, strict role-based access, and Australian Privacy Principles alignment. Data should remain in the firm's own systems wherever possible, with access governed and logged rather than copied."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How quickly can a firm add capacity this way?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A dedicated team member can typically be onboarded in a matter of weeks, compared with three to six months to recruit, and often longer to find, a local hire in a shortage market. Capacity becomes a decision rather than a recruitment campaign."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does this replace local jobs?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "In practice it protects and elevates them. Local professionals move up the value chain into review, relationship management, and advisory, while routine processing is absorbed by additional capacity. Firms using the model typically grow headcount in both locations as they win more work."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What types of work are best suited to global delivery?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Bookkeeping, payroll, BAS preparation, workpapers, financial statement preparation, reconciliations, and management reporting are highly suited. Final review, judgement calls, lodgement responsibility, and advisory conversations stay with the local team."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How does capacity expansion improve profitability?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It lowers the marginal cost of delivery and frees senior local time for higher-value advisory work that carries materially higher margins. Firms can grow revenue without a proportional increase in fixed local payroll, which expands net margin as they scale."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the opportunity cost of doing nothing?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Capacity-constrained firms turn away work, delay onboarding, lose advisory opportunities to better-resourced competitors, and burn out their best people. A firm declining even two clients a month forfeits six figures of recurring revenue annually, compounding every year it waits."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is advisory really the future, or a buzzword?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It is structural. As automation absorbs routine compliance and cloud platforms standardise data, the differentiated value of a firm shifts to interpretation, forecasting, and strategic guidance. The large majority of firms now report growth in advisory services, and that is where pricing power and client loyalty increasingly sit."
+   }
+  }
+ ]
+}
