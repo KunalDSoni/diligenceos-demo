@@ -326,3 +326,44 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-gold); o
 .refs-mini li { font-size: .8rem; color: var(--text-light); margin-bottom: 8px; line-height: 1.5; }
 .refs-mini a { color: var(--accent-gold); text-decoration: none; word-break: break-word; }
 .refs-mini a:hover { text-decoration: underline; }
+
+/* ===== Business-landscape chapter ===== */
+/* recurring-service chips */
+.svc-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 840px; margin: 0 auto; }
+.svc-chip { display: inline-flex; align-items: center; gap: 9px; font-size: .92rem; font-weight: 600; color: var(--text-primary); background: #fff; border: 1px solid var(--border-color); border-radius: 999px; padding: 11px 20px; }
+.svc-chip .svgi { color: var(--accent-gold); font-size: 1.05rem; }
+
+/* recurring-revenue cadence */
+.cadence { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 18px; max-width: 1040px; margin: 0 auto; }
+.cad-col { background: #fff; border: 1px solid var(--border-color); border-radius: 16px; padding: 24px 24px 20px; }
+.cad-col h4 { font-size: .72rem; letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 14px; }
+.cad-col ul { list-style: none; margin: 0; padding: 0; }
+.cad-col li { position: relative; padding: 9px 0 9px 22px; border-top: 1px solid var(--border-color); font-size: .95rem; color: #2c2c2c; }
+.cad-col li:first-child { border-top: none; }
+.cad-col li:before { content: ''; position: absolute; left: 2px; top: 15px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-gold); }
+
+/* industry panel */
+.indpanel { border: 1px solid var(--border-color); border-radius: 18px; overflow: hidden; margin: 26px auto; max-width: 1000px; background: #fff; }
+.indhead { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 24px 28px; background: var(--secondary-bg); border-bottom: 1px solid var(--border-color); }
+.indhead .ico { width: 48px; height: 48px; border-radius: 13px; background: var(--accent-gold-light); color: var(--accent-gold); display: grid; place-items: center; font-size: 1.3rem; flex: none; }
+.indhead h3 { font-size: 1.4rem; font-weight: 800; letter-spacing: -.4px; margin: 0; }
+.indhead .covers { font-size: .85rem; color: var(--text-light); margin-top: 2px; }
+.indstats { display: flex; flex-wrap: wrap; gap: 14px 34px; padding: 22px 28px; border-bottom: 1px solid var(--border-color); }
+.indstat b { display: block; font-size: 1.55rem; font-weight: 800; color: var(--accent-gold); letter-spacing: -.6px; }
+.indstat span { font-size: .8rem; color: var(--text-light); }
+.indmean { padding: 22px 28px; font-size: 1.02rem; color: #2c2c2c; border-bottom: 1px solid var(--border-color); line-height: 1.6; }
+.indblocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(232px, 1fr)); }
+.indblock { padding: 20px 28px; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); }
+.indblock h5 { font-size: .7rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent-gold); margin: 0 0 11px; }
+.indblock ul { list-style: none; margin: 0; padding: 0; }
+.indblock li { position: relative; font-size: .88rem; color: #2c2c2c; padding: 5px 0 5px 16px; line-height: 1.45; }
+.indblock li:before { content: ''; position: absolute; left: 2px; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-gold); }
+.indwork { padding: 18px 28px; background: #fffdf5; font-size: .93rem; color: #2c2c2c; line-height: 1.55; }
+.indwork b { color: var(--accent-gold); text-transform: uppercase; font-size: .7rem; letter-spacing: 1.4px; display: block; margin-bottom: 5px; }
+
+/* featured-chapter band (on the AU deck) */
+.featband { max-width: 1000px; margin: 0 auto; background: var(--secondary-bg); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-gold); border-radius: 0 16px 16px 0; padding: 28px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
+.featband .fb-body { flex: 1 1 360px; }
+.featband .lbl { display: block; font-size: .72rem; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 8px; }
+.featband h3 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.3px; margin: 0 0 6px; }
+.featband p { color: var(--text-light); font-size: .96rem; margin: 0; }
