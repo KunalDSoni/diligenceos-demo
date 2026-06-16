@@ -1,21 +1,26 @@
-/* Build the /opportunity briefing: an executive DECK at /opportunity/ plus five
-   detailed parts at /opportunity/part-1..5/. Single source of truth.
-   Run: `npm run build:opp`  (or: node opportunity/_src/build.mjs)
+/* Build the INTERNATIONAL /opportunity briefing. Single source of truth.
+   Run: `npm run build:opp`  (node opportunity/_src/build.mjs)
 
-   Shared CSS/JS live in opportunity/assets/ and are linked (cached once across
-   all pages). Icons are inlined as SVG (no FontAwesome). */
+   Structure
+     /opportunity/                 global hub + market selector
+     /opportunity/<cc>/            per-market executive deck (au, us, uk, ca, nz)
+     /opportunity/au/part-1..5/    Australia's full five-part deep dive (flagship)
+
+   Shared CSS/JS live in opportunity/assets/ and are cached across every page.
+   Icons are inline SVG (no FontAwesome). Add a market in regions.mjs -> rebuild. */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { labels, PARTSECS, META, DECK } from './content.mjs';
+import { REGIONS, byCode } from './regions.mjs';
 import { replaceIcons } from './icons.mjs';
 
-const SRC = path.dirname(fileURLToPath(import.meta.url));   // opportunity/_src
-const OPPDIR = path.dirname(SRC);                           // opportunity
+const SRC = path.dirname(fileURLToPath(import.meta.url));
+const OPPDIR = path.dirname(SRC);
 const OPP = 'https://dosacc.com/opportunity/';
 const faqSchema = JSON.parse(fs.readFileSync(path.join(SRC, 'faq-schema.json'), 'utf8'));
 
-/* ---- section bodies ---- */
+/* ---- AU deep-dive section bodies ---- */
 const sectionsHtml = fs.readFileSync(path.join(SRC, 'sections.html'), 'utf8');
 const markers = ['<!-- 01 EXECUTIVE SUMMARY -->','<!-- 02 INFLECTION POINT -->','<!-- 03 CAPACITY CRISIS -->',
  '<!-- 04 SME OPPORTUNITY -->','<!-- 05 REVENUE OPPORTUNITY -->','<!-- 06 ADVISORY -->','<!-- 07 GLOBAL DELIVERY -->',
@@ -24,7 +29,7 @@ const markers = ['<!-- 01 EXECUTIVE SUMMARY -->','<!-- 02 INFLECTION POINT -->',
 const mi = markers.map(m => { const i = sectionsHtml.indexOf(m); if (i < 0) throw new Error('marker missing: ' + m); return i; });
 const SEC = {};
 for (let n = 1; n <= 13; n++) SEC[n] = sectionsHtml.slice(mi[n - 1], mi[n]);
-const FINAL = sectionsHtml.slice(mi[13]);
+const FINAL_RAW = sectionsHtml.slice(mi[13]);
 
 /* ---- static scaffolding ---- */
 const FAVICON = `<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='none' stroke='%23111111' stroke-width='7'/><text x='50' y='68' font-size='52' font-family='Arial' font-weight='900' fill='%23111111' text-anchor='middle'>D</text><circle cx='68' cy='28' r='8' fill='%238A6A12'/></svg>">`;
@@ -61,10 +66,18 @@ const ARTICLE_BASE = {
   publisher: { '@type': 'Organization', name: 'DiligenceOS', url: 'https://dosacc.com/' },
   datePublished: '2026-06-16', dateModified: '2026-06-16',
   image: 'https://dosacc.com/og-image.png',
-  keywords: 'Australian accounting firms, accountant shortage, capacity, advisory, global delivery',
+  keywords: 'accounting firms, accountant shortage, capacity crisis, advisory, global delivery',
 };
 
-/* ---- head ---- */
+/* ---- helpers ---- */
+const finalCta = site => FINAL_RAW.replace(/href="\.\.\//g, 'href="' + site);
+const cites = (text, sources) => text.replace(/\[\[(\d+)\]\]/g, (m, n) => {
+  const s = sources[+n - 1];
+  if (!s) throw new Error('cite [[' + n + ']] has no source');
+  return `<sup class="cite"><a href="${s.url}" target="_blank" rel="noopener">${n}</a></sup>`;
+});
+const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
+
 function buildHead({ title, ogTitle, desc, ogDesc, url, asset, faq, section }) {
   const article = Object.assign({}, ARTICLE_BASE, { headline: ogTitle, description: desc, mainEntityOfPage: url, articleSection: section || 'Industry Analysis' });
   const ld = JSON.stringify(faq ? [article, faqSchema] : [article], null, 1);
@@ -75,7 +88,7 @@ function buildHead({ title, ogTitle, desc, ogDesc, url, asset, faq, section }) {
 <meta name="description" content="${desc}">
 <link rel="canonical" href="${url}">
 <meta name="robots" content="noindex, nofollow">
-<meta name="keywords" content="Australian accounting firms, accountant shortage Australia, capacity crisis, advisory services, global delivery, accounting outsourcing alternative, firm growth, CPA firm scaling, SMSF, tax agents, bookkeeping firms">
+<meta name="keywords" content="accounting firms, accountant shortage, capacity crisis, advisory services, global delivery, accounting outsourcing alternative, firm growth, CPA firm scaling, offshore accounting">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DiligenceOS">
 <meta property="og:title" content="${ogTitle}">
@@ -97,8 +110,10 @@ ${ld}
 </head>`;
 }
 
-/* ---- page wrapper ---- */
-function page({ head, root, asset, main }) {
+/* depth-aware page writer */
+function writePage(outRel, head, mainHtml) {
+  const depth = outRel.split('/').length - 1;
+  const site = '../'.repeat(depth + 1);
   const html = `<!DOCTYPE html>
 <html lang="en">
 ${head}
@@ -106,74 +121,189 @@ ${head}
 
 ${PROGRESS}
 
-${header(root)}
+${header(site)}
 
 <main>
-${main}</main>
+${mainHtml}</main>
 
-${footer(root)}
+${footer(site)}
 
 ${TOOLBAR}
 
-<script src="${asset}opportunity.js"></script>
+<script src="${'../'.repeat(depth)}assets/opportunity.js"></script>
 </body>
 </html>
 `;
-  return replaceIcons(html);
+  const dir = path.join(OPPDIR, path.dirname(outRel));
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(OPPDIR, outRel), replaceIcons(html), 'utf8');
+  console.log('wrote opportunity/' + outRel);
 }
 
-/* ---- part-page nav ---- */
-const relPart = k => `../part-${k}/`;     // from any part page
-const OVERVIEW = '../';
-function partbar(cur) {
-  let items = `\n      <a class="home" href="${OVERVIEW}"><b><i class="fas fa-table-cells-large"></i></b> Overview</a>`;
-  for (let k = 1; k <= 5; k++)
-    items += (k === cur)
-      ? `\n      <span class="active"><b>${k}</b> ${labels[k]}</span>`
-      : `\n      <a href="${relPart(k)}"><b>${k}</b> ${labels[k]}</a>`;
-  return `\n  <nav class="partbar"><div class="partbar-inner">${items}\n    </div></nav>\n`;
-}
-function partnav(cur) {
-  const prev = cur === 1
-    ? `<a class="prev" href="${OVERVIEW}"><span class="pn-label"><i class="fas fa-arrow-left"></i> Back to</span><span class="pn-title">Executive overview</span></a>`
-    : `<a class="prev" href="${relPart(cur - 1)}"><span class="pn-label"><i class="fas fa-arrow-left"></i> Previous</span><span class="pn-title">Part ${cur - 1} &middot; ${labels[cur - 1]}</span></a>`;
-  const next = cur < 5
-    ? `<a class="next" href="${relPart(cur + 1)}"><span class="pn-label">Next <i class="fas fa-arrow-right"></i></span><span class="pn-title">Part ${cur + 1} &middot; ${labels[cur + 1]}</span></a>`
-    : `<span class="pn-spacer"></span>`;
-  return `\n  <nav class="partnav">\n    ${prev}\n    ${next}\n  </nav>\n`;
-}
-
-/* ---- build a part page ---- */
-function buildPart(n) {
-  const m = META[n];
-  const head = buildHead({ title: m.ogTitle, ogTitle: m.ogTitle, desc: m.desc, ogDesc: m.ogDesc,
-    url: `${OPP}part-${n}/`, asset: '../assets/', faq: n === 5, section: labels[n].replace('&amp;', '&') });
-  const hero = `
-  <!-- PART HEADER -->
-  <section class="hero">
-    <span class="eyebrow">Part ${n} of 5 &middot; Australia</span>
-    <h1>${m.h1}</h1>
-    <p class="lede">${m.lede}</p>
-    <p class="byline">A DiligenceOS strategic analysis &middot; <span>June 2026</span> &middot; Part ${n} of 5 &middot; Read: ${m.mins} min</p>
-  </section>
-`;
-  let body = hero + partbar(n);
-  for (const s of PARTSECS[n]) {
-    let blk = SEC[s];
-    if (s === 8) blk = blk.replace('href="#market"', `href="${relPart(5)}#market"`);
-    body += blk;
-  }
-  body += partnav(n);
-  if (n === 5) body += '\n' + FINAL.replace(/href="\.\.\//g, 'href="../../');
-  return page({ head, root: '../../', asset: '../assets/', main: body });
-}
-
-/* ---- build the deck ---- */
-function deckStepper() {
+/* market switch nav (current = 'hub' or region code; base = path to /opportunity/) */
+function regionSwitch(current, base) {
+  const home = current === 'hub'
+    ? `<span class="active"><span class="flag">🌐</span> Global</span>`
+    : `<a class="home" href="${base || './'}"><span class="flag">🌐</span> Global</a>`;
   let items = '';
-  for (let k = 1; k <= 5; k++) items += `\n      <a href="#p${k}"><b>${k}</b> ${labels[k]}</a>`;
-  return `\n  <nav class="partbar"><div class="partbar-inner">${items}\n    </div></nav>\n`;
+  for (const r of REGIONS)
+    items += r.code === current
+      ? `\n      <span class="active"><span class="flag">${r.flag}</span> ${r.name}</span>`
+      : `\n      <a href="${base}${r.code}/"><span class="flag">${r.flag}</span> ${r.name}</a>`;
+  return `\n  <nav class="region-switch">\n      ${home}${items}\n    </nav>\n`;
 }
+
+/* =================================================================== HUB */
+function regionGridCard(r) {
+  const tag = r.deepDive ? `<span class="tag-flag">Full deep dive</span>` : '';
+  return `        <a class="regioncard" href="${r.code}/">
+          <span class="flag">${r.flag}</span>
+          ${tag}<span class="rc-name">${r.name}</span>
+          <span class="rc-stat">${r.hubStat}</span>
+          <span class="rc-sub">${r.hubSub}</span>
+          <span class="rc-go">View market <i class="fas fa-arrow-right" style="font-size:.76rem"></i></span>
+        </a>`;
+}
+function buildHub() {
+  const head = buildHead({
+    title: 'Opportunity: The Future of the Accounting Firm',
+    ogTitle: 'Opportunity: The Future of the Accounting Firm',
+    desc: 'A global strategic briefing on the accounting profession. Across Australia, the United States, the United Kingdom, Canada and New Zealand the same shift is underway: rising demand, a shrinking pipeline of accountants, and capacity as the defining growth lever. Choose a market.',
+    ogDesc: 'Across the developed world the constraint on accounting firms has moved from demand to capacity. One thesis, five markets, real data.',
+    url: OPP, asset: 'assets/', faq: false, section: 'Global Industry Analysis',
+  });
+  const cards = REGIONS.map(regionGridCard).join('\n');
+  const main = `
+  <!-- HERO -->
+  <section class="hero">
+    <span class="eyebrow">Global Industry Briefing &middot; Five Markets</span>
+    <h1>The Future of the Accounting Firm</h1>
+    <p class="lede">Across the developed world, the same shift is underway. Client demand and compliance keep rising while the supply of qualified accountants contracts. The binding constraint has moved from demand to capacity, and resolving it is the defining growth opportunity of the decade. Choose a market to see the case in local numbers.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-line" href="#markets">Choose your market <i class="fas fa-arrow-down" style="font-size:.8rem"></i></a>
+    </div>
+    <p class="byline">A DiligenceOS strategic analysis &middot; <span>June 2026</span> &middot; Five markets, one thesis</p>
+  </section>
+${regionSwitch('hub', '')}
+  <!-- MARKET SELECTOR -->
+  <section class="section alt" id="markets">
+    <div class="inner">
+      <p class="kicker">Select a Market</p>
+      <h2>One thesis, five markets</h2>
+      <p class="section-sub">Every market below tells the same story in different numbers: a shrinking pipeline of accountants, a growing base of businesses that need them, and capacity as the lever. Australia carries the full five-part deep dive.</p>
+      <div class="regiongrid">
+${cards}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY EVERYWHERE -->
+  <section class="section" id="why">
+    <div class="inner">
+      <p class="kicker">Why Everywhere, Why Now</p>
+      <h2>The same three forces, worldwide</h2>
+      <p class="section-sub">The capacity crisis is not a local anomaly. It is the product of three structural forces converging across every developed accounting market at once.</p>
+      <div class="grid" style="margin-top:30px;">
+        <div class="card"><div class="ico"><i class="fas fa-arrow-trend-up"></i></div><h3>Demand keeps compounding</h3><p>More than 46 million businesses across these five markets generate recurring demand for bookkeeping, payroll, tax, compliance, and advisory, and the base keeps growing.</p></div>
+        <div class="card"><div class="ico"><i class="fas fa-gauge-high"></i></div><h3>Supply is contracting</h3><p>From a 95% collapse in Australia’s training pipeline to a two-thirds fall in licensed US accountants since 2019, the qualified workforce is shrinking in every market at once.</p></div>
+        <div class="card"><div class="ico"><i class="fas fa-earth-oceania"></i></div><h3>Value is moving to advisory</h3><p>As automation absorbs compliance, the differentiated value of a firm migrates to interpretation and advice, work that requires senior capacity the shortage consumes.</p></div>
+      </div>
+      <div class="numbers" style="margin-top:46px;">
+        <div><b>46M+</b><span>Businesses across the five markets, all needing accounting services</span></div>
+        <div><b>5 of 5</b><span>Markets in structural accountant shortage</span></div>
+        <div><b>US$54.8B</b><span>Global finance &amp; accounting delivery market, growing toward US$85.9B by 2031<sup class="cite"><a href="https://market.us/report/finance-and-accounting-outsourcing-market/" target="_blank" rel="noopener">1</a></sup></span></div>
+        <div><b>1 thesis</b><span>Capacity, not demand, is the binding constraint</span></div>
+      </div>
+      <div class="callout">
+        <span class="lbl">The central finding</span>
+        <p>The accounting profession is not facing a demand shortage. It is facing a capacity shortage, in every major market at once. The firms that build scalable capacity first will inherit the clients, advisory work, and talent that constrained competitors are forced to surrender.</p>
+      </div>
+      <div class="refs-mini" style="margin-top:18px;">
+        <ol>
+          <li>Market.us and Mordor Intelligence, Finance and Accounting Outsourcing Market Size &amp; Forecast, 2025. <a href="https://market.us/report/finance-and-accounting-outsourcing-market/" target="_blank" rel="noopener">market.us</a>. Per-market figures and sources appear on each market page.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+${finalCta('../')}`;
+  writePage('index.html', head, main);
+}
+
+/* =================================================================== REGION DECK */
+function regionInfoCard(c, r) {
+  const lis = c.bullets.map(b => `<li>${cites(b, r.sources)}</li>`).join('\n          ');
+  return `        <div class="deckcard">
+          <span class="dc-num">${c.num}</span>
+          <h3>${c.title}</h3>
+          <ul>
+          ${lis}
+          </ul>
+        </div>`;
+}
+function buildRegionDeck(r) {
+  const url = OPP + r.code + '/';
+  const head = buildHead({
+    title: `Opportunity, ${r.name}: The Capacity Opportunity`,
+    ogTitle: `Opportunity, ${r.name}`,
+    desc: r.lede.replace(/&middot;/g, '-').replace(/<[^>]+>/g, ''),
+    ogDesc: r.lede.replace(/<[^>]+>/g, ''),
+    url, asset: '../assets/', faq: false, section: r.name,
+  });
+  const statband = r.stats.map(s => `<div><b>${s.v}</b><span>${cites(s.l, r.sources)}</span></div>`).join('\n        ');
+  const cards = r.cards.map(c => regionInfoCard(c, r)).join('\n');
+  const refs = r.sources.map(s => `<li>${s.t} <a href="${s.url}" target="_blank" rel="noopener">${host(s.url)}</a></li>`).join('\n          ');
+  const main = `
+  <!-- REGION HERO -->
+  <section class="hero regionhero">
+    <span class="flag-xl">${r.flag}</span>
+    <span class="eyebrow">${r.eyebrow}</span>
+    <h1>${r.h1}</h1>
+    <p class="lede">${r.lede}</p>
+  </section>
+${regionSwitch(r.code, '../')}
+  <!-- AT A GLANCE -->
+  <section class="section alt">
+    <div class="inner">
+      <p class="kicker">The Numbers</p>
+      <h2>${r.name} at a glance</h2>
+      <div class="numbers" style="margin-top:32px;">
+        ${statband}
+      </div>
+    </div>
+  </section>
+
+  <!-- THE THESIS, LOCALISED -->
+  <section class="section">
+    <div class="inner">
+      <p class="kicker">The Thesis</p>
+      <h2>Demand is not the constraint. Capacity is.</h2>
+      <p class="section-sub">The same three forces are reshaping every developed accounting market. Here is how they read in ${r.name}.</p>
+      <div class="deck">
+${cards}
+      </div>
+      <div class="deck-foot">
+        <a class="btn btn-line" href="../au/">Explore the full five-part deep dive <i class="fas fa-arrow-right" style="font-size:.8rem"></i></a>
+      </div>
+      <p class="chart-note" style="text-align:center;max-width:720px;margin:14px auto 0;">The deep-dive analysis uses Australia as the worked example. The dynamics, and the response, apply across markets.</p>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section class="section alt">
+    <div class="inner refs-mini">
+      <p class="kicker">Sources</p>
+      <h2 style="margin-bottom:24px;">References</h2>
+      <ol>
+          ${refs}
+      </ol>
+      <p class="disclaimer" style="max-width:900px;margin:18px auto 0;font-size:.8rem;color:#8a8a8a;">Statistics are drawn from the cited third-party sources and were current at the time of writing (June 2026); figures are subject to revision by their publishers. This material is provided for general strategic discussion and is not accounting, taxation, legal, or investment advice.</p>
+    </div>
+  </section>
+${finalCta('../../')}`;
+  writePage(`${r.code}/index.html`, head, main);
+}
+
+/* =================================================================== AU DECK + DEEP DIVE */
 function deckCard(c) {
   const lis = c.bullets.map(b => `<li>${b}</li>`).join('\n          ');
   return `        <div class="deckcard">
@@ -204,17 +334,23 @@ ${cards}
   </section>
 `;
 }
-function buildDeck() {
+function deckStepper() {
+  let items = '';
+  for (let k = 1; k <= 5; k++) items += `\n      <a href="#p${k}"><b>${k}</b> ${labels[k]}</a>`;
+  return `\n  <nav class="partbar"><div class="partbar-inner">${items}\n    </div></nav>\n`;
+}
+function buildAuDeck() {
   const head = buildHead({
-    title: 'Opportunity: The Future of Australian Accounting Firms',
-    ogTitle: 'Opportunity: The Future of Australian Accounting Firms',
-    desc: 'An executive overview, in bullets, of the once-in-a-generation growth opportunity facing Australian accounting firms. Scan the key findings on every topic, then go deeper into the full five-part briefing.',
-    ogDesc: 'The issue facing Australian firms is not demand. It is capacity. An executive overview, with the option to go deeper on any topic.',
-    url: OPP, asset: 'assets/', faq: false,
+    title: 'Opportunity, Australia: The Future of Accounting Firms',
+    ogTitle: 'Opportunity, Australia: The Future of Accounting Firms',
+    desc: 'An executive overview, in bullets, of the growth opportunity facing Australian accounting firms, with a full five-part deep dive. The issue is not demand. It is capacity.',
+    ogDesc: 'The issue facing Australian firms is not demand. It is capacity. An executive overview with a five-part deep dive.',
+    url: OPP + 'au/', asset: '../assets/', faq: false, section: 'Australia',
   });
-  const hero = `
+  const main = `
   <!-- HERO -->
   <section class="hero">
+    <span class="flag-xl" style="font-size:2.6rem;display:block;margin-bottom:10px;">🇦🇺</span>
     <span class="eyebrow">Industry Briefing &middot; Australia &middot; Executive Overview</span>
     <h1>Opportunity: The Future of Australian Accounting Firms</h1>
     <p class="lede">Australian accounting firms face one of the largest growth opportunities the profession has seen in decades. The issue is not demand. It is capacity. This is the case at a glance, in bullet points. Want more on any topic? Go deeper into the full briefing.</p>
@@ -223,20 +359,55 @@ function buildDeck() {
     </div>
     <p class="byline">A DiligenceOS strategic analysis &middot; <span>June 2026</span> &middot; Overview, plus a five-part deep dive</p>
   </section>
-`;
-  let body = hero + deckStepper();
-  for (const g of DECK) body += deckSection(g);
-  body += '\n' + FINAL;     // deck is at depth 0; original ../ paths are correct
-  return page({ head, root: '../', asset: 'assets/', main: body });
+${regionSwitch('au', '../')}${deckStepper()}${DECK.map(deckSection).join('')}
+${finalCta('../../')}`;
+  writePage('au/index.html', head, main);
 }
 
-/* ---- write all six ---- */
-fs.writeFileSync(path.join(OPPDIR, 'index.html'), buildDeck(), 'utf8');
-console.log('wrote opportunity/index.html (deck)');
-for (let n = 1; n <= 5; n++) {
-  const dir = path.join(OPPDIR, `part-${n}`);
-  fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), buildPart(n), 'utf8');
-  console.log(`wrote opportunity/part-${n}/index.html`);
+function partbar(cur) {
+  let items = `\n      <a class="home" href="../"><b><i class="fas fa-table-cells-large"></i></b> Overview</a>`;
+  for (let k = 1; k <= 5; k++)
+    items += (k === cur)
+      ? `\n      <span class="active"><b>${k}</b> ${labels[k]}</span>`
+      : `\n      <a href="../part-${k}/"><b>${k}</b> ${labels[k]}</a>`;
+  return `\n  <nav class="partbar"><div class="partbar-inner">${items}\n    </div></nav>\n`;
 }
+function partnav(cur) {
+  const prev = cur === 1
+    ? `<a class="prev" href="../"><span class="pn-label"><i class="fas fa-arrow-left"></i> Back to</span><span class="pn-title">Australia overview</span></a>`
+    : `<a class="prev" href="../part-${cur - 1}/"><span class="pn-label"><i class="fas fa-arrow-left"></i> Previous</span><span class="pn-title">Part ${cur - 1} &middot; ${labels[cur - 1]}</span></a>`;
+  const next = cur < 5
+    ? `<a class="next" href="../part-${cur + 1}/"><span class="pn-label">Next <i class="fas fa-arrow-right"></i></span><span class="pn-title">Part ${cur + 1} &middot; ${labels[cur + 1]}</span></a>`
+    : `<span class="pn-spacer"></span>`;
+  return `\n  <nav class="partnav">\n    ${prev}\n    ${next}\n  </nav>\n`;
+}
+function buildAuPart(n) {
+  const m = META[n];
+  const head = buildHead({ title: m.ogTitle, ogTitle: m.ogTitle, desc: m.desc, ogDesc: m.ogDesc,
+    url: `${OPP}au/part-${n}/`, asset: '../../assets/', faq: n === 5, section: labels[n].replace('&amp;', '&') });
+  const hero = `
+  <!-- PART HEADER -->
+  <section class="hero">
+    <span class="eyebrow">Australia &middot; Part ${n} of 5</span>
+    <h1>${m.h1}</h1>
+    <p class="lede">${m.lede}</p>
+    <p class="byline">A DiligenceOS strategic analysis &middot; <span>June 2026</span> &middot; Part ${n} of 5 &middot; Read: ${m.mins} min</p>
+  </section>
+`;
+  let body = hero + partbar(n);
+  for (const s of PARTSECS[n]) {
+    let blk = SEC[s];
+    if (s === 8) blk = blk.replace('href="#market"', 'href="../part-5/#market"');
+    body += blk;
+  }
+  body += partnav(n);
+  if (n === 5) body += '\n' + finalCta('../../../');
+  writePage(`au/part-${n}/index.html`, head, body);
+}
+
+/* =================================================================== RUN */
+buildHub();
+for (const r of REGIONS) buildRegionDeck(r);
+buildAuDeck();
+for (let n = 1; n <= 5; n++) buildAuPart(n);
 console.log('done');
