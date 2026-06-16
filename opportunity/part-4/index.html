@@ -11,12 +11,12 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DiligenceOS">
 <meta property="og:title" content="Opportunity, Part 4: Global Delivery">
-<meta property="og:description" content="The model that lets a firm escape the capacity constraint is now available to everyone. Part 4 of five.">
+<meta property="og:description" content="The model that lets a firm escape the capacity constraint, now available to everyone. Part 4 of five.">
 <meta property="og:url" content="https://dosacc.com/opportunity/part-4/">
 <meta property="og:image" content="https://dosacc.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Opportunity, Part 4: Global Delivery">
-<meta name="twitter:description" content="The model that lets a firm escape the capacity constraint is now available to everyone. Part 4 of five.">
+<meta name="twitter:description" content="The model that lets a firm escape the capacity constraint, now available to everyone. Part 4 of five.">
 <meta name="twitter:image" content="https://dosacc.com/og-image.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='none' stroke='%23111111' stroke-width='7'/><text x='50' y='68' font-size='52' font-family='Arial' font-weight='900' fill='%23111111' text-anchor='middle'>D</text><circle cx='68' cy='28' r='8' fill='%238A6A12'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -312,6 +312,7 @@ sup.cite a { color: var(--accent-gold); text-decoration: none; }
 .partbar a { color: var(--text-light); background: #fff; }
 .partbar a:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
 .partbar a b { color: var(--accent-gold); }
+.partbar a.home { color: var(--text-primary); }
 .partbar span.active { background: var(--accent-gold); border-color: var(--accent-gold); color: #fff; }
 .partbar span.active b { color: #fff; }
 .partbar b { font-size: .74rem; font-weight: 800; }
@@ -323,6 +324,22 @@ sup.cite a { color: var(--accent-gold); text-decoration: none; }
 .partnav .pn-title { font-size: 1.04rem; font-weight: 700; color: var(--text-primary); }
 .partnav a.next { text-align: right; align-items: flex-end; }
 @media (max-width: 560px) { .partnav a.next { text-align: left; align-items: flex-start; } }
+/* ===== Executive deck ===== */
+.deck { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; max-width: 1040px; margin: 0 auto; }
+.deckcard { background: #fff; border: 1px solid var(--border-color); border-radius: 16px; padding: 26px 26px 22px; display: flex; flex-direction: column; transition: var(--transition); }
+.deckcard:hover { border-color: var(--accent-gold); box-shadow: 0 10px 30px rgba(17,17,17,.05); }
+.deckcard .dc-num { font-size: .72rem; font-weight: 800; letter-spacing: 1.6px; color: var(--accent-gold); }
+.deckcard h3 { font-size: 1.12rem; font-weight: 800; margin: 6px 0 14px; letter-spacing: -.2px; line-height: 1.25; }
+.deckcard ul { list-style: none; margin: 0 0 18px; padding: 0; flex: 1; }
+.deckcard li { position: relative; padding: 8px 0 8px 22px; font-size: .93rem; color: #2c2c2c; border-top: 1px solid var(--border-color); line-height: 1.45; }
+.deckcard li:first-child { border-top: none; }
+.deckcard li:before { content: '\f105'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 4px; top: 8px; color: var(--accent-gold); font-size: .82rem; }
+.deckcard .dc-more { align-self: flex-start; display: inline-flex; align-items: center; gap: 7px; font-size: .85rem; font-weight: 700; color: var(--accent-gold); text-decoration: none; transition: var(--transition); }
+.deckcard .dc-more:hover { gap: 11px; }
+.deck-foot { text-align: center; margin-top: 34px; }
+.deck-mini { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+.deck-mini a { font-size: .85rem; color: var(--text-light); border: 1px solid var(--border-color); border-radius: 999px; padding: 8px 16px; text-decoration: none; background: #fff; transition: var(--transition); }
+.deck-mini a:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
 @media print { .partbar, .partnav { display: none !important; } }
 </style>
 </head>
@@ -361,7 +378,8 @@ sup.cite a { color: var(--accent-gold); text-decoration: none; }
   </section>
 
   <nav class="partbar"><div class="partbar-inner">
-      <a href="../"><b>1</b> The Inflection Point</a>
+      <a class="home" href="../"><b><i class="fas fa-table-cells-large"></i></b> Overview</a>
+      <a href="../part-1/"><b>1</b> The Inflection Point</a>
       <a href="../part-2/"><b>2</b> The Capacity Crisis</a>
       <a href="../part-3/"><b>3</b> Revenue &amp; Advisory</a>
       <span class="active"><b>4</b> Global Delivery</span>
