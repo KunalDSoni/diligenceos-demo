@@ -9,11 +9,11 @@
   'use strict';
 
   var GRID = 64;                 // px between intersections (CSS px)
-  var RADIUS = 180;              // cursor influence radius
+  var RADIUS = 200;              // cursor influence radius
   var LINK = GRID * 1.55;        // node-to-node link distance (reaches diagonals)
   var FLOAT = 1.5;               // ambient float amplitude, px
-  var NODE_R = 1.4;              // idle node radius, px
-  var SPOT_R = 260;              // spotlight radius, px
+  var NODE_R = 1.6;              // idle node radius, px
+  var SPOT_R = 240;              // spotlight radius, px
   var GLOW_EASE = 9;             // per-second easing rate for node glow
   var CURSOR_EASE = 11;          // per-second easing rate for the cursor itself
   var MAX_DPR = 2;
@@ -21,8 +21,11 @@
   var GRID_COLOR = 'rgba(0,0,0,0.04)';
   var NODE_COLOR = 'rgba(0,0,0,0.08)';
   var ACTIVE_COLOR = '182,138,31';   // #B68A1F, as components for alpha blending
-  var LINE_COLOR = 'rgba(182,138,31,0.18)';
-  var SPOT_COLOR = '255,255,255';
+  var LINE_ALPHA = 0.55;             // peak connection-line opacity
+  // Warm gold spotlight — a white glow is invisible on the white hero, so the
+  // "spotlight" reads as a soft gold wash that warms the area under the cursor.
+  var SPOT_COLOR = '182,138,31';
+  var SPOT_ALPHA = 0.10;
 
   var canvas = document.querySelector('canvas[data-hero-canvas]');
   if (!canvas) return;
@@ -169,7 +172,8 @@
     // Spotlight sits under the nodes so it never washes out the gold.
     if (cur.strength > 0.001 && cur.seen) {
       var g = ctx.createRadialGradient(cur.x, cur.y, 0, cur.x, cur.y, SPOT_R);
-      g.addColorStop(0, 'rgba(' + SPOT_COLOR + ',' + (0.18 * cur.strength).toFixed(3) + ')');
+      g.addColorStop(0, 'rgba(' + SPOT_COLOR + ',' + (SPOT_ALPHA * cur.strength).toFixed(3) + ')');
+      g.addColorStop(0.6, 'rgba(' + SPOT_COLOR + ',' + (SPOT_ALPHA * 0.35 * cur.strength).toFixed(3) + ')');
       g.addColorStop(1, 'rgba(' + SPOT_COLOR + ',0)');
       ctx.fillStyle = g;
       ctx.beginPath();
@@ -180,7 +184,7 @@
     // Lines between lit neighbours. Fades with the weaker of the two endpoints,
     // so a line never outlives the glow that justified it.
     if (lit.length > 1) {
-      ctx.strokeStyle = LINE_COLOR;
+      ctx.strokeStyle = 'rgb(' + ACTIVE_COLOR + ')';
       ctx.lineWidth = 1;
       for (i = 0; i < lit.length; i++) {
         var a = lit[i];
@@ -191,7 +195,7 @@
           if (dist > LINK) continue;
           var strength = Math.min(a.glow, b.glow) * (1 - dist / LINK);
           if (strength < 0.02) continue;
-          ctx.globalAlpha = strength;
+          ctx.globalAlpha = strength * LINE_ALPHA;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
@@ -214,9 +218,14 @@
     for (i = 0; i < nodes.length; i++) {
       n = nodes[i];
       if (n.glow < 0.02) continue;
-      ctx.fillStyle = 'rgba(' + ACTIVE_COLOR + ',' + n.glow.toFixed(3) + ')';
+      // Soft halo, then a solid core — gives lit nodes a visible glow.
+      ctx.fillStyle = 'rgba(' + ACTIVE_COLOR + ',' + (n.glow * 0.28).toFixed(3) + ')';
       ctx.beginPath();
-      ctx.arc(n.x, n.y, NODE_R + n.glow * 1.2, 0, Math.PI * 2);
+      ctx.arc(n.x, n.y, NODE_R + 2 + n.glow * 5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(' + ACTIVE_COLOR + ',' + Math.min(1, n.glow * 1.3).toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, NODE_R + n.glow * 1.6, 0, Math.PI * 2);
       ctx.fill();
     }
   }
