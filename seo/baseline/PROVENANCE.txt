@@ -1,0 +1,4 @@
+captured_at_utc=2026-08-31T18:00:17Z
+commit=1194dc40e7a5fd8da92b6ae7141257d0003f9a1f
+branch=claude/diligenceos-demo-latest-686cd5
+crawler_sha256=d1aed34ffe9b78c30d97f1260b0ae9d09349dd66357dfef6280c2eb4844c8881

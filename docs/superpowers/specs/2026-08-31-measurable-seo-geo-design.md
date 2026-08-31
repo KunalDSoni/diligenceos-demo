@@ -105,10 +105,16 @@ Tier 1 or Tier 2 metric.
 
 - **No measurement of any kind.** No Search Console verification, no analytics, no log
   analysis, on any page.
-- **No structured data on the highest-value pages.** `/us/` and `/au/` are the two largest
-  pages at roughly 6,900 words each and carry zero JSON-LD. `events.html` (4,392 words, 25
-  photographs) has no `Event` schema. `leadership.html` (4,083 words, 8 executive
-  photographs) has no `Person` schema. No `BreadcrumbList` on several deep pages.
+- **No structured data on two of the highest-value pages.** `/us/` (1,090 words) and
+  `/au/` (1,063 words) carry zero JSON-LD. `events.html` (501 words, 25 photographs) has
+  no `Event` schema. `leadership.html` (251 words, 8 executive photographs) has no
+  `Person` schema. No `BreadcrumbList` on several deep pages.
+- **Content is thin across the commercial set.** Measured prose (script/style stripped,
+  see `seo/crawl.mjs`): the largest page on the site is `/hospitality-accounting/` at
+  1,612 words; the four service pages sit at 432–457 words each, and `/partners/` — which
+  targets the highest-value term on the site — is 374 words. Page *depth*, not only page
+  *count*, is a constraint on competitive commercial terms.
+- **`/brochure/` is orphaned:** zero internal inlinks, reachable only via the sitemap.
 - **No `LocalBusiness` schema anywhere**, despite four stated offices.
 - **NAP inconsistency**, which directly blocks local pack eligibility:
   - Three different US phone numbers: `+1 (708) 629-1744` (homepage, schedule, brochure,
