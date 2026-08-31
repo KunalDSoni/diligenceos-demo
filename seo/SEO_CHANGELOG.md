@@ -147,3 +147,70 @@ every page and checks Google-required fields. Current state: **31 blocks, 0 erro
 `/opportunity/` pages, which are out of scope. The one in-scope instance on `/news/`
 was fixed. Verified in-browser on `/leadership`: 8 `Person` entries parse, page
 renders unchanged.
+
+---
+
+## 2026-08-31 — EXP-003 — TECH
+
+```
+Change:        /services/bookkeeping/ title 66 -> 54 chars, meta description
+               163 -> 156 chars
+Hypothesis:    A title that no longer truncates in the SERP raises CTR at held
+               average position on a head commercial query
+Instrument:    GSC > Performance, page-filtered, CTR at held position
+Baseline:      Title 66 chars (truncating), description 163 chars
+Commit:        (this commit)
+URLs:          /services/bookkeeping/
+Checkpoint:    4 weeks after GSC verification
+Decision:      <filled at checkpoint>
+```
+
+New title: `Outsourced Bookkeeping Services for SMBs | DiligenceOS`. Dropping
+"& CPA Firms" does double duty — it fits the ~60 character display limit, and it
+removes overlap with `/partners/`, which owns the CPA-firm intent in
+`SEO_QUERY_MAP.csv`. The exact head term "Outsourced Bookkeeping Services" is kept.
+`og:title` and `og:description` carried the same strings and were updated with it.
+
+**Five other pages had title or description length defects and were deliberately
+NOT changed.** `/privacy` (28), `/terms` (30), `/news/` (69),
+`/education-support/` (64), and `/leadership` (30 title / 83 description) are all
+marked `NONE` or entity-only in the query map. They serve brand or utility queries,
+so improving them would move brand clicks, not the Tier 2 KPI of **non-brand**
+organic clicks. Changing them would be optimizing a metric because it is
+measurable, which section 1 forbids. Recorded so the omission reads as a decision
+rather than an oversight.
+
+---
+
+## 2026-08-31 — EXP-004 — TECH
+
+```
+Change:        /brochure/ orphan fixed; Resources footer group now lists real
+               resources on 6 pages
+Hypothesis:    A page with zero internal inlinks is discoverable only via the
+               sitemap and accrues no internal link signal; giving it site-wide
+               links should improve its crawl frequency and indexation stability
+Instrument:    Internal_Inlinks column in the crawl dataset; GSC URL Inspection
+Baseline:      /brochure/ Internal_Inlinks = 0
+Commit:        (this commit)
+URLs:          /, /events, /leadership, /us/, /au/, /hospitality-accounting/
+Checkpoint:    8 weeks after deploy
+Decision:      <filled at checkpoint>
+```
+
+The footer "Resources" group previously listed only Privacy Policy, Terms of
+Service, and Contact — none of which are resources. It now leads with the Company
+Brochure and the Monthly Close Checklist, which are.
+
+**Verified** by re-crawling the working tree and diffing against the frozen
+baseline: `/brochure/` **Internal_Inlinks 0 -> 6**. In-browser, footer links
+resolve and `/brochure/` is reachable with valid JSON-LD.
+
+`/guides/monthly-close-checklist` did not gain inlinks (12 -> 11) because it was
+already linked from all six of those pages; the crawler counts unique source
+pages, so a second link from the same page correctly adds nothing.
+
+**Reading the verification diff:** it was produced by a local crawl against a live
+baseline, so every page shows -1 inlink. `/contact` exists only through an
+`.htaccess` rewrite and 404s in local mode, contributing none of its outbound
+links. This is a crawl-mode artifact, not a regression.
