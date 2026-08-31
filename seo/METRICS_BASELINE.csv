@@ -1,1 +1,21 @@
 Date,Tier,Metric,Value,Unit,Instrument,Notes
+2026-08-31,1,Organic qualified leads,BLOCKED,leads,CRM + Plausible,Owner dep 4 and 7
+2026-08-31,1,/schedule/ booking completions,BLOCKED,events,Plausible,Owner dep 4
+2026-08-31,2,Non-brand organic clicks,BLOCKED,clicks,GSC Performance,Owner dep 1 - PRIMARY SEO KPI
+2026-08-31,2,Brand organic clicks,BLOCKED,clicks,GSC Performance,Owner dep 1
+2026-08-31,2,Non-brand share of organic clicks,BLOCKED,ratio,GSC Performance,Owner dep 1
+2026-08-31,3,Live URLs crawled,20,urls,seo/crawl.mjs,
+2026-08-31,3,URLs returning 200,20,urls,seo/crawl.mjs,
+2026-08-31,3,Indexable URLs,20,urls,seo/crawl.mjs,
+2026-08-31,3,URLs in sitemap,19,urls,sitemap.xml,/contact excluded; duplicates / with canonical to /
+2026-08-31,3,URLs with any JSON-LD,13,urls,seo/crawl.mjs,pre-EXP-002
+2026-08-31,3,Orphan URLs (0 internal inlinks),1,urls,seo/crawl.mjs,/brochure/ - fixed by EXP-004
+2026-08-31,3,Titles over 60 chars,3,urls,seo/crawl.mjs,
+2026-08-31,3,Descriptions over 160 chars,1,urls,seo/crawl.mjs,
+2026-08-31,3,Images missing alt,0,images,seo/crawl.mjs,
+2026-08-31,3,Median response time,99,ms,seo/crawl.mjs,"crawler-observed, not CrUX field data"
+2026-08-31,3,Total prose words (all pages),12156,words,seo/crawl.mjs,script/style stripped
+2026-08-31,3,AI crawler hits per week,BLOCKED,hits,Apache access logs,Owner dep 2
+2026-08-31,3,AI referral sessions,BLOCKED,sessions,Plausible,Owner dep 4
+2026-08-31,3,AI citation rate,BLOCKED,ratio,Prompt panel,Panel frozen; first run pending
+2026-08-31,3,LCP p75,BLOCKED,ms,GSC Core Web Vitals,Owner dep 1 - needs CrUX field data

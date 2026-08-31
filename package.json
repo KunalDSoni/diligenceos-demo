@@ -2,6 +2,11 @@
   "name": "diligenceos-site",
   "private": true,
   "scripts": {
-    "build:opp": "node opportunity/_src/build.mjs"
+    "build:opp": "node opportunity/_src/build.mjs",
+    "seo:crawl": "node seo/crawl.mjs",
+    "seo:crawl:local": "node seo/crawl.mjs --local",
+    "seo:schema": "node seo/validate-schema.mjs",
+    "seo:logs": "node seo/parse-access-logs.mjs",
+    "seo:diff": "node seo/crawl.mjs && diff seo/baseline/SEO_CRAWL_BASELINE.csv seo/SEO_CRAWL_BASELINE.csv || true"
   }
 }
