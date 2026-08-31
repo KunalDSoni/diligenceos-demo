@@ -45,3 +45,53 @@ Decision:      Baseline accepted as the permanent pre-program reference point
 - **`/leadership` meta description is 83 characters**, well under the useful range.
 - **No page carries `Google_Selected_Canonical`** — that column stays empty until
   Search Console URL Inspection is available (spec 5.6, blocked on dep. 1).
+
+---
+
+## 2026-08-31 — EXP-001 — TECH
+
+```
+Change:        Font Awesome moved off the critical rendering path on 16 pages;
+               Google Fonts preconnect added to the 8 pages missing it
+Hypothesis:    Removing a render-blocking third-party stylesheet from the critical
+               path improves LCP at p75, with no CLS penalty because icon space is
+               reserved in the inline critical CSS
+Instrument:    GSC Core Web Vitals (CrUX field data)
+Baseline:      To be read from CrUX at deploy date; no field data exists pre-GSC
+Commit:        (this commit)
+URLs:          /, /us/, /au/, /events, /leadership, /privacy, /terms,
+               /hospitality-accounting/, /news/, /partners/, /investors/,
+               /education-support/, /services/{bookkeeping,payroll,advisory,forecasting}/
+Checkpoint:    28 days after DEPLOY (full CrUX rollover), not after commit
+Decision:      <filled at checkpoint>
+```
+
+**What changed.** The blocking `<link rel="stylesheet">` for Font Awesome 6.4.0
+became `<link rel="preload" as="style" onload="this.rel='stylesheet'">` with a
+`<noscript>` fallback, preserving the SRI hash and `crossorigin` where present.
+Three different tag variants existed across the repo; all now use one form.
+
+**CLS guard.** Icon `<i>` elements are empty — the glyph comes from `::before` —
+so before the font arrives they collapse to zero width and shift layout. The
+inline critical CSS now carries
+`.fa,.fas,.far,.fab,.fal,.fad{display:inline-block;min-width:1em}`.
+`min-width` rather than `width`, so wider glyphs are not clipped.
+
+**Why not inline SVG.** The spec described "a small number of icons." That was
+wrong: the site uses **113 distinct icons across 512 instances in 16 files**.
+Hand-authoring 113 SVGs would be a high-risk visual refactor across every page
+for a smaller CWV gain than simply removing the resource from the critical path.
+Recorded so the decision is not silently revisited.
+
+**Verification performed** (localhost, 1440x900):
+- Font Awesome stylesheet loads: `faLoaded: true`
+- Icons resolve to real glyphs, not fallbacks: computed `::before` font-family is
+  `"Font Awesome 6 Free"`
+- CLS guard active: computed icon width `13.42px`, `display: inline-block`
+- No console errors on `/` or `/services/bookkeeping/`
+- Hero H1 and all icons render correctly; screenshots match pre-change layout
+
+**Pre-existing behaviour noted, not a regression.** 30 `.reveal` elements report
+`opacity: 0` until the IntersectionObserver marks them visible. Verified identical
+on live production before the change. Flagged only so a future crawl diff does not
+misattribute it to this experiment.

@@ -28,9 +28,16 @@
 <meta name="twitter:description" content="Precision bookkeeping, accounting, payroll, tax, and advisory for ambitious businesses across the US, Australia, and beyond.">
 <meta name="twitter:image" content="https://dosacc.com/og-image.png">
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+<link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous"></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+/* Font Awesome is loaded asynchronously (see the preload link in <head>).
+   Icon <i> elements are empty until the font arrives, so reserve inline space
+   to stop them collapsing to zero width and shifting layout. */
+.fa,.fas,.far,.fab,.fal,.fad{display:inline-block;min-width:1em}
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
   --primary-bg: #ffffff;
