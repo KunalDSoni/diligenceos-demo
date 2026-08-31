@@ -426,6 +426,46 @@ footer { background: var(--secondary-bg); border-top: 1px solid var(--border-col
   .mobile-toggle { display: flex; }
 }
 </style>
+<!-- EXP-002 structured data -->
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+   {
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://dosacc.com/"
+   },
+   {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Events"
+   }
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "DiligenceOS Events & Team Gallery",
+  "url": "https://dosacc.com/events",
+  "description": "Photographs from DiligenceOS team gatherings, industry conferences, and partner meetings across the United States and Australia.",
+  "publisher": {
+   "@type": "Organization",
+   "name": "DiligenceOS",
+   "url": "https://dosacc.com/"
+  },
+  "about": [
+   "Gold Coast, Australia",
+   "AICPA ENGAGE",
+   "Las Vegas, Nevada",
+   "Scaling New Heights, Orlando, Florida"
+  ]
+ }
+]
+</script>
 </head>
 <body>
 
