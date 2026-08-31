@@ -78,3 +78,15 @@ canonical NAP from step 5 exactly.
 ## 7. CRM access, or confirmation none exists
 **Blocks:** nothing. Determines only whether the Tier 1 metric is organic qualified
 leads, or remains `/schedule/` completions as the interim measure.
+
+## 8. Signed-in access for the GEO prompt panel
+**Blocks:** the first prompt-panel data point, and every one after it.
+
+Verified 2026-08-31: Perplexity no longer answers logged-out queries — it returns
+"Sign up and repeat your request." ChatGPT and Google AI Mode already required
+sign-in. All three engines are therefore gated, which makes the biweekly panel run
+an owner task rather than an automatable one.
+
+Procedure is in [`GEO_RUNBOOK.md`](GEO_RUNBOOK.md). Roughly 45 minutes per run,
+30 prompts x 3 engines. The panel is frozen — ask each prompt verbatim, in a fresh
+session, and record what you observe rather than what you hoped for.

@@ -16,11 +16,15 @@ Operationalises spec section 5.7. Run **biweekly**. Roughly 45 minutes per run.
 
 ## Engines
 
-| Engine | Notes |
+| Engine | Access |
 |---|---|
-| ChatGPT | Web search enabled. Its results have historically drawn on Bing's index, so Bing coverage matters here. |
-| Perplexity | Usable logged out. |
+| ChatGPT | Requires a signed-in account. Web search enabled. Its results have historically drawn on Bing's index, so Bing coverage matters here. |
+| Perplexity | **Requires a signed-in account.** Verified 2026-08-31: a logged-out query returns "Sign up and repeat your request" instead of an answer. |
 | Google AI Mode | Requires a signed-in Google account. |
+
+**All three engines now require authentication, so this panel is an owner-run
+task.** It was not possible to capture a first data point automatically. Sign in to
+each engine, then work through the panel; the recording rules below are unchanged.
 
 ## Recording
 
