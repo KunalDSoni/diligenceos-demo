@@ -375,12 +375,21 @@ boilerplate, following the query map's cluster relationships.
 
 Highest commercial intent first. Each page is one CONTENT experiment.
 
-Candidate set, in priority order:
+> **Gate applied 2026-08-31 — 3 of these 4 candidates were REJECTED.** See
+> [`seo/docs/P2_PAGE_GATE.md`](../../../seo/docs/P2_PAGE_GATE.md). This list was
+> written before `SEO_QUERY_MAP.csv` existed; checked against the map, three of
+> the intents are already owned by live URLs, so building them would create
+> cannibalization. The measured constraint is page **depth**, not page count.
+> P2 is redirected to deepening pages that already own their intent, briefed in
+> [`seo/briefs/`](../../../seo/briefs/).
 
-1. Outsourced accounting services (primary commercial term)
-2. Accounting outsourcing for CPA firms
-3. White-label bookkeeping
-4. Problem pages (e.g. bookkeeping backlog / catch-up bookkeeping)
+Original candidate set, retained for the record:
+
+1. Outsourced accounting services (primary commercial term) — REJECTED, owned by `/`
+2. Accounting outsourcing for CPA firms — REJECTED, owned by `/partners/`
+3. White-label bookkeeping — REJECTED, owned by `/partners/`
+4. Problem pages (e.g. bookkeeping backlog / catch-up bookkeeping) — HOLD, passes
+   uniqueness but cannot clear demonstrated-opportunity until GSC exists
 
 ### The page gate
 

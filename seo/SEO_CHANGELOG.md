@@ -214,3 +214,22 @@ pages, so a second link from the same page correctly adds nothing.
 baseline, so every page shows -1 inlink. `/contact` exists only through an
 `.htaccess` rewrite and 404s in local mode, contributing none of its outbound
 links. This is a crawl-mode artifact, not a regression.
+
+---
+
+## 2026-08-31 — P2 gate applied — NO EXPERIMENT SHIPPED
+
+```
+Change:        None to the site. Gate evaluation only.
+Result:        3 of 4 P2 candidates rejected on test 1 (uniqueness);
+               1 held pending GSC data
+Instrument:    SEO_QUERY_MAP.csv checked against the candidate set
+Decision:      P2 redirected from page creation to page depth
+```
+
+Full reasoning in [`docs/P2_PAGE_GATE.md`](docs/P2_PAGE_GATE.md). Briefs for the
+redirected work are in [`briefs/`](briefs/).
+
+Recording a gate evaluation that produced no site change is deliberate: under spec
+section 7, rejecting a page is a successful outcome of the gate, and the reasoning
+needs to survive so the rejected candidates are not quietly rebuilt later.
