@@ -79,9 +79,40 @@ const cites = (text, sources) => text.replace(/\[\[(\d+)\]\]/g, (m, n) => {
 });
 const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
 
+// Breadcrumbs derived from the URL path. Labels for intermediate segments come
+// from SEG_LABELS; the final crumb is the page's own title and carries no item,
+// per Google's guidance that the current page is not a link.
+const SEG_LABELS = {
+  opportunity: 'Opportunity', au: 'Australia', us: 'United States',
+  'business-landscape': 'The Australian Business Opportunity',
+  'part-1': 'The Inflection Point', 'part-2': 'The Capacity Crisis',
+  'part-3': 'The Revenue and Advisory Opportunity', 'part-4': 'The Global Delivery Model',
+  'part-5': 'The Strategic Thesis',
+};
+
+function breadcrumbSchema(url, pageTitle) {
+  const segs = new URL(url).pathname.split('/').filter(Boolean);
+  const crumbs = [{ name: 'Home', item: 'https://dosacc.com/' }];
+  let acc = 'https://dosacc.com';
+  segs.forEach((seg, i) => {
+    acc += `/${seg}`;
+    const last = i === segs.length - 1;
+    crumbs.push({ name: SEG_LABELS[seg] || (last ? pageTitle : seg), item: `${acc}/` });
+  });
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem', position: i + 1, name: c.name,
+      ...(i < crumbs.length - 1 ? { item: c.item } : {}),
+    })),
+  };
+}
+
 function buildHead({ title, ogTitle, desc, ogDesc, url, asset, faq, section }) {
   const article = Object.assign({}, ARTICLE_BASE, { headline: ogTitle, description: desc, mainEntityOfPage: url, articleSection: section || 'Industry Analysis' });
-  const ld = JSON.stringify(faq ? [article, faqSchema] : [article], null, 1);
+  const crumbs = breadcrumbSchema(url, ogTitle || title);
+  const ld = JSON.stringify(faq ? [article, crumbs, faqSchema] : [article, crumbs], null, 1);
   return `<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -342,7 +373,7 @@ function deckStepper() {
 function buildAuDeck() {
   const head = buildHead({
     title: 'Australian Accounting Firms: Capacity',
-    ogTitle: 'Opportunity, Australia: The Future of Accounting Firms',
+    ogTitle: 'Australian Accounting Firms: The Capacity Opportunity',
     desc: 'The growth opportunity facing Australian accounting firms, in a five-part deep dive. The issue is not demand. It is capacity.',
     ogDesc: 'The issue facing Australian firms is not demand. It is capacity. An executive overview with a five-part deep dive.',
     url: OPP + 'au/', asset: '../assets/', faq: false, section: 'Australia',

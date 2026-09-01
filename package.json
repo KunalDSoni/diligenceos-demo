@@ -11,6 +11,7 @@
     "seo:check": "node seo/check.mjs",
     "seo:hook": "sh seo/hooks/install.sh",
     "seo:report": "node seo/report-diff.mjs",
-    "seo:brand": "node seo/gsc-brand-split.mjs"
+    "seo:brand": "node seo/gsc-brand-split.mjs",
+    "seo:llms": "node seo/crawl.mjs --local --out seo/_tmp.csv && node seo/gen-llms-txt.mjs seo/_tmp.csv && rm -f seo/_tmp.csv"
   }
 }

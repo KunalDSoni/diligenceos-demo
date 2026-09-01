@@ -358,3 +358,45 @@ Not an orphan, but under-linked for its size. Revisit at the checkpoint.
 Nine intents added to `SEO_QUERY_MAP.csv`. `/opportunity/au/part-4/` (global
 delivery model) sits closest to `/partners/`'s commercial intent and is flagged
 there for cannibalization monitoring.
+
+---
+
+## 2026-09-01 — EXP-007 — TECH
+
+```
+Change:        BreadcrumbList on the 9 /opportunity/ pages (generated);
+               llms.txt regenerated from crawl data
+Hypothesis:    Breadcrumb markup makes the cluster's hierarchy explicit and is
+               eligible for breadcrumb display in results
+Instrument:    GSC > Enhancements (Breadcrumbs)
+Baseline:      18 BreadcrumbList site-wide; opportunity cluster had none
+Commit:        (this commit)
+URLs:          all 9 /opportunity/ pages
+Checkpoint:    4 weeks after deploy
+Decision:      <filled at checkpoint>
+```
+
+Breadcrumbs are derived from the URL path in `opportunity/_src/build.mjs`, so
+they regenerate correctly rather than being hand-written into output. Site-wide
+`BreadcrumbList` count 18 -> 27. The final crumb carries no `item`, per Google's
+guidance that the current page is not a link, and uses a short segment label
+rather than repeating the full page title.
+
+Also corrected `ogTitle` on the AU hub, which still carried the pre-EXP-006
+wording after only `title` was updated.
+
+**llms.txt was actively wrong, not merely stale.** It advertised
+`/_archive/uk/` — a URL `robots.txt` disallows — and `/opportunity/_src/sections`,
+a build source file that is not a page, while omitting all nine real
+`/opportunity/` pages and still showing the pre-EXP-003 bookkeeping title. It had
+plainly been produced by an unfiltered file scan.
+
+`seo/gen-llms-txt.mjs` now generates it from the crawl dataset, so it can only
+list URLs that are live, indexable, and canonical. Archive paths, `_src` paths and
+the `/contact` duplicate are excluded by construction. HTML entities are decoded
+in the generator rather than in `crawl.mjs`, whose parsing must stay stable for
+baseline comparability. Result: 28 entries, 0 bad URLs, 0 stray entities.
+
+`llms.txt` remains classified optional/experimental per spec section 9 — no
+checkpoint is defined for it and no measurable GEO gain is claimed. It is kept
+accurate because doing so now costs nothing.
