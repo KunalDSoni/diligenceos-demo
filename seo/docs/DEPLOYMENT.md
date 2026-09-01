@@ -19,39 +19,87 @@ verification, so every day unverified is history permanently lost.
 Then capture the Tier 1/2 baseline rows in `seo/METRICS_BASELINE.csv`, which
 currently cannot be filled.
 
-### Wave 1 — EXP-001 + EXP-002 (disjoint instruments)
+### CORRECTION — waves are not separable, deploy is a single upload
 
-| Experiment | Instrument | Checkpoint |
-|---|---|---|
-| EXP-001 Font Awesome off critical path | GSC Core Web Vitals (CrUX) | 28 days after deploy |
-| EXP-002 Structured data | GSC Enhancements / Search Appearance | 4 weeks after deploy |
+The wave plan below this heading was written assuming experiments could be
+deployed independently. **They cannot.** Deployment is a manual FileZilla upload,
+which works at file granularity, and single files carry up to four experiments:
 
-These read different reports and can run together.
-
-**Immediately after deploying, re-run the crawler and diff against the baseline:**
-
-```bash
-node seo/crawl.mjs && diff seo/baseline/SEO_CRAWL_BASELINE.csv seo/SEO_CRAWL_BASELINE.csv
+```
+us/index.html        EXP-001  EXP-002  EXP-004  EXP-006
+au/index.html        EXP-001  EXP-002  EXP-004  EXP-006
+leadership.html      EXP-001  EXP-002  EXP-004  EXP-006
+events.html          EXP-001  EXP-002  EXP-004  EXP-006
+index.html           EXP-001           EXP-004  EXP-006
+privacy.html         EXP-001  EXP-002
+terms.html           EXP-001  EXP-002
+services/bookkeeping EXP-001  EXP-003
 ```
 
-Expected: `Schema_Types` populated on `/us/`, `/au/`, `/leadership`, `/events`,
-`/brochure/`, `/privacy`, `/terms`, `/hospitality-accounting/`, `/schedule/`,
-`/guides/monthly-close-checklist`. `Internal_Inlinks` for `/brochure/` at 6.
-Nothing else should move.
+Uploading `us/index.html` to ship EXP-001 necessarily ships EXP-002, EXP-004 and
+EXP-006 with it. Waves are unimplementable here.
 
-### Wave 2 — EXP-003 + EXP-004 (deploy only after Wave 1 checkpoints are read)
+**Attribution survives anyway**, because the concurrency cap exists to keep
+results attributable, and these results remain attributable — each experiment is
+read on a different report, and where two share a report they are scoped to
+different URLs:
 
-| Experiment | Instrument | Checkpoint |
+| Experiment | Instrument | Scope |
 |---|---|---|
-| EXP-003 Bookkeeping title/description | GSC Performance, page CTR | 4 weeks after deploy |
-| EXP-004 /brochure/ orphan fix | Crawl dataset + URL Inspection | 8 weeks after deploy |
+| EXP-001 | CrUX LCP/INP/CLS p75 | site-wide; nothing else moves CrUX |
+| EXP-002 | GSC Enhancements | the 10 main-site URLs it marked up |
+| EXP-003 | GSC Performance CTR | `/services/bookkeeping/` only — **EXP-002 never touched this page**, so its CTR is uncontaminated |
+| EXP-004 | Internal_Inlinks, URL Inspection | `/brochure/` |
+| EXP-005 | HTTP status, GSC Soft 404 | `/404` |
+| EXP-006 | URL Inspection, GSC Performance | the 9 `/opportunity/` URLs, all previously unindexed |
+| EXP-007 | GSC Enhancements (Breadcrumbs) | `/opportunity/` URLs — disjoint from EXP-002 by URL |
+| EXP-008 | International Targeting, inlinks | 3 opportunity URLs, `business-landscape` |
 
-EXP-003 reads GSC Performance, which EXP-002 also touches via Search Appearance.
-Hold EXP-003 until the EXP-002 checkpoint is recorded, or its CTR movement cannot
-be separated from rich-result eligibility changes.
+So: **one upload, eight experiments, each still individually readable.** The cap
+in spec section 10 continues to govern future work, where files are not already
+entangled.
 
-Record every checkpoint decision in `SEO_CHANGELOG.md` using the kill-criteria
-table in spec section 10.
+### Deploying
+
+Generate the file list:
+
+```bash
+npm run seo:manifest
+```
+
+32 files, all overwrites — the `/opportunity/` pages already exist on the server
+and were merely `noindex`, so no new directories are needed.
+
+**The single biggest risk in this deploy is `.htaccess`.** FileZilla hides
+dotfiles by default. Enable *Server > Force showing hidden files* before
+uploading. If `.htaccess` is missed, clean URLs, the https/non-www canonical
+redirect, the security headers and the `/404` fix all silently fail — and the
+site will appear to work while every URL in the sitemap 404s.
+
+Upload `.htaccess` **last**, so the site is never serving new HTML under old
+routing rules for longer than necessary.
+
+### Immediately after uploading
+
+```bash
+npm run seo:diff
+```
+
+Expect **0 regressions**. Then confirm the three things a file-level upload can
+silently get wrong:
+
+```bash
+curl -sS -o /dev/null -w "404 page:    %{http_code}\n" https://dosacc.com/404
+curl -sS -o /dev/null -w "opportunity: %{http_code}\n" https://dosacc.com/opportunity/
+curl -sS -o /dev/null -w "clean url:   %{http_code}\n" https://dosacc.com/leadership
+```
+
+Expect `404`, `200`, `200`. A `200` on the first means `.htaccess` did not upload.
+A `404` on the third means the same.
+
+Then submit the updated sitemap in Search Console and request indexing for
+`/opportunity/` so the newly unlocked cluster is discovered rather than waiting
+on an organic crawl.
 
 ---
 
