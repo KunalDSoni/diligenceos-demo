@@ -400,3 +400,44 @@ baseline comparability. Result: 28 entries, 0 bad URLs, 0 stray entities.
 `llms.txt` remains classified optional/experimental per spec section 9 — no
 checkpoint is defined for it and no measurable GEO gain is claimed. It is kept
 accurate because doing so now costs nothing.
+
+---
+
+## 2026-09-01 — EXP-008 — TECH
+
+```
+Change:        hreflang on the opportunity region pages; business-landscape
+               added to the series navigation
+Hypothesis:    Correct regional alternates prevent the US and AU opportunity
+               pages competing, and internal links let the cluster's second
+               largest page accrue link signal
+Instrument:    GSC International Targeting; Internal_Inlinks in the crawl dataset
+Baseline:      0 hreflang in the cluster; business-landscape on 1 inlink
+Commit:        (this commit)
+URLs:          /opportunity/, /opportunity/us/, /opportunity/au/, part-1..5
+Checkpoint:    8 weeks after deploy
+Decision:      <filled at checkpoint>
+```
+
+`hreflang` is emitted only for the hub and its two region pages. The AU deep-dive
+parts have no US counterpart, so emitting alternates for them would claim
+equivalences that do not exist.
+
+`business-landscape` was the second-largest page on the site on a single inbound
+link. It now sits in the series nav alongside the five parts, giving it links from
+all of them. It no longer appears among the least-linked pages.
+
+**The generator caught a mistake I would otherwise have shipped.** The first
+attempt used a `chart-pie` icon; `opportunity/_src/icons.mjs` inlines a fixed set
+of 28 SVGs and throws `Missing inline icon for: chart-pie` rather than emitting a
+broken glyph. Switched to `chart-line`, which is in the set.
+
+Two things worth recording from that failure. First, the opportunity pages inline
+their icons as SVG and never loaded the Font Awesome CDN, which is why they were
+absent from EXP-001's 16 files. Second, the build had been invoked as
+`npm run build:opp --silent >/dev/null 2>&1`, which swallowed the error and left a
+partial write. Integrity was re-verified afterwards: 29/29 pages indexable, all
+HTTP 200, 0 check errors, 0 schema errors. **Do not suppress this build's output.**
+
+State after EXP-006/007/008, appended to `METRICS_BASELINE.csv` as a dated
+observation rather than overwriting the frozen baseline.

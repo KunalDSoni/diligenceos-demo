@@ -109,6 +109,24 @@ function breadcrumbSchema(url, pageTitle) {
   };
 }
 
+// hreflang only where a genuine regional alternate exists: the opportunity hub
+// and its two region pages. The AU deep-dive parts have no US counterpart, so
+// emitting alternates for them would claim equivalences that do not exist.
+const OPP_ALTERNATES = [
+  ['x-default', 'https://dosacc.com/opportunity/'],
+  ['en', 'https://dosacc.com/opportunity/'],
+  ['en-US', 'https://dosacc.com/opportunity/us/'],
+  ['en-AU', 'https://dosacc.com/opportunity/au/'],
+];
+
+function hreflang(url) {
+  const p = new URL(url).pathname;
+  if (!['/opportunity/', '/opportunity/us/', '/opportunity/au/'].includes(p)) return '';
+  return '\n' + OPP_ALTERNATES
+    .map(([lang, href]) => `<link rel="alternate" hreflang="${lang}" href="${href}">`)
+    .join('\n');
+}
+
 function buildHead({ title, ogTitle, desc, ogDesc, url, asset, faq, section }) {
   const article = Object.assign({}, ARTICLE_BASE, { headline: ogTitle, description: desc, mainEntityOfPage: url, articleSection: section || 'Industry Analysis' });
   const crumbs = breadcrumbSchema(url, ogTitle || title);
@@ -118,7 +136,7 @@ function buildHead({ title, ogTitle, desc, ogDesc, url, asset, faq, section }) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title} | DiligenceOS</title>
 <meta name="description" content="${desc}">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${url}">${hreflang(url)}
 <meta name="keywords" content="accounting firms, accountant shortage, capacity crisis, advisory services, global delivery, accounting outsourcing alternative, firm growth, CPA firm scaling, offshore accounting">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DiligenceOS">
@@ -414,6 +432,12 @@ function partbar(cur) {
     items += (k === cur)
       ? `\n      <span class="active"><b>${k}</b> ${labels[k]}</span>`
       : `\n      <a href="../part-${k}/"><b>${k}</b> ${labels[k]}</a>`;
+  // Companion research page. It sat on a single inbound link from the AU hub
+  // despite being the second-largest page on the site, so it joins the series
+  // nav alongside the five parts.
+  items += (cur === 'bl')
+    ? `\n      <span class="active"><b><i class="fas fa-chart-line"></i></b> Business Landscape</span>`
+    : `\n      <a href="../business-landscape/"><b><i class="fas fa-chart-line"></i></b> Business Landscape</a>`;
   return `\n  <nav class="partbar"><div class="partbar-inner">${items}\n    </div></nav>\n`;
 }
 function partnav(cur) {

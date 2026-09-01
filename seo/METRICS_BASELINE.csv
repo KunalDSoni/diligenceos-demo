@@ -19,3 +19,12 @@ Date,Tier,Metric,Value,Unit,Instrument,Notes
 2026-08-31,3,AI referral sessions,BLOCKED,sessions,Plausible,Owner dep 4
 2026-08-31,3,AI citation rate,BLOCKED,ratio,Prompt panel,Panel frozen; first run pending
 2026-08-31,3,LCP p75,BLOCKED,ms,GSC Core Web Vitals,Owner dep 1 - needs CrUX field data
+2026-09-01,3,Live URLs crawled,29,urls,seo/crawl.mjs,post EXP-006/007
+2026-09-01,3,Indexable URLs,29,urls,seo/crawl.mjs,was 20 at baseline
+2026-09-01,3,URLs in sitemap,28,urls,sitemap.xml,was 19 at baseline
+2026-09-01,3,URLs with any JSON-LD,29,urls,seo/crawl.mjs,was 13 at baseline
+2026-09-01,3,Orphan URLs (0 internal inlinks),0,urls,seo/crawl.mjs,was 1 at baseline
+2026-09-01,3,Titles over 60 chars,2,urls,seo/crawl.mjs,was 3; 2 remain by decision
+2026-09-01,3,Descriptions over 160 chars,0,urls,seo/crawl.mjs,was 1 at baseline
+2026-09-01,3,Images missing alt,0,images,seo/crawl.mjs,
+2026-09-01,3,Total prose words (all pages),24182,words,seo/crawl.mjs,was 12156 at baseline
