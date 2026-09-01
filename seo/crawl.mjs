@@ -103,8 +103,13 @@ async function fetchLive(url) {
 
 // Mirror the .htaccess clean-URL rules so local crawls resolve the same URLs
 // the live server serves: /events -> events.html, /foo/ -> foo/index.html.
+//
+// /contact is a named rewrite (RewriteRule ^contact$ index.html) rather than a
+// clean-URL match, so it needs its own case. Without it a local crawl 404s on a
+// URL the live server answers 200, and every local-vs-live diff reports five
+// false regressions plus a phantom -1 inlink on every page.
 async function fetchLocal(url) {
-  const rel = decodeURIComponent(new URL(url).pathname).replace(/^\/+/, '');
+  const rel = decodeURIComponent(new URL(url).pathname).replace(/^\/+/, '') .replace(/^contact\/?$/, 'index.html');
   const candidates = rel === ''
     ? ['index.html']
     : [rel, `${rel}.html`, path.join(rel, 'index.html'), `${rel.replace(/\/$/, '')}.html`];

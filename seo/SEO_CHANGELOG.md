@@ -233,3 +233,64 @@ redirected work are in [`briefs/`](briefs/).
 Recording a gate evaluation that produced no site change is deliberate: under spec
 section 7, rejecting a page is a successful outcome of the gate, and the reasoning
 needs to survive so the rejected candidates are not quietly rebuilt later.
+
+---
+
+## 2026-09-01 — EXP-005 — TECH
+
+```
+Change:        /404 now returns HTTP 404 instead of 200
+Hypothesis:    Removing a soft 404 stops Search Console reporting it and removes
+               a page that answers 200 while its content says "not found"
+Instrument:    GSC > Page Indexing (Soft 404 count); curl status check
+Baseline:      /404 -> 200 (verified on production and reproduced locally)
+Commit:        (this commit)
+URLs:          /404
+Checkpoint:    4 weeks after deploy
+Decision:      <filled at checkpoint>
+```
+
+Previously documented as a proposal that could not be tested. It has now been
+tested. Apache 2.4.66 was stood up locally against the site's real `.htaccess`
+and reproduced production exactly:
+
+```
+/                    200      /404                 200   <- soft 404
+/404.html            301      /leadership          200
+/definitely-not-real 404      /contact             200
+```
+
+With `RewriteRule ^404/?$ - [R=404,L]` inserted before the clean-URL block:
+`/404` and `/404/` return 404, `/404xyz` is correctly not matched, the styled
+error page still renders through `ErrorDocument`, every other route is unchanged,
+all redirect chains resolve in one hop, and the error log is clean.
+
+macOS TCC blocks Apache from reading under `~/Downloads`, and the worktree's
+parent chain carries its own `.htaccess`, so the test served a copy from
+`/private/tmp`.
+
+The page-level half — removing the contradictory canonical — shipped earlier.
+
+---
+
+## 2026-09-01 — Tooling — NO SITE CHANGE
+
+`check.mjs`, `report-diff.mjs`, `gsc-brand-split.mjs`, and a working pre-commit
+hook. None of these touch the site.
+
+**`crawl.mjs` was modified**, which the rules in `README.md` normally forbid.
+Local-mode URL resolution gained the `/contact` named rewrite that `.htaccess`
+performs but `fetchLocal` did not emulate. Without it, a `--local` crawl 404s on
+a URL the live server answers 200, and every local-vs-live diff reported five
+false regressions plus a phantom -1 inlink on every page — which would have made
+`report-diff.mjs` useless as a release gate.
+
+Live fetching and all HTML parsing are byte-for-byte unchanged, so the frozen
+baseline — produced by a **live** crawl — remains valid and was not re-captured.
+`baseline/PROVENANCE.txt` carries a dated amendment recording the old and new
+hashes and this reasoning.
+
+Post-change diff against the frozen baseline: **0 regressions, 11 improvements,
+2 neutral changes** — the improvements being every schema block from EXP-002 and
+the `/brochure/` orphan fix (now 7 inlinks), the neutral changes being the
+EXP-003 title and description.

@@ -7,8 +7,10 @@
     "seo:crawl:local": "node seo/crawl.mjs --local",
     "seo:schema": "node seo/validate-schema.mjs",
     "seo:logs": "node seo/parse-access-logs.mjs",
-    "seo:diff": "node seo/crawl.mjs && diff seo/baseline/SEO_CRAWL_BASELINE.csv seo/SEO_CRAWL_BASELINE.csv || true",
+    "seo:diff": "node seo/crawl.mjs && node seo/report-diff.mjs",
     "seo:check": "node seo/check.mjs",
-    "seo:hook": "sh seo/hooks/install.sh"
+    "seo:hook": "sh seo/hooks/install.sh",
+    "seo:report": "node seo/report-diff.mjs",
+    "seo:brand": "node seo/gsc-brand-split.mjs"
   }
 }

@@ -2,3 +2,14 @@ captured_at_utc=2026-08-31T18:00:17Z
 commit=1194dc40e7a5fd8da92b6ae7141257d0003f9a1f
 branch=claude/diligenceos-demo-latest-686cd5
 crawler_sha256=d1aed34ffe9b78c30d97f1260b0ae9d09349dd66357dfef6280c2eb4844c8881
+
+--- amendment 2026-09-01 ---
+crawler_sha256_now=2191570ba1302a6b70367e0a74bad603b7539bf206b1f5af7c34994f54256a73
+reason=Local-mode URL resolution gained the /contact named rewrite, which the
+  .htaccess performs but fetchLocal did not emulate. Without it a --local crawl
+  404s on a URL the live server answers 200, producing five false regressions and
+  a phantom -1 inlink on every page in any local-vs-live diff.
+baseline_affected=NO
+  The frozen baseline above was produced by a LIVE crawl. Live fetching and all
+  HTML parsing are byte-for-byte unchanged; only fetchLocal's path resolution
+  differs. The baseline remains valid and was not re-captured.

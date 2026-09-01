@@ -11,8 +11,15 @@ Optimize metrics causally connected to search reach or qualified customer acquis
 | Path | What it is |
 |---|---|
 | `crawl.mjs` | Site crawler producing the fixed-column crawl dataset |
+| `check.mjs` | Pre-deploy checker. Exits non-zero on defects. Backs the git hook. |
+| `report-diff.mjs` | Crawl diff classified as regression / improvement / change |
+| `gsc-brand-split.mjs` | Non-brand click split from a GSC export — the primary KPI |
+| `validate-schema.mjs` | Parses and checks every JSON-LD block site-wide |
 | `parse-access-logs.mjs` | Apache logs -> AI crawler dataset. The only instrument that can see AI bots. |
 | `capture-baseline.sh` | One-time immutable baseline capture |
+| `hooks/` | Working pre-commit guard + installer |
+| `briefs/` | Content briefs for CONTENT experiments |
+| `BRAND_TERMS.txt` | Brand terms for the non-brand split. Keep stable. |
 | `baseline/` | **Frozen.** Pre-program state, pinned to a source commit. Never edit. |
 | `SEO_CRAWL_BASELINE.csv` | Current crawl. Re-generated after every release. |
 | `SEO_CHANGELOG.md` | change -> hypothesis -> outcome history |
@@ -46,10 +53,30 @@ overlapping windows — it replaces recomputed weeks rather than adding to them)
 node seo/parse-access-logs.mjs /path/to/access_log
 ```
 
-Diff the current crawl against the frozen baseline:
+Re-crawl and report regressions against the frozen baseline (exits non-zero if
+anything regressed, so it can gate a release):
 
 ```bash
-diff <(cut -d, -f1-6 seo/baseline/SEO_CRAWL_BASELINE.csv) <(cut -d, -f1-6 seo/SEO_CRAWL_BASELINE.csv)
+npm run seo:diff
+```
+
+Check the working tree before deploying:
+
+```bash
+npm run seo:check
+```
+
+Compute the primary KPI from a Search Console Queries export:
+
+```bash
+node seo/gsc-brand-split.mjs ~/Downloads/Queries.csv --date 2026-09-30 --append
+```
+
+Install the pre-commit guard (the repo's existing hook is broken — see
+[`docs/PRECOMMIT.md`](docs/PRECOMMIT.md)):
+
+```bash
+npm run seo:hook
 ```
 
 ## Rules that keep the data valid

@@ -1,0 +1,10 @@
+# Brand terms for the non-brand click split (spec section 2, Tier 2).
+# One term per line, matched case-insensitively as a substring of the query.
+# Lines starting with # are ignored.
+#
+# Keep this list STABLE. Changing it retroactively changes the KPI's meaning and
+# breaks comparability with earlier months.
+diligenceos
+diligence os
+dosacc
+diligence accounting
