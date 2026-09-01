@@ -50,6 +50,14 @@ RewriteRule ^(.+)\.html$ /$1 [R=301,L]
 RewriteRule ^contact/$ /contact [R=301,L]
 RewriteRule ^contact$ index.html [L]
 
+# /404 must answer with a 404 status, not 200. Without this, the clean-URL rule
+# below serves 404.html at /404 with a success status - a soft 404, which Search
+# Console reports and which contradicts the page's own noindex. Apache serves
+# ErrorDocument 404 /404.html internally, so the styled error page still renders.
+# Verified against Apache 2.4.66: /404 and /404/ return 404, /404xyz is not
+# matched, no redirect loop, all other routes unchanged.
+RewriteRule ^404/?$ - [R=404,L]
+
 # Clean URLs: serve /events as events.html, /leadership as leadership.html, etc.
 # Only rewrites when the requested path isn't a real file/directory but a .html version exists.
 # Uses DOCUMENT_ROOT+REQUEST_URI (not REQUEST_FILENAME, which collapses path-info:

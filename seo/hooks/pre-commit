@@ -1,0 +1,21 @@
+#!/bin/sh
+# DiligenceOS SEO pre-commit guard.
+#
+# Runs seo/check.mjs against the staged HTML files and blocks the commit if any
+# ERROR is found. Warnings do not block.
+#
+# Install:  sh seo/hooks/install.sh
+# Bypass:   git commit --no-verify
+staged=$(git diff --cached --name-only --diff-filter=ACM | grep '\.html$' || true)
+[ -z "$staged" ] && exit 0
+
+root=$(git rev-parse --show-toplevel)
+[ -f "$root/seo/check.mjs" ] || exit 0
+
+# shellcheck disable=SC2086
+node "$root/seo/check.mjs" $staged || {
+  echo
+  echo "Commit blocked by seo/check.mjs. Fix the ERROR lines above, or bypass with:"
+  echo "  git commit --no-verify"
+  exit 1
+}
