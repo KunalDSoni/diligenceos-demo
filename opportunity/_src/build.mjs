@@ -63,7 +63,7 @@ const TOOLBAR = `<div class="toolbar"><button type="button" onclick="window.prin
 
 const ARTICLE_BASE = {
   '@context': 'https://schema.org', '@type': 'Article',
-  author: { '@type': 'Organization', name: 'DiligenceOS' },
+  author: { '@type': 'Organization', name: 'DiligenceOS', url: 'https://dosacc.com/' },
   publisher: { '@type': 'Organization', name: 'DiligenceOS', url: 'https://dosacc.com/' },
   datePublished: '2026-06-16', dateModified: '2026-06-16',
   image: 'https://dosacc.com/og-image.png',
@@ -88,7 +88,6 @@ function buildHead({ title, ogTitle, desc, ogDesc, url, asset, faq, section }) {
 <title>${title} | DiligenceOS</title>
 <meta name="description" content="${desc}">
 <link rel="canonical" href="${url}">
-<meta name="robots" content="noindex, nofollow">
 <meta name="keywords" content="accounting firms, accountant shortage, capacity crisis, advisory services, global delivery, accounting outsourcing alternative, firm growth, CPA firm scaling, offshore accounting">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="DiligenceOS">
@@ -169,7 +168,7 @@ function buildHub() {
   const head = buildHead({
     title: 'Opportunity: The Future of the Accounting Firm',
     ogTitle: 'Opportunity: The Future of the Accounting Firm',
-    desc: 'A global strategic briefing on the accounting profession. Across Australia and the United States the same shift is underway: rising demand, a shrinking pipeline of accountants, and capacity as the defining growth lever. Choose a market.',
+    desc: 'A strategic briefing on the accounting profession in Australia and the United States: rising demand, a shrinking pipeline, capacity as the growth lever.',
     ogDesc: 'Across the developed world the constraint on accounting firms has moved from demand to capacity. One thesis, real data.',
     url: OPP, asset: 'assets/', faq: false, section: 'Global Industry Analysis',
   });
@@ -244,9 +243,9 @@ function regionInfoCard(c, r) {
 function buildRegionDeck(r) {
   const url = OPP + r.code + '/';
   const head = buildHead({
-    title: `Opportunity, ${r.name}: The Capacity Opportunity`,
+    title: `${r.name}: The Capacity Opportunity`,
     ogTitle: `Opportunity, ${r.name}`,
-    desc: r.lede.replace(/&middot;/g, '-').replace(/<[^>]+>/g, ''),
+    desc: (r.metaDesc || r.lede).replace(/&middot;/g, '-').replace(/<[^>]+>/g, ''),
     ogDesc: r.lede.replace(/<[^>]+>/g, ''),
     url, asset: '../assets/', faq: false, section: r.name,
   });
@@ -342,9 +341,9 @@ function deckStepper() {
 }
 function buildAuDeck() {
   const head = buildHead({
-    title: 'Opportunity, Australia: The Future of Accounting Firms',
+    title: 'Australian Accounting Firms: Capacity',
     ogTitle: 'Opportunity, Australia: The Future of Accounting Firms',
-    desc: 'An executive overview, in bullets, of the growth opportunity facing Australian accounting firms, with a full five-part deep dive. The issue is not demand. It is capacity.',
+    desc: 'The growth opportunity facing Australian accounting firms, in a five-part deep dive. The issue is not demand. It is capacity.',
     ogDesc: 'The issue facing Australian firms is not demand. It is capacity. An executive overview with a five-part deep dive.',
     url: OPP + 'au/', asset: '../assets/', faq: false, section: 'Australia',
   });
@@ -452,7 +451,7 @@ function buildAuBusiness() {
   const head = buildHead({
     title: 'The Australian Business Opportunity',
     ogTitle: 'The Australian Business Opportunity',
-    desc: 'An investment-thesis view of the Australian business landscape: 2.7 million businesses across construction, hospitality, fuel, healthcare, retail, transport and professional services, and the recurring accounting demand each one generates. Research-backed and source-cited.',
+    desc: "Australia's 2.7 million businesses across construction, hospitality, healthcare, retail and transport, and the accounting demand each one generates.",
     ogDesc: 'Millions of Australian businesses, industry by industry, and the recurring accounting demand each one generates. The market is constrained by capacity, not demand.',
     url: OPP + 'au/business-landscape/', asset: '../../assets/', faq: false, section: 'Australia',
   });

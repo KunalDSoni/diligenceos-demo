@@ -7,6 +7,7 @@
 export const REGIONS = [
   {
     code: 'au', name: 'Australia', flag: '🇦🇺', deepDive: true,
+    metaDesc: 'A $33.3B profession serving a record 2.7 million Australian businesses, entering a decade defined not by demand but by capacity.',
     hubStat: 'Pipeline down ~95%', hubSub: 'Professional Year enrolments, 2018 to 2024',
     eyebrow: 'Market Briefing &middot; Australia',
     h1: 'Australia: The Future of Accounting Firms',
@@ -44,6 +45,7 @@ export const REGIONS = [
 
   {
     code: 'us', name: 'United States', flag: '🇺🇸', deepDive: false,
+    metaDesc: 'Licensed US accountants have fallen by two-thirds from the 2019 peak, while 36 million small businesses keep generating recurring demand.',
     hubStat: '653,408 accountants', hubSub: 'Licensed in 2025, down from 1.93M in 2019',
     eyebrow: 'Market Briefing &middot; United States',
     h1: 'United States: The Capacity Opportunity',

@@ -294,3 +294,67 @@ Post-change diff against the frozen baseline: **0 regressions, 11 improvements,
 2 neutral changes** — the improvements being every schema block from EXP-002 and
 the `/brochure/` orphan fix (now 7 inlinks), the neutral changes being the
 EXP-003 title and description.
+
+---
+
+## 2026-09-01 — EXP-006 — CONTENT
+
+```
+Change:        Unlocked the 9-page /opportunity/ research cluster from
+               noindex,nofollow; linked it from the main site; fixed its
+               SERP metadata at source
+Hypothesis:    13,000 words of source-cited original research, currently
+               invisible to search, will earn impressions for informational
+               queries no existing URL targets
+Instrument:    GSC URL Inspection (indexation), then GSC Performance per page
+               on the declared query cluster
+Baseline:      9 pages, noindex+nofollow, zero inlinks from the indexable site,
+               absent from sitemap.xml
+Commit:        (this commit)
+URLs:          /opportunity/, /opportunity/us/, /opportunity/au/,
+               /opportunity/au/business-landscape/, /opportunity/au/part-1..5/
+Checkpoint:    12 weeks after deploy
+Decision:      <filled at checkpoint>
+```
+
+**Effect on the site's addressable surface:**
+
+| | Before | After |
+|---|---|---|
+| Indexable URLs | 20 | **29** |
+| Site-wide prose | 12,156 words | **24,172 words** |
+
+**Why this passed the gate where three P2 candidates failed.** The gate exists to
+stop effort being spent creating pages that risk cannibalization. These pages
+already exist, were written by the business, and target informational intents no
+live URL owns. Spec section 3 explicitly carves out "the decision to remove
+`noindex` from a page, which is itself measurable" as in scope. Cost of unlocking
+is near zero; the invention risk that blocks the P2 depth work is absent entirely,
+because none of this content is mine.
+
+**Sensitivity check before unlocking.** Scanned for confidentiality markers. The
+4 "confidential" hits are the word "confidentiality" in ordinary prose about
+client data handling; all 76 "nda" hits are substrings (`ndash`, `standards`,
+`secondary`, `standardised`). The content is market analysis citing ABS and
+IBISWorld, with `Article` schema and `datePublished` already in place. Nothing
+investor-confidential.
+
+**The generator would have silently reverted this.** `opportunity/_src/build.mjs`
+emitted `<meta name="robots" content="noindex, nofollow">` on every build, so the
+next `npm run build:opp` would have re-hidden all 9 pages. Fixed at source, along
+with a missing `author.url` that was the cause of all 9 outstanding schema
+warnings — now 0.
+
+All title and description fixes were likewise made in `_src/build.mjs` and
+`_src/regions.mjs`, not the generated HTML. Region pages gained an explicit
+`metaDesc` field because the `lede` they previously reused runs to 236 characters.
+An earlier pass edited the generated files directly and a rebuild reverted it;
+recorded so the mistake is not repeated.
+
+**Watch item.** `/opportunity/au/business-landscape/` is the second-largest page
+on the site at 2,402 words but carries only 1 internal inlink, from the AU hub.
+Not an orphan, but under-linked for its size. Revisit at the checkpoint.
+
+Nine intents added to `SEO_QUERY_MAP.csv`. `/opportunity/au/part-4/` (global
+delivery model) sits closest to `/partners/`'s commercial intent and is flagged
+there for cannibalization monitoring.
