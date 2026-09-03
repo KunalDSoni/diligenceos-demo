@@ -11,6 +11,11 @@
 
 Before uploading, confirm everything is ready:
 
+```bash
+bash seo/deploy-verify-pre.sh    # Automated pre-upload checks
+```
+
+Manual checks:
 - [ ] **Owner dependencies** — GSC verification (DNS TXT) and access logs availability (see `seo/docs/OWNER_ACTIONS.md`)
 - [ ] **Content briefs** — all 26 `[NEEDED:]` items filled in `seo/briefs/FACT_CHECKLIST.md` if you're deploying EXP-005 or EXP-006
 - [ ] **Deployment manifest reviewed** — run `npm run seo:manifest` one more time to confirm no unexpected changes
@@ -84,23 +89,20 @@ us/index.html
 
 ## Post-Deployment Verification
 
-From your local machine, run each verification:
+Run automated verification:
 
 ```bash
-# Verify zero regressions
-npm run seo:diff
-
-# Verify 404 status (soft-404 fix from EXP-005)
-curl -sS -o /dev/null -w "%{http_code}\n" https://dosacc.com/404
-
-# Verify /opportunity/ is indexed (not 404)
-curl -sS -o /dev/null -w "%{http_code}\n" https://dosacc.com/opportunity/
-
-# Verify canonical redirect works (non-www)
-curl -sS -i https://www.dosacc.com | head -5  # should redirect to https://dosacc.com
+bash seo/deploy-verify-post.sh   # Automated post-upload tests
 ```
 
-If all return 200/correct redirects, deployment succeeded.
+Then run detailed comparison:
+
+```bash
+npm run seo:diff        # Verify zero regressions in crawl data
+npm run seo:indexnow    # Submit URLs to Bing IndexNow (if key configured)
+```
+
+If all tests pass, deployment succeeded and experiment clocks have started.
 
 ---
 
