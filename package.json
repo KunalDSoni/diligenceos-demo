@@ -15,6 +15,7 @@
     "seo:llms": "node seo/crawl.mjs --local --out seo/_tmp.csv && node seo/gen-llms-txt.mjs seo/_tmp.csv && rm -f seo/_tmp.csv",
     "seo:status": "node seo/status.mjs",
     "seo:manifest": "node seo/deploy-manifest.mjs",
-    "seo:indexnow": "node seo/indexnow-submit.mjs"
+    "seo:indexnow": "node seo/indexnow-submit.mjs",
+    "seo:checkpoint": "node seo/checkpoint-runner.mjs"
   }
 }
