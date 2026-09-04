@@ -2,10 +2,20 @@
 /**
  * Generate the exact upload list for a manual (FileZilla/SFTP) deploy.
  *
- *   node seo/deploy-manifest.mjs [since-ref]
+ *   node seo/deploy-manifest.mjs [since-ref] [--verify]
  *
- * Defaults to a1ea778, the commit currently live on dosacc.com. Prints every
- * changed file that belongs on the web host, and names what must NOT be uploaded.
+ * Prints every changed file that belongs on the web host, and names what must
+ * NOT be uploaded.
+ *
+ * SINCE defaults to a1ea778. That is an ASSUMPTION about what is live, not a
+ * fact - nothing publishes the deployed commit back to this repo. A manual
+ * FileZilla deploy can and does drift from it: on 2026-09-04 both
+ * assets/js/hero-canvas.js and llms.txt were 404 on the host despite being
+ * added at or before a1ea778, so a diff against it omitted them.
+ *
+ * Pass --verify to HEAD-check every deployable file against the live host and
+ * list what is actually missing. That check is the authority; the diff is a
+ * convenience.
  */
 import { execSync } from 'node:child_process';
 import path from 'node:path';
@@ -13,7 +23,10 @@ import path from 'node:path';
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
 process.chdir(ROOT);
 
-const SINCE = process.argv[2] || 'a1ea778';
+const args = process.argv.slice(2);
+const VERIFY = args.includes('--verify');
+const SINCE = args.find((a) => !a.startsWith('--')) || 'a1ea778';
+const HOST = 'https://dosacc.com';
 
 // Never upload: tooling, source, version control, editor and OS cruft.
 const EXCLUDE = [
@@ -35,7 +48,13 @@ const deleted = deployable.filter((f) => f.status === 'D');
 
 const dotfiles = deployable.filter(({ file }) => path.basename(file).startsWith('.'));
 
-console.log(`Deploy manifest — changes since ${SINCE} (the commit live on dosacc.com)\n`);
+console.log(`Deploy manifest — changes since ${SINCE} (ASSUMED live on dosacc.com)\n`);
+
+if (!VERIFY) {
+  console.log('   Nothing reports the deployed commit back to this repo, so the');
+  console.log('   baseline above is unverified and this list can omit files that');
+  console.log('   never reached the host. Confirm with:  npm run seo:manifest -- --verify\n');
+}
 
 if (dotfiles.length) {
   console.log('!! HIDDEN FILES — FileZilla does not show these by default.');
@@ -74,3 +93,45 @@ console.log('\nAfter uploading, verify from this machine:');
 console.log('  npm run seo:diff        # expect 0 regressions');
 console.log('  curl -sS -o /dev/null -w "%{http_code}\\n" https://dosacc.com/404          # expect 404');
 console.log('  curl -sS -o /dev/null -w "%{http_code}\\n" https://dosacc.com/opportunity/  # expect 200');
+
+/* ── live verification ─────────────────────────────────────────────────────
+   The diff above trusts SINCE. This does not: it asks the host what it
+   actually serves, which is the only way to catch a file that was never
+   uploaded in some earlier deploy. */
+
+if (VERIFY) {
+  const { readdirSync, statSync } = await import('node:fs');
+
+  const walk = (dir) => readdirSync(dir).flatMap((name) => {
+    const full = path.join(dir, name);
+    const rel = path.relative(ROOT, full);
+    if (EXCLUDE.some((re) => re.test(rel)) || name === '.git') return [];
+    return statSync(full).isDirectory() ? walk(full) : [rel];
+  });
+
+  // Images are large and rarely change; a HEAD sweep of them is mostly noise.
+  const targets = walk(ROOT).filter((f) => !/^(Photos|Event)\//.test(f));
+
+  const urlFor = (f) => `${HOST}/${f.split('/').map(encodeURIComponent).join('/')}`;
+
+  console.log(`\nVERIFYING ${targets.length} files against ${HOST} ...`);
+
+  const missing = [];
+  for (const f of targets) {
+    // .htaccess is config, never served; a 403/404 on it proves nothing.
+    if (path.basename(f) === '.htaccess') continue;
+    try {
+      const res = await fetch(urlFor(f), { method: 'HEAD', redirect: 'follow' });
+      if (res.status >= 400) missing.push({ f, status: res.status });
+    } catch {
+      missing.push({ f, status: 'unreachable' });
+    }
+  }
+
+  if (!missing.length) {
+    console.log('  every deployable file is present on the host.');
+  } else {
+    console.log(`\n!! MISSING FROM THE HOST (${missing.length}) — upload regardless of the diff:`);
+    for (const { f, status } of missing) console.log(`     ${String(status).padEnd(12)} ${f}`);
+  }
+}
