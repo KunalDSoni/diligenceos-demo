@@ -279,9 +279,17 @@
 
   function point(e) {
     if (reduced()) return;
+    // Ignore real touch taps (no persistent hover), but let mouse/pen/trackpad
+    // through regardless of what the hover/pointer media queries claim.
+    if (e.pointerType === 'touch') return;
     var rect = host.getBoundingClientRect();
     var x = e.clientX - rect.left;
     var y = e.clientY - rect.top;
+    // Only react while the pointer is actually over the hero.
+    if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+      cur.tStrength = 0;
+      return;
+    }
     if (!cur.seen) { cur.x = x; cur.y = y; cur.seen = true; }
     cur.tx = x;
     cur.ty = y;
@@ -310,12 +318,11 @@
 
   build();
 
-  // Fine pointers only — a touch "hover" would leave the mesh lit with no way
-  // to dismiss it.
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    host.addEventListener('pointermove', point, { passive: true });
-    host.addEventListener('pointerleave', leave, { passive: true });
-  }
+  // Listen on the window so movement is tracked even when the pointer is over
+  // content stacked above the canvas. Touch is filtered per-event in point().
+  window.addEventListener('pointermove', point, { passive: true });
+  window.addEventListener('mousemove', point, { passive: true });
+  host.addEventListener('pointerleave', leave, { passive: true });
 
   if ('ResizeObserver' in window) {
     var ro = new ResizeObserver(function () { resize(); });

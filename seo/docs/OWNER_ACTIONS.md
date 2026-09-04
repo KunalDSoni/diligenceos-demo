@@ -17,6 +17,23 @@ subdomain and protocol falls under one property.
 GSC backfills **no** data from before verification, so every day unverified is a
 day of history permanently lost.
 
+### If DNS access is not available: verify today anyway
+
+A Domain property is the better end state, but it is not worth waiting for. A
+**URL-prefix property** verified by HTML file needs only FTP access, which the
+owner already has:
+
+1. Search Console -> Add property -> **URL prefix** -> `https://dosacc.com`
+2. Choose **HTML file** verification and download the `google*.html` file
+3. Upload it to the web root with FileZilla, alongside `index.html`
+4. Confirm it loads at `https://dosacc.com/google<...>.html`, then click Verify
+5. Submit `https://dosacc.com/sitemap.xml`
+
+Keep the file on the server permanently; removing it un-verifies the property.
+
+This starts the data clock immediately. Add the Domain property later when DNS
+access lands - the two coexist, and the URL-prefix history is not lost.
+
 ## 2. Raw Apache access logs
 **Blocks:** all AI crawler measurement (`parse-access-logs.mjs`).
 
@@ -35,15 +52,27 @@ Not filler: ChatGPT's web results have historically drawn on Bing's index, makin
 this one of very few GEO levers with a free first-party instrument. Verification can
 be imported directly from Search Console once step 1 is done.
 
-## 4. Plausible account
-**Blocks:** AI referral attribution and the `/schedule/` conversion event.
+## 4. ~~Plausible account~~ — RESOLVED 2026-09-04 by GA4
 
-Create the account for `dosacc.com`, then supply the script host. The site's
-Content-Security-Policy currently blocks all third-party scripts
-(`script-src 'self' 'unsafe-inline' https://s3.tradingview.com`), so `.htaccess`
-needs the Plausible host added to `script-src` and `connect-src`. That change is
-prepared but not applied, because applying it without an account would ship a
-broken tag to production.
+Superseded. Google Analytics 4 (`G-S93VBWDEMY`) is deployed and verified
+receiving live data, so this dependency no longer blocks anything.
+
+Now measurable that previously was not:
+
+- `/schedule/` booking completions — `book_meeting_click` event
+- Contact conversions — `form_submit` and `email_click` events
+- Referral attribution, including AI referrers, via GA4 acquisition reports
+
+The CSP problem this section predicted was real and did occur: the tag loaded
+but sent nothing, because `connect-src` was not updated alongside `script-src`.
+Both are now set for the Google hosts. **The failure mode is worth recording -
+with the script allowed and the beacon blocked, the console stays silent and the
+property simply reports no traffic, which is indistinguishable from a correct
+install with no visitors.** Any future third-party tag needs both directives.
+
+Note the CSP still blocks the host's own injected tracker
+(`img1.wsimg.com/traffic-assets/js/tccl.min.js`). That is deliberate: it is not
+ours and is not disclosed in `privacy.html`.
 
 ## 5. Canonical phone number per office
 **Blocks:** NAP normalization, `LocalBusiness` schema, and all Google Business
