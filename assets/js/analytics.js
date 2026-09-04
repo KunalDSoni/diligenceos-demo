@@ -1,15 +1,17 @@
 /* ═══════════════════════════════════════════════════════════════
    DiligenceOS - Google Analytics 4 (consent-gated)
 
-   SETUP: replace MEASUREMENT_ID below with the real ID from
-   analytics.google.com (Admin > Data streams > Web). It looks
-   like "G-ABC1234XYZ". Until that is done this file is inert -
-   no cookies are set and no requests are made.
+   The Measurement ID comes from analytics.google.com
+   (Admin > Data streams > Web). If it is ever blanked or replaced
+   with a placeholder this file goes inert - no cookies are set and
+   no requests are made - so the site stays safe to deploy either way.
+
+   Nothing loads until the visitor accepts the consent banner.
    ═══════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
-  var MEASUREMENT_ID = 'G-XXXXXXXXXX';
+  var MEASUREMENT_ID = 'G-S93VBWDEMY';
   var STORAGE_KEY = 'dos-analytics-consent';
 
   // Inert until a real ID is configured.
