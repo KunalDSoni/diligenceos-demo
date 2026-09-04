@@ -12,7 +12,15 @@
   Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
   # Static site: inline scripts/styles are part of the pages, so
   # 'unsafe-inline' is required; everything else is locked down.
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://s3.tradingview.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; frame-src https://calendar.google.com https://*.google.com https://www.tradingview-widget.com https://s.tradingview.com https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://api.gdeltproject.org; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+  #
+  # Google Analytics needs two entries: googletagmanager.com in script-src to
+  # load gtag.js, and the google-analytics.com hosts in connect-src for the
+  # measurement beacons. Without the connect-src entry the tag loads and
+  # silently sends nothing, which looks identical to a working install.
+  # Note this policy also blocks the host's injected img1.wsimg.com tracker.
+  # That is deliberate - it is not ours and is not disclosed in our privacy
+  # policy, so it stays blocked.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://s3.tradingview.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; frame-src https://calendar.google.com https://*.google.com https://www.tradingview-widget.com https://s.tradingview.com https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://api.gdeltproject.org https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
 </IfModule>
 
 # ───────────────── Hide sensitive files ─────────────────
