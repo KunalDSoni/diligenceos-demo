@@ -29,11 +29,24 @@ const warn = (f, m) => WARNS.push(`${f}: ${m}`);
 
 const argv = process.argv.slice(2).filter((a) => a.endsWith('.html'));
 const allFiles = execSync(
-  'find . -name "*.html" -not -path "./_archive/*" -not -path "./.git/*" -not -path "*/opportunity/_src/*"',
+  // .claude holds git worktrees - other branches checked out inside this tree.
+  // Without excluding it, a no-argument run reports errors for archived pages on
+  // branches that are not even checked out here.
+  'find . -name "*.html" -not -path "./_archive/*" -not -path "./.git/*" '
+  + '-not -path "./.claude/*" -not -path "*/opportunity/_src/*"',
   { encoding: 'utf8' }
 ).trim().split('\n').map((f) => f.replace(/^\.\//, '')).sort();
 
-const files = argv.length ? argv.map((f) => f.replace(/^\.\//, '')) : allFiles;
+// Search-engine ownership tokens (google<hash>.html, BingSiteAuth.xml's HTML
+// cousins) are single-line proof-of-control files, not pages. They must stay on
+// the server verbatim - reformatting one un-verifies the property - so they are
+// excluded from every page rule rather than being "fixed".
+const isVerificationToken = (f) =>
+  /^google[0-9a-f]{16}\.html$/i.test(path.basename(f)) ||
+  /^(BingSiteAuth|yandex_[0-9a-f]+)\.html$/i.test(path.basename(f));
+
+const files = (argv.length ? argv.map((f) => f.replace(/^\.\//, '')) : allFiles)
+  .filter((f) => !isVerificationToken(f));
 
 const text = (h) => h
   .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
