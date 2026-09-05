@@ -31,9 +31,10 @@ const argv = process.argv.slice(2).filter((a) => a.endsWith('.html'));
 const allFiles = execSync(
   // .claude holds git worktrees - other branches checked out inside this tree.
   // Without excluding it, a no-argument run reports errors for archived pages on
-  // branches that are not even checked out here.
+  // branches that are not even checked out here. seo/ holds tooling that never
+  // deploys, so auditing it as if it were a public page means nothing.
   'find . -name "*.html" -not -path "./_archive/*" -not -path "./.git/*" '
-  + '-not -path "./.claude/*" -not -path "*/opportunity/_src/*"',
+  + '-not -path "./.claude/*" -not -path "./seo/*" -not -path "*/opportunity/_src/*"',
   { encoding: 'utf8' }
 ).trim().split('\n').map((f) => f.replace(/^\.\//, '')).sort();
 
@@ -166,6 +167,29 @@ for (const f of files) {
     if (clean === '' || clean === 'contact') continue; // homepage and the /contact rewrite
     if (!cands.some((c) => existsSync(c))) err(f, `broken internal link: ${href}`);
   }
+
+  // A UTM tag on an internal link is not a broken link but a broken report:
+  // GA4 reads it as a fresh campaign and overwrites the source that actually
+  // brought the visitor in, so the damage is invisible until the numbers are
+  // already wrong. Tags belong only on inbound links authored off-site.
+  // See seo/docs/UTM_CONVENTION.md.
+  const OWN_HOST = /^(https?:)?\/\/(www\.)?dosacc\.com([/?#]|$)/i;
+  const internal = (href) => {
+    if (/^(mailto:|tel:|javascript:|data:|#)/i.test(href)) return false;
+    if (/^(https?:)?\/\//i.test(href)) return OWN_HOST.test(href);
+    return true; // relative or root-relative
+  };
+
+  for (const m of html.matchAll(/<a\b[^>]*href\s*=\s*["']([^"']+)["']/gi)) {
+    if (/utm_/i.test(m[1]) && internal(m[1])) {
+      err(f, `UTM tag on an internal link: ${m[1]}`);
+    }
+  }
+  if (/utm_/i.test(p.canonical)) err(f, `UTM tag in canonical: ${p.canonical}`);
+
+  const ogUrlTag = html.match(/<meta[^>]*property\s*=\s*["']og:url["'][^>]*>/i);
+  const ogUrl = ogUrlTag ? attrOf(ogUrlTag[0], 'content') : '';
+  if (/utm_/i.test(ogUrl)) err(f, `UTM tag in og:url: ${ogUrl}`);
 
   pages.set(f, p);
 }
