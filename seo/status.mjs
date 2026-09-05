@@ -103,10 +103,22 @@ console.log(state('Competitor benchmark', comp.length > 0, comp.length ? `${comp
 
 /* ── blocked ───────────────────────────────────────────────────────────── */
 const owner = await read('seo/docs/OWNER_ACTIONS.md');
-const deps = [...owner.matchAll(/^## (\d+)\.\s+(.+)$/gm)].map((m) => `${m[1]}. ${m[2]}`);
+const allDeps = [...owner.matchAll(/^## (\d+)\.\s+(.+)$/gm)]
+  .map((m) => ({ n: m[1], text: m[2], done: /RESOLVED|~~/.test(m[2]) }));
+const open = allDeps.filter((d) => !d.done);
+
 console.log(bar('BLOCKED ON OWNER'));
-for (const d of deps) console.log(`  ${d}`);
-console.log('\n  Nothing further is buildable until these land. See seo/docs/OWNER_ACTIONS.md');
+for (const d of allDeps) console.log(`  ${d.done ? 'x' : ' '} ${d.n}. ${d.text}`);
+console.log(`\n  ${open.length} of ${allDeps.length} still open. See seo/docs/OWNER_ACTIONS.md`);
+
+// Dep 1 gates the most instruments, and it is the one with a workaround: a
+// URL-prefix property verified by HTML file needs only the FTP access the
+// owner already has. Saying "nothing is buildable" hid that for weeks.
+if (open.some((d) => d.n === '1')) {
+  console.log('\n  Dep 1 does NOT require DNS. A URL-prefix property verified by');
+  console.log('  HTML file upload works over FTP today, and starts the data clock');
+  console.log('  immediately — GSC backfills nothing. See OWNER_ACTIONS.md sec. 1.');
+}
 
 /* ── deploy ────────────────────────────────────────────────────────────── */
 console.log(bar('DEPLOY'));

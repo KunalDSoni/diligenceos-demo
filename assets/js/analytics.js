@@ -73,8 +73,12 @@
     }, true);
   }
 
-  /* ─────────── Consent banner ─────────── */
-  function showBanner() {
+  /* ─────────── Consent banner ───────────
+     reopened=true when the visitor came back via "Cookie Settings", so the
+     copy states what is currently set rather than asking as if for the
+     first time. */
+  function showBanner(reopened) {
+    if (document.querySelector('.dos-consent')) return;
     var css = document.createElement('style');
     css.textContent =
       '.dos-consent{position:fixed;left:0;right:0;bottom:0;z-index:9999;' +
@@ -99,30 +103,90 @@
     bar.className = 'dos-consent';
     bar.setAttribute('role', 'dialog');
     bar.setAttribute('aria-label', 'Analytics cookie consent');
+    var current = stored();
+    var intro = reopened
+      ? 'Analytics cookies are currently <strong>' +
+        (current === 'granted' ? 'on' : 'off') +
+        '</strong> for this browser. You can change that here at any time.'
+      : 'We would like to use analytics cookies to understand how visitors ' +
+        'use this site. These are optional - the site works either way.';
+
     bar.innerHTML =
-      '<p>We would like to use analytics cookies to understand how visitors ' +
-      'use this site. These are optional - the site works either way. ' +
-      'See our <a href="/privacy.html#cookies">Privacy Policy</a>.</p>' +
+      '<p>' + intro + ' See our <a href="/privacy#cookies">Privacy Policy</a>.</p>' +
       '<div class="dos-consent-actions">' +
-      '<button type="button" class="dos-decline">Decline</button>' +
-      '<button type="button" class="dos-accept">Accept</button>' +
+      '<button type="button" class="dos-decline">' +
+      (reopened ? 'Turn off' : 'Decline') + '</button>' +
+      '<button type="button" class="dos-accept">' +
+      (reopened ? 'Turn on' : 'Accept') + '</button>' +
       '</div>';
 
     bar.querySelector('.dos-accept').addEventListener('click', function () {
+      var was = stored();
       remember('granted');
       bar.remove();
-      loadAnalytics();
+      // Already loaded on this page view; nothing more to do.
+      if (was !== 'granted') loadAnalytics();
     });
+
     bar.querySelector('.dos-decline').addEventListener('click', function () {
+      var was = stored();
       remember('denied');
       bar.remove();
+      // Withdrawing consent has to actually stop collection. gtag cannot be
+      // unloaded once running, so drop its cookies and reload: the next page
+      // view starts clean and never calls loadAnalytics().
+      if (was === 'granted') {
+        dropAnalyticsCookies();
+        location.reload();
+      }
     });
 
     document.body.appendChild(bar);
   }
 
+  /* ─────────── Withdrawal ─────────── */
+
+  // GA4 writes _ga and _ga_<ID>. Clear both on the bare host and the dotted
+  // domain, since gtag sets them on .dosacc.com.
+  function dropAnalyticsCookies() {
+    var host = location.hostname;
+    var domains = ['', host, '.' + host.replace(/^www\./, '')];
+    document.cookie.split('; ').forEach(function (c) {
+      var name = c.split('=')[0];
+      if (name.indexOf('_ga') !== 0) return;
+      domains.forEach(function (d) {
+        document.cookie = name + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT' +
+          (d ? '; domain=' + d : '');
+      });
+    });
+  }
+
+  /* ─────────── "Cookie Settings" entry point ───────────
+     Consent has to be as easy to withdraw as it was to give, so every footer
+     link to the cookies section reopens this control instead of only scrolling
+     to the policy text. Delegated, so it works on pages rendered later. */
+  function wireSettingsLinks() {
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest) return;
+      var el = e.target.closest('a[href*="#cookies"], [data-cookie-settings]');
+      if (!el) return;
+      // The banner's own policy link points at #cookies and must still
+      // navigate; only hijack controls that offer to change the setting.
+      if (el.closest('.dos-consent')) return;
+      if (!el.hasAttribute('data-cookie-settings') &&
+          !/cookie/i.test(el.textContent || '')) return;
+      e.preventDefault();
+      showBanner(true);
+    });
+  }
+
+  // Also available as window.dosCookieSettings() for any custom control.
+  window.dosCookieSettings = function () { showBanner(true); };
+
   /* ─────────── Decide ─────────── */
   function init() {
+    wireSettingsLinks();
+
     var consent = stored();
 
     if (consent === 'granted') { loadAnalytics(); return; }

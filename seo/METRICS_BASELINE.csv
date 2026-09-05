@@ -28,3 +28,17 @@ Date,Tier,Metric,Value,Unit,Instrument,Notes
 2026-09-01,3,Descriptions over 160 chars,0,urls,seo/crawl.mjs,was 1 at baseline
 2026-09-01,3,Images missing alt,0,images,seo/crawl.mjs,
 2026-09-01,3,Total prose words (all pages),24182,words,seo/crawl.mjs,was 12156 at baseline
+2026-09-04,1,Organic qualified leads,AWAITING DATA,leads,GA4 G-S93VBWDEMY + CRM,Owner dep 7 (CRM) still open; GA4 side live
+2026-09-04,1,/schedule/ booking completions,AWAITING DATA,events,GA4 G-S93VBWDEMY,"GA4 deployed and verified 2026-09-04; no backfill, first full day is 2026-09-05; book_meeting_click event"
+2026-09-04,3,AI referral sessions,AWAITING DATA,sessions,GA4 G-S93VBWDEMY,"GA4 deployed and verified 2026-09-04; no backfill, first full day is 2026-09-05; read from acquisition reports"
+2026-09-04,3,Live URLs crawled,29,urls,seo/crawl.mjs,post-deploy
+2026-09-04,3,URLs returning 200,29,urls,seo/crawl.mjs,was 20 at baseline
+2026-09-04,3,Indexable URLs,29,urls,seo/crawl.mjs,
+2026-09-04,3,URLs in sitemap,28,urls,sitemap.xml,matches the 28 non-404 pages on disk
+2026-09-04,3,URLs with any JSON-LD,29,urls,seo/crawl.mjs,all live pages
+2026-09-04,3,Orphan URLs (0 internal inlinks),0,urls,seo/crawl.mjs,
+2026-09-04,3,Titles over 60 chars,0,urls,seo/crawl.mjs,was 2; both shortened 2026-09-04
+2026-09-04,3,Descriptions over 160 chars,0,urls,seo/crawl.mjs,
+2026-09-04,3,Images missing alt,0,images,seo/crawl.mjs,
+2026-09-04,3,Median response time,92,ms,seo/crawl.mjs,was 99
+2026-09-04,3,Total prose words (all pages),24776,words,seo/crawl.mjs,was 24182
