@@ -13,12 +13,20 @@ called `linkedin`. Tagging is what separates them.
 
 ## Build links with the tool, not by hand
 
-Open `seo/utm-builder.html` — double-click it, or drag it into a browser window. It runs
-entirely offline and is **not on the website**: the whole `seo/` folder is excluded from
-deploys and always will be.
+**https://dosacc.com/tools/utm/**
 
-Pick the destination page, pick where the link is going, type the campaign name, copy the
+Open it in any browser, on any device. No login. Send that URL to anyone who needs to tag
+a link — consultants and agencies included.
+
+Pick the destination page, pick where the link is going, pick the campaign, copy the
 result. That is the whole job. Building links by hand is how the vocabulary below rots.
+
+The page is `noindex` and excluded in `robots.txt`, so it never appears in search or
+competes with a real page.
+
+**Adding a campaign:** the campaign dropdown is a fixed list in `tools/utm/index.html`
+(the `CAMPAIGNS` array). Add a name there and re-upload the file. Anyone can still type a
+new campaign in the tool when they need one, so nobody is ever blocked waiting for that.
 
 ---
 
@@ -102,6 +110,12 @@ The redirects preserve tags correctly either way, but a tidy URL skips a needles
 **5. Source and medium are always both present.**
 A campaign arriving with a source but no medium is filed by GA4 under `(not set)`. The
 builder cannot produce one, which is a good reason to use it.
+
+**6. Never hand-tag Google Ads.**
+Google Ads tags every click itself with a `gclid`. A manual UTM overrides it and breaks
+cost and conversion reporting for the whole account. Link GA4 to Google Ads instead:
+GA4 Admin → Product links → Google Ads links. The builder refuses to produce a Google Ads
+link for this reason, and says so.
 
 ---
 
