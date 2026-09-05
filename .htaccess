@@ -84,6 +84,11 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # ───────────────── Browser caching ─────────────────
+# NOTE: mod_expires is NOT loaded on this host - verified 2026-09-05, no
+# Expires or Cache-Control header is emitted for any asset. The block below is
+# therefore inert and kept only so the intent survives a host migration.
+# Anything that must actually take effect goes in the mod_headers block that
+# follows, since mod_headers IS active (it is what sets the CSP).
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/jpeg "access plus 1 month"
@@ -93,4 +98,19 @@ ErrorDocument 404 /404.html
   ExpiresByType text/css "access plus 1 week"
   ExpiresByType application/javascript "access plus 1 week"
   ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # analytics.js carries the consent gate. With no Cache-Control header the
+  # browser falls back to heuristic freshness and can keep serving a stale copy
+  # for hours, which is how a returning visitor ends up unable to withdraw
+  # consent through a control the page is showing them. A privacy control that
+  # ships but does not reach people is not shipped.
+  #
+  # no-cache means revalidate before use, not "do not store": the ETag turns
+  # each check into a 304 of a few hundred bytes. For a 8 KB file that is the
+  # right trade.
+  <FilesMatch "analytics\.js$">
+    Header always set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
 </IfModule>
