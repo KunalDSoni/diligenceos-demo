@@ -119,3 +119,22 @@ an owner task rather than an automatable one.
 Procedure is in [`GEO_RUNBOOK.md`](GEO_RUNBOOK.md). Roughly 45 minutes per run,
 30 prompts x 3 engines. The panel is frozen — ask each prompt verbatim, in a fresh
 session, and record what you observe rather than what you hoped for.
+
+## 9. GA4 key events, for comparing campaigns on outcomes
+**Blocks:** nothing for capture. Blocks only the ability to rank campaigns by result
+rather than by visit count.
+
+UTM campaign tagging needs **no GA4 configuration at all** — GA4 reads the tags the
+moment a tagged link is opened. The convention and the link builder are in
+[`UTM_CONVENTION.md`](UTM_CONVENTION.md).
+
+The one owner action is a five-minute one, in GA4 → Admin → Events. Confirm these three
+are toggled **Mark as key event**:
+
+- `book_meeting_click`
+- `form_submit`
+- `email_click`
+
+Without that, a campaign can only be compared on sessions, which says how many people a
+push reached and nothing about whether it worked. Events appear in this list only after
+they have fired at least once, so if one is missing, trigger it on the live site first.
