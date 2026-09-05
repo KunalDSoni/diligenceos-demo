@@ -37,6 +37,16 @@
 
 RewriteEngine On
 
+# ErrorDocument reaches /404.html by internal redirect, and every rule below
+# runs again on that pass. If any of them answers with a redirect or a 404,
+# Apache is left with no error page to render and falls back to a bare
+# "404 Not Found" string - which is exactly what dosacc.com served from the
+# day 404.html was uploaded, while the file itself was present and readable.
+# REDIRECT_STATUS is set only on that internal pass, so a direct request to
+# /404.html still gets the 301 to /404 that keeps it out of the index.
+RewriteCond %{ENV:REDIRECT_STATUS} !^$
+RewriteRule ^404\.html$ - [L]
+
 # ─────────── Canonical host: force https + non-www (production only) ───────────
 RewriteCond %{HTTP_HOST} ^www\.dosacc\.com$ [NC]
 RewriteRule ^ https://dosacc.com%{REQUEST_URI} [R=301,L]
