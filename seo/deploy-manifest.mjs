@@ -100,7 +100,7 @@ console.log('  curl -sS -o /dev/null -w "%{http_code}\\n" https://dosacc.com/opp
    uploaded in some earlier deploy. */
 
 if (VERIFY) {
-  const { readdirSync, statSync } = await import('node:fs');
+  const { readdirSync, statSync, readFileSync } = await import('node:fs');
 
   const walk = (dir) => readdirSync(dir).flatMap((name) => {
     const full = path.join(dir, name);
@@ -116,10 +116,36 @@ if (VERIFY) {
 
   console.log(`\nVERIFYING ${targets.length} files against ${HOST} ...`);
 
+  // 404.html is an error document, not an addressable page. Requesting it
+  // returns 404 by design - .htaccess answers /404 with a hard 404 so Search
+  // Console does not see a soft 404 - so a status probe cannot tell "never
+  // uploaded" from "working exactly as intended", and reported it missing
+  // either way. Assert what actually matters instead: that a URL which does
+  // not exist renders OUR styled page and not the server's bare default.
+  // The marker is read from the local file so it cannot drift out of sync.
+  const errorPageTitle = (readFileSync(path.join(ROOT, '404.html'), 'utf8')
+    .match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [, ''])[1].trim();
+  const PROBE = 'deploy-verify-probe-does-not-exist';
+
   const missing = [];
   for (const f of targets) {
     // .htaccess is config, never served; a 403/404 on it proves nothing.
     if (path.basename(f) === '.htaccess') continue;
+
+    if (f === '404.html') {
+      if (!errorPageTitle) { missing.push({ f, status: 'no <title>' }); continue; }
+      try {
+        const res = await fetch(`${HOST}/${PROBE}`, { redirect: 'follow' });
+        const body = await res.text();
+        if (!body.includes(errorPageTitle)) {
+          missing.push({ f, status: `not served (${body.length}B)` });
+        }
+      } catch {
+        missing.push({ f, status: 'unreachable' });
+      }
+      continue;
+    }
+
     try {
       const res = await fetch(urlFor(f), { method: 'HEAD', redirect: 'follow' });
       if (res.status >= 400) missing.push({ f, status: res.status });
@@ -132,6 +158,10 @@ if (VERIFY) {
     console.log('  every deployable file is present on the host.');
   } else {
     console.log(`\n!! MISSING FROM THE HOST (${missing.length}) — upload regardless of the diff:`);
-    for (const { f, status } of missing) console.log(`     ${String(status).padEnd(12)} ${f}`);
+    for (const { f, status } of missing) console.log(`     ${String(status).padEnd(16)} ${f}`);
+    if (missing.some((m) => m.f === '404.html')) {
+      console.log(`\n   404.html: a missing URL is not rendering "${errorPageTitle}".`);
+      console.log('   The host is falling back to its own bare error page.');
+    }
   }
 }
