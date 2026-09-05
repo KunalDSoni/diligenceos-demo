@@ -125,20 +125,31 @@ if (VERIFY) {
   // The marker is read from the local file so it cannot drift out of sync.
   const errorPageTitle = (readFileSync(path.join(ROOT, '404.html'), 'utf8')
     .match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [, ''])[1].trim();
-  const PROBE = 'deploy-verify-probe-does-not-exist';
 
   const missing = [];
   for (const f of targets) {
     // .htaccess is config, never served; a 403/404 on it proves nothing.
     if (path.basename(f) === '.htaccess') continue;
 
+    // 404.html cannot be checked at /404.html: the .html-stripping rule 301s
+    // it to /404, which answers with a deliberate hard 404, so a plain probe
+    // reports it missing whether it is there or not. An encoded dot resolves
+    // to the same file on disk while leaving no literal ".html" in the raw
+    // request line for that rule to match, so this reaches the file itself.
+    //
+    // This proves the file is uploaded. It does NOT mean visitors see it:
+    // GoDaddy ignores ErrorDocument on this account (verified 2026-09-05 - a
+    // local path and a literal string both yield Apache's bare "404 Not
+    // Found", with .htaccess demonstrably live), so a mistyped URL shows the
+    // host's page. That is a hosting setting, not a deploy problem, and no
+    // upload will change it.
     if (f === '404.html') {
       if (!errorPageTitle) { missing.push({ f, status: 'no <title>' }); continue; }
       try {
-        const res = await fetch(`${HOST}/${PROBE}`, { redirect: 'follow' });
+        const res = await fetch(`${HOST}/404%2Ehtml`);
         const body = await res.text();
-        if (!body.includes(errorPageTitle)) {
-          missing.push({ f, status: `not served (${body.length}B)` });
+        if (res.status >= 400 || !body.includes(errorPageTitle)) {
+          missing.push({ f, status: `HTTP ${res.status}, ${body.length}B` });
         }
       } catch {
         missing.push({ f, status: 'unreachable' });
@@ -160,8 +171,9 @@ if (VERIFY) {
     console.log(`\n!! MISSING FROM THE HOST (${missing.length}) — upload regardless of the diff:`);
     for (const { f, status } of missing) console.log(`     ${String(status).padEnd(16)} ${f}`);
     if (missing.some((m) => m.f === '404.html')) {
-      console.log(`\n   404.html: a missing URL is not rendering "${errorPageTitle}".`);
-      console.log('   The host is falling back to its own bare error page.');
+      console.log(`\n   404.html is not on the server. Note that uploading it will not`);
+      console.log('   make mistyped URLs show it - GoDaddy ignores ErrorDocument on');
+      console.log('   this account. See the error page section of .htaccess.');
     }
   }
 }

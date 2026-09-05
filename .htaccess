@@ -61,7 +61,8 @@ RewriteRule ^contact$ index.html [L]
 # /404 must answer with a 404 status, not 200. Without this, the clean-URL rule
 # below serves 404.html at /404 with a success status - a soft 404, which Search
 # Console reports and which contradicts the page's own noindex. Apache serves
-# ErrorDocument 404 /404.html internally, so the styled error page still renders.
+# ErrorDocument 404 /404.html internally - though on this host that renders
+# nothing; see the error page section below.
 # Verified against Apache 2.4.66: /404 and /404/ return 404, /404xyz is not
 # matched, no redirect loop, all other routes unchanged.
 RewriteRule ^404/?$ - [R=404,L]
@@ -76,17 +77,24 @@ RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
 RewriteRule ^(.+)$ $1.html [L]
 
 # ───────────────── Custom error page ─────────────────
-# ErrorDocument with a local path does nothing on this host. Verified
-# 2026-09-05: /404.html is present, 0644, and returns 200 with the right page
-# when requested directly, while every 404 still yields Apache's bare 13-byte
-# "404 Not Found" - with this .htaccess demonstrably live, since edits to the
-# rewrite rules above took effect in the same upload.
+# The directive below is correct and is kept so this works on any normal host.
+# It does nothing here: GoDaddy ignores ErrorDocument on this account, so a
+# mistyped URL shows Apache's bare "404 Not Found", not the styled page.
 #
-# A literal string is a different code path in Apache. If this renders, the
-# directive is honoured and only the internal path lookup was failing; if it
-# does not, ErrorDocument is disabled account-wide and only the host can
-# change that. Either way visitors get something better than a reason phrase.
-ErrorDocument 404 "<!doctype html><meta charset=utf-8><title>Page Not Found | DiligenceOS</title><meta name=robots content=noindex><style>body{font:16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;max-width:34rem;margin:16vh auto;padding:0 1.5rem;color:#0a2540}h1{font-size:1.5rem;margin:0 0 .5rem}a{color:#8a6a12}</style><h1>Page not found</h1><p>That page does not exist or has moved.</p><p><a href='/'>Go to the DiligenceOS homepage</a></p>"
+# Verified 2026-09-05, after 404.html was uploaded (present, 0644, 3795 bytes):
+#   - /404%2Ehtml returns 200 with the styled page, so the file is on the
+#     server and readable. The encoded dot is what dodges the .html-stripping
+#     rule above, and is the only way to reach the file directly.
+#   - Every real 404 returns the bare 13-byte body.
+#   - Exempting 404.html from that stripping rule flipped /404.html to 200 in
+#     the same upload - proving this file is live and acted on - while the
+#     bare 404 persisted. That clears the rewrite rules.
+#   - A literal-string ErrorDocument was ignored too, so it is the directive
+#     that is disabled, not the path lookup.
+#
+# Fixing it means cPanel > Error Pages, or GoDaddy support. Do not spend
+# another round on .htaccess.
+ErrorDocument 404 /404.html
 
 # ───────────────── Compression ─────────────────
 <IfModule mod_deflate.c>
